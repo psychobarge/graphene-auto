@@ -75,6 +75,29 @@ io.github.psychobarge.grapheneauto
 - No adb, root, or Shizuku is needed. Every feature relies on an ordinary Android
   permission or an on-device consent dialog.
 
+### Waze on the car screen
+
+Waze accepts only Android Auto as a host. Patch it with [Morphe](https://morphe.software) to
+let Graphene Auto in:
+
+1. In Morphe, add the patch source
+   [waze-gearslip-morphe-patch](https://github.com/VoltoxderEchte/waze-gearslip-morphe-patch).
+2. Patch Waze (Morphe can start from the copy already installed) and apply **Allow Gearslip**,
+   plus **Fix speed drops** if your phone has no Google Play services.
+3. Set **Accepted hosts** to this custom value, which allows Graphene Auto and Gearslip:
+   ```
+   53564429a7261363830fe739421d192434ced3f82c51759cff6be51970e8dfb9,io.github.psychobarge.grapheneauto;4cc56ebdd13a54d260eca9b7e2b2ae6b30e2f225bfda8f508f0709edf084948b,app.seb3thehacker.gearslip
+   ```
+4. Uninstall the Play Store copy, install the patched one, and turn off its auto-update in
+   the Play Store.
+
+**For privacy**, also add the
+[bearinmindcat/morphe-patches](https://github.com/bearinmindcat/morphe-patches) source and
+apply its Waze patches **Remove telemetry**, **Hide ads**, and **Remove permissions**. Mixing
+two sources needs Morphe's expert mode, and can fail on some phones: if it does, patch in two
+passes, bearinmindcat first, then Allow Gearslip on the result. Pick a Waze version both
+sources support, and skip **Change app name** if it renames the package.
+
 ## Network access
 
 The app goes online only for these:
