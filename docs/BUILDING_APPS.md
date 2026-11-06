@@ -41,7 +41,7 @@ entry:
 ```xml
 <!-- res/values/arrays.xml -->
 <array name="hosts_allowlist">
-    <item>RELEASE_CERT_SHA256,io.github.psychobarge.grapheneauto</item>
+    <item>53564429a7261363830fe739421d192434ced3f82c51759cff6be51970e8dfb9,io.github.psychobarge.grapheneauto</item>
 </array>
 ```
 
@@ -54,7 +54,7 @@ public HostValidator createHostValidator() {
 }
 ```
 
-Replace RELEASE_CERT_SHA256 with the digest of Graphene Auto's release signing certificate. A Graphene Auto you built yourself
+That digest belongs to Graphene Auto's release signing certificate. A Graphene Auto you built yourself
 carries your own debug key and a different digest, so read the fingerprint off the APK you
 actually installed when an allowlist entry fails to match.
 

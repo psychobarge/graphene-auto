@@ -58,6 +58,16 @@ through it, and it adds a player, calls, voice, and a web browser of its own.
 3. Plug the phone into the car's USB port. In a car with wireless Android Auto, pair the
    phone with the car over Bluetooth, then tap Connect wirelessly and pick the car.
 
+### Verify your download
+
+Check that your copy is genuine with [AppVerifier](https://github.com/soupslurpr/AppVerifier),
+or compare with the output of `apksigner verify --print-certs`:
+
+```
+io.github.psychobarge.grapheneauto
+53:56:44:29:A7:26:13:63:83:0F:E7:39:42:1D:19:24:34:CE:D3:F8:2C:51:75:9C:FF:6B:E5:19:70:E8:DF:B9
+```
+
 ### GrapheneOS notes
 
 - **USB-C port control** must not be set to **Charging-only**. That setting blocks USB
