@@ -53,6 +53,8 @@ through it, and it adds a player, calls, voice, and a web browser of its own.
 ## Install
 
 1. Install the APK from [the releases page](https://github.com/psychobarge/graphene-auto/releases).
+   Uninstall Gearslip first if you have it: both define the same car permission, so Android
+   refuses to install one while the other is there.
 2. Open it. Setup asks where your Android Auto certificate comes from, then for one
    permission at a time, each with a plain reason.
 3. Plug the phone into the car's USB port. In a car with wireless Android Auto, pair the

@@ -6,7 +6,8 @@ Graphene Auto starts from [Gearslip](https://github.com/twinksoftware/Gearslip) 
 
 ### Changed
 - Renamed to Graphene Auto, with its own package name, `io.github.psychobarge.grapheneauto`.
-  It installs next to Gearslip rather than over it, and keeps none of Gearslip's settings.
+  It keeps none of Gearslip's settings. Both apps define the same car permission, so Android
+  installs only one of them at a time: uninstall Gearslip first.
 - The voice assistant answers to "hey Graphene Auto" and "quit Graphene Auto".
 - Update checks look at this repository's releases, and are off by default.
 - Links to the source code, release notes, and car list point to this repository.
