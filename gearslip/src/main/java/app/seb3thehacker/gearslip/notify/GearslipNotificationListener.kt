@@ -10,7 +10,7 @@ import androidx.core.graphics.drawable.toBitmap
  * Feeds the phone's notifications to the car.
  *
  * Reading other apps' notifications is gated by the user granting "Notification access" to
- * Gearslip in the phone's settings - the same on-device consent as any notification mirror,
+ * Graphene Auto in the phone's settings - the same on-device consent as any notification mirror,
  * and the only one needed. Until then the car UI says so and offers to open that page.
  */
 class GearslipNotificationListener : NotificationListenerService() {
@@ -33,7 +33,7 @@ class GearslipNotificationListener : NotificationListenerService() {
     }
 
     private fun ingest(sbn: StatusBarNotification, quiet: Boolean) {
-        // Gearslip's own notifications are skipped, except a debug build's test message.
+        // Graphene Auto's own notifications are skipped, except a debug build's test message.
         if (sbn.packageName == packageName &&
             !(app.seb3thehacker.gearslip.BuildConfig.DEBUG && sbn.notification.channelId == TestMessage.CHANNEL)
         ) return

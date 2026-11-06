@@ -1,8 +1,8 @@
 # Cars
 
-Drivers who share usage notes tell us which cars Gearslip works in. This list comes from
-those notes, and from our own testing. A car shows up here once Gearslip has reached its
-screen at least once.
+This list comes from the upstream [Gearslip](https://github.com/twinksoftware/Gearslip) project:
+its drivers' usage notes and its own testing. Graphene Auto shares the same car protocol code,
+so the same cars should work. A car shows up here once Gearslip reached its screen at least once.
 
 The year is the one the car reports. Some cars report the year of the head unit instead,
 and some don't say.
@@ -37,14 +37,14 @@ and some don't say.
 
 | Car | Year | What happens |
 |---|---|---|
-| Honda | 2016 | The connection drops before Gearslip reaches the screen. |
-| Honda | 2019 | The connection drops before Gearslip reaches the screen. |
-| Mitsubishi Attrage | 2020 | The connection drops before Gearslip reaches the screen. |
+| Honda | 2016 | The connection drops before Graphene Auto reaches the screen. |
+| Honda | 2019 | The connection drops before Graphene Auto reaches the screen. |
+| Mitsubishi Attrage | 2020 | The connection drops before Graphene Auto reaches the screen. |
 
-Some cars reject Gearslip's certificate before they say what they are, so they can't appear
+Some cars reject Graphene Auto's certificate before they say what they are, so they can't appear
 here by name. Most of these are from around 2020 or later.
 
 ## Add your car
 
-Turn on usage notes in Gearslip's setup or Settings, and drive once. If your car is missing
-or listed wrongly, open an issue.
+Graphene Auto sends no usage notes. If your car works, is missing, or is listed wrongly, open an
+issue with its make, model, year, and a log from the drive.

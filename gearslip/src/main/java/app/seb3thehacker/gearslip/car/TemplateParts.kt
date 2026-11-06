@@ -140,7 +140,7 @@ internal object ChromeType {
     val body: androidx.compose.ui.text.TextStyle
         @Composable get() = MaterialTheme.typography.titleMedium
 
-    /** The smallest text Gearslip draws over a map - still large enough to read while moving. */
+    /** The smallest text Graphene Auto draws over a map - still large enough to read while moving. */
     val label: androidx.compose.ui.text.TextStyle
         @Composable get() = MaterialTheme.typography.bodyLarge
 }

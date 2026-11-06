@@ -119,7 +119,7 @@ object CarCalls {
         runCatching { respond(false) }.onFailure { GearslipLog.w("calls: decline failed: ${it.message}") }
     }
 
-    /** A call Gearslip itself is placing, so the call pill can say who it's to. */
+    /** A call Graphene Auto itself is placing, so the call pill can say who it's to. */
     fun outgoingCall(context: Context, number: String) {
         ringingCaller = Caller(number, lookUpName(context, number))
     }
@@ -172,7 +172,7 @@ object CarCalls {
     }
 }
 
-/** Posts to the main thread after a delay - used to give up on a screening response Gearslip never sent. */
+/** Posts to the main thread after a delay - used to give up on a screening response Graphene Auto never sent. */
 internal fun mainThreadDelay(ms: Long, action: () -> Unit) {
     Handler(Looper.getMainLooper()).postDelayed(action, ms)
 }

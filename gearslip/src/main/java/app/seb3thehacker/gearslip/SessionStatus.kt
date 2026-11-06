@@ -23,7 +23,7 @@ object SessionStatus {
         Snapshot(
             Phase.IDLE,
             "Not connected",
-            "Plug into the car's USB port, or connect wirelessly. Gearslip opens by itself when the car answers.",
+            "Plug into the car's USB port, or connect wirelessly. Graphene Auto opens by itself when the car answers.",
         ),
     )
 

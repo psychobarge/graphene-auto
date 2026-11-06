@@ -4,9 +4,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 /**
- * Who has the car's screen: Gearslip, or the car's own interface. Android Auto's "Exit" hands the
+ * Who has the car's screen: Graphene Auto, or the car's own interface. Android Auto's "Exit" hands the
  * screen back to the car with the session still running, so music keeps playing; the car's own
- * Android Auto button brings Gearslip back. [GearslipRunner] fills in [request] while connected.
+ * Android Auto button brings Graphene Auto back. [GearslipRunner] fills in [request] while connected.
  */
 object CarFocus {
 

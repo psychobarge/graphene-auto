@@ -46,7 +46,7 @@ enum class SidePanel { NONE, CONTROLS, LYRICS }
 
 /** One step on the breadcrumb trail: the screen it shows and the word for it in the trail. */
 data class Crumb(val screen: CarScreen, val label: String, @param:StringRes val labelRes: Int = 0) {
-    /** [labelRes] when the step is one of Gearslip's own, translated; [label] for an app's own name. */
+    /** [labelRes] when the step is one of Graphene Auto's own, translated; [label] for an app's own name. */
     @Composable
     fun shown(): String = if (labelRes != 0) stringResource(labelRes) else label
 }

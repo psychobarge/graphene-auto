@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="touch_relay_description">Ekran paylaşımı sırasında Gearslip’in araç ekranındaki dokunuşları telefonda tekrarlamasını sağlar. Gearslip ekran içeriğini okumaz.</string>
+    <string name="touch_relay_description">Ekran paylaşımı sırasında Graphene Auto’in araç ekranındaki dokunuşları telefonda tekrarlamasını sağlar. Graphene Auto ekran içeriğini okumaz.</string>
 
     <!-- Setup guide -->
     <string name="guide_usage_title">Diğer sürücülere yardım edin.</string>
     <string name="guide_safety_title">Güvenli sürün.</string>
-    <string name="guide_safety_body">Gearslip resmi değildir. Hiçbir otomobil üreticisi onu yapmadı veya denetlemedi ve uyarı vermeden çalışmayı bırakabilir. Yola çıkmadan önce ayarlayın, sonra gözünüzü yoldan ayırmayın.</string>
+    <string name="guide_safety_body">Graphene Auto resmi değildir. Hiçbir otomobil üreticisi onu yapmadı veya denetlemedi ve uyarı vermeden çalışmayı bırakabilir. Yola çıkmadan önce ayarlayın, sonra gözünüzü yoldan ayırmayın.</string>
     <string name="guide_mic_title">Mikrofon.</string>
-    <string name="guide_mic_body">Gearslip mikrofonu müziğinizi araca göndermek ve bir şey istediğinizde ya da bir mesaja yanıt verdiğinizde sizi duymak için kullanır. Söyledikleriniz telefonda kalır.</string>
+    <string name="guide_mic_body">Graphene Auto mikrofonu müziğinizi araca göndermek ve bir şey istediğinizde ya da bir mesaja yanıt verdiğinizde sizi duymak için kullanır. Söyledikleriniz telefonda kalır.</string>
     <string name="guide_location_title">Konum.</string>
     <string name="guide_location_body">Aracın haritası ve yakındaki aramalar buna ihtiyaç duyar. Konum olmadan gösterge panelinde harita görünmez.</string>
     <string name="guide_calendar_title">Takvim.</string>
-    <string name="guide_calendar_body">Araç ekranı bir sonraki etkinliğinizi gösterir. Gearslip takviminizi yalnızca okur.</string>
+    <string name="guide_calendar_body">Araç ekranı bir sonraki etkinliğinizi gösterir. Graphene Auto takviminizi yalnızca okur.</string>
     <string name="guide_calls_title">Aramalar ve kişiler.</string>
-    <string name="guide_calls_body">Araç arayanın adını gösterir, Telefon uygulaması da bir numarayı çevirebilir veya kişilerinizden birini arayabilir. Gearslip bunları yalnızca okur.</string>
+    <string name="guide_calls_body">Araç arayanın adını gösterir, Telefon uygulaması da bir numarayı çevirebilir veya kişilerinizden birini arayabilir. Graphene Auto bunları yalnızca okur.</string>
     <string name="guide_bluetooth_title">Bluetooth.</string>
-    <string name="guide_bluetooth_body">İlk bağladığınızda Gearslip, aramaların aracın hoparlörlerinden duyulması için telefonunuzu araçla eşlemeyi önerir.</string>
+    <string name="guide_bluetooth_body">İlk bağladığınızda Graphene Auto, aramaların aracın hoparlörlerinden duyulması için telefonunuzu araçla eşlemeyi önerir.</string>
     <string name="guide_notifications_title">Bildirimler.</string>
-    <string name="guide_notifications_body">Gearslip bağlıyken durdurma düğmesi olan bir bildirim gösterir. Bu izin olmadan Android onu gizler.</string>
+    <string name="guide_notifications_body">Graphene Auto bağlıyken durdurma düğmesi olan bir bildirim gösterir. Bu izin olmadan Android onu gizler.</string>
     <string name="guide_messages_title">Mesajlar.</string>
-    <string name="guide_messages_body">Araç mesajlarınızı gösterir, sesli okur ve yanıt vermenize izin verir. Açılan listede Gearslip’i etkinleştirin.</string>
+    <string name="guide_messages_body">Araç mesajlarınızı gösterir, sesli okur ve yanıt vermenize izin verir. Açılan listede Graphene Auto’i etkinleştirin.</string>
     <string name="guide_android_auto_title">Android Auto’yu kapatın.</string>
-    <string name="guide_android_auto_body">Android Auto hâlâ yüklü ve aracın USB bağlantısı için Gearslip’le çekişiyor. Açılan ekranda devre dışı bırakın veya kaldırın.</string>
-    <string name="guide_default_title">Gearslip’i seçin.</string>
-    <string name="guide_default_body">Araca bağladığınızda telefon hangi uygulamanın açılacağını sorarsa Gearslip’i seçin ve Her zaman’a dokunun.</string>
+    <string name="guide_android_auto_body">Android Auto hâlâ yüklü ve aracın USB bağlantısı için Graphene Auto’le çekişiyor. Açılan ekranda devre dışı bırakın veya kaldırın.</string>
+    <string name="guide_default_title">Graphene Auto’i seçin.</string>
+    <string name="guide_default_body">Araca bağladığınızda telefon hangi uygulamanın açılacağını sorarsa Graphene Auto’i seçin ve Her zaman’a dokunun.</string>
     <string name="guide_audio_title">Araç sesi.</string>
     <string name="guide_audio_body">Müziğin araca nasıl ulaşacağını seçin. Aramalar her durumda Bluetooth üzerinden gider.</string>
     <string name="guide_voice_title">Ses.</string>
     <string name="guide_voice_body">Yol tarifini, müziği veya bir aramayı sesle isteyin. Telefonunuz konuşmayı kendisi metne çevirir ve söylediğiniz hiçbir şey telefondan çıkmaz. Bir kez indirilen %1$d MB gerekir. Mümkünse Wi-Fi kullanın.</string>
     <string name="guide_audio_prompt_title">Ses izni sorulmasın.</string>
-    <string name="guide_audio_prompt_body">Bunu USB hata ayıklaması açık bir bilgisayardan çalıştırın, Android sesinizi kalıcı olarak Gearslip’e emanet etsin. Aksi halde her yolculukta bir kez Başlat’a dokunursunuz.</string>
+    <string name="guide_audio_prompt_body">Bunu USB hata ayıklaması açık bir bilgisayardan çalıştırın, Android sesinizi kalıcı olarak Graphene Auto’e emanet etsin. Aksi halde her yolculukta bir kez Başlat’a dokunursunuz.</string>
     <string name="guide_readable_title">Okunabilir bildirimler.</string>
-    <string name="guide_readable_body">Ses araca giderken Android, ekranınızı paylaşıyormuşsunuz gibi bildirimlerin içeriğini gizler. Bu, Gearslip’in onları yolculuk sırasında göstermesini ve sonra yeniden gizlemesini sağlar.</string>
+    <string name="guide_readable_body">Ses araca giderken Android, ekranınızı paylaşıyormuşsunuz gibi bildirimlerin içeriğini gizler. Bu, Graphene Auto’in onları yolculuk sırasında göstermesini ve sonra yeniden gizlemesini sağlar.</string>
     <string name="guide_answer_title">Aramaları yanıtlayın.</string>
-    <string name="guide_answer_body">Gearslip’i arayan kimliği uygulamanız yapın, araç aramaları yanıtlayıp reddedebilsin. Bu olmadan aramalar yine çalar ama yalnızca telefon yanıtlayabilir.</string>
+    <string name="guide_answer_body">Graphene Auto’i arayan kimliği uygulamanız yapın, araç aramaları yanıtlayıp reddedebilsin. Bu olmadan aramalar yine çalar ama yalnızca telefon yanıtlayabilir.</string>
     <string name="guide_apps_title">İyi arkadaşlar.</string>
     <string name="guide_buttons_title">Düğmeleriniz.</string>
     <string name="guide_buttons_body">Araçtaki düğmelerin görünümünü seçin. İstediğiniz zaman aracın ayarlarından değiştirebilirsiniz.</string>
@@ -47,8 +47,8 @@
     <string name="guide_audio_bluetooth">Bluetooth</string>
     <string name="guide_recommended">Önerilen</string>
     <string name="guide_audio_bluetooth_body">Her yolculukta soru yok ve harita uygulamanızın sesi araca ulaşır.</string>
-    <string name="guide_audio_usb">Gearslip üzerinden</string>
-    <string name="guide_audio_usb_body">Gecikmesiz, daha net ses. Her yolculukta Android ekranınızı paylaşmanızı ister; bu da Gearslip’in sesi göndermesini sağlar.</string>
+    <string name="guide_audio_usb">Graphene Auto üzerinden</string>
+    <string name="guide_audio_usb_body">Gecikmesiz, daha net ses. Her yolculukta Android ekranınızı paylaşmanızı ister; bu da Graphene Auto’in sesi göndermesini sağlar.</string>
     <string name="guide_optional">İSTEĞE BAĞLI</string>
     <string name="guide_already_allowed">Zaten izin verildi.</string>
     <string name="guide_scroll_more">Devamı için kaydırın  ↓</string>
@@ -60,7 +60,7 @@
     <string name="guide_back">Geri</string>
 
     <!-- Usage notes -->
-    <string name="usage_intro">Bunu açın, Gearslip onu açtığınızda ve her yolculuktan sonra kısa bir not göndersin. &lt;b&gt;Not ad, hesap veya konum içermez. Rastgele bir sayı telefonunuzu bir kez sayar ve sunucu hiçbir IP adresi saklamaz.&lt;/b&gt; Notlar hangi araçların çalıştığını ve diğerlerinin nerede takıldığını gösterir.</string>
+    <string name="usage_intro">Bunu açın, Graphene Auto onu açtığınızda ve her yolculuktan sonra kısa bir not göndersin. &lt;b&gt;Not ad, hesap veya konum içermez. Rastgele bir sayı telefonunuzu bir kez sayar ve sunucu hiçbir IP adresi saklamaz.&lt;/b&gt; Notlar hangi araçların çalıştığını ve diğerlerinin nerede takıldığını gösterir.</string>
     <string name="usage_send">Kullanım notları gönder</string>
     <string name="usage_also_share">Şunları da paylaş</string>
     <string name="usage_share_android">Android sürümü ve sistem</string>
@@ -74,14 +74,14 @@
     <string name="usage_example">Örnek, gönderilmez: bir yolculuk bunu “sessions” içine ekler</string>
     <string name="usage_no_server">Bu sürümün istatistik sunucusu yok, bu yüzden hiçbir şey göndermez</string>
     <string name="usage_debug_build">Hata ayıklama sürümü: notlar ayrı tutulur ve istatistiklere asla sayılmaz</string>
-    <string name="worked_title">Gearslip %1$s aracınızla çalıştı</string>
-    <string name="worked_title_unknown">Gearslip aracınızla çalıştı</string>
+    <string name="worked_title">Graphene Auto %1$s aracınızla çalıştı</string>
+    <string name="worked_title_unknown">Graphene Auto aracınızla çalıştı</string>
     <string name="worked_body">Sonraki sürücü çalıştığını bilsin diye paylaşılsın mı? Ad, hesap veya konum yok.</string>
     <string name="worked_not_now">Şimdi değil</string>
     <string name="worked_share">Paylaş</string>
 
     <!-- Recommended apps -->
-    <string name="recommended_intro">Bu ücretsiz uygulamalar Gearslip’in araç ekranında çalışır. Her düğme uygulamanın GitHub sayfasını açar.</string>
+    <string name="recommended_intro">Bu ücretsiz uygulamalar Graphene Auto’in araç ekranında çalışır. Her düğme uygulamanın GitHub sayfasını açar.</string>
     <string name="recommended_title">Önerilen uygulamalar</string>
     <string name="back">Geri</string>
     <string name="recommended_installed">Yüklü</string>
@@ -99,16 +99,16 @@
     <string name="settings_title">Ayarlar</string>
     <string name="settings_whats_new">Yenilikler</string>
     <string name="settings_whats_new_sub">%1$s sürüm notlarını GitHub’da okuyun</string>
-    <string name="settings_support">Gearslip’i destekleyin</string>
-    <string name="settings_support_footer">Gearslip ücretsizdir, reklamsız ve takipsizdir. Desteğiniz onu ayakta tutar.</string>
+    <string name="settings_support">Graphene Auto’i destekleyin</string>
+    <string name="settings_support_footer">Graphene Auto ücretsizdir, reklamsız ve takipsizdir. Desteğiniz onu ayakta tutar.</string>
     <string name="settings_usage_notes">Kullanım notları</string>
     <string name="settings_updates">Güncellemeler</string>
     <string name="settings_about">Hakkında</string>
     <string name="settings_replay">Kurulum rehberini yeniden oynat</string>
     <string name="settings_replay_sub">İlk açılış adımlarını yeniden izleyin</string>
     <string name="settings_connection">Bağlantı</string>
-    <string name="settings_use_in_car">Gearslip’i araçta kullan</string>
-    <string name="settings_use_in_car_on">Bir araca bağladığınızda Gearslip yanıt verir</string>
+    <string name="settings_use_in_car">Graphene Auto’i araçta kullan</string>
+    <string name="settings_use_in_car_on">Bir araca bağladığınızda Graphene Auto yanıt verir</string>
     <string name="settings_use_in_car_off">Kapalı: bağlantıyı Android Auto alabilir</string>
     <string name="settings_apps">Uygulamalar</string>
     <string name="settings_certificate">Sertifika</string>
@@ -172,7 +172,7 @@
     <string name="choice_open_home">Ana ekran</string>
     <string name="summary_player_left">Oynatıcı solda</string>
     <string name="summary_player_right">Oynatıcı sağda</string>
-    <string name="summary_usb_audio">Ses Gearslip üzerinden</string>
+    <string name="summary_usb_audio">Ses Graphene Auto üzerinden</string>
     <string name="summary_bluetooth_audio">Bluetooth ses</string>
     <string name="summary_directions_on">Sesli yol tarifi açık</string>
     <string name="summary_directions_off">Sesli yol tarifi kapalı</string>
@@ -217,7 +217,7 @@
     <string name="car_audio">Araç sesi</string>
     <string name="car_audio_bt">Bluetooth (önerilen)</string>
     <string name="car_audio_bt_sub">Her yolculukta soru yok ve harita uygulamanızın sesi araca ulaşır</string>
-    <string name="car_audio_usb_sub">Gecikmesiz, daha net ses. Her yolculukta Android ekranınızı paylaşmanızı ister; bu da Gearslip’in sesi göndermesini sağlar</string>
+    <string name="car_audio_usb_sub">Gecikmesiz, daha net ses. Her yolculukta Android ekranınızı paylaşmanızı ister; bu da Graphene Auto’in sesi göndermesini sağlar</string>
     <string name="car_audio_usb_footer">Yardım’daki komutu bir kez çalıştırın, Android sormayı bırakır.</string>
     <string name="car_audio_bt_footer">Aramalar her durumda Bluetooth üzerinden gider.</string>
 
@@ -227,7 +227,7 @@
     <string name="screen_preview_size">Önizleme boyutu</string>
     <string name="screen_preview_note">Araç önizlemesinin çizildiği boyut, örneğin 1920x720.</string>
     <string name="screen_car_screen">Araç ekranı</string>
-    <string name="screen_footer">Siz bir boyut ayarlamadıkça Gearslip aracın bildirdiği boyutu kullanır.</string>
+    <string name="screen_footer">Siz bir boyut ayarlamadıkça Graphene Auto aracın bildirdiği boyutu kullanır.</string>
     <string name="screen_size">Ekran boyutu</string>
     <string name="screen_from_car">Araçtan</string>
     <string name="screen_crop">Kenarları kırp</string>
@@ -238,7 +238,7 @@
     <string name="screen_last_car">Son araç</string>
     <string name="screen_last_car_sub">Bağlandığınız son aracın boyutu</string>
     <string name="screen_this_screen">Bu ekran</string>
-    <string name="screen_this_screen_sub">Gearslip’i doğrudan çalıştıran bir multimedya ünitesi için bu cihazın ekranını doldurur</string>
+    <string name="screen_this_screen_sub">Graphene Auto’i doğrudan çalıştıran bir multimedya ünitesi için bu cihazın ekranını doldurur</string>
     <string name="screen_custom">Özel</string>
     <string name="screen_enter_size">Boyut girin</string>
     <string name="screen_change_custom">Özel boyutu değiştir</string>
@@ -255,25 +255,25 @@
     <string name="help_full_list">Tam listeyi görün</string>
     <string name="help_first_drive">İlk yolculuğunuzdan önce</string>
     <string name="help_in_car">Araçta</string>
-    <string name="help_usb_audio">Ses Gearslip üzerinden</string>
+    <string name="help_usb_audio">Ses Graphene Auto üzerinden</string>
 
     <string name="help_aa_off">Android Auto’yu kapatın.</string>
-    <string name="help_aa_off_detail">Aracın Gearslip ile konuşması için Android Auto uygulamasını devre dışı bırakın veya kaldırın.</string>
+    <string name="help_aa_off_detail">Aracın Graphene Auto ile konuşması için Android Auto uygulamasını devre dışı bırakın veya kaldırın.</string>
     <string name="help_cert">Bir sertifika yükleyin.</string>
     <string name="help_cert_detail">Ayarlar’da çoğu aracın kabul ettiği aasdk sertifikasını indirin. Aracınız reddederse kendinizinkini içe aktarın.</string>
     <string name="help_mic">Mikrofona izin verin.</string>
-    <string name="help_mic_detail">Android, mikrofon izni olmadan hiçbir uygulamanın müziği araca aktarmasına izin vermez. Gearslip yalnızca mikrofona dokunduğunuzda veya direksiyondaki konuşma düğmesine bastığınızda dinler.</string>
+    <string name="help_mic_detail">Android, mikrofon izni olmadan hiçbir uygulamanın müziği araca aktarmasına izin vermez. Graphene Auto yalnızca mikrofona dokunduğunuzda veya direksiyondaki konuşma düğmesine bastığınızda dinler.</string>
     <string name="help_plug_in">Kabloyu takın veya kablosuz bağlanın.</string>
-    <string name="help_plug_in_detail">Araç bağlandığında Gearslip kendiliğinden açılır. Kablosuz için önce telefonu araçla eşleyin, sonra Ana ekranda Kablosuz bağlan’a dokunun.</string>
+    <string name="help_plug_in_detail">Araç bağlandığında Graphene Auto kendiliğinden açılır. Kablosuz için önce telefonu araçla eşleyin, sonra Ana ekranda Kablosuz bağlan’a dokunun.</string>
     <string name="help_pair">Aramalar için Bluetooth ile eşleyin.</string>
-    <string name="help_pair_detail">Telefon ve araç eşlendikten sonra aramalar araçtan duyulur. Gearslip ilk bağladığınızda eşlemeyi önerir.</string>
+    <string name="help_pair_detail">Telefon ve araç eşlendikten sonra aramalar araçtan duyulur. Graphene Auto ilk bağladığınızda eşlemeyi önerir.</string>
     <string name="help_answer">Aramaları araç ekranından yanıtlayın.</string>
-    <string name="help_answer_detail">Gearslip’i arayan kimliği ve spam uygulamanız olarak ayarlayın. Bu olmadan aramalar yine çalar ama yalnızca telefon yanıtlayabilir.</string>
+    <string name="help_answer_detail">Graphene Auto’i arayan kimliği ve spam uygulamanız olarak ayarlayın. Bu olmadan aramalar yine çalar ama yalnızca telefon yanıtlayabilir.</string>
     <string name="help_prompt">Her yolculuktaki ses sorusunu kaldırın.</string>
     <string name="help_prompt_detail">Telefonu USB hata ayıklaması açık bir bilgisayara bağlayın ve bunu bir kez çalıştırın. Atlarsanız her yola çıkışınızda Başlat’a dokunursunuz.</string>
     <string name="help_readable">Bildirimleri okunabilir tutun.</string>
-    <string name="help_readable_detail">Android ses paylaşırken bildirimlerin içeriğini gizler. Bunu da çalıştırın, Gearslip bu gizlemeyi yalnızca müzik araca giderken kaldırsın.</string>
-    <string name="help_which_cars_body">Çoğu araç aasdk sertifikasını kabul eder. 2020 civarından itibaren bazı araçlar onu reddeden daha yeni güvenlik denetimleri ekledi ve bu araçlarda Gearslip’in size ait bir sertifikaya ihtiyacı var.</string>
+    <string name="help_readable_detail">Android ses paylaşırken bildirimlerin içeriğini gizler. Bunu da çalıştırın, Graphene Auto bu gizlemeyi yalnızca müzik araca giderken kaldırsın.</string>
+    <string name="help_which_cars_body">Çoğu araç aasdk sertifikasını kabul eder. 2020 civarından itibaren bazı araçlar onu reddeden daha yeni güvenlik denetimleri ekledi ve bu araçlarda Graphene Auto’in size ait bir sertifikaya ihtiyacı var.</string>
 
     <!-- Updates -->
     <string name="update_downloaded_ask">İndirildi. Android yüklemeden önce sorar.</string>
@@ -288,11 +288,11 @@
     <string name="update_check_auto">Otomatik denetle</string>
     <string name="update_once_a_day">Günde bir kez</string>
 
-    <string name="update_unplug_first">Yüklemek için araçtan çıkarın. Yükleme Gearslip’i kapatır.</string>
-    <string name="update_card_title">Gearslip %1$s çıktı</string>
+    <string name="update_unplug_first">Yüklemek için araçtan çıkarın. Yükleme Graphene Auto’i kapatır.</string>
+    <string name="update_card_title">Graphene Auto %1$s çıktı</string>
     <string name="update_downloading">İndiriliyor… %%%1$d</string>
     <string name="update_debug_manual">Hata ayıklama sürümleri yalnızca Şimdi denetle’ye dokunduğunuzda denetler</string>
-    <string name="update_checks_daily">Gearslip günde bir kez denetler</string>
+    <string name="update_checks_daily">Graphene Auto günde bir kez denetler</string>
     <string name="update_version_out">%1$s sürümü çıktı</string>
     <string name="update_version_ready">%1$s sürümü yüklenmeye hazır</string>
     <string name="update_dialog_status">Sürüm %1$s. %2$s.</string>
@@ -309,11 +309,11 @@
     <string name="about_copy_address">Adresi kopyala</string>
     <string name="close">Kapat</string>
     <string name="about_matrix">Matrix’teki sohbete katılın</string>
-    <string name="about_matrix_sub">Diğer sürücülerle araçlar, uygulamalar ve Gearslip hakkında konuşun</string>
-    <string name="about_translate">Gearslip’in çevirisine yardım edin</string>
+    <string name="about_matrix_sub">Diğer sürücülerle araçlar, uygulamalar ve Graphene Auto hakkında konuşun</string>
+    <string name="about_translate">Graphene Auto’in çevirisine yardım edin</string>
     <string name="about_translate_sub">Weblate’te dilinizi düzeltin veya ekleyin. Bazı çeviriler makine çevirisi olarak başladı.</string>
     <string name="about_source">Kaynak kodu</string>
-    <string name="about_source_sub">Gearslip’in kodunu AGPL kapsamında okuyun veya değiştirin</string>
+    <string name="about_source_sub">Graphene Auto’in kodunu AGPL kapsamında okuyun veya değiştirin</string>
     <string name="about_voice_credits">Ses teşekkürleri</string>
 
     <string name="about_no_wallet">Monero cüzdan uygulaması bulunamadı. Bunun yerine adresi kopyalayın.</string>
@@ -330,11 +330,11 @@
     <string name="certsetup_skip">Araç bağlantısı kurulumunu atla</string>
 
     <string name="certsetup_loaded">Araçlar yalnızca Google’ın verdiği sertifikaları kabul eder ve sizde yüklü bir tane var.</string>
-    <string name="certsetup_choose">Araçlar yalnızca Google’ın verdiği sertifikaları kabul eder. Gearslip bir tane içermez, bu yüzden sizinkinin nereden geleceğini seçin.</string>
+    <string name="certsetup_choose">Araçlar yalnızca Google’ın verdiği sertifikaları kabul eder. Graphene Auto bir tane içermez, bu yüzden sizinkinin nereden geleceğini seçin.</string>
     <string name="certsetup_aasdk_sub">Açık kaynaklı aasdk projesi bu sertifikayı github.com/opencardev/aasdk adresinde yayımlar. Çoğu araç kabul eder. 2020 civarından sonraki bazıları reddeder ve o zaman kendinizinkini içe aktarmanız gerekir.</string>
 
     <!-- Storage -->
-    <string name="storage_title">Gearslip depolama alanı</string>
+    <string name="storage_title">Graphene Auto depolama alanı</string>
     <string name="storage_measuring">Ölçülüyor…</string>
     <string name="storage_lyrics">Şarkı sözleri</string>
     <string name="storage_clear">Temizle</string>
@@ -342,17 +342,17 @@
     <string name="storage_remove">Kaldır</string>
     <string name="storage_logs">Eski günlükler</string>
     <string name="storage_other">Diğer geçici dosyalar</string>
-    <string name="storage_delete_all">Tüm Gearslip verilerini sil</string>
+    <string name="storage_delete_all">Tüm Graphene Auto verilerini sil</string>
 
-    <string name="storage_total">Gearslip verileri telefon depolama alanının %1$s kadarını kullanıyor.</string>
+    <string name="storage_total">Graphene Auto verileri telefon depolama alanının %1$s kadarını kullanıyor.</string>
     <plurals name="storage_lyrics_detail">
         <item quantity="one">%1$d şarkı · %2$s. Temizlenen sözler, açtığınızda yeniden indirilir.</item>
         <item quantity="other">%1$d şarkı · %2$s. Temizlenen sözler, açtığınızda yeniden indirilir.</item>
     </plurals>
     <string name="storage_voice_detail">%1$s. Sesli komutlar bunlara ihtiyaç duyar; Ayarlar’dan yeniden indirebilirsiniz.</string>
     <string name="storage_logs_detail">%1$s. Önceki açılışların günlükleri; bu açılışın günlüğü kalır.</string>
-    <string name="storage_other_detail">%1$s. İndirilen güncellemeler ve Gearslip’in yeniden oluşturabileceği diğer dosyalar.</string>
-    <string name="storage_delete_armed">Ayarları, sertifikaları, ses modellerini ve günlükleri silmek için Sil’e tekrar dokunun. Gearslip kapanır ve bir dahaki sefere kurulumdan başlar.</string>
+    <string name="storage_other_detail">%1$s. İndirilen güncellemeler ve Graphene Auto’in yeniden oluşturabileceği diğer dosyalar.</string>
+    <string name="storage_delete_armed">Ayarları, sertifikaları, ses modellerini ve günlükleri silmek için Sil’e tekrar dokunun. Graphene Auto kapanır ve bir dahaki sefere kurulumdan başlar.</string>
     <string name="storage_delete_sub">Ayarlar, sertifikalar, ses modelleri, şarkı sözleri ve günlükler.</string>
     <string name="storage_delete">Sil</string>
     <string name="storage_delete_ellipsis">Sil…</string>
@@ -363,10 +363,10 @@
     <string name="donate_bmac">Bana bir kahve ısmarla</string>
     <string name="donate_card">Kartla bir kez bağış yap</string>
 
-    <string name="donate_body">Gearslip ücretsizdir, reklamsız ve takipsizdir. Sizi yola çıkarıyorsa desteğiniz onu ayakta tutar.</string>
+    <string name="donate_body">Graphene Auto ücretsizdir, reklamsız ve takipsizdir. Sizi yola çıkarıyorsa desteğiniz onu ayakta tutar.</string>
 
     <!-- Wireless -->
-    <string name="wireless_needs_permission">Gearslip’in bunun için Bluetooth ve yakındaki Wi-Fi erişimine ihtiyacı var.</string>
+    <string name="wireless_needs_permission">Graphene Auto’in bunun için Bluetooth ve yakındaki Wi-Fi erişimine ihtiyacı var.</string>
     <string name="wireless_enable_permission">Yakındaki cihazlar iznini etkinleştir</string>
     <string name="wireless_connect">Kablosuz bağlan</string>
     <string name="wireless_which_car">Hangi araç?</string>
@@ -407,9 +407,9 @@
     <string name="audio_mic_title">Araç sesi mikrofon izni gerektirir</string>
     <string name="audio_open_settings">Uygulama ayarlarını aç</string>
 
-    <string name="audio_bt_body">Android, Gearslip’in araca gönderdiği müziği ekran paylaşımı gibi görür; bu yüzden kabloyla da kablosuz da her yolculukta sorar. Bluetooth üzerinden asla sormaz. Bunu daha sonra Ayarlar’dan değiştirebilirsiniz.</string>
-    <string name="audio_keep_usb">Ya da sesi Gearslip üzerinden sürdürün ve soruyu kalıcı olarak kaldırın: telefonu USB hata ayıklaması açık bir bilgisayara bağlayın ve bunu bir kez çalıştırın.</string>
-    <string name="audio_mic_body">Android, bir uygulamanın diğer uygulamaların sesini araca göndermesine yalnızca mikrofon izni varsa izin verir. Bu izin Gearslip için kapalı, bu yüzden müzik telefonda çalıyor. İzinler’de, ardından Mikrofon’da açın.</string>
+    <string name="audio_bt_body">Android, Graphene Auto’in araca gönderdiği müziği ekran paylaşımı gibi görür; bu yüzden kabloyla da kablosuz da her yolculukta sorar. Bluetooth üzerinden asla sormaz. Bunu daha sonra Ayarlar’dan değiştirebilirsiniz.</string>
+    <string name="audio_keep_usb">Ya da sesi Graphene Auto üzerinden sürdürün ve soruyu kalıcı olarak kaldırın: telefonu USB hata ayıklaması açık bir bilgisayara bağlayın ve bunu bir kez çalıştırın.</string>
+    <string name="audio_mic_body">Android, bir uygulamanın diğer uygulamaların sesini araca göndermesine yalnızca mikrofon izni varsa izin verir. Bu izin Graphene Auto için kapalı, bu yüzden müzik telefonda çalıyor. İzinler’de, ardından Mikrofon’da açın.</string>
 
     <!-- Phone keyboard -->
     <string name="typing_close">Araç klavyesini kapat</string>
@@ -448,9 +448,9 @@
     <string name="carset_save_vehicle">Bu araç için kaydet</string>
     <string name="carset_no_profile">Eşleşen araç profili yok</string>
 
-    <string name="carset_audio_note">Gearslip üzerinden, telefonun sesini kabloyla veya kablosuz araç bağlantısı üzerinden gönderir. Android her yolculukta ekranınızı paylaşmanızı ister ve birkaç uygulama bunu engeller. Bluetooth, telefonun normalde çaldığı gibi çalar ve Android hiçbir şey sormaz.</string>
-    <string name="carset_directions_note">Gearslip her dönüşü aracın hoparlörlerinden sesli okur ve konuşurken müziğin sesi kısılır. Harita uygulamanızın kendi sesi araçta zaten çalıyorsa kapatın.</string>
-    <string name="carset_phone_speech_note">Gearslip’inki yerine telefonun kendi konuşma hizmetiyle dinler. Çoğu telefonda bu Google’ınkidir ve sesinizi Google’a gönderebilir. GrapheneOS’ta böyle bir hizmet yok, bu yüzden Gearslip kendisininkini kullanmaya devam eder.</string>
+    <string name="carset_audio_note">Graphene Auto üzerinden, telefonun sesini kabloyla veya kablosuz araç bağlantısı üzerinden gönderir. Android her yolculukta ekranınızı paylaşmanızı ister ve birkaç uygulama bunu engeller. Bluetooth, telefonun normalde çaldığı gibi çalar ve Android hiçbir şey sormaz.</string>
+    <string name="carset_directions_note">Graphene Auto her dönüşü aracın hoparlörlerinden sesli okur ve konuşurken müziğin sesi kısılır. Harita uygulamanızın kendi sesi araçta zaten çalıyorsa kapatın.</string>
+    <string name="carset_phone_speech_note">Graphene Auto’inki yerine telefonun kendi konuşma hizmetiyle dinler. Çoğu telefonda bu Google’ınkidir ve sesinizi Google’a gönderebilir. GrapheneOS’ta böyle bir hizmet yok, bu yüzden Graphene Auto kendisininkini kullanmaya devam eder.</string>
     <string name="carset_vehicle_data_note">Araç verileri kutucuğu ekler: multimedya ünitesinin sensör kanalının canlı, ham dökümü. Alan etiketleri (hız, devir, yakıt...) diğer tersine mühendislik projelerinden alınmıştır ve bu araçta doğrulanmamıştır. Birinin değiştiğini kendi gözünüzle görene kadar bunları gerçek değil tahmin olarak görün.</string>
     <string name="carset_adaptive_note">Araç veya Wi-Fi’ı yetişemediğinde görüntü kalitesini düşürür, yetişebildiğinde yeniden yükseltir. Bir sonraki bağlantıda geçerli olur.</string>
     <string name="carset_usable_height">Kullanılabilir yükseklik 480 içinde %1$dpx</string>
@@ -469,11 +469,11 @@
     <string name="media_press_play">Kaldığınız yerden devam etmek için oynat’a basın veya Göz at’ta bir şey bulun.</string>
 
     <string name="media_keeps_library">%1$s kitaplığını paylaşmıyor.</string>
-    <string name="media_needs_access">Gearslip, telefonda bildirim erişimi olduğunda yine de onu kontrol edebilir. Ayarlar &gt; Bildirimler &gt; Bildirim erişimi altında izin verin.</string>
+    <string name="media_needs_access">Graphene Auto, telefonda bildirim erişimi olduğunda yine de onu kontrol edebilir. Ayarlar &gt; Bildirimler &gt; Bildirim erişimi altında izin verin.</string>
     <string name="media_not_running">%1$s çalışmıyor.</string>
-    <string name="media_not_running_body">%1$s, Gearslip’in kendi oynatıcısı üzerinden çalar, ama yalnızca telefonda açıkken. Bir kez açın, burada araçta çalmaya devam eder.</string>
+    <string name="media_not_running_body">%1$s, Graphene Auto’in kendi oynatıcısı üzerinden çalar, ama yalnızca telefonda açıkken. Bir kez açın, burada araçta çalmaya devam eder.</string>
     <string name="media_open_app">%1$s uygulamasını aç</string>
-    <string name="media_refused">%1$s, Gearslip’in kendisine göz atmasına izin vermedi.</string>
+    <string name="media_refused">%1$s, Graphene Auto’in kendisine göz atmasına izin vermedi.</string>
     <string name="media_refused_body">Bazı medya uygulamaları yalnızca Google’ın kendi ana makinesini kabul eder.</string>
     <string name="media_connecting">%1$s uygulamasına bağlanılıyor…</string>
     <string name="media_search">%1$s içinde ara</string>
@@ -495,8 +495,8 @@
     <string name="media_nothing_queued">Sırada hiçbir şey yok.</string>
     <string name="media_play">Oynat</string>
 
-    <string name="media_queue_empty_idle">Hiçbir şey çalmıyor - her uygulama Gearslip’e sırada ne olduğunu söylemez.</string>
-    <string name="media_queue_empty_playing">Yalnızca şu an çalan - her uygulama Gearslip’e sırada ne olduğunu söylemez.</string>
+    <string name="media_queue_empty_idle">Hiçbir şey çalmıyor - her uygulama Graphene Auto’e sırada ne olduğunu söylemez.</string>
+    <string name="media_queue_empty_playing">Yalnızca şu an çalan - her uygulama Graphene Auto’e sırada ne olduğunu söylemez.</string>
 
     <!-- Player controls -->
     <string name="player_previous">Önceki</string>
@@ -584,7 +584,7 @@
 
     <!-- Weather -->
     <string name="weather_waiting_fix">Konum bekleniyor.</string>
-    <string name="weather_allow_location">Hava durumunu görmek için telefonda Gearslip’e konum izni verin.</string>
+    <string name="weather_allow_location">Hava durumunu görmek için telefonda Graphene Auto’e konum izni verin.</string>
     <string name="weather_unreachable">Hava durumu hizmetine ulaşılamadı.</string>
     <string name="weather_clear">Açık</string>
     <string name="weather_mostly_clear">Çoğunlukla açık</string>
@@ -626,7 +626,7 @@
     <string name="dialer_no_contacts">Telefon numarası olan kişi bulunamadı.</string>
     <string name="dialer_search">Kişilerde ara</string>
 
-    <string name="dialer_needs_permission">Gearslip’in buradan arama yapmak için Telefon ve Kişiler izinlerine ihtiyacı var. Park ettiğinizde telefonda izin verin.</string>
+    <string name="dialer_needs_permission">Graphene Auto’in buradan arama yapmak için Telefon ve Kişiler izinlerine ihtiyacı var. Park ettiğinizde telefonda izin verin.</string>
     <string name="dialer_no_match">“%1$s” ile eşleşen kişi yok.</string>
     <string name="dialer_call_who">%1$s aransın mı?</string>
 
@@ -635,10 +635,10 @@
     <string name="carui_drive_safely">Güvenli sürün</string>
     <string name="carui_understand">Anladım</string>
 
-    <string name="carui_unofficial">Gearslip resmi olmayan bir yazılımdır: hiçbir otomobil üreticisi tarafından yapılmamış veya incelenmemiştir ve uyarı vermeden çalışmayı bırakabilir.</string>
+    <string name="carui_unofficial">Graphene Auto resmi olmayan bir yazılımdır: hiçbir otomobil üreticisi tarafından yapılmamış veya incelenmemiştir ve uyarı vermeden çalışmayı bırakabilir.</string>
     <string name="carui_never_interact">Sürerken bu ekranla asla etkileşime girmeyin. Rotayı veya şarkıyı yola çıkmadan önce ayarlayın, sonra dikkatinizi yolda tutun.</string>
     <string name="carui_this_app">Bu uygulama</string>
-    <string name="carui_app_unsupported">%1$s henüz Gearslip ile çalışmıyor.</string>
+    <string name="carui_app_unsupported">%1$s henüz Graphene Auto ile çalışmıyor.</string>
     <string name="carui_app_unsupported_body">Başlamadı. Bazı uygulamalar yalnızca Google’ın Android Auto’sunda çalışır.</string>
 
     <!-- Nav bar -->
@@ -660,7 +660,7 @@
     <string name="notif_title">Bildirimler</string>
     <string name="notif_clear_all">Tümünü temizle</string>
     <string name="notif_empty">Henüz bir şey yok. Telefondan gelen yeni bildirimler burada görünür.</string>
-    <string name="notif_off">Bildirimler kapalı. Telefonda Ayarlar &gt; Bildirimler &gt; Bildirim erişimi altında Gearslip’e izin verin.</string>
+    <string name="notif_off">Bildirimler kapalı. Telefonda Ayarlar &gt; Bildirimler &gt; Bildirim erişimi altında Graphene Auto’e izin verin.</string>
     <string name="notif_replied">Yanıtlandı</string>
 
     <!-- Messages -->
@@ -697,7 +697,7 @@
     <string name="call_ringing">Zaten yüksek sesle çalıyor - buradan yanıtlayın veya çalmaya bırakın.</string>
 
     <!-- Screen sharing -->
-    <string name="phoneapps_touch_off">Dokunma kapalı. Telefonda Ayarlar &gt; Erişilebilirlik altında Gearslip’i etkinleştirin.</string>
+    <string name="phoneapps_touch_off">Dokunma kapalı. Telefonda Ayarlar &gt; Erişilebilirlik altında Graphene Auto’i etkinleştirin.</string>
 
     <!-- What's new in the car -->
     <string name="whatsnew_show_after">Güncellemelerden sonra göster</string>
@@ -710,7 +710,7 @@
     <string name="keyboard_submit">Gönder</string>
 
     <!-- Launcher -->
-    <string name="launcher_broken">Gearslip ile çalışmıyor</string>
+    <string name="launcher_broken">Graphene Auto ile çalışmıyor</string>
 
     <!-- Car app stage -->
     <string name="stage_car_app">Araç uygulaması</string>
@@ -809,11 +809,11 @@
 
     <!-- Cluster screen -->
     <string name="car_cluster_video">Gösterge ekranında dönüş kartı</string>
-    <string name="car_cluster_video_note">Gösterge panelinde ikinci bir ekranı olan araçlar için: Gearslip bir sonraki dönüşü orada gösterir. Bir sonraki bağlantıda geçerli olur.</string>
+    <string name="car_cluster_video_note">Gösterge panelinde ikinci bir ekranı olan araçlar için: Graphene Auto bir sonraki dönüşü orada gösterir. Bir sonraki bağlantıda geçerli olur.</string>
 
     <!-- Connection status on Home -->
     <string name="status_idle">Bağlı değil</string>
-    <string name="status_idle_detail">Aracın USB bağlantı noktasına takın veya kablosuz bağlanın. Araç yanıt verdiğinde Gearslip kendiliğinden açılır.</string>
+    <string name="status_idle_detail">Aracın USB bağlantı noktasına takın veya kablosuz bağlanın. Araç yanıt verdiğinde Graphene Auto kendiliğinden açılır.</string>
     <string name="status_connecting">Bağlanıyor</string>
     <string name="status_projecting">Yansıtılıyor</string>
     <string name="status_projecting_detail">Multimedya ünitesine aktarılıyor.</string>
@@ -821,7 +821,7 @@
     <string name="status_disconnected_detail">Multimedya ünitesi artık bağlı değil.</string>
     <string name="places_title">Kayıtlı yerler</string>
     <string name="places_sub">Herhangi bir harita uygulamasında “navigate home” deyin</string>
-    <string name="places_intro">“navigate home”, “take me to work” ya da kendi verdiğiniz bir adla “navigate to” deyin, Gearslip adresi harita uygulamanıza göndersin. Sesli komutlar şimdilik yalnızca İngilizce.</string>
+    <string name="places_intro">“navigate home”, “take me to work” ya da kendi verdiğiniz bir adla “navigate to” deyin, Graphene Auto adresi harita uygulamanıza göndersin. Sesli komutlar şimdilik yalnızca İngilizce.</string>
     <string name="places_home">Ev</string>
     <string name="places_work">İş</string>
     <string name="places_other">Yer %1$d</string>
@@ -829,7 +829,7 @@
     <string name="places_address">Adres</string>
     <string name="places_here">Bulunduğum yeri kullan</string>
     <string name="places_finding">Aranıyor…</string>
-    <string name="places_not_found">Gearslip konumunuzu bulamadı. Konumun açık olduğundan emin olun.</string>
+    <string name="places_not_found">Graphene Auto konumunuzu bulamadı. Konumun açık olduğundan emin olun.</string>
     <string name="places_clear">Temizle</string>
     <string name="settings_language">Dil</string>
     <string name="settings_language_phone">Telefonla aynı</string>

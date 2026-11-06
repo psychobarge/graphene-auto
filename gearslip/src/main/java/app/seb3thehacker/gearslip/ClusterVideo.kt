@@ -6,7 +6,7 @@ import android.os.Looper
 import app.seb3thehacker.gearslip.car.ClusterScreen
 
 /**
- * Gearslip's picture on the car's instrument-cluster screen: a second video sink, for a car that
+ * Graphene Auto's picture on the car's instrument-cluster screen: a second video sink, for a car that
  * offers one, showing the turn card ([ClusterScreen]). The same exchange as the main screen's,
  * on its own channel, with its own encoder and its own private display:
  *

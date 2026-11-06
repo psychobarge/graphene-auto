@@ -138,7 +138,7 @@ class AudioLink(
             return
         }
         // Setup { required MediaCodecType type = 1 }: the codec the car advertised for this sink
-        // (aasdk's current protos, and LIVI reads it as the codec). Gearslip used to send 0 here,
+        // (aasdk's current protos, and LIVI reads it as the codec). Graphene Auto used to send 0 here,
         // read from an older proto as a config index; 0 is no codec at all, and the 2024 VW
         // answered UNEXPECTED_MESSAGE (id 255), never acked a chunk and played nothing.
         sendOnChannel(MSG_SETUP, Protobuf.varintField(1, service.codecType.toLong()))

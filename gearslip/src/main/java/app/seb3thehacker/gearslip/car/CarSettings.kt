@@ -269,7 +269,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
      */
     val pipeAudio: StateFlow<Boolean> = pipeAudioFlow
 
-    /** Gearslip reads the map app's turns aloud on the car's directions channel; see DirectionsVoice. */
+    /** Graphene Auto reads the map app's turns aloud on the car's directions channel; see DirectionsVoice. */
     val speakDirections: StateFlow<Boolean> = speakDirectionsFlow
 
     /** The turns go out on the music channel instead, for cars the directions channel upsets. */
@@ -300,7 +300,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
      */
     val experimentalFeaturesEnabled: StateFlow<Boolean> = experimentalFeaturesFlow
 
-    /** Listen with the phone's own speech service instead of Gearslip's on-device model. */
+    /** Listen with the phone's own speech service instead of Graphene Auto's on-device model. */
     val systemSpeech: StateFlow<Boolean> = systemSpeechFlow
 
     /**
@@ -318,7 +318,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     val adaptiveVideoEnabled: StateFlow<Boolean> = adaptiveVideoFlow
 
     /**
-     * Gearslip's turn card on a car's instrument-cluster screen, for a car that offers one as a
+     * Graphene Auto's turn card on a car's instrument-cluster screen, for a car that offers one as a
      * second video sink. Applies only while [experimentalFeaturesEnabled] is on too, and from the
      * next connection; untested in a car so far.
      */

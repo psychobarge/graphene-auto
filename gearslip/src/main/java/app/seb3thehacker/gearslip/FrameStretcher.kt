@@ -21,10 +21,10 @@ import java.util.concurrent.TimeUnit
  * Stretches a [width] x [height] picture over the whole of an [outWidth] x [outHeight] encoder
  * frame.
  *
- * For a head unit that squashes the frame onto a screen of another shape: Gearslip draws for the
+ * For a head unit that squashes the frame onto a screen of another shape: Graphene Auto draws for the
  * screen's real shape into [input], this stretches it the other way, and the car's squash brings
  * it back. It works on the composited picture, so a map app's own surface is stretched with
- * everything else - scaling Gearslip's UI alone would leave the map squashed.
+ * everything else - scaling Graphene Auto's UI alone would leave the map squashed.
  */
 class FrameStretcher(
     private val output: Surface,

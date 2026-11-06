@@ -64,7 +64,7 @@ private val CarGlyph: ImageVector = ImageVector.Builder("Car", 24.dp, 24.dp, 24f
 ).build()
 
 /**
- * One of Gearslip's own apps: a screen, with nothing running behind it once you leave. [screen] is
+ * One of Graphene Auto's own apps: a screen, with nothing running behind it once you leave. [screen] is
  * null for an action like Exit, which has no screen and so never shows as open.
  */
 internal class BuiltInApp(
@@ -108,7 +108,7 @@ internal object BuiltInApps {
     }.values.toList()
 }
 
-/** The name a driver sees: translated for Gearslip's own apps, the app's own name otherwise. */
+/** The name a driver sees: translated for Graphene Auto's own apps, the app's own name otherwise. */
 @Composable
 internal fun Entry.shownLabel(): String = builtIn?.let { stringResource(it.labelRes) } ?: label
 
@@ -121,7 +121,7 @@ internal fun rememberVehicleDataShown(): Boolean {
 }
 
 /**
- * Where an open app lives - decides where tapping it goes and how it closes. Gearslip's own
+ * Where an open app lives - decides where tapping it goes and how it closes. Graphene Auto's own
  * apps have no connection behind them, so [SCREEN] is simply "on screen right now".
  */
 internal enum class RunningSlot { NAV, BROWSE, MEDIA, SCREEN }

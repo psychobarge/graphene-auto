@@ -32,7 +32,6 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import app.seb3thehacker.gearslip.stats.UsageStats
 import kotlinx.coroutines.delay
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -68,13 +67,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.seb3thehacker.gearslip.BuildConfig
 import app.seb3thehacker.gearslip.SessionStatus
 import app.seb3thehacker.gearslip.notify.TestMessage
-import app.seb3thehacker.gearslip.stats.WorkedPrompt
 
 @Composable
 fun HomeScreen(
     onOpenSettings: () -> Unit,
     onOpenHelp: () -> Unit,
-    onOpenUsageNotes: () -> Unit,
     onOpenCarPreview: () -> Unit,
     onOpenLogs: () -> Unit,
     onDisconnect: () -> Unit,
@@ -82,11 +79,9 @@ fun HomeScreen(
 ) {
     val status by SessionStatus.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
-    val workedCar by remember { WorkedPrompt.pending(context) }.collectAsStateWithLifecycle()
     val live = status.phase == SessionStatus.Phase.CONNECTING ||
         status.phase == SessionStatus.Phase.PROJECTING
 
-    val celebrate by WorkedPrompt.celebrate.collectAsStateWithLifecycle()
     Box {
         Scaffold(containerColor = MaterialTheme.colorScheme.background) { padding ->
             Column(
@@ -109,12 +104,6 @@ fun HomeScreen(
                     StatusCard(status)
                     if (live) BluetoothMissingCard()
                     VoiceDownloadCard()
-                    // The first drive that worked asks once to share it, right under the result.
-                    val car = workedCar
-                    if (car != null && !live) {
-                        Spacer(Modifier.height(16.dp))
-                        WorkedCard(car, onSeeWhatsSent = onOpenUsageNotes)
-                    }
                     Spacer(Modifier.height(16.dp))
                     UpdateCard()
                     Spacer(Modifier.height(24.dp))
@@ -140,10 +129,6 @@ fun HomeScreen(
             }
             }
         }
-        // Sharing just went on from the "it worked" ask: a little thanks.
-        if (celebrate) ConfettiFall(onDone = WorkedPrompt::celebrated)
-        // The usage notes ask comes first; the donation ask waits until that's answered.
-        if (workedCar == null) DonateDialog(live)
     }
 }
 
@@ -160,7 +145,7 @@ private fun HomeHeader(onOpenSettings: () -> Unit) {
         Column(Modifier.fillMaxWidth().padding(start = 24.dp, end = 12.dp, top = 16.dp, bottom = 12.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    "Gearslip",
+                    "Graphene Auto",
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.weight(1f),
@@ -268,7 +253,7 @@ private fun StatusCard(status: SessionStatus.Snapshot) {
 
     val live = status.phase == SessionStatus.Phase.CONNECTING || status.phase == SessionStatus.Phase.PROJECTING
     val context = LocalContext.current
-    val grapheneOs = remember { UsageStats.isGrapheneOs(context) }
+    val grapheneOs = remember { isGrapheneOs(context) }
     val noCar = chargingWithNoCar(status.phase == SessionStatus.Phase.IDLE)
     Surface(color = container, contentColor = content, shape = MaterialTheme.shapes.extraLarge) {
       Column(Modifier.fillMaxWidth().padding(24.dp)) {
@@ -336,9 +321,9 @@ private fun StatusCard(status: SessionStatus.Snapshot) {
 }
 
 /**
- * True once the phone has charged over a cable for [NO_CAR_MS] while Gearslip sat idle. With
+ * True once the phone has charged over a cable for [NO_CAR_MS] while Graphene Auto sat idle. With
  * USB data blocked, by a charge-only cable or GrapheneOS's port setting, Android never tells
- * Gearslip a car is there, so charging with no car is the only sign there is. A wall charger
+ * Graphene Auto a car is there, so charging with no car is the only sign there is. A wall charger
  * looks the same, which is why the hint only asks the driver to check.
  */
 @Composable

@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.update
  */
 object GearslipLog {
 
-    const val TAG = "Gearslip"
+    const val TAG = "Graphene Auto"
 
     private val stamp = SimpleDateFormat("HH:mm:ss.SSS", Locale.US)
     private val io = Executors.newSingleThreadExecutor()
@@ -95,7 +95,7 @@ object GearslipLog {
         }
     }
 
-    /** The main thread's stack from an ANR trace: what Gearslip was stuck doing. */
+    /** The main thread's stack from an ANR trace: what Graphene Auto was stuck doing. */
     private fun anrMainThread(exit: android.app.ApplicationExitInfo): String? = runCatching {
         exit.traceInputStream?.bufferedReader()?.useLines { lines ->
             lines.dropWhile { !it.startsWith("\"main\"") }.take(ANR_LINES).joinToString("\n")

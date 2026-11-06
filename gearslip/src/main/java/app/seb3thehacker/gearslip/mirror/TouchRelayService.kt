@@ -11,7 +11,7 @@ import app.seb3thehacker.gearslip.GearslipLog
  * Replays head-unit touches onto the phone while [PhoneMirror] is running.
  *
  * dispatchGesture is the only public API that lets one app inject input into another, which
- * is why mirroring needs an accessibility service at all. Gearslip subscribes to no event
+ * is why mirroring needs an accessibility service at all. Graphene Auto subscribes to no event
  * types and never inspects a window, so nothing about the phone's screen is read here - the
  * service is a one-way output.
  *
@@ -133,7 +133,7 @@ class TouchRelayService : AccessibilityService() {
         var instance: TouchRelayService? = null
             private set
 
-        /** False until the user enables Gearslip under Settings > Accessibility. */
+        /** False until the user enables Graphene Auto under Settings > Accessibility. */
         val enabled: Boolean get() = instance != null
     }
 }

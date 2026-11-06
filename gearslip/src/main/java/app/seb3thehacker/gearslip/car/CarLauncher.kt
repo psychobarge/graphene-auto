@@ -156,8 +156,8 @@ private sealed interface AppTile {
  *   one tile under its own name.
  * - A media app with both a car screen and a player (Spotify) gets both, the screen labelled
  *   "· Browse", since they really are different screens - unless the screen is known to refuse
- *   Gearslip while the player works, when the Browse tile would only report that.
- * - A messenger's own car screen (Google Messages) won't start under Gearslip, and Gearslip's
+ *   Graphene Auto while the player works, when the Browse tile would only report that.
+ * - A messenger's own car screen (Google Messages) won't start under Graphene Auto, and Graphene Auto's
  *   Messages screen does the job, so it gets only that - and a messenger that is also a media
  *   app keeps only its player.
  */
@@ -180,7 +180,7 @@ private fun tilesFor(
     }
 }
 
-/** Every app the launcher knows: Gearslip's own and the installed ones, rescans included. */
+/** Every app the launcher knows: Graphene Auto's own and the installed ones, rescans included. */
 @Composable
 internal fun rememberAllEntries(): List<Entry> {
     val context = LocalContext.current
@@ -283,7 +283,7 @@ fun CarLauncher() {
 
     fun tileOf(entry: Entry): Tile {
         // Only apps that don't work get a mark. The X rates an app's own car screens; a messenger
-        // shown on Gearslip's own Messages screen has none, so it never gets one.
+        // shown on Graphene Auto's own Messages screen has none, so it never gets one.
         val pkg = entry.packageName?.takeIf { entry.messaging == null }
         val id = entry.componentId
         return Tile(
@@ -308,7 +308,7 @@ fun CarLauncher() {
     }
 }
 
-/** A red disc with a white X: marks a tile known not to work with Gearslip yet. */
+/** A red disc with a white X: marks a tile known not to work with Graphene Auto yet. */
 @Composable
 private fun BrokenBadge(size: androidx.compose.ui.unit.Dp, modifier: Modifier = Modifier) {
     Box(

@@ -27,7 +27,7 @@ import kotlin.math.roundToInt
  *
  * A templated app describes its screen in these types and says nothing about how they should
  * look - that is the host's job, and every host looks different. These helpers are the seam
- * between the app's description and Gearslip's rendering of it.
+ * between the app's description and Graphene Auto's rendering of it.
  */
 
 /** The app's text, preferring the longest variant that will fit; variants are ordered longest first. */
@@ -159,7 +159,7 @@ fun CarColor?.color(dark: Boolean, default: Color): Color = when (this?.type) {
 
 /**
  * "500 ft", "2.4 mi". The app picks the unit and its rounding; when that's the other system from
- * the one chosen in Gearslip's settings, the distance is converted and rounded here instead.
+ * the one chosen in Graphene Auto's settings, the distance is converted and rounded here instead.
  */
 fun Distance?.display(): String {
     val distance = this ?: return ""
@@ -232,7 +232,7 @@ fun androidx.car.app.model.DateTimeWithZone?.clockTime(): String {
  * Tells the app something was tapped.
  *
  * [OnClickDelegate.isParkedOnly] marks an action the app itself considers unsafe while moving.
- * Gearslip has no speed signal yet, so these are allowed through and the decision is recorded
+ * Graphene Auto has no speed signal yet, so these are allowed through and the decision is recorded
  * here as the place to gate them once the sensor channel exists.
  */
 fun OnClickDelegate?.click(label: String = "action") {

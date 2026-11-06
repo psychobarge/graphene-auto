@@ -13,8 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 /**
  * The next turn from a map app guiding on the phone itself. Google Maps and Waze refuse to run on
- * Gearslip's car screen, but while one of them navigates on the phone it keeps a notification up
- * with the turn's arrow, the distance and the road. Gearslip reads it, through the notification
+ * Graphene Auto's car screen, but while one of them navigates on the phone it keeps a notification up
+ * with the turn's arrow, the distance and the road. Graphene Auto reads it, through the notification
  * access it already has, and puts the turn in the nav bar and on the instrument cluster.
  */
 object PhoneNavigation {

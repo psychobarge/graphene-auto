@@ -6,7 +6,7 @@ import android.graphics.Canvas
 import java.io.ByteArrayOutputStream
 
 /**
- * Gearslip's own icon as the PNGs a phone hands the car in its ServiceDiscoveryRequest, at the
+ * Graphene Auto's own icon as the PNGs a phone hands the car in its ServiceDiscoveryRequest, at the
  * 32, 64 and 128 px a real phone sends. Cars draw the phone's tile on their home screen from
  * them, and older head units may wait for them before answering at all.
  */

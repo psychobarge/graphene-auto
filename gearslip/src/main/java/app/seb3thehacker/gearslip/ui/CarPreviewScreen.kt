@@ -88,7 +88,7 @@ fun CarPreviewScreen(onBack: () -> Unit) {
     // The frame is drawn the same way in both layouts; only what surrounds it differs.
     val frameContent: @Composable (Modifier) -> Unit = { modifier ->
         if (projector == null) {
-            Text("Gearslip is this device's home screen, so the car UI is already showing there.", modifier)
+            Text("Graphene Auto is this device's home screen, so the car UI is already showing there.", modifier)
         } else {
             CarFrame(projector, width, height, modifier.aspectRatio(width.toFloat() / height))
         }
@@ -282,7 +282,7 @@ private fun Int.toCarAction(): Int = when (this) {
  */
 /**
  * The size the preview draws at. The last car's frame by default; this device's whole screen,
- * for a head unit running Gearslip on its own (issue #12); or a size typed into Settings. The
+ * for a head unit running Graphene Auto on its own (issue #12); or a size typed into Settings. The
  * two new ones get a car-like density: 160dpi for every 480 pixels of height.
  */
 private fun previewFrame(

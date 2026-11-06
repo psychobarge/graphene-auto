@@ -5,7 +5,6 @@ import androidx.compose.ui.res.stringResource
 import app.seb3thehacker.gearslip.R
 import app.seb3thehacker.gearslip.BuildConfig
 import app.seb3thehacker.gearslip.car.CarSettings
-import app.seb3thehacker.gearslip.stats.UsageStats
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,6 +31,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import android.content.Context
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -97,7 +97,7 @@ private val USB_AUDIO = listOf(
 @Composable
 fun HelpScreen(onBack: () -> Unit, onRequestCallScreening: () -> Unit) {
     val context = LocalContext.current
-    val car = remember(onRequestCallScreening) { inTheCar(UsageStats.isGrapheneOs(context), onRequestCallScreening) }
+    val car = remember(onRequestCallScreening) { inTheCar(isGrapheneOs(context), onRequestCallScreening) }
     val usb by CarSettings.pipeAudio.collectAsState()
 
     Scaffold(
@@ -174,3 +174,7 @@ private fun Steps(title: String, steps: List<Step>) {
         }
     }
 }
+
+/** GrapheneOS ships its own setup wizard; its presence gives the OS away. */
+internal fun isGrapheneOs(context: Context) =
+    runCatching { context.packageManager.getPackageInfo("app.grapheneos.setupwizard", 0) }.isSuccess

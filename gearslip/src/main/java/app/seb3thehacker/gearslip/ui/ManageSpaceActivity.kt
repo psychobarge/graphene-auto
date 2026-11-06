@@ -45,7 +45,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 
 /**
- * The screen behind "Manage storage" on Gearslip's page in the phone's App info › Storage.
+ * The screen behind "Manage storage" on Graphene Auto's page in the phone's App info › Storage.
  * Clears each kind of stored data on its own: the lyrics cache, the voice models, old logs and
  * other temporary files. Some Android versions drop their own "Clear storage" button once an app
  * has this screen, so deleting everything is offered here too.

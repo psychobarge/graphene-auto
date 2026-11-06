@@ -27,7 +27,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * Launcher mode's app drawer: every app on the device, A to Z, each opened full screen. Gearslip
+ * Launcher mode's app drawer: every app on the device, A to Z, each opened full screen. Graphene Auto
  * comes first, for its own settings, which the car UI only partly covers.
  */
 @Composable

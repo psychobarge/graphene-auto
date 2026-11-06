@@ -149,7 +149,7 @@ object AssistantCommands {
                 else -> saved.label
             }
             if (saved.address.isBlank()) {
-                return "You haven't saved a $name address yet. Add it under Saved places in Gearslip's settings on your phone."
+                return "You haven't saved a $name address yet. Add it under Saved places in Graphene Auto's settings on your phone."
             }
             destination = saved.address
             spoken = if (slot == SavedPlaces.HOME) "home" else "to $name"
@@ -321,7 +321,7 @@ object AssistantCommands {
                 ?: return null
             ).replace(Regex(" (?:on|at) (?:their |his |her )?(?:mobile|cell|phone|home|work)$"), "").trim()
         if (name.isBlank()) return "Who should I call?"
-        if (!hasCallPermissions(context)) return "Gearslip needs the phone and contacts permissions first, from the phone screen."
+        if (!hasCallPermissions(context)) return "Graphene Auto needs the phone and contacts permissions first, from the phone screen."
 
         val match = withContext(Dispatchers.IO) {
             loadContacts(context).firstOrNull { it.name.lowercase().contains(name) }
@@ -342,7 +342,7 @@ object AssistantCommands {
         if (name.isBlank()) return null
         val wanted = APP_NICKNAMES[name] ?: name
 
-        // Gearslip's own apps come first in the list, so "phone" opens its dialer, not the phone's.
+        // Graphene Auto's own apps come first in the list, so "phone" opens its dialer, not the phone's.
         val match = bestMatch(allEntries(context), wanted) { it.label }
             ?: return "I couldn't find an app called $name."
 
@@ -350,9 +350,9 @@ object AssistantCommands {
         return "Opening ${match.label}."
     }
 
-    private val EXIT_WORDS = setOf("exit", "exit gearslip", "close gearslip", "quit", "quit gearslip", "open exit")
+    private val EXIT_WORDS = setOf("exit", "exit graphene auto", "close graphene auto", "quit", "quit graphene auto", "open exit")
 
-    /** Other names people use for Gearslip's own apps. */
+    /** Other names people use for Graphene Auto's own apps. */
     private val APP_NICKNAMES = mapOf(
         "web" to "browser", "internet" to "browser", "the web" to "browser", "web browser" to "browser",
         "dialer" to "phone", "the dialer" to "phone", "keypad" to "phone",
@@ -386,7 +386,7 @@ object AssistantCommands {
 
     /** Padding stripped from the front of a command, longest first where they overlap. */
     private val LEAD_FILLERS = listOf(
-        "hey gearslip", "ok gearslip", "okay gearslip", "gearslip", "hey", "ok", "okay", "um", "uh", "so",
+        "hey graphene auto", "ok graphene auto", "okay graphene auto", "graphene auto", "hey", "ok", "okay", "um", "uh", "so",
         "please", "can you please", "can you", "could you", "would you", "will you", "can i", "could i",
         "i want you to", "i want to", "i'd like to", "i would like to", "i wanna", "i need to", "i need you to",
         "let's", "lets", "go ahead and", "just", "now", "quickly",

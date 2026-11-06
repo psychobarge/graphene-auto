@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="touch_relay_description">Pozwala Gearslip przenosić dotknięcia z ekranu samochodu na telefon podczas udostępniania ekranu. Gearslip nie odczytuje zawartości ekranu.</string>
+    <string name="touch_relay_description">Pozwala Graphene Auto przenosić dotknięcia z ekranu samochodu na telefon podczas udostępniania ekranu. Graphene Auto nie odczytuje zawartości ekranu.</string>
 
     <!-- Setup guide -->
     <string name="guide_usage_title">Pomóż innym kierowcom.</string>
     <string name="guide_safety_title">Jedź bezpiecznie.</string>
-    <string name="guide_safety_body">Gearslip nie jest oficjalny. Żaden producent samochodów go nie stworzył ani nie sprawdził, a może przestać działać bez ostrzeżenia. Ustaw go przed wyjazdem, a potem patrz na drogę.</string>
+    <string name="guide_safety_body">Graphene Auto nie jest oficjalny. Żaden producent samochodów go nie stworzył ani nie sprawdził, a może przestać działać bez ostrzeżenia. Ustaw go przed wyjazdem, a potem patrz na drogę.</string>
     <string name="guide_mic_title">Mikrofon.</string>
-    <string name="guide_mic_body">Gearslip używa go, by przesyłać muzykę do samochodu i słyszeć cię, gdy o coś prosisz lub odpowiadasz na wiadomość. To, co mówisz, zostaje w telefonie.</string>
+    <string name="guide_mic_body">Graphene Auto używa go, by przesyłać muzykę do samochodu i słyszeć cię, gdy o coś prosisz lub odpowiadasz na wiadomość. To, co mówisz, zostaje w telefonie.</string>
     <string name="guide_location_title">Lokalizacja.</string>
     <string name="guide_location_body">Potrzebuje jej mapa w samochodzie i wyszukiwanie w pobliżu. Bez niej pulpit nie pokazuje mapy.</string>
     <string name="guide_calendar_title">Kalendarz.</string>
-    <string name="guide_calendar_body">Ekran samochodu pokazuje twoje najbliższe wydarzenie. Gearslip tylko odczytuje kalendarz.</string>
+    <string name="guide_calendar_body">Ekran samochodu pokazuje twoje najbliższe wydarzenie. Graphene Auto tylko odczytuje kalendarz.</string>
     <string name="guide_calls_title">Połączenia i kontakty.</string>
-    <string name="guide_calls_body">Samochód pokazuje, kto dzwoni, a jego aplikacja Telefon może wybrać numer lub zadzwonić do kontaktu. Gearslip tylko je odczytuje.</string>
+    <string name="guide_calls_body">Samochód pokazuje, kto dzwoni, a jego aplikacja Telefon może wybrać numer lub zadzwonić do kontaktu. Graphene Auto tylko je odczytuje.</string>
     <string name="guide_bluetooth_title">Bluetooth.</string>
-    <string name="guide_bluetooth_body">Przy pierwszym podłączeniu Gearslip zaproponuje sparowanie telefonu z samochodem, żeby rozmowy grały z jego głośników.</string>
+    <string name="guide_bluetooth_body">Przy pierwszym podłączeniu Graphene Auto zaproponuje sparowanie telefonu z samochodem, żeby rozmowy grały z jego głośników.</string>
     <string name="guide_notifications_title">Powiadomienia.</string>
-    <string name="guide_notifications_body">Gdy Gearslip jest połączony, pokazuje powiadomienie z przyciskiem zatrzymania. Bez tego Android je ukrywa.</string>
+    <string name="guide_notifications_body">Gdy Graphene Auto jest połączony, pokazuje powiadomienie z przyciskiem zatrzymania. Bez tego Android je ukrywa.</string>
     <string name="guide_messages_title">Wiadomości.</string>
-    <string name="guide_messages_body">Samochód pokazuje twoje wiadomości, czyta je na głos i pozwala odpowiedzieć. Włącz Gearslip na liście, która się otworzy.</string>
+    <string name="guide_messages_body">Samochód pokazuje twoje wiadomości, czyta je na głos i pozwala odpowiedzieć. Włącz Graphene Auto na liście, która się otworzy.</string>
     <string name="guide_android_auto_title">Wyłącz Android Auto.</string>
-    <string name="guide_android_auto_body">Android Auto jest nadal zainstalowany i walczy z Gearslip o połączenie USB samochodu. Wyłącz go lub odinstaluj na ekranie, który się otworzy.</string>
-    <string name="guide_default_title">Wybierz Gearslip.</string>
-    <string name="guide_default_body">Jeśli po podłączeniu do samochodu telefon zapyta, którą aplikację otworzyć, wybierz Gearslip i kliknij Zawsze.</string>
+    <string name="guide_android_auto_body">Android Auto jest nadal zainstalowany i walczy z Graphene Auto o połączenie USB samochodu. Wyłącz go lub odinstaluj na ekranie, który się otworzy.</string>
+    <string name="guide_default_title">Wybierz Graphene Auto.</string>
+    <string name="guide_default_body">Jeśli po podłączeniu do samochodu telefon zapyta, którą aplikację otworzyć, wybierz Graphene Auto i kliknij Zawsze.</string>
     <string name="guide_audio_title">Dźwięk w samochodzie.</string>
     <string name="guide_audio_body">Wybierz, jak muzyka trafia do samochodu. Rozmowy i tak idą przez Bluetooth.</string>
     <string name="guide_voice_title">Głos.</string>
     <string name="guide_voice_body">Poproś głosem o trasę, muzykę lub połączenie. Telefon sam zamienia mowę na tekst i nic, co mówisz, go nie opuszcza. Potrzeba %1$d MB, pobranych raz. Użyj Wi-Fi, jeśli możesz.</string>
     <string name="guide_audio_prompt_title">Bez pytania o dźwięk.</string>
-    <string name="guide_audio_prompt_body">Uruchom to z komputera z włączonym debugowaniem USB, a Android na stałe powierzy dźwięk Gearslip. Bez tego przy każdej jeździe raz klikasz Start.</string>
+    <string name="guide_audio_prompt_body">Uruchom to z komputera z włączonym debugowaniem USB, a Android na stałe powierzy dźwięk Graphene Auto. Bez tego przy każdej jeździe raz klikasz Start.</string>
     <string name="guide_readable_title">Czytelne powiadomienia.</string>
-    <string name="guide_readable_body">Gdy dźwięk idzie do samochodu, Android ukrywa treść powiadomień, jakbyś udostępniał ekran. To pozwala Gearslip pokazywać je w czasie jazdy i potem znów ukryć.</string>
+    <string name="guide_readable_body">Gdy dźwięk idzie do samochodu, Android ukrywa treść powiadomień, jakbyś udostępniał ekran. To pozwala Graphene Auto pokazywać je w czasie jazdy i potem znów ukryć.</string>
     <string name="guide_answer_title">Odbieranie połączeń.</string>
-    <string name="guide_answer_body">Ustaw Gearslip jako aplikację do identyfikacji rozmówcy, a samochód będzie mógł odbierać i odrzucać połączenia. Bez tego telefon nadal dzwoni, ale odebrać można tylko na nim.</string>
+    <string name="guide_answer_body">Ustaw Graphene Auto jako aplikację do identyfikacji rozmówcy, a samochód będzie mógł odbierać i odrzucać połączenia. Bez tego telefon nadal dzwoni, ale odebrać można tylko na nim.</string>
     <string name="guide_apps_title">Dobre towarzystwo.</string>
     <string name="guide_buttons_title">Twoje przyciski.</string>
     <string name="guide_buttons_body">Wybierz wygląd przycisków w samochodzie. Możesz to zmienić w każdej chwili w ustawieniach samochodu.</string>
@@ -47,8 +47,8 @@
     <string name="guide_audio_bluetooth">Bluetooth</string>
     <string name="guide_recommended">Zalecane</string>
     <string name="guide_audio_bluetooth_body">Bez pytania przy każdej jeździe, a głos aplikacji z mapami trafia do samochodu.</string>
-    <string name="guide_audio_usb">Przez Gearslip</string>
-    <string name="guide_audio_usb_body">Czystszy dźwięk bez opóźnień. Przy każdej jeździe Android prosi o udostępnienie ekranu, co pozwala Gearslip wysyłać dźwięk.</string>
+    <string name="guide_audio_usb">Przez Graphene Auto</string>
+    <string name="guide_audio_usb_body">Czystszy dźwięk bez opóźnień. Przy każdej jeździe Android prosi o udostępnienie ekranu, co pozwala Graphene Auto wysyłać dźwięk.</string>
     <string name="guide_optional">OPCJONALNE</string>
     <string name="guide_already_allowed">Już dozwolone.</string>
     <string name="guide_scroll_more">Przewiń, by zobaczyć więcej  ↓</string>
@@ -60,7 +60,7 @@
     <string name="guide_back">Wstecz</string>
 
     <!-- Usage notes -->
-    <string name="usage_intro">Włącz to, a Gearslip wyśle krótką notatkę, gdy go otworzysz, i po każdej jeździe. &lt;b&gt;Notatka nie zawiera imienia, konta ani lokalizacji. Losowa liczba liczy twój telefon raz, a serwer nie przechowuje adresu IP.&lt;/b&gt; Notatki pokazują, które samochody działają, a gdzie inne zawodzą.</string>
+    <string name="usage_intro">Włącz to, a Graphene Auto wyśle krótką notatkę, gdy go otworzysz, i po każdej jeździe. &lt;b&gt;Notatka nie zawiera imienia, konta ani lokalizacji. Losowa liczba liczy twój telefon raz, a serwer nie przechowuje adresu IP.&lt;/b&gt; Notatki pokazują, które samochody działają, a gdzie inne zawodzą.</string>
     <string name="usage_send">Wysyłaj notatki o użyciu</string>
     <string name="usage_also_share">Udostępniaj też</string>
     <string name="usage_share_android">Wersja i system Android</string>
@@ -74,14 +74,14 @@
     <string name="usage_example">Przykład, niewysyłany: jedna jazda dodaje to do „sessions”</string>
     <string name="usage_no_server">Ta wersja nie ma serwera statystyk, więc nic nie wysyła</string>
     <string name="usage_debug_build">Wersja debugowa: notatki są trzymane osobno i nigdy nie trafiają do statystyk</string>
-    <string name="worked_title">Gearslip działał z twoim %1$s</string>
-    <string name="worked_title_unknown">Gearslip działał z twoim samochodem</string>
+    <string name="worked_title">Graphene Auto działał z twoim %1$s</string>
+    <string name="worked_title_unknown">Graphene Auto działał z twoim samochodem</string>
     <string name="worked_body">Udostępnić to, żeby następny kierowca wiedział, że działa? Bez imienia, konta i lokalizacji.</string>
     <string name="worked_not_now">Nie teraz</string>
     <string name="worked_share">Udostępnij</string>
 
     <!-- Recommended apps -->
-    <string name="recommended_intro">Te darmowe aplikacje działają na ekranie samochodowym Gearslip. Każdy przycisk otwiera stronę aplikacji na GitHubie.</string>
+    <string name="recommended_intro">Te darmowe aplikacje działają na ekranie samochodowym Graphene Auto. Każdy przycisk otwiera stronę aplikacji na GitHubie.</string>
     <string name="recommended_title">Polecane aplikacje</string>
     <string name="back">Wstecz</string>
     <string name="recommended_installed">Zainstalowana</string>
@@ -99,16 +99,16 @@
     <string name="settings_title">Ustawienia</string>
     <string name="settings_whats_new">Co nowego</string>
     <string name="settings_whats_new_sub">Przeczytaj informacje o wersji %1$s na GitHubie</string>
-    <string name="settings_support">Wesprzyj Gearslip</string>
-    <string name="settings_support_footer">Gearslip jest darmowy, bez reklam i bez śledzenia. Twoje wsparcie pozwala mu działać.</string>
+    <string name="settings_support">Wesprzyj Graphene Auto</string>
+    <string name="settings_support_footer">Graphene Auto jest darmowy, bez reklam i bez śledzenia. Twoje wsparcie pozwala mu działać.</string>
     <string name="settings_usage_notes">Notatki o użyciu</string>
     <string name="settings_updates">Aktualizacje</string>
     <string name="settings_about">O aplikacji</string>
     <string name="settings_replay">Powtórz przewodnik konfiguracji</string>
     <string name="settings_replay_sub">Przejdź ponownie kroki pierwszego uruchomienia</string>
     <string name="settings_connection">Połączenie</string>
-    <string name="settings_use_in_car">Używaj Gearslip w samochodzie</string>
-    <string name="settings_use_in_car_on">Gearslip odpowiada, gdy podłączysz telefon do samochodu</string>
+    <string name="settings_use_in_car">Używaj Graphene Auto w samochodzie</string>
+    <string name="settings_use_in_car_on">Graphene Auto odpowiada, gdy podłączysz telefon do samochodu</string>
     <string name="settings_use_in_car_off">Wyłączone: połączenie może przejąć Android Auto</string>
     <string name="settings_apps">Aplikacje</string>
     <string name="settings_certificate">Certyfikat</string>
@@ -172,7 +172,7 @@
     <string name="choice_open_home">Ekran główny</string>
     <string name="summary_player_left">Odtwarzacz po lewej</string>
     <string name="summary_player_right">Odtwarzacz po prawej</string>
-    <string name="summary_usb_audio">Dźwięk przez Gearslip</string>
+    <string name="summary_usb_audio">Dźwięk przez Graphene Auto</string>
     <string name="summary_bluetooth_audio">Dźwięk przez Bluetooth</string>
     <string name="summary_directions_on">Wskazówki głosowe włączone</string>
     <string name="summary_directions_off">Wskazówki głosowe wyłączone</string>
@@ -217,7 +217,7 @@
     <string name="car_audio">Dźwięk w samochodzie</string>
     <string name="car_audio_bt">Bluetooth (zalecane)</string>
     <string name="car_audio_bt_sub">Bez pytania przy każdej jeździe, a głos aplikacji z mapami trafia do samochodu</string>
-    <string name="car_audio_usb_sub">Czystszy dźwięk bez opóźnień. Przy każdej jeździe Android prosi o udostępnienie ekranu, co pozwala Gearslip wysyłać dźwięk</string>
+    <string name="car_audio_usb_sub">Czystszy dźwięk bez opóźnień. Przy każdej jeździe Android prosi o udostępnienie ekranu, co pozwala Graphene Auto wysyłać dźwięk</string>
     <string name="car_audio_usb_footer">Uruchom raz polecenie z Pomocy, a Android przestanie pytać.</string>
     <string name="car_audio_bt_footer">Rozmowy i tak idą przez Bluetooth.</string>
 
@@ -227,7 +227,7 @@
     <string name="screen_preview_size">Rozmiar podglądu</string>
     <string name="screen_preview_note">Rozmiar, w jakim rysowany jest podgląd samochodu, np. 1920x720.</string>
     <string name="screen_car_screen">Ekran samochodu</string>
-    <string name="screen_footer">Gearslip używa rozmiaru podanego przez samochód, chyba że ustawisz własny.</string>
+    <string name="screen_footer">Graphene Auto używa rozmiaru podanego przez samochód, chyba że ustawisz własny.</string>
     <string name="screen_size">Rozmiar ekranu</string>
     <string name="screen_from_car">Z samochodu</string>
     <string name="screen_crop">Przytnij krawędzie</string>
@@ -238,7 +238,7 @@
     <string name="screen_last_car">Ostatni samochód</string>
     <string name="screen_last_car_sub">Rozmiar ostatniego samochodu, z którym się łączyłeś</string>
     <string name="screen_this_screen">Ten ekran</string>
-    <string name="screen_this_screen_sub">Wypełnia ekran tego urządzenia, dla radia samochodowego, na którym działa sam Gearslip</string>
+    <string name="screen_this_screen_sub">Wypełnia ekran tego urządzenia, dla radia samochodowego, na którym działa sam Graphene Auto</string>
     <string name="screen_custom">Własny</string>
     <string name="screen_enter_size">Podaj rozmiar</string>
     <string name="screen_change_custom">Zmień własny rozmiar</string>
@@ -255,25 +255,25 @@
     <string name="help_full_list">Zobacz pełną listę</string>
     <string name="help_first_drive">Przed pierwszą jazdą</string>
     <string name="help_in_car">W samochodzie</string>
-    <string name="help_usb_audio">Dźwięk przez Gearslip</string>
+    <string name="help_usb_audio">Dźwięk przez Graphene Auto</string>
 
     <string name="help_aa_off">Wyłącz Android Auto.</string>
-    <string name="help_aa_off_detail">Wyłącz lub odinstaluj aplikację Android Auto, żeby samochód rozmawiał z Gearslip.</string>
+    <string name="help_aa_off_detail">Wyłącz lub odinstaluj aplikację Android Auto, żeby samochód rozmawiał z Graphene Auto.</string>
     <string name="help_cert">Wczytaj certyfikat.</string>
     <string name="help_cert_detail">W Ustawieniach pobierz certyfikat aasdk, który akceptuje większość samochodów. Jeśli twój go odrzuca, zaimportuj własny.</string>
     <string name="help_mic">Zezwól na mikrofon.</string>
-    <string name="help_mic_detail">Bez niego Android nie pozwoli aplikacji przesyłać muzyki do samochodu. Gearslip słucha tylko, gdy dotkniesz mikrofonu lub naciśniesz przycisk mowy na kierownicy.</string>
+    <string name="help_mic_detail">Bez niego Android nie pozwoli aplikacji przesyłać muzyki do samochodu. Graphene Auto słucha tylko, gdy dotkniesz mikrofonu lub naciśniesz przycisk mowy na kierownicy.</string>
     <string name="help_plug_in">Podłącz kabel lub połącz się bezprzewodowo.</string>
-    <string name="help_plug_in_detail">Gearslip otwiera się sam, gdy samochód się połączy. Do połączenia bezprzewodowego najpierw sparuj telefon z samochodem, potem kliknij Połącz bezprzewodowo na ekranie głównym.</string>
+    <string name="help_plug_in_detail">Graphene Auto otwiera się sam, gdy samochód się połączy. Do połączenia bezprzewodowego najpierw sparuj telefon z samochodem, potem kliknij Połącz bezprzewodowo na ekranie głównym.</string>
     <string name="help_pair">Sparuj przez Bluetooth dla rozmów.</string>
-    <string name="help_pair_detail">Rozmowy grają w samochodzie, gdy telefon i samochód są sparowane. Gearslip proponuje parowanie przy pierwszym podłączeniu.</string>
+    <string name="help_pair_detail">Rozmowy grają w samochodzie, gdy telefon i samochód są sparowane. Graphene Auto proponuje parowanie przy pierwszym podłączeniu.</string>
     <string name="help_answer">Odbieraj połączenia z ekranu samochodu.</string>
-    <string name="help_answer_detail">Ustaw Gearslip jako aplikację do identyfikacji rozmówcy i spamu. Bez tego telefon nadal dzwoni, ale odebrać można tylko na nim.</string>
+    <string name="help_answer_detail">Ustaw Graphene Auto jako aplikację do identyfikacji rozmówcy i spamu. Bez tego telefon nadal dzwoni, ale odebrać można tylko na nim.</string>
     <string name="help_prompt">Pozbądź się pytania o dźwięk przy każdej jeździe.</string>
     <string name="help_prompt_detail">Podłącz telefon do komputera z włączonym debugowaniem USB i uruchom to raz. Bez tego przy każdym wyjeździe klikasz Start.</string>
     <string name="help_readable">Zachowaj czytelne powiadomienia.</string>
-    <string name="help_readable_detail">Android ukrywa treść powiadomień, gdy udostępnia dźwięk. Uruchom też to, a Gearslip zdejmie tę blokadę tylko wtedy, gdy muzyka idzie do samochodu.</string>
-    <string name="help_which_cars_body">Większość samochodów akceptuje certyfikat aasdk. Od około 2020 roku niektóre samochody dostały nowsze zabezpieczenia, które go odrzucają, i w nich Gearslip potrzebuje twojego własnego certyfikatu.</string>
+    <string name="help_readable_detail">Android ukrywa treść powiadomień, gdy udostępnia dźwięk. Uruchom też to, a Graphene Auto zdejmie tę blokadę tylko wtedy, gdy muzyka idzie do samochodu.</string>
+    <string name="help_which_cars_body">Większość samochodów akceptuje certyfikat aasdk. Od około 2020 roku niektóre samochody dostały nowsze zabezpieczenia, które go odrzucają, i w nich Graphene Auto potrzebuje twojego własnego certyfikatu.</string>
 
     <!-- Updates -->
     <string name="update_downloaded_ask">Pobrano. Android zapyta przed instalacją.</string>
@@ -288,11 +288,11 @@
     <string name="update_check_auto">Sprawdzaj automatycznie</string>
     <string name="update_once_a_day">Raz dziennie</string>
 
-    <string name="update_unplug_first">Odłącz od samochodu, by zainstalować. Instalacja zamyka Gearslip.</string>
-    <string name="update_card_title">Wyszedł Gearslip %1$s</string>
+    <string name="update_unplug_first">Odłącz od samochodu, by zainstalować. Instalacja zamyka Graphene Auto.</string>
+    <string name="update_card_title">Wyszedł Graphene Auto %1$s</string>
     <string name="update_downloading">Pobieranie… %1$d%%</string>
     <string name="update_debug_manual">Wersje debugowe sprawdzają tylko po kliknięciu Sprawdź teraz</string>
-    <string name="update_checks_daily">Gearslip sprawdza raz dziennie</string>
+    <string name="update_checks_daily">Graphene Auto sprawdza raz dziennie</string>
     <string name="update_version_out">Wyszła wersja %1$s</string>
     <string name="update_version_ready">Wersja %1$s jest gotowa do instalacji</string>
     <string name="update_dialog_status">Wersja %1$s. %2$s.</string>
@@ -309,11 +309,11 @@
     <string name="about_copy_address">Kopiuj adres</string>
     <string name="close">Zamknij</string>
     <string name="about_matrix">Dołącz do czatu na Matrix</string>
-    <string name="about_matrix_sub">Rozmawiaj z innymi kierowcami o samochodach, aplikacjach i Gearslip</string>
-    <string name="about_translate">Pomóż przetłumaczyć Gearslip</string>
+    <string name="about_matrix_sub">Rozmawiaj z innymi kierowcami o samochodach, aplikacjach i Graphene Auto</string>
+    <string name="about_translate">Pomóż przetłumaczyć Graphene Auto</string>
     <string name="about_translate_sub">Popraw lub dodaj swój język na Weblate. Niektóre tłumaczenia powstały jako tłumaczenia maszynowe.</string>
     <string name="about_source">Kod źródłowy</string>
-    <string name="about_source_sub">Czytaj lub zmieniaj kod Gearslip na licencji AGPL</string>
+    <string name="about_source_sub">Czytaj lub zmieniaj kod Graphene Auto na licencji AGPL</string>
     <string name="about_voice_credits">Twórcy rozpoznawania mowy</string>
 
     <string name="about_no_wallet">Nie znaleziono portfela Monero. Skopiuj adres.</string>
@@ -330,11 +330,11 @@
     <string name="certsetup_skip">Pomiń konfigurację połączenia z samochodem</string>
 
     <string name="certsetup_loaded">Samochody akceptują tylko certyfikaty wydane przez Google, a ty masz jeden wczytany.</string>
-    <string name="certsetup_choose">Samochody akceptują tylko certyfikaty wydane przez Google. Gearslip żadnego nie zawiera, więc wybierz, skąd weźmiesz swój.</string>
+    <string name="certsetup_choose">Samochody akceptują tylko certyfikaty wydane przez Google. Graphene Auto żadnego nie zawiera, więc wybierz, skąd weźmiesz swój.</string>
     <string name="certsetup_aasdk_sub">Otwarty projekt aasdk publikuje ten certyfikat na github.com/opencardev/aasdk. Większość samochodów go akceptuje. Niektóre od około 2020 roku go odrzucają i wtedy trzeba zaimportować własny.</string>
 
     <!-- Storage -->
-    <string name="storage_title">Pamięć Gearslip</string>
+    <string name="storage_title">Pamięć Graphene Auto</string>
     <string name="storage_measuring">Mierzenie…</string>
     <string name="storage_lyrics">Teksty piosenek</string>
     <string name="storage_clear">Wyczyść</string>
@@ -342,9 +342,9 @@
     <string name="storage_remove">Usuń</string>
     <string name="storage_logs">Stare logi</string>
     <string name="storage_other">Inne pliki tymczasowe</string>
-    <string name="storage_delete_all">Usuń wszystkie dane Gearslip</string>
+    <string name="storage_delete_all">Usuń wszystkie dane Graphene Auto</string>
 
-    <string name="storage_total">Dane Gearslip zajmują %1$s pamięci telefonu.</string>
+    <string name="storage_total">Dane Graphene Auto zajmują %1$s pamięci telefonu.</string>
     <plurals name="storage_lyrics_detail">
         <item quantity="one">%1$d utwór · %2$s. Wyczyszczone teksty pobiorą się ponownie, gdy je otworzysz.</item>
         <item quantity="few">%1$d utwory · %2$s. Wyczyszczone teksty pobiorą się ponownie, gdy je otworzysz.</item>
@@ -353,8 +353,8 @@
     </plurals>
     <string name="storage_voice_detail">%1$s. Potrzebne do poleceń głosowych; pobierz je ponownie w Ustawieniach.</string>
     <string name="storage_logs_detail">%1$s. Logi z wcześniejszych uruchomień; log bieżącego zostaje.</string>
-    <string name="storage_other_detail">%1$s. Pobrane aktualizacje i inne pliki, które Gearslip może odtworzyć.</string>
-    <string name="storage_delete_armed">Kliknij Usuń jeszcze raz, by skasować ustawienia, certyfikaty, modele głosowe i logi. Gearslip się zamknie i następnym razem zacznie od konfiguracji.</string>
+    <string name="storage_other_detail">%1$s. Pobrane aktualizacje i inne pliki, które Graphene Auto może odtworzyć.</string>
+    <string name="storage_delete_armed">Kliknij Usuń jeszcze raz, by skasować ustawienia, certyfikaty, modele głosowe i logi. Graphene Auto się zamknie i następnym razem zacznie od konfiguracji.</string>
     <string name="storage_delete_sub">Ustawienia, certyfikaty, modele głosowe, teksty i logi.</string>
     <string name="storage_delete">Usuń</string>
     <string name="storage_delete_ellipsis">Usuń…</string>
@@ -365,10 +365,10 @@
     <string name="donate_bmac">Postaw mi kawę</string>
     <string name="donate_card">Wpłać raz kartą</string>
 
-    <string name="donate_body">Gearslip jest darmowy, bez reklam i bez śledzenia. Jeśli pomaga ci w drodze, twoje wsparcie pozwala mu działać.</string>
+    <string name="donate_body">Graphene Auto jest darmowy, bez reklam i bez śledzenia. Jeśli pomaga ci w drodze, twoje wsparcie pozwala mu działać.</string>
 
     <!-- Wireless -->
-    <string name="wireless_needs_permission">Do tego Gearslip potrzebuje dostępu do Bluetootha i Wi-Fi w pobliżu.</string>
+    <string name="wireless_needs_permission">Do tego Graphene Auto potrzebuje dostępu do Bluetootha i Wi-Fi w pobliżu.</string>
     <string name="wireless_enable_permission">Włącz uprawnienie Urządzenia w pobliżu</string>
     <string name="wireless_connect">Połącz bezprzewodowo</string>
     <string name="wireless_which_car">Który samochód?</string>
@@ -409,9 +409,9 @@
     <string name="audio_mic_title">Dźwięk w samochodzie wymaga uprawnienia do mikrofonu</string>
     <string name="audio_open_settings">Otwórz ustawienia aplikacji</string>
 
-    <string name="audio_bt_body">Android traktuje muzykę, którą Gearslip wysyła do samochodu, jak udostępnianie ekranu, więc pyta przy każdej jeździe, przez kabel lub bezprzewodowo. Przez Bluetooth nigdy nie pyta. Możesz to później zmienić w Ustawieniach.</string>
-    <string name="audio_keep_usb">Albo zostaw dźwięk przez Gearslip i pozbądź się pytania na dobre: podłącz telefon do komputera z włączonym debugowaniem USB i uruchom to raz.</string>
-    <string name="audio_mic_body">Android pozwala aplikacji wysyłać dźwięk innych aplikacji do samochodu tylko wtedy, gdy ma uprawnienie do mikrofonu. Dla Gearslip jest wyłączone, więc muzyka gra w telefonie. Włącz je w Uprawnieniach, potem Mikrofon.</string>
+    <string name="audio_bt_body">Android traktuje muzykę, którą Graphene Auto wysyła do samochodu, jak udostępnianie ekranu, więc pyta przy każdej jeździe, przez kabel lub bezprzewodowo. Przez Bluetooth nigdy nie pyta. Możesz to później zmienić w Ustawieniach.</string>
+    <string name="audio_keep_usb">Albo zostaw dźwięk przez Graphene Auto i pozbądź się pytania na dobre: podłącz telefon do komputera z włączonym debugowaniem USB i uruchom to raz.</string>
+    <string name="audio_mic_body">Android pozwala aplikacji wysyłać dźwięk innych aplikacji do samochodu tylko wtedy, gdy ma uprawnienie do mikrofonu. Dla Graphene Auto jest wyłączone, więc muzyka gra w telefonie. Włącz je w Uprawnieniach, potem Mikrofon.</string>
 
     <!-- Phone keyboard -->
     <string name="typing_close">Zamknij klawiaturę samochodu</string>
@@ -450,9 +450,9 @@
     <string name="carset_save_vehicle">Zapisz dla tego pojazdu</string>
     <string name="carset_no_profile">Brak pasującego profilu pojazdu</string>
 
-    <string name="carset_audio_note">Przez Gearslip wysyła dźwięk telefonu przez połączenie z samochodem, kablem lub bezprzewodowo. Android prosi o udostępnienie ekranu przy każdej jeździe, a kilka aplikacji to blokuje. Bluetooth gra tak, jak zwykle gra telefon, a Android nigdy nie pyta.</string>
-    <string name="carset_directions_note">Gearslip odczytuje każdy manewr przez głośniki samochodu, a muzyka cichnie, gdy mówi. Wyłącz, jeśli głos twojej aplikacji z mapami już gra w samochodzie.</string>
-    <string name="carset_phone_speech_note">Słucha przez usługę mowy telefonu zamiast Gearslip. W większości telefonów to usługa Google, która może wysyłać twój głos do Google. GrapheneOS jej nie ma, więc Gearslip dalej używa własnej.</string>
+    <string name="carset_audio_note">Przez Graphene Auto wysyła dźwięk telefonu przez połączenie z samochodem, kablem lub bezprzewodowo. Android prosi o udostępnienie ekranu przy każdej jeździe, a kilka aplikacji to blokuje. Bluetooth gra tak, jak zwykle gra telefon, a Android nigdy nie pyta.</string>
+    <string name="carset_directions_note">Graphene Auto odczytuje każdy manewr przez głośniki samochodu, a muzyka cichnie, gdy mówi. Wyłącz, jeśli głos twojej aplikacji z mapami już gra w samochodzie.</string>
+    <string name="carset_phone_speech_note">Słucha przez usługę mowy telefonu zamiast Graphene Auto. W większości telefonów to usługa Google, która może wysyłać twój głos do Google. GrapheneOS jej nie ma, więc Graphene Auto dalej używa własnej.</string>
     <string name="carset_vehicle_data_note">Dodaje kafelek Dane pojazdu: surowy odczyt na żywo z kanału czujników radia samochodowego. Etykiety pól (prędkość, obroty, paliwo...) pochodzą z innych projektów inżynierii wstecznej i nie zostały sprawdzone na tym samochodzie. Traktuj je jako domysł, nie fakt, dopóki sam nie zobaczysz, jak któreś się zmienia.</string>
     <string name="carset_adaptive_note">Obniża jakość obrazu, gdy samochód, lub jego Wi-Fi, nie nadąża, i podnosi ją, gdy znów może. Działa od następnego połączenia.</string>
     <string name="carset_usable_height">Użyteczna wysokość %1$dpx z 480</string>
@@ -471,11 +471,11 @@
     <string name="media_press_play">Naciśnij odtwarzanie, by wrócić tam, gdzie skończyłeś, albo znajdź coś w Przeglądaj.</string>
 
     <string name="media_keeps_library">%1$s nie udostępnia swojej biblioteki.</string>
-    <string name="media_needs_access">Gearslip może nią sterować, gdy ma dostęp do powiadomień w telefonie. Zezwól w Ustawienia &gt; Powiadomienia &gt; Dostęp do powiadomień.</string>
+    <string name="media_needs_access">Graphene Auto może nią sterować, gdy ma dostęp do powiadomień w telefonie. Zezwól w Ustawienia &gt; Powiadomienia &gt; Dostęp do powiadomień.</string>
     <string name="media_not_running">%1$s nie jest uruchomiona.</string>
-    <string name="media_not_running_body">%1$s gra przez odtwarzacz Gearslip, ale tylko wtedy, gdy jest otwarta w telefonie. Otwórz ją raz, a będzie grać tutaj w samochodzie.</string>
+    <string name="media_not_running_body">%1$s gra przez odtwarzacz Graphene Auto, ale tylko wtedy, gdy jest otwarta w telefonie. Otwórz ją raz, a będzie grać tutaj w samochodzie.</string>
     <string name="media_open_app">Otwórz %1$s</string>
-    <string name="media_refused">%1$s nie pozwoliła Gearslip się przeglądać.</string>
+    <string name="media_refused">%1$s nie pozwoliła Graphene Auto się przeglądać.</string>
     <string name="media_refused_body">Niektóre aplikacje multimedialne akceptują tylko hosta Google.</string>
     <string name="media_connecting">Łączenie z %1$s…</string>
     <string name="media_search">Szukaj w %1$s</string>
@@ -497,8 +497,8 @@
     <string name="media_nothing_queued">Kolejka jest pusta.</string>
     <string name="media_play">Odtwórz</string>
 
-    <string name="media_queue_empty_idle">Nic nie gra - nie każda aplikacja mówi Gearslip, co będzie dalej.</string>
-    <string name="media_queue_empty_playing">Tylko to, co już gra - nie każda aplikacja mówi Gearslip, co będzie dalej.</string>
+    <string name="media_queue_empty_idle">Nic nie gra - nie każda aplikacja mówi Graphene Auto, co będzie dalej.</string>
+    <string name="media_queue_empty_playing">Tylko to, co już gra - nie każda aplikacja mówi Graphene Auto, co będzie dalej.</string>
 
     <!-- Player controls -->
     <string name="player_previous">Poprzedni</string>
@@ -588,7 +588,7 @@
 
     <!-- Weather -->
     <string name="weather_waiting_fix">Czekanie na ustalenie lokalizacji.</string>
-    <string name="weather_allow_location">Zezwól Gearslip na lokalizację w telefonie, by zobaczyć pogodę.</string>
+    <string name="weather_allow_location">Zezwól Graphene Auto na lokalizację w telefonie, by zobaczyć pogodę.</string>
     <string name="weather_unreachable">Nie udało się połączyć z serwisem pogodowym.</string>
     <string name="weather_clear">Bezchmurnie</string>
     <string name="weather_mostly_clear">Przeważnie bezchmurnie</string>
@@ -630,7 +630,7 @@
     <string name="dialer_no_contacts">Nie znaleziono kontaktów z numerem telefonu.</string>
     <string name="dialer_search">Szukaj kontaktów</string>
 
-    <string name="dialer_needs_permission">Gearslip potrzebuje uprawnień Telefon i Kontakty, by dzwonić stąd. Zezwól na nie w telefonie, gdy zaparkujesz.</string>
+    <string name="dialer_needs_permission">Graphene Auto potrzebuje uprawnień Telefon i Kontakty, by dzwonić stąd. Zezwól na nie w telefonie, gdy zaparkujesz.</string>
     <string name="dialer_no_match">Żaden kontakt nie pasuje do „%1$s”.</string>
     <string name="dialer_call_who">Zadzwonić do: %1$s?</string>
 
@@ -639,10 +639,10 @@
     <string name="carui_drive_safely">Jedź bezpiecznie</string>
     <string name="carui_understand">Rozumiem</string>
 
-    <string name="carui_unofficial">Gearslip to nieoficjalne oprogramowanie: nie stworzył ani nie sprawdził go żaden producent samochodów, a może przestać działać bez ostrzeżenia.</string>
+    <string name="carui_unofficial">Graphene Auto to nieoficjalne oprogramowanie: nie stworzył ani nie sprawdził go żaden producent samochodów, a może przestać działać bez ostrzeżenia.</string>
     <string name="carui_never_interact">Nigdy nie obsługuj tego ekranu w czasie jazdy. Ustaw trasę lub utwór przed wyjazdem, a potem skup się na drodze.</string>
     <string name="carui_this_app">Ta aplikacja</string>
-    <string name="carui_app_unsupported">%1$s jeszcze nie działa z Gearslip.</string>
+    <string name="carui_app_unsupported">%1$s jeszcze nie działa z Graphene Auto.</string>
     <string name="carui_app_unsupported_body">Nie uruchomiła się. Niektóre aplikacje działają tylko w Android Auto od Google.</string>
 
     <!-- Nav bar -->
@@ -664,7 +664,7 @@
     <string name="notif_title">Powiadomienia</string>
     <string name="notif_clear_all">Wyczyść wszystko</string>
     <string name="notif_empty">Na razie nic. Nowe powiadomienia z telefonu pojawią się tutaj.</string>
-    <string name="notif_off">Powiadomienia są wyłączone. Zezwól Gearslip w Ustawienia &gt; Powiadomienia &gt; Dostęp do powiadomień w telefonie.</string>
+    <string name="notif_off">Powiadomienia są wyłączone. Zezwól Graphene Auto w Ustawienia &gt; Powiadomienia &gt; Dostęp do powiadomień w telefonie.</string>
     <string name="notif_replied">Odpowiedziano</string>
 
     <!-- Messages -->
@@ -703,7 +703,7 @@
     <string name="call_ringing">Już dzwoni na głos - odbierz tutaj albo pozwól dzwonić.</string>
 
     <!-- Screen sharing -->
-    <string name="phoneapps_touch_off">Dotyk jest wyłączony. Włącz Gearslip w Ustawienia &gt; Ułatwienia dostępu w telefonie.</string>
+    <string name="phoneapps_touch_off">Dotyk jest wyłączony. Włącz Graphene Auto w Ustawienia &gt; Ułatwienia dostępu w telefonie.</string>
 
     <!-- What's new in the car -->
     <string name="whatsnew_show_after">Pokazuj po aktualizacjach</string>
@@ -716,7 +716,7 @@
     <string name="keyboard_submit">Zatwierdź</string>
 
     <!-- Launcher -->
-    <string name="launcher_broken">Nie działa z Gearslip</string>
+    <string name="launcher_broken">Nie działa z Graphene Auto</string>
 
     <!-- Car app stage -->
     <string name="stage_car_app">Aplikacja samochodowa</string>
@@ -825,11 +825,11 @@
 
     <!-- Cluster screen -->
     <string name="car_cluster_video">Karta manewru na ekranie zegarów</string>
-    <string name="car_cluster_video_note">Dla samochodu z drugim ekranem w zestawie wskaźników: Gearslip pokazuje tam następny manewr. Działa od następnego połączenia.</string>
+    <string name="car_cluster_video_note">Dla samochodu z drugim ekranem w zestawie wskaźników: Graphene Auto pokazuje tam następny manewr. Działa od następnego połączenia.</string>
 
     <!-- Connection status on Home -->
     <string name="status_idle">Nie połączono</string>
-    <string name="status_idle_detail">Podłącz telefon do portu USB samochodu lub połącz się bezprzewodowo. Gearslip otworzy się sam, gdy samochód odpowie.</string>
+    <string name="status_idle_detail">Podłącz telefon do portu USB samochodu lub połącz się bezprzewodowo. Graphene Auto otworzy się sam, gdy samochód odpowie.</string>
     <string name="status_connecting">Łączenie</string>
     <string name="status_projecting">Wyświetlanie</string>
     <string name="status_projecting_detail">Przesyłanie obrazu do radia samochodowego.</string>
@@ -837,7 +837,7 @@
     <string name="status_disconnected_detail">Radio samochodowe nie jest już połączone.</string>
     <string name="places_title">Zapisane miejsca</string>
     <string name="places_sub">Powiedz „navigate home” w dowolnej aplikacji z mapami</string>
-    <string name="places_intro">Powiedz „navigate home”, „take me to work” albo „navigate to” z własną nazwą, a Gearslip wyśle adres do aplikacji z mapami. Na razie polecenia głosowe działają tylko po angielsku.</string>
+    <string name="places_intro">Powiedz „navigate home”, „take me to work” albo „navigate to” z własną nazwą, a Graphene Auto wyśle adres do aplikacji z mapami. Na razie polecenia głosowe działają tylko po angielsku.</string>
     <string name="places_home">Dom</string>
     <string name="places_work">Praca</string>
     <string name="places_other">Miejsce %1$d</string>
@@ -845,7 +845,7 @@
     <string name="places_address">Adres</string>
     <string name="places_here">Użyj mojej lokalizacji</string>
     <string name="places_finding">Szukam…</string>
-    <string name="places_not_found">Gearslip nie znalazł Twojej lokalizacji. Sprawdź, czy lokalizacja jest włączona.</string>
+    <string name="places_not_found">Graphene Auto nie znalazł Twojej lokalizacji. Sprawdź, czy lokalizacja jest włączona.</string>
     <string name="places_clear">Wyczyść</string>
     <string name="settings_language">Język</string>
     <string name="settings_language_phone">Taki sam jak w telefonie</string>

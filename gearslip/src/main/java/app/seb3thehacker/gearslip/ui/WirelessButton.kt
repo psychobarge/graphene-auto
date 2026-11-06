@@ -49,7 +49,7 @@ private val WIRELESS_PERMISSIONS = buildList {
 }.toTypedArray()
 
 /**
- * Wireless Android Auto, in Home's status card: pick the paired car, and Gearslip connects to
+ * Wireless Android Auto, in Home's status card: pick the paired car, and Graphene Auto connects to
  * it over Bluetooth and Wi-Fi.
  */
 @Composable
@@ -111,7 +111,7 @@ internal fun WirelessButton() {
                                 .clickable {
                                     devices = null
                                     WirelessLink.start(context, device)
-                                    // Next time this car connects, Gearslip does this by itself.
+                                    // Next time this car connects, Graphene Auto does this by itself.
                                     app.seb3thehacker.gearslip.wireless.WirelessAuto.connectedByHand(context, device)
                                 }
                                 .padding(vertical = 14.dp),

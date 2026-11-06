@@ -70,7 +70,7 @@ import app.seb3thehacker.gearslip.host.text
  * Draws the template an app handed us, over the surface it is drawing its map into.
  *
  * A templated app never draws its own chrome: it describes a screen in the Car App Library's
- * model types and every host renders those to suit its own screen. This is Gearslip's
+ * model types and every host renders those to suit its own screen. This is Graphene Auto's
  * rendering. It is deliberately laid out for a wide, short car display - controls to the
  * right where a hand reaches from the driver's seat, information to the left.
  *
@@ -93,7 +93,7 @@ fun TemplateChrome(template: Template?, modifier: Modifier = Modifier) {
 }
 
 /**
- * How much of the surface Gearslip's chrome covers, so the app can keep what matters clear of
+ * How much of the surface Graphene Auto's chrome covers, so the app can keep what matters clear of
  * it. Expressed as the visible rectangle within a [width] x [height] surface.
  *
  * Navigation's cards are measured where they land ([measured], from [ChromeCover]); an app
@@ -399,7 +399,7 @@ private fun LaneDirection?.turnDegrees(): Float = when (this?.shape) {
 
 /**
  * The trip at a glance, stacked: time left on top, then the clock time it ends at and the
- * distance, with Gearslip's own stop button beside them. The close button is Gearslip's, not the
+ * distance, with Graphene Auto's own stop button beside them. The close button is Graphene Auto's, not the
  * app's: an actionStrip's actions carry no flag saying which one (if any) means "stop
  * navigating" - the first button turned out to be a mute toggle, not an exit - so this ends
  * navigation the way going Home already does rather than guess at the app's own controls.

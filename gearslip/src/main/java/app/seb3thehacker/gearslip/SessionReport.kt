@@ -1,7 +1,6 @@
 package app.seb3thehacker.gearslip
 
 import android.content.Context
-import app.seb3thehacker.gearslip.stats.UsageStats
 import android.os.Build
 
 /**
@@ -40,7 +39,7 @@ object SessionReport {
         TLS("tls"),             // the secure link is up
         ACCEPTED("accepted"),   // the car accepted the certificate
         CHANNELS("channels"),   // the car listed its channels and said who it is
-        VIDEO("video"),         // the car's screen is set up for Gearslip
+        VIDEO("video"),         // the car's screen is set up for Graphene Auto
         STREAMING("streaming"), // video frames are reaching the car
     }
 
@@ -215,22 +214,6 @@ object SessionReport {
         printed = true
         render().lines().forEach { GearslipLog.i(it) }
         appContext?.let { context ->
-            // Video started means the car showed Gearslip: that's a working car, and unplugging or
-            // switching the car off at the end shows up as a USB or ByeBye "failure" that isn't one.
-            val reached = carScreen.isNotEmpty()
-            val outcome = when {
-                reached && category in setOf(Category.NONE, Category.USB, Category.WIFI, Category.BYEBYE) -> "connected"
-                reached -> "connected, then ${category.label}"
-                category == Category.NONE -> "ended before video"
-                else -> category.label
-            }
-            runCatching {
-                UsageStats.recordSession(context, headUnitInfo, protocolVersion, outcome, carScreen, carDpi, sessionNote(), link, audioMode)
-            }
-            if (outcome == "connected") runCatching {
-                app.seb3thehacker.gearslip.stats.WorkedPrompt.onDriveWorked(context, headUnitInfo, protocolVersion, carScreen, carDpi)
-                app.seb3thehacker.gearslip.ui.DonatePrompt.onDriveWorked(context)
-            }
             runCatching { app.seb3thehacker.gearslip.update.UpdateChecker.onDriveEnded(context) }
         }
         GearslipLog.flush()

@@ -48,7 +48,7 @@ object AppSettings {
     }
 
     /**
-     * Whether Gearslip is allowed to claim the USB accessory connection. Off leaves the app
+     * Whether Graphene Auto is allowed to claim the USB accessory connection. Off leaves the app
      * installed but disables the GearslipUsbAccessory alias that answers
      * USB_ACCESSORY_ATTACHED, so a real Android Auto head unit (or Google's own app) gets the
      * connection instead - the two fight over it otherwise, since only one app can win the
@@ -67,7 +67,7 @@ object AppSettings {
     /**
      * Makes the USB alias match the saved switch. Called at every launch as well, so a switch
      * saved without the alias following it (an older build crashed right there) heals itself.
-     * Only the alias changes: the driver's "always open with Gearslip" choice for the car is kept.
+     * Only the alias changes: the driver's "always open with Graphene Auto" choice for the car is kept.
      */
     fun applyGearslipEnabled(context: Context) {
         val value = gearslipEnabled(context)

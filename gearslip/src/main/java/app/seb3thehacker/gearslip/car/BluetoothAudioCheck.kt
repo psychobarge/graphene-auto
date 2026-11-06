@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 /**
  * With Bluetooth audio chosen, music only reaches the car if the phone is connected to it over
- * Bluetooth. Twenty seconds after the car shows Gearslip, long enough for a car to connect on its
+ * Bluetooth. Twenty seconds after the car shows Graphene Auto, long enough for a car to connect on its
  * own, this checks. If the phone isn't connected, the car and the phone's Home screen both say so,
  * until it connects or the drive ends.
  *
@@ -46,7 +46,7 @@ object BluetoothAudioCheck {
         appContext = context.applicationContext
     }
 
-    /** The car shows Gearslip. Called again whenever the video restarts, so it arms once per drive. */
+    /** The car shows Graphene Auto. Called again whenever the video restarts, so it arms once per drive. */
     fun onProjecting() = main.post {
         if (armed) return@post
         armed = true
@@ -98,7 +98,7 @@ object BluetoothAudioCheck {
         if (!armed) return
         val context = appContext ?: return
         if (CarSettings.pipeAudio.value) {
-            set(false, "audio goes through Gearslip")
+            set(false, "audio goes through Graphene Auto")
             return
         }
         if (!CarSettings.bluetoothWarning.value) {

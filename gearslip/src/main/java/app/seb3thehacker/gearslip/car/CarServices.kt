@@ -235,7 +235,7 @@ object CarServices {
 
     /**
      * Whichever known car media app has an actively playing session right now, system-wide - not
-     * just the one Gearslip itself last connected to. Reading another app's session needs
+     * just the one Graphene Auto itself last connected to. Reading another app's session needs
      * notification access, the same permission [app.seb3thehacker.gearslip.media.CarMedia]
      * already asks for to control apps that won't share their library.
      */
@@ -257,7 +257,7 @@ object CarServices {
      * The car went away mid-song: pause it, as Android Auto does, so it doesn't carry on out of
      * the phone's speaker. Unplugging a USB accessory isn't "audio becoming noisy" the way
      * headphones are, so the apps won't pause themselves. Every playing session is paused, not
-     * just the one Gearslip opened: anything the car was playing was going through the car.
+     * just the one Graphene Auto opened: anything the car was playing was going through the car.
      * An app can start again on its own once the speaker is given back a moment later, which a
      * Deezer driver heard after turning the car off (issue #39), so the ones it paused are
      * looked at once more and paused again if they're playing.
@@ -278,7 +278,7 @@ object CarServices {
 
     /** What [pausePhoneMediaForNow] paused, for [resumePhoneMedia] to play again. */
     @Volatile private var pausedForNow: List<MediaController>? = null
-    /** Without notification access, whether it paused the app Gearslip drives itself. */
+    /** Without notification access, whether it paused the app Graphene Auto drives itself. */
     @Volatile private var pausedOwnForNow = false
 
     /** The car wants the speakers for a moment: pause, and remember what to play after. */
@@ -303,7 +303,7 @@ object CarServices {
         }
     }
 
-    /** What it paused. Without notification access it can only reach the app Gearslip drives itself. */
+    /** What it paused. Without notification access it can only reach the app Graphene Auto drives itself. */
     private fun pause(why: String): List<MediaController> {
         val ctx = context ?: return emptyList()
         val manager = ctx.getSystemService(MediaSessionManager::class.java)
@@ -314,7 +314,7 @@ object CarServices {
             null
         }
         if (playing == null) {
-            // No notification access: the app Gearslip itself is driving is all it can reach.
+            // No notification access: the app Graphene Auto itself is driving is all it can reach.
             mediaOrNull()?.let {
                 if (it.now.value.playing) {
                     it.togglePlay()

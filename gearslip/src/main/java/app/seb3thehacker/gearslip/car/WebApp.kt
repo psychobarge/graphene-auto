@@ -198,7 +198,7 @@ fun WebApp(content: String) {
     }
 }
 
-/** The start page: a web address, or a page of HTML Gearslip made itself. */
+/** The start page: a web address, or a page of HTML Graphene Auto made itself. */
 private fun loadContent(view: WebView, content: String) {
     if (content.startsWith("http://") || content.startsWith("https://")) {
         view.loadUrl(content)

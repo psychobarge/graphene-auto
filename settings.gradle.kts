@@ -23,7 +23,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Gearslip"
+rootProject.name = "graphene-auto"
 include(":gearslip")
 // include(":ksdump")
  

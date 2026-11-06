@@ -28,12 +28,12 @@ import kotlin.math.roundToInt
  * Spoken turn-by-turn on the car's directions channel (the GUIDANCE audio sink).
  *
  * A map app on the phone speaks its own prompts as navigation audio, which Android can't hand to
- * Gearslip without root, and which the phone mutes while USB audio runs. So Gearslip reads the
+ * Graphene Auto without root, and which the phone mutes while USB audio runs. So Graphene Auto reads the
  * same turn the instrument cluster gets ([NavTurn]) and says it itself: once when the turn comes
  * up, again a kilometre or so out on a long stretch, and once more just before it. The words are
  * rendered with the phone's text-to-speech to a file, never played on the phone, and streamed to
  * the car, which ducks the music under them the way it does for real Android Auto. When the music
- * isn't Gearslip's, each announcement first asks the car for its speakers, as Android Auto does.
+ * isn't Graphene Auto's, each announcement first asks the car for its speakers, as Android Auto does.
  *
  * Nothing spoken is logged: road names are where the driver is going.
  */
@@ -74,7 +74,7 @@ object DirectionsVoice {
         tts = TextToSpeech(appContext) { status ->
             ttsReady = status == TextToSpeech.SUCCESS
             if (!ttsReady) GearslipLog.w("guidance: text-to-speech didn't start (status $status)")
-            // The turns are worded in Gearslip's language; the engine's default voice may be
+            // The turns are worded in Graphene Auto's language; the engine's default voice may be
             // another one, and read German words with an English voice (issue #70).
             else speakIn(appContext?.resources?.configuration?.locales?.get(0))
         }.apply {
@@ -290,7 +290,7 @@ object DirectionsVoice {
             return
         }
         val wav = Wav.read(file) ?: run {
-            GearslipLog.w("guidance: text-to-speech gave audio Gearslip can't read")
+            GearslipLog.w("guidance: text-to-speech gave audio Graphene Auto can't read")
             return
         }
         val music = musicSink()

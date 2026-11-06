@@ -62,8 +62,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.input.KeyboardType
@@ -78,8 +76,6 @@ import app.seb3thehacker.gearslip.car.CarSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.snapshotFlow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -88,7 +84,6 @@ fun SettingsScreen(
     onBack: () -> Unit,
     onOpenRecommendedApps: () -> Unit,
     onReplayTutorial: () -> Unit,
-    atUsageNotes: Boolean = false,
 ) {
     val scroll = rememberScrollState()
     // Built a section per frame after the first two, so the screen shows at once instead of
@@ -101,15 +96,6 @@ fun SettingsScreen(
         }
     }
     fun ready(n: Int) = built > n
-    // Opened from Home's "it worked" card: start at usage notes.
-    var usageNotesY by remember { mutableIntStateOf(-1) }
-    if (atUsageNotes) {
-        LaunchedEffect(Unit) {
-            val y = snapshotFlow { usageNotesY }.first { it >= 0 }
-            snapshotFlow { scroll.maxValue }.first { it > 0 && it < Int.MAX_VALUE }
-            scroll.scrollTo(y)
-        }
-    }
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
@@ -143,17 +129,8 @@ fun SettingsScreen(
                 )
                 LanguageRow()
             }
-            SettingsSection(
-                stringResource(R.string.settings_support),
-                footer = stringResource(R.string.settings_support_footer),
-            ) { DonateRows() }
             if (ready(2)) ConnectionSection()
             if (SHOW_RECOMMENDED_APPS && ready(6)) AppsSection(onOpenRecommendedApps)
-            if (ready(7)) SettingsSection(
-                stringResource(R.string.settings_usage_notes),
-                Modifier.onGloballyPositioned { usageNotesY = it.positionInParent().y.toInt() },
-                header = usageStatsIntro(LocalContext.current),
-            ) { UsageStatsRows() }
             if (ready(8)) SettingsSection(stringResource(R.string.settings_updates)) { UpdateRow() }
             if (ready(9)) CertificateSection()
             if (ready(10)) AboutSection(onReplayTutorial)
@@ -175,7 +152,7 @@ private fun Arrow() = Icon(
 
 /**
  * Android 13 and later choose an app's language in their own settings, from the languages
- * Gearslip declares; this opens that page, which few people find on their own (issue #51).
+ * Graphene Auto declares; this opens that page, which few people find on their own (issue #51).
  */
 @Composable
 private fun LanguageRow() {
@@ -202,7 +179,7 @@ private fun LanguageRow() {
     )
 }
 
-/** The setup guide replay, and where Gearslip lives outside the app. */
+/** The setup guide replay, and where Graphene Auto lives outside the app. */
 @Composable
 private fun AboutSection(onReplayTutorial: () -> Unit) {
     SettingsSection(stringResource(R.string.settings_about)) {
@@ -218,7 +195,7 @@ private fun AboutSection(onReplayTutorial: () -> Unit) {
     }
 }
 
-/** Off, a stock Android Auto app or head unit answers the USB connection instead of Gearslip. */
+/** Off, a stock Android Auto app or head unit answers the USB connection instead of Graphene Auto. */
 @Composable
 private fun ConnectionSection() {
     val context = LocalContext.current
@@ -241,7 +218,7 @@ private fun ConnectionSection() {
             Modifier.toggleable(launcher, role = Role.Switch) {
                 launcher = it
                 LauncherMode.setEnabled(context, it)
-                // Android doesn't switch home apps by itself; this is where the driver picks Gearslip.
+                // Android doesn't switch home apps by itself; this is where the driver picks Graphene Auto.
                 if (it) LauncherMode.openHomeChoice(context)
             },
             subtitle = stringResource(if (launcher) R.string.settings_use_as_launcher_on else R.string.settings_use_as_launcher_off),

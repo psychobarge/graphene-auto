@@ -14,13 +14,13 @@ import app.seb3thehacker.gearslip.GearslipLog
 import app.seb3thehacker.gearslip.GearslipActivity
 
 /**
- * Starts wireless Android Auto by itself when a car Gearslip has connected to before comes up
+ * Starts wireless Android Auto by itself when a car Graphene Auto has connected to before comes up
  * over Bluetooth.
  *
  * Android only lets an app wake up and open its screen from the background for a device it
  * manages as a companion, so the first wireless connection to a car also asks Android to make
- * that car Gearslip's companion. Android shows its own one-time "Allow" for it; after that it
- * tells [CarPresenceService] whenever the car connects, and Gearslip connects to it.
+ * that car Graphene Auto's companion. Android shows its own one-time "Allow" for it; after that it
+ * tells [CarPresenceService] whenever the car connects, and Graphene Auto connects to it.
  */
 object WirelessAuto {
 
@@ -58,7 +58,7 @@ object WirelessAuto {
             .addDeviceFilter(BluetoothDeviceFilter.Builder().setAddress(address).build())
             .setSingleDevice(true)
             .build()
-        log.i("auto-connect: asking Android to let Gearslip watch for ${WirelessLink.name(device)}")
+        log.i("auto-connect: asking Android to let Graphene Auto watch for ${WirelessLink.name(device)}")
         @Suppress("DEPRECATION")
         manager.associate(request, object : CompanionDeviceManager.Callback() {
             @Deprecated("Deprecated in Java")
@@ -115,9 +115,9 @@ object WirelessAuto {
     private fun isCompanion(manager: CompanionDeviceManager, address: String): Boolean =
         runCatching { manager.associations.any { it.equals(address, ignoreCase = true) } }.getOrDefault(false)
 
-    /** From [CarPresenceService]: the car is here, so bring Gearslip up to connect to it. */
+    /** From [CarPresenceService]: the car is here, so bring Graphene Auto up to connect to it. */
     fun carAppeared(context: Context, address: String) {
-        log.i("auto-connect: a car Gearslip knows connected over Bluetooth")
+        log.i("auto-connect: a car Graphene Auto knows connected over Bluetooth")
         runCatching {
             context.startActivity(
                 Intent(context, GearslipActivity::class.java)
@@ -125,6 +125,6 @@ object WirelessAuto {
                     .putExtra(EXTRA_ADDRESS, address)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
             )
-        }.onFailure { log.w("auto-connect: couldn't open Gearslip (${it.message})") }
+        }.onFailure { log.w("auto-connect: couldn't open Graphene Auto (${it.message})") }
     }
 }

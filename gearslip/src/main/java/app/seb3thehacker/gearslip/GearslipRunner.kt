@@ -48,7 +48,7 @@ class GearslipRunner(
     private val vehicleProfileFor: (ServiceDiscovery.HeadUnitInfo) -> VehicleProfile? = { null },
     /** Over Wi-Fi rather than USB: the video is sent smaller so the link keeps up. */
     private val wireless: Boolean = false,
-    /** Gearslip's icon as 32, 64 and 128 px PNGs, for the car's phone tile. See [PhoneIcons]. */
+    /** Graphene Auto's icon as 32, 64 and 128 px PNGs, for the car's phone tile. See [PhoneIcons]. */
     private val phoneIcons: () -> List<ByteArray> = { emptyList() },
 ) {
     private val log = GearslipLog.tagged("PROTO")
@@ -489,7 +489,7 @@ class GearslipRunner(
         val icons = runCatching(phoneIcons).getOrDefault(emptyList())
         var body = ByteArray(0)
         icons.take(3).forEachIndexed { i, png -> body += Protobuf.bytesField(i + 1, png) } // small, medium, large icon
-        body += Protobuf.stringField(4, "Gearslip") + // label_text
+        body += Protobuf.stringField(4, "Graphene Auto") + // label_text
             Protobuf.stringField(5, Build.MODEL) + // device_name
             Protobuf.bytesField(6, Protobuf.stringField(1, java.util.UUID.randomUUID().toString())) // session ID
         send(MSG_SERVICE_DISCOVERY_REQUEST, body, encrypted = true)
@@ -720,7 +720,7 @@ class GearslipRunner(
     /**
      * GM's own channel ("com.gm.vip"), opened in GM cars only. Issue #18: a 2021 Bolt ends every
      * session about 25 s in, and of the channels it offers, this is the one a Dacia that stays
-     * connected doesn't have. What GM sends on it is private, so Gearslip only opens it and logs
+     * connected doesn't have. What GM sends on it is private, so Graphene Auto only opens it and logs
      * what arrives, by message id and size.
      */
     private fun startVendorChannel(serviceDiscoveryResponse: ByteArray) {
@@ -731,7 +731,7 @@ class GearslipRunner(
         log.i("-> ChannelOpenRequest on GM's channel ${gm.serviceId}")
         openChannel(gm.serviceId)
         // Opening GM's channel and pinging the car didn't stop the Bolt hanging up, so a GM car
-        // also gets the two channels Gearslip had never opened: Bluetooth and Wi-Fi projection.
+        // also gets the two channels Graphene Auto had never opened: Bluetooth and Wi-Fi projection.
         // Only what arrives on them is logged, by message id and size, until one turns out to matter.
         CarBluetooth.announce("a GM car, issue #18")
         ServiceDiscovery.findWifiProjectionService(serviceDiscoveryResponse)?.let { channel ->
@@ -787,7 +787,7 @@ class GearslipRunner(
      * Every sensor type the head unit advertised, subscribed to at once - there is no screen
      * to pick and choose yet, this is meant to show everything reachable. [CarSensors] answers
      * every request with "unsupported" today per BUILDING_APPS.md's line to third-party apps, but
-     * that's a promise made to apps Gearslip hosts, not to what Gearslip itself may ask a real
+     * that's a promise made to apps Graphene Auto hosts, not to what Graphene Auto itself may ask a real
      * head unit for over this same channel.
      */
     private fun startSensorChannel(serviceDiscoveryResponse: ByteArray) {
@@ -1292,7 +1292,7 @@ class GearslipRunner(
         }
     }
 
-    /** Whether the car is showing Gearslip; false while it shows its own interface. */
+    /** Whether the car is showing Graphene Auto; false while it shows its own interface. */
     @Volatile private var videoProjected = true
     /** The encoder's SPS/PPS, resent when the car hands its screen back. */
     @Volatile private var lastCodecConfig: ByteArray? = null
@@ -1416,7 +1416,7 @@ class GearslipRunner(
     /**
      * Android Auto pings the car too, not only answers its pings; either side may. A 2021 Bolt
      * hangs up 25 seconds into every drive while its own pings get answered and GM's channel is
-     * open (issue #18), so the one thing left that a real phone sends and Gearslip didn't is this.
+     * open (issue #18), so the one thing left that a real phone sends and Graphene Auto didn't is this.
      */
     private fun startPhonePings() {
         Thread({
@@ -1425,7 +1425,7 @@ class GearslipRunner(
                     send(MSG_PING_REQUEST, Protobuf.varintField(1, System.nanoTime() / 1_000), encrypted = true)
                 }.onFailure { return@Thread }
                 pingsSent++
-                if (pingsSent == 1) log.i("-> PingRequest (Gearslip pings the car once a second)")
+                if (pingsSent == 1) log.i("-> PingRequest (Graphene Auto pings the car once a second)")
                 try {
                     Thread.sleep(PHONE_PING_MS)
                 } catch (e: InterruptedException) {
@@ -1501,7 +1501,7 @@ class GearslipRunner(
             State.DONE -> SessionStatus.disconnected()
             State.WAIT_VERSION -> SessionStatus.failed(
                 "Head unit never started talking",
-                "The connection opened but the head unit sent nothing. Check the phone is set to use Gearslip for this USB accessory.",
+                "The connection opened but the head unit sent nothing. Check the phone is set to use Graphene Auto for this USB accessory.",
             )
             State.TLS_HANDSHAKE, State.WAIT_AUTH -> SessionStatus.failed(
                 "Connection dropped during setup",

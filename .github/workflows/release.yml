@@ -22,9 +22,9 @@ jobs:
 
       - name: Write signing key and properties
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > gearslip-release.jks
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > grapheneauto-release.jks
           cat > keystore.properties <<EOF
-          storeFile=gearslip-release.jks
+          storeFile=grapheneauto-release.jks
           storePassword=${{ secrets.KEYSTORE_STORE_PASSWORD }}
           keyAlias=${{ secrets.KEYSTORE_KEY_ALIAS }}
           keyPassword=${{ secrets.KEYSTORE_KEY_PASSWORD }}
@@ -36,8 +36,8 @@ jobs:
       - name: Locate APK
         id: apk
         run: |
-          # The build moves its APKs to <root>/build/Gearslip-<variant>.apk (see renameApk).
-          apk=build/Gearslip-release.apk
+          # The build moves its APKs to <root>/build/GrapheneAuto-<variant>.apk (see renameApk).
+          apk=build/GrapheneAuto-release.apk
           test -f "$apk" || { echo "no APK at $apk"; ls -R build | head -50; exit 1; }
           echo "path=$apk" >> "$GITHUB_OUTPUT"
 

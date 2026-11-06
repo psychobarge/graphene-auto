@@ -159,7 +159,7 @@ fun LogsScreen(onBack: () -> Unit) {
 private fun shareLog(context: android.content.Context, uri: android.net.Uri) {
     val send = Intent(Intent.ACTION_SEND)
         .setType("text/plain")
-        .putExtra(Intent.EXTRA_SUBJECT, "Gearslip log")
+        .putExtra(Intent.EXTRA_SUBJECT, "Graphene Auto log")
         .putExtra(Intent.EXTRA_STREAM, uri)
         .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     context.startActivity(Intent.createChooser(send, "Share log"))
@@ -184,7 +184,7 @@ private fun PastLogsDialog(onDismiss: () -> Unit) {
             val list = logs
             when {
                 list == null -> Text("Loading…")
-                list.isEmpty() -> Text("No earlier logs yet. Each time Gearslip starts, it begins a new one.")
+                list.isEmpty() -> Text("No earlier logs yet. Each time Graphene Auto starts, it begins a new one.")
                 else -> LazyColumn {
                     itemsIndexed(list) { _, log ->
                         androidx.compose.foundation.layout.Column(

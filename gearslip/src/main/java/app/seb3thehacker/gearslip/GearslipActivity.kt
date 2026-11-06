@@ -30,7 +30,6 @@ import app.seb3thehacker.gearslip.car.CarEnvironment
 import app.seb3thehacker.gearslip.car.CarSettings
 import app.seb3thehacker.gearslip.car.CarUi
 import app.seb3thehacker.gearslip.car.Prefetch
-import app.seb3thehacker.gearslip.stats.UsageStats
 import app.seb3thehacker.gearslip.ui.GearslipApp
 import app.seb3thehacker.gearslip.ui.GearslipTheme
 import java.io.FileInputStream
@@ -119,7 +118,7 @@ class GearslipActivity : ComponentActivity(), Projection {
     /** Android's one-time "Allow" for a car to connect by itself; see [WirelessAuto]. */
     private var approvingCar: String? = null
 
-    /** Whether the phone showed Gearslip when the car's intent arrived; see [stepAside]. */
+    /** Whether the phone showed Graphene Auto when the car's intent arrived; see [stepAside]. */
     private var shownOnPhone = false
     private var stepAsideOnVideo = false
     private val carApproval = registerForActivityResult(
@@ -131,7 +130,7 @@ class GearslipActivity : ComponentActivity(), Projection {
         else app.seb3thehacker.gearslip.wireless.WirelessAuto.declined(this, address)
     }
 
-    /** Setting Gearslip as the phone's caller ID and spam app - what lets it decline a ringing call. */
+    /** Setting Graphene Auto as the phone's caller ID and spam app - what lets it decline a ringing call. */
     private val callScreeningRole = registerForActivityResult(StartActivityForResult()) { result ->
         if (result.resultCode != RESULT_OK) GearslipLog.w("calls: call screening role declined")
     }
@@ -147,7 +146,7 @@ class GearslipActivity : ComponentActivity(), Projection {
 
         GearslipLog.init(this)
         GearslipLog.installCrashHandler()
-        GearslipLog.i("Gearslip ready")
+        GearslipLog.i("Graphene Auto ready")
         app.seb3thehacker.gearslip.wireless.WirelessLink.onConnected = { socket ->
             runOnUiThread { startWireless(socket) }
         }
@@ -219,7 +218,6 @@ class GearslipActivity : ComponentActivity(), Projection {
     override fun onStart() {
         super.onStart()
         Prefetch.warm(this)
-        UsageStats.onAppOpened(this)
         app.seb3thehacker.gearslip.update.UpdateChecker.onAppOpened(this)
         // Back from the app's settings with the microphone turned on: try car audio again.
         if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) == android.content.pm.PackageManager.PERMISSION_GRANTED) {
@@ -257,7 +255,7 @@ class GearslipActivity : ComponentActivity(), Projection {
         GearslipLog.flush()
     }
 
-    /** Launches the system dialog that offers Gearslip the call-screening role, if it isn't held already. */
+    /** Launches the system dialog that offers Graphene Auto the call-screening role, if it isn't held already. */
     private fun requestCallScreeningRole() {
         val roleManager = getSystemService(android.app.role.RoleManager::class.java)
         if (roleManager == null || !roleManager.isRoleAvailable(android.app.role.RoleManager.ROLE_CALL_SCREENING)) {
@@ -322,7 +320,7 @@ class GearslipActivity : ComponentActivity(), Projection {
         val point = PhoneMirror.mapToPhone(this, x, y)
         if (point == null) {
             // The letterbox bars belong to no window, which makes them a safe way back: a tap
-            // on the padding leaves the mirror and returns the car to Gearslip's own UI.
+            // on the padding leaves the mirror and returns the car to Graphene Auto's own UI.
             if (action == MotionEvent.ACTION_UP) PhoneMirror.requestStop()
             return
         }
@@ -346,7 +344,7 @@ class GearslipActivity : ComponentActivity(), Projection {
         // Switched off in Settings: the system shouldn't route the car here at all, but if it
         // does, leave the accessory alone.
         if (!AppSettings.gearslipEnabled(this)) {
-            GearslipLog.i("accessory attached, but Gearslip is switched off - not connecting")
+            GearslipLog.i("accessory attached, but Graphene Auto is switched off - not connecting")
             return
         }
         val accessory = intent.getParcelableExtra(UsbManager.EXTRA_ACCESSORY, UsbAccessory::class.java)
@@ -364,7 +362,7 @@ class GearslipActivity : ComponentActivity(), Projection {
     private fun connectToNearbyCar(address: String?) {
         if (address == null) return
         if (!AppSettings.gearslipEnabled(this)) {
-            GearslipLog.i("auto-connect: Gearslip is switched off - not connecting")
+            GearslipLog.i("auto-connect: Graphene Auto is switched off - not connecting")
             return
         }
         if (descriptor != null) {
@@ -372,7 +370,7 @@ class GearslipActivity : ComponentActivity(), Projection {
             return
         }
         // Only a session that's still running counts. One the car ended (a ByeBye, a dropped
-        // network) leaves its runner behind, since only Gearslip ending a session clears it, and
+        // network) leaves its runner behind, since only Graphene Auto ending a session clears it, and
         // that used to make every later auto-connect quietly do nothing.
         if (worker?.isAlive == true || app.seb3thehacker.gearslip.wireless.WirelessLink.busy) {
             GearslipLog.i("auto-connect: a session is already running")
@@ -407,7 +405,7 @@ class GearslipActivity : ComponentActivity(), Projection {
         val pfd = manager.openAccessory(accessory)
         if (pfd == null) {
             GearslipLog.e("openAccessory returned null - the session was claimed by someone else")
-            SessionStatus.failed("Accessory unavailable", "Another app claimed the USB accessory before Gearslip could open it.")
+            SessionStatus.failed("Accessory unavailable", "Another app claimed the USB accessory before Graphene Auto could open it.")
             return
         }
         descriptor = pfd
@@ -429,7 +427,7 @@ class GearslipActivity : ComponentActivity(), Projection {
     private fun startWireless(socket: java.net.Socket) {
         closeAccessory(stopWireless = false)
         if (!AppSettings.gearslipEnabled(this)) {
-            GearslipLog.i("wireless: Gearslip is switched off - not connecting")
+            GearslipLog.i("wireless: Graphene Auto is switched off - not connecting")
             runCatching { socket.close() }
             return
         }
@@ -489,15 +487,15 @@ class GearslipActivity : ComponentActivity(), Projection {
     // --- Projection ---------------------------------------------------------------------
 
     /**
-     * The car opens Gearslip on the phone, since Android hands a USB car only to an activity and
+     * The car opens Graphene Auto on the phone, since Android hands a USB car only to an activity and
      * auto-connect has to start one too. Once the car's screen is up, go back to whatever the
      * phone showed, as Home would; the session carries on as it does with the phone locked. A
-     * question for the driver keeps Gearslip in front, and so does the phone already showing it.
+     * question for the driver keeps Graphene Auto in front, and so does the phone already showing it.
      */
     private fun stepAside() {
         stepAsideOnVideo = false
         if (offerBluetooth.value || micBlockedNotice.value || approvingCar != null) return
-        GearslipLog.i("the car's screen is up - moving Gearslip off the phone's screen")
+        GearslipLog.i("the car's screen is up - moving Graphene Auto off the phone's screen")
         moveTaskToBack(true)
     }
 

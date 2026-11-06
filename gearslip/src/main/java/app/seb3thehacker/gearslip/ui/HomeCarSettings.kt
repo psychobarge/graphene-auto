@@ -426,7 +426,7 @@ private fun WebPageRow() {
     }
 }
 
-/** How music reaches the car: by Bluetooth as usual, or through Gearslip over USB. Same choice as setup. */
+/** How music reaches the car: by Bluetooth as usual, or through Graphene Auto over USB. Same choice as setup. */
 @Composable
 internal fun CarAudioSection() {
     val usb by CarSettings.pipeAudio.collectAsState()

@@ -93,7 +93,6 @@ import app.seb3thehacker.gearslip.call.CarCalls
 import app.seb3thehacker.gearslip.car.Prefetch
 import app.seb3thehacker.gearslip.host.AndroidAuto
 import app.seb3thehacker.gearslip.notify.GearslipNotificationListener
-import app.seb3thehacker.gearslip.stats.UsageStats
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -135,7 +134,7 @@ private fun glyph(icon: ImageVector): @Composable (Color) -> Unit = { tint ->
 private fun granted(context: Context, permissions: Array<String>): Boolean =
     permissions.all { context.checkSelfPermission(it) == PackageManager.PERMISSION_GRANTED }
 
-/** Whether Gearslip already holds the hidden `PROJECT_MEDIA` app-op an adb command grants -
+/** Whether Graphene Auto already holds the hidden `PROJECT_MEDIA` app-op an adb command grants -
  * checked the same way the platform checks it, since there is no public permission for it. */
 private fun hasProjectMediaOp(context: Context): Boolean {
     val ops = context.getSystemService(AppOpsManager::class.java) ?: return false
@@ -150,28 +149,12 @@ private fun hasCallScreeningRole(context: Context): Boolean {
     return runCatching { roleManager.isRoleHeld(RoleManager.ROLE_CALL_SCREENING) }.getOrDefault(false)
 }
 
-/** Whether the driver has already granted Gearslip's [GearslipNotificationListener] access. */
+/** Whether the driver has already granted Graphene Auto's [GearslipNotificationListener] access. */
 private fun hasNotificationAccess(context: Context): Boolean {
     val manager = context.getSystemService(NotificationManager::class.java) ?: return false
     val component = ComponentName(context, GearslipNotificationListener::class.java)
     return runCatching { manager.isNotificationListenerAccessGranted(component) }.getOrDefault(false)
 }
-
-/**
- * The usage notes question: the setup guide's last page, and on its own the one screen people
- * who set up before the notes existed see once. Leaving it without turning them on is a no.
- */
-private fun usageNotesPage(context: Context) = GuidePage(
-    title = context.getString(R.string.guide_usage_title),
-    explanation = usageStatsIntro(context),
-    icon = { HeartIcon(it) },
-    content = {
-        UsageStatsChoices()
-        DisposableEffect(Unit) {
-            onDispose { if (!UsageStats.asked(context)) UsageStats.set(context, false) }
-        }
-    },
-)
 
 private fun pages(context: Context, onRequestCallScreening: () -> Unit): List<GuidePage> = buildList {
     // --- Safety: always first, and never skipped by an already-granted check ---------
@@ -376,7 +359,6 @@ private fun pages(context: Context, onRequestCallScreening: () -> Unit): List<Gu
             content = { ThemePicker(it.c, it.cq, it.cqSp, key = "guide-buttons") },
         ),
     )
-    add(usageNotesPage(context))
 }
 
 /**
@@ -453,9 +435,9 @@ private fun AudioCard(title: String, tag: String?, body: String, selected: Boole
  * driver takes on trust, with "Skip" sitting right next to it.
  */
 @Composable
-fun SetupGuideScreen(onRequestCallScreening: () -> Unit, onDone: () -> Unit, onlyUsageNotes: Boolean = false) {
+fun SetupGuideScreen(onRequestCallScreening: () -> Unit, onDone: () -> Unit) {
     val context = LocalContext.current
-    val allPages = remember { if (onlyUsageNotes) listOf(usageNotesPage(context)) else pages(context, onRequestCallScreening) }
+    val allPages = remember { pages(context, onRequestCallScreening) }
     // The USB-only pages all come after the car audio page, so dropping them never moves the
     // page the driver is on.
     val usbAudio by CarSettings.pipeAudio.collectAsState()

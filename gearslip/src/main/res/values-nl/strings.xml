@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="touch_relay_description">Laat Gearslip aanrakingen op het autoscherm doorgeven aan de telefoon tijdens schermdelen. Gearslip leest de inhoud van het scherm niet.</string>
+    <string name="touch_relay_description">Laat Graphene Auto aanrakingen op het autoscherm doorgeven aan de telefoon tijdens schermdelen. Graphene Auto leest de inhoud van het scherm niet.</string>
 
     <!-- Setup guide -->
     <string name="guide_usage_title">Help andere bestuurders.</string>
     <string name="guide_safety_title">Rijd veilig.</string>
-    <string name="guide_safety_body">Gearslip is niet officieel. Geen autofabrikant heeft het gemaakt of gecontroleerd, en het kan zonder waarschuwing uitvallen. Stel het in voordat je vertrekt en houd daarna je ogen op de weg.</string>
+    <string name="guide_safety_body">Graphene Auto is niet officieel. Geen autofabrikant heeft het gemaakt of gecontroleerd, en het kan zonder waarschuwing uitvallen. Stel het in voordat je vertrekt en houd daarna je ogen op de weg.</string>
     <string name="guide_mic_title">Microfoon.</string>
-    <string name="guide_mic_body">Gearslip gebruikt de microfoon om je muziek naar de auto te sturen en om je te horen als je iets vraagt of op een bericht antwoordt. Wat je zegt blijft op de telefoon.</string>
+    <string name="guide_mic_body">Graphene Auto gebruikt de microfoon om je muziek naar de auto te sturen en om je te horen als je iets vraagt of op een bericht antwoordt. Wat je zegt blijft op de telefoon.</string>
     <string name="guide_location_title">Locatie.</string>
     <string name="guide_location_body">De kaart in de auto en zoeken in de buurt hebben dit nodig. Zonder locatie toont het dashboard geen kaart.</string>
     <string name="guide_calendar_title">Agenda.</string>
-    <string name="guide_calendar_body">Het autoscherm toont je volgende afspraak. Gearslip leest je agenda alleen.</string>
+    <string name="guide_calendar_body">Het autoscherm toont je volgende afspraak. Graphene Auto leest je agenda alleen.</string>
     <string name="guide_calls_title">Gesprekken en contacten.</string>
-    <string name="guide_calls_body">De auto toont wie er belt, en de Telefoon-app in de auto kan een nummer kiezen of een van je contacten bellen. Gearslip leest ze alleen.</string>
+    <string name="guide_calls_body">De auto toont wie er belt, en de Telefoon-app in de auto kan een nummer kiezen of een van je contacten bellen. Graphene Auto leest ze alleen.</string>
     <string name="guide_bluetooth_title">Bluetooth.</string>
-    <string name="guide_bluetooth_body">De eerste keer dat je de kabel insteekt, biedt Gearslip aan je telefoon met de auto te koppelen, zodat gesprekken via de luidsprekers klinken.</string>
+    <string name="guide_bluetooth_body">De eerste keer dat je de kabel insteekt, biedt Graphene Auto aan je telefoon met de auto te koppelen, zodat gesprekken via de luidsprekers klinken.</string>
     <string name="guide_notifications_title">Meldingen.</string>
-    <string name="guide_notifications_body">Zolang Gearslip verbonden is, toont het een melding met een knop om te stoppen. Zonder deze toestemming verbergt Android die.</string>
+    <string name="guide_notifications_body">Zolang Graphene Auto verbonden is, toont het een melding met een knop om te stoppen. Zonder deze toestemming verbergt Android die.</string>
     <string name="guide_messages_title">Berichten.</string>
-    <string name="guide_messages_body">De auto toont je berichten, leest ze voor en laat je antwoorden. Zet Gearslip aan in de lijst die nu opent.</string>
+    <string name="guide_messages_body">De auto toont je berichten, leest ze voor en laat je antwoorden. Zet Graphene Auto aan in de lijst die nu opent.</string>
     <string name="guide_android_auto_title">Zet Android Auto uit.</string>
-    <string name="guide_android_auto_body">Android Auto is nog geïnstalleerd en vecht met Gearslip om de USB-verbinding van de auto. Schakel het uit of verwijder het op het scherm dat nu opent.</string>
-    <string name="guide_default_title">Kies Gearslip.</string>
-    <string name="guide_default_body">Vraagt je telefoon welke app moet openen als je hem op de auto aansluit, kies dan Gearslip en tik op Altijd.</string>
+    <string name="guide_android_auto_body">Android Auto is nog geïnstalleerd en vecht met Graphene Auto om de USB-verbinding van de auto. Schakel het uit of verwijder het op het scherm dat nu opent.</string>
+    <string name="guide_default_title">Kies Graphene Auto.</string>
+    <string name="guide_default_body">Vraagt je telefoon welke app moet openen als je hem op de auto aansluit, kies dan Graphene Auto en tik op Altijd.</string>
     <string name="guide_audio_title">Autogeluid.</string>
     <string name="guide_audio_body">Kies hoe de muziek de auto bereikt. Gesprekken gaan hoe dan ook via Bluetooth.</string>
     <string name="guide_voice_title">Spraak.</string>
     <string name="guide_voice_body">Vraag met je stem om een route, muziek of een gesprek. Je telefoon zet spraak zelf om in tekst, en niets wat je zegt verlaat de telefoon. Er is %1$d MB nodig, één keer gedownload. Gebruik wifi als het kan.</string>
     <string name="guide_audio_prompt_title">Geen audiovraag.</string>
-    <string name="guide_audio_prompt_body">Voer dit uit vanaf een computer met USB-foutopsporing aan, en Android vertrouwt Gearslip voorgoed met je geluid. Anders tik je elke rit één keer op Starten.</string>
+    <string name="guide_audio_prompt_body">Voer dit uit vanaf een computer met USB-foutopsporing aan, en Android vertrouwt Graphene Auto voorgoed met je geluid. Anders tik je elke rit één keer op Starten.</string>
     <string name="guide_readable_title">Leesbare meldingen.</string>
-    <string name="guide_readable_body">Terwijl het geluid naar de auto gaat, verbergt Android de tekst van meldingen, alsof je je scherm deelt. Hiermee kan Gearslip ze tijdens de rit tonen en daarna weer verbergen.</string>
+    <string name="guide_readable_body">Terwijl het geluid naar de auto gaat, verbergt Android de tekst van meldingen, alsof je je scherm deelt. Hiermee kan Graphene Auto ze tijdens de rit tonen en daarna weer verbergen.</string>
     <string name="guide_answer_title">Gesprekken aannemen.</string>
-    <string name="guide_answer_body">Maak Gearslip je app voor nummerweergave, dan kan de auto gesprekken aannemen en weigeren. Zonder dit gaan gesprekken nog steeds over, maar kan alleen de telefoon ze aannemen.</string>
+    <string name="guide_answer_body">Maak Graphene Auto je app voor nummerweergave, dan kan de auto gesprekken aannemen en weigeren. Zonder dit gaan gesprekken nog steeds over, maar kan alleen de telefoon ze aannemen.</string>
     <string name="guide_apps_title">Goed gezelschap.</string>
     <string name="guide_buttons_title">Jouw knoppen.</string>
     <string name="guide_buttons_body">Kies hoe de knoppen in de auto eruitzien. Je kunt dit altijd wijzigen in de instellingen van de auto.</string>
@@ -47,8 +47,8 @@
     <string name="guide_audio_bluetooth">Bluetooth</string>
     <string name="guide_recommended">Aanbevolen</string>
     <string name="guide_audio_bluetooth_body">Geen vraag bij elke rit, en de stem van je kaarten-app komt in de auto.</string>
-    <string name="guide_audio_usb">Via Gearslip</string>
-    <string name="guide_audio_usb_body">Helderder geluid zonder vertraging. Bij elke rit vraagt Android je om je scherm te delen, zodat Gearslip het geluid kan sturen.</string>
+    <string name="guide_audio_usb">Via Graphene Auto</string>
+    <string name="guide_audio_usb_body">Helderder geluid zonder vertraging. Bij elke rit vraagt Android je om je scherm te delen, zodat Graphene Auto het geluid kan sturen.</string>
     <string name="guide_optional">OPTIONEEL</string>
     <string name="guide_already_allowed">Al toegestaan.</string>
     <string name="guide_scroll_more">Scroll voor meer  ↓</string>
@@ -60,7 +60,7 @@
     <string name="guide_back">Terug</string>
 
     <!-- Usage notes -->
-    <string name="usage_intro">Zet dit aan, en Gearslip stuurt een korte notitie als je het opent en na elke rit. &lt;b&gt;De notitie bevat geen naam, account of locatie. Een willekeurig getal telt je telefoon één keer, en de server bewaart geen IP-adres.&lt;/b&gt; De notities laten zien welke auto\'s werken en waar de andere vastlopen.</string>
+    <string name="usage_intro">Zet dit aan, en Graphene Auto stuurt een korte notitie als je het opent en na elke rit. &lt;b&gt;De notitie bevat geen naam, account of locatie. Een willekeurig getal telt je telefoon één keer, en de server bewaart geen IP-adres.&lt;/b&gt; De notities laten zien welke auto\'s werken en waar de andere vastlopen.</string>
     <string name="usage_send">Gebruiksnotities versturen</string>
     <string name="usage_also_share">Ook delen</string>
     <string name="usage_share_android">Android-versie en systeem</string>
@@ -74,14 +74,14 @@
     <string name="usage_example">Voorbeeld, niet verstuurd: één rit voegt dit toe aan “sessions”</string>
     <string name="usage_no_server">Deze build heeft geen statistiekenserver en verstuurt dus niets</string>
     <string name="usage_debug_build">Debugbuild: notities worden apart gehouden en nooit meegeteld</string>
-    <string name="worked_title">Gearslip werkte met je %1$s</string>
-    <string name="worked_title_unknown">Gearslip werkte met je auto</string>
+    <string name="worked_title">Graphene Auto werkte met je %1$s</string>
+    <string name="worked_title_unknown">Graphene Auto werkte met je auto</string>
     <string name="worked_body">Delen, zodat de volgende bestuurder weet dat het werkt? Geen naam, account of locatie.</string>
     <string name="worked_not_now">Niet nu</string>
     <string name="worked_share">Delen</string>
 
     <!-- Recommended apps -->
-    <string name="recommended_intro">Deze gratis apps draaien op het autoscherm van Gearslip. Elke knop opent de pagina van de app op GitHub.</string>
+    <string name="recommended_intro">Deze gratis apps draaien op het autoscherm van Graphene Auto. Elke knop opent de pagina van de app op GitHub.</string>
     <string name="recommended_title">Aanbevolen apps</string>
     <string name="back">Terug</string>
     <string name="recommended_installed">Geïnstalleerd</string>
@@ -99,16 +99,16 @@
     <string name="settings_title">Instellingen</string>
     <string name="settings_whats_new">Wat is er nieuw</string>
     <string name="settings_whats_new_sub">Lees de release notes van %1$s op GitHub</string>
-    <string name="settings_support">Steun Gearslip</string>
-    <string name="settings_support_footer">Gearslip is gratis, zonder advertenties en zonder tracking. Jouw steun houdt het draaiende.</string>
+    <string name="settings_support">Steun Graphene Auto</string>
+    <string name="settings_support_footer">Graphene Auto is gratis, zonder advertenties en zonder tracking. Jouw steun houdt het draaiende.</string>
     <string name="settings_usage_notes">Gebruiksnotities</string>
     <string name="settings_updates">Updates</string>
     <string name="settings_about">Over</string>
     <string name="settings_replay">Installatiegids opnieuw doorlopen</string>
     <string name="settings_replay_sub">De stappen van de eerste start nog eens doen</string>
     <string name="settings_connection">Verbinding</string>
-    <string name="settings_use_in_car">Gearslip in de auto gebruiken</string>
-    <string name="settings_use_in_car_on">Gearslip reageert als je de telefoon op een auto aansluit</string>
+    <string name="settings_use_in_car">Graphene Auto in de auto gebruiken</string>
+    <string name="settings_use_in_car_on">Graphene Auto reageert als je de telefoon op een auto aansluit</string>
     <string name="settings_use_in_car_off">Uit: Android Auto kan de verbinding overnemen</string>
     <string name="settings_apps">Apps</string>
     <string name="settings_certificate">Certificaat</string>
@@ -172,7 +172,7 @@
     <string name="choice_open_home">Start</string>
     <string name="summary_player_left">Speler links</string>
     <string name="summary_player_right">Speler rechts</string>
-    <string name="summary_usb_audio">Geluid via Gearslip</string>
+    <string name="summary_usb_audio">Geluid via Graphene Auto</string>
     <string name="summary_bluetooth_audio">Bluetooth-geluid</string>
     <string name="summary_directions_on">Gesproken aanwijzingen aan</string>
     <string name="summary_directions_off">Gesproken aanwijzingen uit</string>
@@ -217,7 +217,7 @@
     <string name="car_audio">Autogeluid</string>
     <string name="car_audio_bt">Bluetooth (aanbevolen)</string>
     <string name="car_audio_bt_sub">Geen vraag bij elke rit, en de stem van je kaarten-app komt in de auto</string>
-    <string name="car_audio_usb_sub">Helderder geluid zonder vertraging. Bij elke rit vraagt Android je om je scherm te delen, zodat Gearslip het geluid kan sturen</string>
+    <string name="car_audio_usb_sub">Helderder geluid zonder vertraging. Bij elke rit vraagt Android je om je scherm te delen, zodat Graphene Auto het geluid kan sturen</string>
     <string name="car_audio_usb_footer">Voer de opdracht uit Hulp één keer uit, en Android vraagt het niet meer.</string>
     <string name="car_audio_bt_footer">Gesprekken gaan hoe dan ook via Bluetooth.</string>
 
@@ -227,7 +227,7 @@
     <string name="screen_preview_size">Grootte van de voorvertoning</string>
     <string name="screen_preview_note">De grootte waarop de autovoorvertoning tekent, zoals 1920x720.</string>
     <string name="screen_car_screen">Autoscherm</string>
-    <string name="screen_footer">Gearslip gebruikt de grootte die de auto opgeeft, tenzij je er zelf een instelt.</string>
+    <string name="screen_footer">Graphene Auto gebruikt de grootte die de auto opgeeft, tenzij je er zelf een instelt.</string>
     <string name="screen_size">Schermgrootte</string>
     <string name="screen_from_car">Van de auto</string>
     <string name="screen_crop">Randen bijsnijden</string>
@@ -238,7 +238,7 @@
     <string name="screen_last_car">Laatste auto</string>
     <string name="screen_last_car_sub">De grootte van de laatste auto waarmee je verbonden was</string>
     <string name="screen_this_screen">Dit scherm</string>
-    <string name="screen_this_screen_sub">Vult het scherm van dit apparaat, voor een headunit die zelf Gearslip draait</string>
+    <string name="screen_this_screen_sub">Vult het scherm van dit apparaat, voor een headunit die zelf Graphene Auto draait</string>
     <string name="screen_custom">Aangepast</string>
     <string name="screen_enter_size">Grootte invoeren</string>
     <string name="screen_change_custom">Aangepaste grootte wijzigen</string>
@@ -255,25 +255,25 @@
     <string name="help_full_list">Bekijk de volledige lijst</string>
     <string name="help_first_drive">Voor je eerste rit</string>
     <string name="help_in_car">In de auto</string>
-    <string name="help_usb_audio">Geluid via Gearslip</string>
+    <string name="help_usb_audio">Geluid via Graphene Auto</string>
 
     <string name="help_aa_off">Zet Android Auto uit.</string>
-    <string name="help_aa_off_detail">Schakel de Android Auto-app uit of verwijder hem, zodat de auto met Gearslip praat.</string>
+    <string name="help_aa_off_detail">Schakel de Android Auto-app uit of verwijder hem, zodat de auto met Graphene Auto praat.</string>
     <string name="help_cert">Laad een certificaat.</string>
     <string name="help_cert_detail">Download in Instellingen het aasdk-certificaat, dat de meeste auto\'s accepteren. Weigert je auto het, importeer dan je eigen certificaat.</string>
     <string name="help_mic">Sta de microfoon toe.</string>
-    <string name="help_mic_detail">Zonder microfoon laat Android geen app muziek naar de auto sturen. Gearslip luistert alleen als je op de microfoon tikt of op de spraakknop op het stuur drukt.</string>
+    <string name="help_mic_detail">Zonder microfoon laat Android geen app muziek naar de auto sturen. Graphene Auto luistert alleen als je op de microfoon tikt of op de spraakknop op het stuur drukt.</string>
     <string name="help_plug_in">Sluit aan, of verbind draadloos.</string>
-    <string name="help_plug_in_detail">Gearslip opent vanzelf als de auto verbindt. Koppel voor draadloos eerst de telefoon met de auto en tik dan op Draadloos verbinden op Start.</string>
+    <string name="help_plug_in_detail">Graphene Auto opent vanzelf als de auto verbindt. Koppel voor draadloos eerst de telefoon met de auto en tik dan op Draadloos verbinden op Start.</string>
     <string name="help_pair">Koppel via Bluetooth voor gesprekken.</string>
-    <string name="help_pair_detail">Gesprekken klinken via de auto zodra je telefoon en de auto gekoppeld zijn. Gearslip biedt de koppeling aan de eerste keer dat je aansluit.</string>
+    <string name="help_pair_detail">Gesprekken klinken via de auto zodra je telefoon en de auto gekoppeld zijn. Graphene Auto biedt de koppeling aan de eerste keer dat je aansluit.</string>
     <string name="help_answer">Neem gesprekken aan op het autoscherm.</string>
-    <string name="help_answer_detail">Stel Gearslip in als je app voor nummerweergave en spam. Zonder dit gaan gesprekken nog steeds over, maar kan alleen de telefoon ze aannemen.</string>
+    <string name="help_answer_detail">Stel Graphene Auto in als je app voor nummerweergave en spam. Zonder dit gaan gesprekken nog steeds over, maar kan alleen de telefoon ze aannemen.</string>
     <string name="help_prompt">Stop de audiovraag bij elke rit.</string>
     <string name="help_prompt_detail">Sluit de telefoon aan op een computer met USB-foutopsporing aan en voer dit één keer uit. Sla je het over, dan tik je op Starten bij elk vertrek.</string>
     <string name="help_readable">Houd meldingen leesbaar.</string>
-    <string name="help_readable_detail">Android verbergt de tekst van meldingen terwijl het geluid deelt. Voer dit ook uit, en Gearslip heft dat alleen op terwijl de muziek naar de auto gaat.</string>
-    <string name="help_which_cars_body">De meeste auto\'s accepteren het aasdk-certificaat. Vanaf ongeveer 2020 kregen sommige auto\'s nieuwere beveiligingscontroles die het weigeren, en in die auto\'s heeft Gearslip een eigen certificaat van je nodig.</string>
+    <string name="help_readable_detail">Android verbergt de tekst van meldingen terwijl het geluid deelt. Voer dit ook uit, en Graphene Auto heft dat alleen op terwijl de muziek naar de auto gaat.</string>
+    <string name="help_which_cars_body">De meeste auto\'s accepteren het aasdk-certificaat. Vanaf ongeveer 2020 kregen sommige auto\'s nieuwere beveiligingscontroles die het weigeren, en in die auto\'s heeft Graphene Auto een eigen certificaat van je nodig.</string>
 
     <!-- Updates -->
     <string name="update_downloaded_ask">Gedownload. Android vraagt het voordat het installeert.</string>
@@ -288,11 +288,11 @@
     <string name="update_check_auto">Automatisch controleren</string>
     <string name="update_once_a_day">Eén keer per dag</string>
 
-    <string name="update_unplug_first">Koppel los van de auto om te installeren. Installeren sluit Gearslip.</string>
-    <string name="update_card_title">Gearslip %1$s is uit</string>
+    <string name="update_unplug_first">Koppel los van de auto om te installeren. Installeren sluit Graphene Auto.</string>
+    <string name="update_card_title">Graphene Auto %1$s is uit</string>
     <string name="update_downloading">Downloaden… %1$d%%</string>
     <string name="update_debug_manual">Debugbuilds controleren alleen als je op Nu controleren tikt</string>
-    <string name="update_checks_daily">Gearslip controleert één keer per dag</string>
+    <string name="update_checks_daily">Graphene Auto controleert één keer per dag</string>
     <string name="update_version_out">Versie %1$s is uit</string>
     <string name="update_version_ready">Versie %1$s is klaar om te installeren</string>
     <string name="update_dialog_status">Versie %1$s. %2$s.</string>
@@ -309,11 +309,11 @@
     <string name="about_copy_address">Adres kopiëren</string>
     <string name="close">Sluiten</string>
     <string name="about_matrix">Doe mee met de chat op Matrix</string>
-    <string name="about_matrix_sub">Praat met andere bestuurders over auto\'s, apps en Gearslip</string>
-    <string name="about_translate">Help Gearslip vertalen</string>
+    <string name="about_matrix_sub">Praat met andere bestuurders over auto\'s, apps en Graphene Auto</string>
+    <string name="about_translate">Help Graphene Auto vertalen</string>
     <string name="about_translate_sub">Verbeter of voeg je taal toe op Weblate. Sommige vertalingen begonnen als machinevertaling.</string>
     <string name="about_source">Broncode</string>
-    <string name="about_source_sub">Lees of wijzig de code van Gearslip onder de AGPL</string>
+    <string name="about_source_sub">Lees of wijzig de code van Graphene Auto onder de AGPL</string>
     <string name="about_voice_credits">Spraakcredits</string>
 
     <string name="about_no_wallet">Geen Monero-wallet-app gevonden. Kopieer het adres in plaats daarvan.</string>
@@ -330,11 +330,11 @@
     <string name="certsetup_skip">Instellen van de autoverbinding overslaan</string>
 
     <string name="certsetup_loaded">Auto\'s accepteren alleen door Google uitgegeven certificaten, en je hebt er een geladen.</string>
-    <string name="certsetup_choose">Auto\'s accepteren alleen door Google uitgegeven certificaten. Gearslip heeft er geen ingebouwd, dus kies waar het jouwe vandaan komt.</string>
+    <string name="certsetup_choose">Auto\'s accepteren alleen door Google uitgegeven certificaten. Graphene Auto heeft er geen ingebouwd, dus kies waar het jouwe vandaan komt.</string>
     <string name="certsetup_aasdk_sub">Het opensourceproject aasdk publiceert dit certificaat op github.com/opencardev/aasdk. De meeste auto\'s accepteren het. Sommige vanaf ongeveer 2020 weigeren het, en dan moet je je eigen certificaat importeren.</string>
 
     <!-- Storage -->
-    <string name="storage_title">Opslag van Gearslip</string>
+    <string name="storage_title">Opslag van Graphene Auto</string>
     <string name="storage_measuring">Meten…</string>
     <string name="storage_lyrics">Songteksten</string>
     <string name="storage_clear">Wissen</string>
@@ -342,17 +342,17 @@
     <string name="storage_remove">Verwijderen</string>
     <string name="storage_logs">Oude logs</string>
     <string name="storage_other">Andere tijdelijke bestanden</string>
-    <string name="storage_delete_all">Alle gegevens van Gearslip verwijderen</string>
+    <string name="storage_delete_all">Alle gegevens van Graphene Auto verwijderen</string>
 
-    <string name="storage_total">De gegevens van Gearslip nemen %1$s van de opslag van de telefoon in.</string>
+    <string name="storage_total">De gegevens van Graphene Auto nemen %1$s van de opslag van de telefoon in.</string>
     <plurals name="storage_lyrics_detail">
         <item quantity="one">%1$d nummer · %2$s. Gewiste songteksten worden opnieuw gedownload als je ze opent.</item>
         <item quantity="other">%1$d nummers · %2$s. Gewiste songteksten worden opnieuw gedownload als je ze opent.</item>
     </plurals>
     <string name="storage_voice_detail">%1$s. Spraakopdrachten hebben ze nodig; download ze opnieuw in Instellingen.</string>
     <string name="storage_logs_detail">%1$s. Logs van eerdere starts; de log van deze start blijft.</string>
-    <string name="storage_other_detail">%1$s. Gedownloade updates en andere bestanden die Gearslip opnieuw kan maken.</string>
-    <string name="storage_delete_armed">Tik nogmaals op Verwijderen om instellingen, certificaten, spraakmodellen en logs te wissen. Gearslip sluit en begint de volgende keer opnieuw bij het instellen.</string>
+    <string name="storage_other_detail">%1$s. Gedownloade updates en andere bestanden die Graphene Auto opnieuw kan maken.</string>
+    <string name="storage_delete_armed">Tik nogmaals op Verwijderen om instellingen, certificaten, spraakmodellen en logs te wissen. Graphene Auto sluit en begint de volgende keer opnieuw bij het instellen.</string>
     <string name="storage_delete_sub">Instellingen, certificaten, spraakmodellen, songteksten en logs.</string>
     <string name="storage_delete">Verwijderen</string>
     <string name="storage_delete_ellipsis">Verwijderen…</string>
@@ -363,10 +363,10 @@
     <string name="donate_bmac">Trakteer me op koffie</string>
     <string name="donate_card">Eén keer geven per kaart</string>
 
-    <string name="donate_body">Gearslip is gratis, zonder advertenties en zonder tracking. Brengt het je op weg, dan houdt jouw steun het draaiende.</string>
+    <string name="donate_body">Graphene Auto is gratis, zonder advertenties en zonder tracking. Brengt het je op weg, dan houdt jouw steun het draaiende.</string>
 
     <!-- Wireless -->
-    <string name="wireless_needs_permission">Gearslip heeft hiervoor toegang tot Bluetooth en wifi in de buurt nodig.</string>
+    <string name="wireless_needs_permission">Graphene Auto heeft hiervoor toegang tot Bluetooth en wifi in de buurt nodig.</string>
     <string name="wireless_enable_permission">Toestemming Apparaten in de buurt aanzetten</string>
     <string name="wireless_connect">Draadloos verbinden</string>
     <string name="wireless_which_car">Welke auto?</string>
@@ -407,9 +407,9 @@
     <string name="audio_mic_title">Autogeluid heeft de microfoontoestemming nodig</string>
     <string name="audio_open_settings">App-instellingen openen</string>
 
-    <string name="audio_bt_body">Android behandelt de muziek die Gearslip naar de auto stuurt als schermdelen, en vraagt het dus bij elke rit, via kabel of draadloos. Via Bluetooth vraagt het nooit. Je kunt dit later wijzigen in Instellingen.</string>
-    <string name="audio_keep_usb">Of laat het geluid via Gearslip gaan en stop de vraag voorgoed: sluit de telefoon aan op een computer met USB-foutopsporing aan en voer dit één keer uit.</string>
-    <string name="audio_mic_body">Android laat een app alleen het geluid van andere apps naar de auto sturen als die app microfoontoestemming heeft. Die staat uit voor Gearslip, dus speelt de muziek op de telefoon. Zet hem aan onder Rechten en dan Microfoon.</string>
+    <string name="audio_bt_body">Android behandelt de muziek die Graphene Auto naar de auto stuurt als schermdelen, en vraagt het dus bij elke rit, via kabel of draadloos. Via Bluetooth vraagt het nooit. Je kunt dit later wijzigen in Instellingen.</string>
+    <string name="audio_keep_usb">Of laat het geluid via Graphene Auto gaan en stop de vraag voorgoed: sluit de telefoon aan op een computer met USB-foutopsporing aan en voer dit één keer uit.</string>
+    <string name="audio_mic_body">Android laat een app alleen het geluid van andere apps naar de auto sturen als die app microfoontoestemming heeft. Die staat uit voor Graphene Auto, dus speelt de muziek op de telefoon. Zet hem aan onder Rechten en dan Microfoon.</string>
 
     <!-- Phone keyboard -->
     <string name="typing_close">Autotoetsenbord sluiten</string>
@@ -448,9 +448,9 @@
     <string name="carset_save_vehicle">Opslaan voor dit voertuig</string>
     <string name="carset_no_profile">Geen voertuigprofiel gevonden</string>
 
-    <string name="carset_audio_note">Via Gearslip stuurt het geluid van de telefoon over de autoverbinding, via kabel of draadloos. Android vraagt bij elke rit om je scherm te delen, en een paar apps blokkeren dat. Bluetooth speelt af zoals de telefoon dat normaal doet, en Android vraagt nooit iets.</string>
-    <string name="carset_directions_note">Gearslip leest elke afslag voor via de luidsprekers van de auto, en de muziek gaat zachter terwijl het praat. Zet dit uit als de stem van je kaarten-app al in de auto klinkt.</string>
-    <string name="carset_phone_speech_note">Luistert via de spraakdienst van de telefoon in plaats van die van Gearslip. Op de meeste telefoons is dat die van Google, die je stem naar Google kan sturen. GrapheneOS heeft er geen, dus Gearslip blijft zijn eigen gebruiken.</string>
+    <string name="carset_audio_note">Via Graphene Auto stuurt het geluid van de telefoon over de autoverbinding, via kabel of draadloos. Android vraagt bij elke rit om je scherm te delen, en een paar apps blokkeren dat. Bluetooth speelt af zoals de telefoon dat normaal doet, en Android vraagt nooit iets.</string>
+    <string name="carset_directions_note">Graphene Auto leest elke afslag voor via de luidsprekers van de auto, en de muziek gaat zachter terwijl het praat. Zet dit uit als de stem van je kaarten-app al in de auto klinkt.</string>
+    <string name="carset_phone_speech_note">Luistert via de spraakdienst van de telefoon in plaats van die van Graphene Auto. Op de meeste telefoons is dat die van Google, die je stem naar Google kan sturen. GrapheneOS heeft er geen, dus Graphene Auto blijft zijn eigen gebruiken.</string>
     <string name="carset_vehicle_data_note">Voegt een tegel Voertuiggegevens toe: een live, ruw overzicht van het sensorkanaal van de headunit. De veldlabels (snelheid, toerental, brandstof...) komen uit andere reverse-engineeringprojecten en zijn niet gecontroleerd op deze auto. Zie ze als een gok, geen feit, tot je er zelf een hebt zien veranderen.</string>
     <string name="carset_adaptive_note">Verlaagt de beeldkwaliteit als de auto, of zijn wifi, het niet bijhoudt, en verhoogt die weer zodra het kan. Geldt vanaf de volgende verbinding.</string>
     <string name="carset_usable_height">Bruikbare hoogte %1$dpx van 480</string>
@@ -469,11 +469,11 @@
     <string name="media_press_play">Druk op afspelen om verder te gaan waar je was, of zoek iets in Bladeren.</string>
 
     <string name="media_keeps_library">%1$s houdt zijn bibliotheek voor zichzelf.</string>
-    <string name="media_needs_access">Gearslip kan het toch bedienen zodra het meldingstoegang heeft op de telefoon. Sta dat toe onder Instellingen &gt; Meldingen &gt; Meldingstoegang.</string>
+    <string name="media_needs_access">Graphene Auto kan het toch bedienen zodra het meldingstoegang heeft op de telefoon. Sta dat toe onder Instellingen &gt; Meldingen &gt; Meldingstoegang.</string>
     <string name="media_not_running">%1$s draait niet.</string>
-    <string name="media_not_running_body">%1$s speelt via de speler van Gearslip, maar alleen zolang het open is op de telefoon. Open het één keer en het blijft hier in de auto spelen.</string>
+    <string name="media_not_running_body">%1$s speelt via de speler van Graphene Auto, maar alleen zolang het open is op de telefoon. Open het één keer en het blijft hier in de auto spelen.</string>
     <string name="media_open_app">%1$s openen</string>
-    <string name="media_refused">%1$s liet Gearslip er niet in bladeren.</string>
+    <string name="media_refused">%1$s liet Graphene Auto er niet in bladeren.</string>
     <string name="media_refused_body">Sommige media-apps accepteren alleen de host van Google zelf.</string>
     <string name="media_connecting">Verbinden met %1$s…</string>
     <string name="media_search">Zoeken in %1$s</string>
@@ -495,8 +495,8 @@
     <string name="media_nothing_queued">Niets in de wachtrij.</string>
     <string name="media_play">Afspelen</string>
 
-    <string name="media_queue_empty_idle">Er speelt niets - niet elke app vertelt Gearslip wat er hierna komt.</string>
-    <string name="media_queue_empty_playing">Alleen wat al speelt - niet elke app vertelt Gearslip wat er hierna komt.</string>
+    <string name="media_queue_empty_idle">Er speelt niets - niet elke app vertelt Graphene Auto wat er hierna komt.</string>
+    <string name="media_queue_empty_playing">Alleen wat al speelt - niet elke app vertelt Graphene Auto wat er hierna komt.</string>
 
     <!-- Player controls -->
     <string name="player_previous">Vorige</string>
@@ -584,7 +584,7 @@
 
     <!-- Weather -->
     <string name="weather_waiting_fix">Wachten op een locatiebepaling.</string>
-    <string name="weather_allow_location">Sta locatie toe voor Gearslip op de telefoon om het weer te zien.</string>
+    <string name="weather_allow_location">Sta locatie toe voor Graphene Auto op de telefoon om het weer te zien.</string>
     <string name="weather_unreachable">Kon de weerdienst niet bereiken.</string>
     <string name="weather_clear">Helder</string>
     <string name="weather_mostly_clear">Overwegend helder</string>
@@ -626,7 +626,7 @@
     <string name="dialer_no_contacts">Geen contacten met een telefoonnummer gevonden.</string>
     <string name="dialer_search">Contacten zoeken</string>
 
-    <string name="dialer_needs_permission">Gearslip heeft de rechten Telefoon en Contacten nodig om vanaf hier te bellen. Sta ze toe op de telefoon als je geparkeerd staat.</string>
+    <string name="dialer_needs_permission">Graphene Auto heeft de rechten Telefoon en Contacten nodig om vanaf hier te bellen. Sta ze toe op de telefoon als je geparkeerd staat.</string>
     <string name="dialer_no_match">Geen contacten komen overeen met “%1$s”.</string>
     <string name="dialer_call_who">%1$s bellen?</string>
 
@@ -635,10 +635,10 @@
     <string name="carui_drive_safely">Rijd veilig</string>
     <string name="carui_understand">Ik begrijp het</string>
 
-    <string name="carui_unofficial">Gearslip is onofficiële software: het is niet gemaakt of gecontroleerd door een autofabrikant, en het kan zonder waarschuwing uitvallen.</string>
+    <string name="carui_unofficial">Graphene Auto is onofficiële software: het is niet gemaakt of gecontroleerd door een autofabrikant, en het kan zonder waarschuwing uitvallen.</string>
     <string name="carui_never_interact">Bedien dit scherm nooit tijdens het rijden. Stel de route of het nummer in voor je vertrekt en houd daarna je aandacht op de weg.</string>
     <string name="carui_this_app">Deze app</string>
-    <string name="carui_app_unsupported">%1$s werkt nog niet met Gearslip.</string>
+    <string name="carui_app_unsupported">%1$s werkt nog niet met Graphene Auto.</string>
     <string name="carui_app_unsupported_body">De app startte niet. Sommige apps werken alleen in Android Auto van Google.</string>
 
     <!-- Nav bar -->
@@ -660,7 +660,7 @@
     <string name="notif_title">Meldingen</string>
     <string name="notif_clear_all">Alles wissen</string>
     <string name="notif_empty">Nog niets. Nieuwe meldingen van de telefoon verschijnen hier.</string>
-    <string name="notif_off">Meldingen staan uit. Sta Gearslip toe onder Instellingen &gt; Meldingen &gt; Meldingstoegang op de telefoon.</string>
+    <string name="notif_off">Meldingen staan uit. Sta Graphene Auto toe onder Instellingen &gt; Meldingen &gt; Meldingstoegang op de telefoon.</string>
     <string name="notif_replied">Beantwoord</string>
 
     <!-- Messages -->
@@ -697,7 +697,7 @@
     <string name="call_ringing">Gaat al hardop over - neem hier op of laat hem overgaan.</string>
 
     <!-- Screen sharing -->
-    <string name="phoneapps_touch_off">Aanraken staat uit. Zet Gearslip aan onder Instellingen &gt; Toegankelijkheid op de telefoon.</string>
+    <string name="phoneapps_touch_off">Aanraken staat uit. Zet Graphene Auto aan onder Instellingen &gt; Toegankelijkheid op de telefoon.</string>
 
     <!-- What's new in the car -->
     <string name="whatsnew_show_after">Tonen na updates</string>
@@ -710,7 +710,7 @@
     <string name="keyboard_submit">Verzenden</string>
 
     <!-- Launcher -->
-    <string name="launcher_broken">Werkt niet met Gearslip</string>
+    <string name="launcher_broken">Werkt niet met Graphene Auto</string>
 
     <!-- Car app stage -->
     <string name="stage_car_app">Auto-app</string>
@@ -809,11 +809,11 @@
 
     <!-- Cluster screen -->
     <string name="car_cluster_video">Afslagkaart op het instrumentenpaneel</string>
-    <string name="car_cluster_video_note">Voor een auto met een tweede scherm in het instrumentenpaneel: Gearslip toont daar de volgende afslag. Geldt vanaf de volgende verbinding.</string>
+    <string name="car_cluster_video_note">Voor een auto met een tweede scherm in het instrumentenpaneel: Graphene Auto toont daar de volgende afslag. Geldt vanaf de volgende verbinding.</string>
 
     <!-- Connection status on Home -->
     <string name="status_idle">Niet verbonden</string>
-    <string name="status_idle_detail">Sluit aan op de USB-poort van de auto, of verbind draadloos. Gearslip opent vanzelf als de auto antwoordt.</string>
+    <string name="status_idle_detail">Sluit aan op de USB-poort van de auto, of verbind draadloos. Graphene Auto opent vanzelf als de auto antwoordt.</string>
     <string name="status_connecting">Verbinden</string>
     <string name="status_projecting">Projecteren</string>
     <string name="status_projecting_detail">Streamen naar de headunit.</string>
@@ -821,7 +821,7 @@
     <string name="status_disconnected_detail">De headunit is niet meer verbonden.</string>
     <string name="places_title">Opgeslagen plekken</string>
     <string name="places_sub">Zeg “navigate home” in elke kaart-app</string>
-    <string name="places_intro">Zeg “navigate home”, “take me to work” of “navigate to” met een eigen naam, en Gearslip stuurt het adres naar je kaart-app. Spraakopdrachten werken voorlopig alleen in het Engels.</string>
+    <string name="places_intro">Zeg “navigate home”, “take me to work” of “navigate to” met een eigen naam, en Graphene Auto stuurt het adres naar je kaart-app. Spraakopdrachten werken voorlopig alleen in het Engels.</string>
     <string name="places_home">Thuis</string>
     <string name="places_work">Werk</string>
     <string name="places_other">Plek %1$d</string>
@@ -829,7 +829,7 @@
     <string name="places_address">Adres</string>
     <string name="places_here">Huidige locatie gebruiken</string>
     <string name="places_finding">Zoeken…</string>
-    <string name="places_not_found">Gearslip kon je locatie niet vinden. Staat locatie aan?</string>
+    <string name="places_not_found">Graphene Auto kon je locatie niet vinden. Staat locatie aan?</string>
     <string name="places_clear">Wissen</string>
     <string name="settings_language">Taal</string>
     <string name="settings_language_phone">Zelfde als de telefoon</string>

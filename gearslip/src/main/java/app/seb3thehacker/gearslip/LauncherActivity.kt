@@ -80,7 +80,7 @@ class LauncherActivity : ComponentActivity() {
         }
     }
 
-    /** Home pressed while Gearslip is already the home screen: back to the car UI's Home. */
+    /** Home pressed while Graphene Auto is already the home screen: back to the car UI's Home. */
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         CarKeys.onKey(KeyEvent.KEYCODE_HOME, down = true, longPress = false)

@@ -16,7 +16,7 @@ import java.io.ByteArrayOutputStream
  *   -> MediaPlaybackStatus   { state = 1 (1 stopped, 2 playing, 3 paused); media_source = 2;
  *                              playback_seconds = 3; shuffle = 4; repeat = 5; repeat_one = 6 }
  *
- * Read once a second from the media app Gearslip is driving. The track goes only when it changes;
+ * Read once a second from the media app Graphene Auto is driving. The track goes only when it changes;
  * the status goes every second while playing, so the car's position counts along.
  */
 class CarMediaStatus(
@@ -69,7 +69,7 @@ class CarMediaStatus(
         // Nothing to say while stopped, beyond saying so once.
         if (state == STATE_STOPPED && sentState == STATE_STOPPED) return
         if (state == STATE_PAUSED && sentState == STATE_PAUSED) return
-        val source = CarServices.mediaApp.value?.label ?: "Gearslip"
+        val source = CarServices.mediaApp.value?.label ?: "Graphene Auto"
         val seconds = if (active) (now!!.currentPosition() / 1000).coerceAtLeast(0) else 0
         sendOnChannel(
             MSG_STATUS,

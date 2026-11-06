@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="touch_relay_description">Umožňuje Gearslipu přenášet dotyky z obrazovky auta na telefon během zrcadlení. Gearslip nečte obsah obrazovky.</string>
+    <string name="touch_relay_description">Umožňuje Graphene Auto přenášet dotyky z obrazovky auta na telefon během zrcadlení. Graphene Auto nečte obsah obrazovky.</string>
 
     <!-- Setup guide -->
     <string name="guide_usage_title">Pomozte ostatním řidičům.</string>
     <string name="guide_safety_title">Jezděte bezpečně.</string>
-    <string name="guide_safety_body">Gearslip není oficiální. Žádná automobilka ho nevytvořila ani neprověřila a může bez varování selhat. Nastavte ho před jízdou a pak se dívejte na silnici.</string>
+    <string name="guide_safety_body">Graphene Auto není oficiální. Žádná automobilka ho nevytvořila ani neprověřila a může bez varování selhat. Nastavte ho před jízdou a pak se dívejte na silnici.</string>
     <string name="guide_mic_title">Mikrofon.</string>
-    <string name="guide_mic_body">Gearslip ho používá k posílání hudby do auta a k tomu, aby vás slyšel, když o něco žádáte nebo odpovídáte na zprávu. Co řeknete, zůstane v telefonu.</string>
+    <string name="guide_mic_body">Graphene Auto ho používá k posílání hudby do auta a k tomu, aby vás slyšel, když o něco žádáte nebo odpovídáte na zprávu. Co řeknete, zůstane v telefonu.</string>
     <string name="guide_location_title">Poloha.</string>
     <string name="guide_location_body">Potřebuje ji mapa v autě a hledání v okolí. Bez ní nástěnka nezobrazí mapu.</string>
     <string name="guide_calendar_title">Kalendář.</string>
-    <string name="guide_calendar_body">Obrazovka auta ukazuje vaši příští událost. Gearslip kalendář jen čte.</string>
+    <string name="guide_calendar_body">Obrazovka auta ukazuje vaši příští událost. Graphene Auto kalendář jen čte.</string>
     <string name="guide_calls_title">Hovory a kontakty.</string>
-    <string name="guide_calls_body">Auto ukazuje jméno volajícího a jeho aplikace Telefon umí vytočit číslo nebo zavolat kontaktu. Gearslip je jen čte.</string>
+    <string name="guide_calls_body">Auto ukazuje jméno volajícího a jeho aplikace Telefon umí vytočit číslo nebo zavolat kontaktu. Graphene Auto je jen čte.</string>
     <string name="guide_bluetooth_title">Bluetooth.</string>
-    <string name="guide_bluetooth_body">Při prvním připojení vám Gearslip nabídne spárovat telefon s autem, aby hovory hrály z jeho reproduktorů.</string>
+    <string name="guide_bluetooth_body">Při prvním připojení vám Graphene Auto nabídne spárovat telefon s autem, aby hovory hrály z jeho reproduktorů.</string>
     <string name="guide_notifications_title">Oznámení.</string>
-    <string name="guide_notifications_body">Když je Gearslip připojený, zobrazuje oznámení s tlačítkem pro ukončení. Bez tohoto oprávnění ho Android skryje.</string>
+    <string name="guide_notifications_body">Když je Graphene Auto připojený, zobrazuje oznámení s tlačítkem pro ukončení. Bez tohoto oprávnění ho Android skryje.</string>
     <string name="guide_messages_title">Zprávy.</string>
-    <string name="guide_messages_body">Auto zobrazuje vaše zprávy, čte je nahlas a nechá vás odpovědět. Zapněte Gearslip v seznamu, který se otevře.</string>
+    <string name="guide_messages_body">Auto zobrazuje vaše zprávy, čte je nahlas a nechá vás odpovědět. Zapněte Graphene Auto v seznamu, který se otevře.</string>
     <string name="guide_android_auto_title">Vypněte Android Auto.</string>
-    <string name="guide_android_auto_body">Android Auto je stále nainstalované a přetahuje se s Gearslipem o USB připojení auta. Zakažte ho nebo odinstalujte na obrazovce, která se otevře.</string>
-    <string name="guide_default_title">Vyberte Gearslip.</string>
-    <string name="guide_default_body">Pokud se telefon po připojení k autu zeptá, kterou aplikaci otevřít, vyberte Gearslip a klepněte na Vždy.</string>
+    <string name="guide_android_auto_body">Android Auto je stále nainstalované a přetahuje se s Graphene Auto o USB připojení auta. Zakažte ho nebo odinstalujte na obrazovce, která se otevře.</string>
+    <string name="guide_default_title">Vyberte Graphene Auto.</string>
+    <string name="guide_default_body">Pokud se telefon po připojení k autu zeptá, kterou aplikaci otevřít, vyberte Graphene Auto a klepněte na Vždy.</string>
     <string name="guide_audio_title">Zvuk v autě.</string>
     <string name="guide_audio_body">Vyberte, jak se hudba dostane do auta. Hovory jdou v každém případě přes Bluetooth.</string>
     <string name="guide_voice_title">Hlas.</string>
     <string name="guide_voice_body">Požádejte hlasem o trasu, hudbu nebo hovor. Telefon sám převádí řeč na text a nic z toho, co řeknete, ho neopustí. Potřebuje %1$d MB, stažených jednou. Pokud můžete, použijte Wi-Fi.</string>
     <string name="guide_audio_prompt_title">Bez dotazu na zvuk.</string>
-    <string name="guide_audio_prompt_body">Spusťte tohle z počítače se zapnutým laděním USB a Android svěří zvuk Gearslipu natrvalo. Jinak při každé jízdě jednou klepnete na Spustit.</string>
+    <string name="guide_audio_prompt_body">Spusťte tohle z počítače se zapnutým laděním USB a Android svěří zvuk Graphene Auto natrvalo. Jinak při každé jízdě jednou klepnete na Spustit.</string>
     <string name="guide_readable_title">Čitelná oznámení.</string>
-    <string name="guide_readable_body">Když zvuk jde do auta, Android skrývá text oznámení, jako byste sdíleli obrazovku. Díky tomu je Gearslip může během jízdy ukázat a potom znovu skrýt.</string>
+    <string name="guide_readable_body">Když zvuk jde do auta, Android skrývá text oznámení, jako byste sdíleli obrazovku. Díky tomu je Graphene Auto může během jízdy ukázat a potom znovu skrýt.</string>
     <string name="guide_answer_title">Přijímání hovorů.</string>
-    <string name="guide_answer_body">Nastavte Gearslip jako aplikaci pro identifikaci volajícího a auto bude moct hovory přijímat a odmítat. Bez toho hovory zvoní dál, ale přijmout je jde jen na telefonu.</string>
+    <string name="guide_answer_body">Nastavte Graphene Auto jako aplikaci pro identifikaci volajícího a auto bude moct hovory přijímat a odmítat. Bez toho hovory zvoní dál, ale přijmout je jde jen na telefonu.</string>
     <string name="guide_apps_title">Dobrá společnost.</string>
     <string name="guide_buttons_title">Vaše tlačítka.</string>
     <string name="guide_buttons_body">Vyberte vzhled tlačítek v autě. Změnit ho můžete kdykoli v nastavení auta.</string>
@@ -47,8 +47,8 @@
     <string name="guide_audio_bluetooth">Bluetooth</string>
     <string name="guide_recommended">Doporučeno</string>
     <string name="guide_audio_bluetooth_body">Žádný dotaz při každé jízdě a hlas mapové aplikace se dostane do auta.</string>
-    <string name="guide_audio_usb">Přes Gearslip</string>
-    <string name="guide_audio_usb_body">Čistší zvuk bez zpoždění. Při každé jízdě vás Android požádá o sdílení obrazovky, díky čemuž může Gearslip posílat zvuk.</string>
+    <string name="guide_audio_usb">Přes Graphene Auto</string>
+    <string name="guide_audio_usb_body">Čistší zvuk bez zpoždění. Při každé jízdě vás Android požádá o sdílení obrazovky, díky čemuž může Graphene Auto posílat zvuk.</string>
     <string name="guide_optional">VOLITELNÉ</string>
     <string name="guide_already_allowed">Už povoleno.</string>
     <string name="guide_scroll_more">Posuňte pro další  ↓</string>
@@ -60,7 +60,7 @@
     <string name="guide_back">Zpět</string>
 
     <!-- Usage notes -->
-    <string name="usage_intro">Zapněte to a Gearslip pošle krátkou poznámku, když ho otevřete, a po každé jízdě. &lt;b&gt;Poznámka neobsahuje jméno, účet ani polohu. Náhodné číslo započítá váš telefon jednou a server neukládá žádnou IP adresu.&lt;/b&gt; Poznámky ukazují, která auta fungují a kde ostatní selhávají.</string>
+    <string name="usage_intro">Zapněte to a Graphene Auto pošle krátkou poznámku, když ho otevřete, a po každé jízdě. &lt;b&gt;Poznámka neobsahuje jméno, účet ani polohu. Náhodné číslo započítá váš telefon jednou a server neukládá žádnou IP adresu.&lt;/b&gt; Poznámky ukazují, která auta fungují a kde ostatní selhávají.</string>
     <string name="usage_send">Posílat poznámky o používání</string>
     <string name="usage_also_share">Sdílet také</string>
     <string name="usage_share_android">Verzi a systém Androidu</string>
@@ -74,14 +74,14 @@
     <string name="usage_example">Příklad, neodesílá se: jedna jízda přidá tohle do „sessions“</string>
     <string name="usage_no_server">Tato verze nemá statistický server, takže nic neposílá</string>
     <string name="usage_debug_build">Ladicí verze: poznámky se drží zvlášť a nikdy se nezapočítávají</string>
-    <string name="worked_title">Gearslip fungoval s vaším %1$s</string>
-    <string name="worked_title_unknown">Gearslip fungoval s vaším autem</string>
+    <string name="worked_title">Graphene Auto fungoval s vaším %1$s</string>
+    <string name="worked_title_unknown">Graphene Auto fungoval s vaším autem</string>
     <string name="worked_body">Sdílet to, aby další řidič věděl, že to funguje? Bez jména, účtu a polohy.</string>
     <string name="worked_not_now">Teď ne</string>
     <string name="worked_share">Sdílet</string>
 
     <!-- Recommended apps -->
-    <string name="recommended_intro">Tyto bezplatné aplikace běží na obrazovce auta v Gearslipu. Každé tlačítko otevře stránku aplikace na GitHubu.</string>
+    <string name="recommended_intro">Tyto bezplatné aplikace běží na obrazovce auta v Graphene Auto. Každé tlačítko otevře stránku aplikace na GitHubu.</string>
     <string name="recommended_title">Doporučené aplikace</string>
     <string name="back">Zpět</string>
     <string name="recommended_installed">Nainstalováno</string>
@@ -99,16 +99,16 @@
     <string name="settings_title">Nastavení</string>
     <string name="settings_whats_new">Co je nového</string>
     <string name="settings_whats_new_sub">Přečtěte si poznámky k verzi %1$s na GitHubu</string>
-    <string name="settings_support">Podpořte Gearslip</string>
-    <string name="settings_support_footer">Gearslip je zdarma, bez reklam a bez sledování. Vaše podpora ho udržuje při životě.</string>
+    <string name="settings_support">Podpořte Graphene Auto</string>
+    <string name="settings_support_footer">Graphene Auto je zdarma, bez reklam a bez sledování. Vaše podpora ho udržuje při životě.</string>
     <string name="settings_usage_notes">Poznámky o používání</string>
     <string name="settings_updates">Aktualizace</string>
     <string name="settings_about">O aplikaci</string>
     <string name="settings_replay">Znovu projít průvodce nastavením</string>
     <string name="settings_replay_sub">Projít znovu kroky prvního spuštění</string>
     <string name="settings_connection">Připojení</string>
-    <string name="settings_use_in_car">Používat Gearslip v autě</string>
-    <string name="settings_use_in_car_on">Gearslip odpoví, když se připojíte k autu</string>
+    <string name="settings_use_in_car">Používat Graphene Auto v autě</string>
+    <string name="settings_use_in_car_on">Graphene Auto odpoví, když se připojíte k autu</string>
     <string name="settings_use_in_car_off">Vypnuto: připojení může převzít Android Auto</string>
     <string name="settings_apps">Aplikace</string>
     <string name="settings_certificate">Certifikát</string>
@@ -172,7 +172,7 @@
     <string name="choice_open_home">Domů</string>
     <string name="summary_player_left">Přehrávač vlevo</string>
     <string name="summary_player_right">Přehrávač vpravo</string>
-    <string name="summary_usb_audio">Zvuk přes Gearslip</string>
+    <string name="summary_usb_audio">Zvuk přes Graphene Auto</string>
     <string name="summary_bluetooth_audio">Zvuk přes Bluetooth</string>
     <string name="summary_directions_on">Hlasové pokyny zapnuty</string>
     <string name="summary_directions_off">Hlasové pokyny vypnuty</string>
@@ -217,7 +217,7 @@
     <string name="car_audio">Zvuk v autě</string>
     <string name="car_audio_bt">Bluetooth (doporučeno)</string>
     <string name="car_audio_bt_sub">Žádný dotaz při každé jízdě a hlas mapové aplikace se dostane do auta</string>
-    <string name="car_audio_usb_sub">Čistší zvuk bez zpoždění. Při každé jízdě vás Android požádá o sdílení obrazovky, díky čemuž může Gearslip posílat zvuk</string>
+    <string name="car_audio_usb_sub">Čistší zvuk bez zpoždění. Při každé jízdě vás Android požádá o sdílení obrazovky, díky čemuž může Graphene Auto posílat zvuk</string>
     <string name="car_audio_usb_footer">Spusťte jednou příkaz z Nápovědy a Android se přestane ptát.</string>
     <string name="car_audio_bt_footer">Hovory jdou v každém případě přes Bluetooth.</string>
 
@@ -227,7 +227,7 @@
     <string name="screen_preview_size">Velikost náhledu</string>
     <string name="screen_preview_note">Velikost, ve které se kreslí náhled auta, například 1920x720.</string>
     <string name="screen_car_screen">Obrazovka auta</string>
-    <string name="screen_footer">Gearslip používá velikost, kterou hlásí auto, pokud nenastavíte vlastní.</string>
+    <string name="screen_footer">Graphene Auto používá velikost, kterou hlásí auto, pokud nenastavíte vlastní.</string>
     <string name="screen_size">Velikost obrazovky</string>
     <string name="screen_from_car">Z auta</string>
     <string name="screen_crop">Oříznout okraje</string>
@@ -238,7 +238,7 @@
     <string name="screen_last_car">Poslední auto</string>
     <string name="screen_last_car_sub">Velikost posledního auta, ke kterému jste se připojili</string>
     <string name="screen_this_screen">Tato obrazovka</string>
-    <string name="screen_this_screen_sub">Vyplní obrazovku tohoto zařízení, pro autorádio, na kterém běží přímo Gearslip</string>
+    <string name="screen_this_screen_sub">Vyplní obrazovku tohoto zařízení, pro autorádio, na kterém běží přímo Graphene Auto</string>
     <string name="screen_custom">Vlastní</string>
     <string name="screen_enter_size">Zadejte velikost</string>
     <string name="screen_change_custom">Změnit vlastní velikost</string>
@@ -255,25 +255,25 @@
     <string name="help_full_list">Zobrazit celý seznam</string>
     <string name="help_first_drive">Před první jízdou</string>
     <string name="help_in_car">V autě</string>
-    <string name="help_usb_audio">Zvuk přes Gearslip</string>
+    <string name="help_usb_audio">Zvuk přes Graphene Auto</string>
 
     <string name="help_aa_off">Vypněte Android Auto.</string>
-    <string name="help_aa_off_detail">Zakažte nebo odinstalujte aplikaci Android Auto, aby auto mluvilo s Gearslipem.</string>
+    <string name="help_aa_off_detail">Zakažte nebo odinstalujte aplikaci Android Auto, aby auto mluvilo s Graphene Auto.</string>
     <string name="help_cert">Načtěte certifikát.</string>
     <string name="help_cert_detail">V Nastavení stáhněte certifikát aasdk, který přijme většina aut. Pokud ho vaše auto odmítne, importujte vlastní.</string>
     <string name="help_mic">Povolte mikrofon.</string>
-    <string name="help_mic_detail">Bez něj Android nenechá aplikaci posílat hudbu do auta. Gearslip poslouchá, jen když klepnete na mikrofon nebo stisknete tlačítko hlasu na volantu.</string>
+    <string name="help_mic_detail">Bez něj Android nenechá aplikaci posílat hudbu do auta. Graphene Auto poslouchá, jen když klepnete na mikrofon nebo stisknete tlačítko hlasu na volantu.</string>
     <string name="help_plug_in">Připojte kabel nebo se připojte bezdrátově.</string>
-    <string name="help_plug_in_detail">Gearslip se otevře sám, když se auto připojí. Pro bezdrátové připojení nejdřív spárujte telefon s autem a pak na Domů klepněte na Připojit bezdrátově.</string>
+    <string name="help_plug_in_detail">Graphene Auto se otevře sám, když se auto připojí. Pro bezdrátové připojení nejdřív spárujte telefon s autem a pak na Domů klepněte na Připojit bezdrátově.</string>
     <string name="help_pair">Spárujte přes Bluetooth kvůli hovorům.</string>
-    <string name="help_pair_detail">Hovory hrají v autě, jakmile jsou telefon a auto spárované. Gearslip nabídne spárování při prvním připojení.</string>
+    <string name="help_pair_detail">Hovory hrají v autě, jakmile jsou telefon a auto spárované. Graphene Auto nabídne spárování při prvním připojení.</string>
     <string name="help_answer">Přijímejte hovory z obrazovky auta.</string>
-    <string name="help_answer_detail">Nastavte Gearslip jako aplikaci pro identifikaci volajícího a spam. Bez toho hovory zvoní dál, ale přijmout je jde jen na telefonu.</string>
+    <string name="help_answer_detail">Nastavte Graphene Auto jako aplikaci pro identifikaci volajícího a spam. Bez toho hovory zvoní dál, ale přijmout je jde jen na telefonu.</string>
     <string name="help_prompt">Zbavte se dotazu na zvuk při každé jízdě.</string>
     <string name="help_prompt_detail">Připojte telefon k počítači se zapnutým laděním USB a jednou spusťte tohle. Když to přeskočíte, klepnete na Spustit pokaždé, když vyrazíte.</string>
     <string name="help_readable">Zachovejte čitelná oznámení.</string>
-    <string name="help_readable_detail">Android skrývá text oznámení, když sdílí zvuk. Spusťte i tohle a Gearslip to zruší jen po dobu, kdy hudba jde do auta.</string>
-    <string name="help_which_cars_body">Většina aut přijme certifikát aasdk. Zhruba od roku 2020 dostala některá auta novější bezpečnostní kontroly, které ho odmítají, a v nich Gearslip potřebuje váš vlastní certifikát.</string>
+    <string name="help_readable_detail">Android skrývá text oznámení, když sdílí zvuk. Spusťte i tohle a Graphene Auto to zruší jen po dobu, kdy hudba jde do auta.</string>
+    <string name="help_which_cars_body">Většina aut přijme certifikát aasdk. Zhruba od roku 2020 dostala některá auta novější bezpečnostní kontroly, které ho odmítají, a v nich Graphene Auto potřebuje váš vlastní certifikát.</string>
 
     <!-- Updates -->
     <string name="update_downloaded_ask">Staženo. Android se před instalací zeptá.</string>
@@ -288,11 +288,11 @@
     <string name="update_check_auto">Kontrolovat automaticky</string>
     <string name="update_once_a_day">Jednou denně</string>
 
-    <string name="update_unplug_first">Pro instalaci se odpojte od auta. Instalace zavře Gearslip.</string>
-    <string name="update_card_title">Vyšel Gearslip %1$s</string>
+    <string name="update_unplug_first">Pro instalaci se odpojte od auta. Instalace zavře Graphene Auto.</string>
+    <string name="update_card_title">Vyšel Graphene Auto %1$s</string>
     <string name="update_downloading">Stahování… %1$d %%</string>
     <string name="update_debug_manual">Ladicí verze kontrolují jen po klepnutí na Zkontrolovat teď</string>
-    <string name="update_checks_daily">Gearslip kontroluje jednou denně</string>
+    <string name="update_checks_daily">Graphene Auto kontroluje jednou denně</string>
     <string name="update_version_out">Vyšla verze %1$s</string>
     <string name="update_version_ready">Verze %1$s je připravena k instalaci</string>
     <string name="update_dialog_status">Verze %1$s. %2$s.</string>
@@ -309,11 +309,11 @@
     <string name="about_copy_address">Kopírovat adresu</string>
     <string name="close">Zavřít</string>
     <string name="about_matrix">Přidejte se do chatu na Matrixu</string>
-    <string name="about_matrix_sub">Bavte se s ostatními řidiči o autech, aplikacích a Gearslipu</string>
-    <string name="about_translate">Pomozte přeložit Gearslip</string>
+    <string name="about_matrix_sub">Bavte se s ostatními řidiči o autech, aplikacích a Graphene Auto</string>
+    <string name="about_translate">Pomozte přeložit Graphene Auto</string>
     <string name="about_translate_sub">Opravte nebo přidejte svůj jazyk na Weblate. Některé překlady vznikly jako strojové.</string>
     <string name="about_source">Zdrojový kód</string>
-    <string name="about_source_sub">Čtěte nebo měňte kód Gearslipu pod licencí AGPL</string>
+    <string name="about_source_sub">Čtěte nebo měňte kód Graphene Auto pod licencí AGPL</string>
     <string name="about_voice_credits">Poděkování za hlas</string>
 
     <string name="about_no_wallet">Nenašla se žádná peněženka Monero. Zkopírujte raději adresu.</string>
@@ -330,11 +330,11 @@
     <string name="certsetup_skip">Přeskočit nastavení připojení k autu</string>
 
     <string name="certsetup_loaded">Auta přijímají jen certifikáty vydané Googlem a vy jeden máte načtený.</string>
-    <string name="certsetup_choose">Auta přijímají jen certifikáty vydané Googlem. Gearslip žádný neobsahuje, takže vyberte, odkud vezmete svůj.</string>
+    <string name="certsetup_choose">Auta přijímají jen certifikáty vydané Googlem. Graphene Auto žádný neobsahuje, takže vyberte, odkud vezmete svůj.</string>
     <string name="certsetup_aasdk_sub">Open-source projekt aasdk zveřejňuje tento certifikát na github.com/opencardev/aasdk. Většina aut ho přijme. Některá zhruba od roku 2020 ho odmítají a pak musíte importovat vlastní.</string>
 
     <!-- Storage -->
-    <string name="storage_title">Úložiště Gearslipu</string>
+    <string name="storage_title">Úložiště Graphene Auto</string>
     <string name="storage_measuring">Měření…</string>
     <string name="storage_lyrics">Texty písní</string>
     <string name="storage_clear">Vymazat</string>
@@ -342,9 +342,9 @@
     <string name="storage_remove">Odebrat</string>
     <string name="storage_logs">Staré logy</string>
     <string name="storage_other">Další dočasné soubory</string>
-    <string name="storage_delete_all">Smazat všechna data Gearslipu</string>
+    <string name="storage_delete_all">Smazat všechna data Graphene Auto</string>
 
-    <string name="storage_total">Data Gearslipu zabírají %1$s úložiště telefonu.</string>
+    <string name="storage_total">Data Graphene Auto zabírají %1$s úložiště telefonu.</string>
     <plurals name="storage_lyrics_detail">
         <item quantity="one">%1$d skladba · %2$s. Vymazané texty se znovu stáhnou, až je otevřete.</item>
         <item quantity="few">%1$d skladby · %2$s. Vymazané texty se znovu stáhnou, až je otevřete.</item>
@@ -353,8 +353,8 @@
     </plurals>
     <string name="storage_voice_detail">%1$s. Hlasové příkazy je potřebují; znovu je stáhnete v Nastavení.</string>
     <string name="storage_logs_detail">%1$s. Logy z dřívějších spuštění; log tohoto spuštění zůstává.</string>
-    <string name="storage_other_detail">%1$s. Stažené aktualizace a další soubory, které Gearslip umí vytvořit znovu.</string>
-    <string name="storage_delete_armed">Klepněte znovu na Smazat a vymažou se nastavení, certifikáty, hlasové modely a logy. Gearslip se zavře a příště začne nastavením.</string>
+    <string name="storage_other_detail">%1$s. Stažené aktualizace a další soubory, které Graphene Auto umí vytvořit znovu.</string>
+    <string name="storage_delete_armed">Klepněte znovu na Smazat a vymažou se nastavení, certifikáty, hlasové modely a logy. Graphene Auto se zavře a příště začne nastavením.</string>
     <string name="storage_delete_sub">Nastavení, certifikáty, hlasové modely, texty a logy.</string>
     <string name="storage_delete">Smazat</string>
     <string name="storage_delete_ellipsis">Smazat…</string>
@@ -365,10 +365,10 @@
     <string name="donate_bmac">Kupte mi kafe</string>
     <string name="donate_card">Přispět jednou kartou</string>
 
-    <string name="donate_body">Gearslip je zdarma, bez reklam a bez sledování. Jestli vás dostane na cestu, vaše podpora ho udrží při životě.</string>
+    <string name="donate_body">Graphene Auto je zdarma, bez reklam a bez sledování. Jestli vás dostane na cestu, vaše podpora ho udrží při životě.</string>
 
     <!-- Wireless -->
-    <string name="wireless_needs_permission">Gearslip k tomu potřebuje přístup k Bluetooth a Wi-Fi v okolí.</string>
+    <string name="wireless_needs_permission">Graphene Auto k tomu potřebuje přístup k Bluetooth a Wi-Fi v okolí.</string>
     <string name="wireless_enable_permission">Povolit oprávnění Zařízení v okolí</string>
     <string name="wireless_connect">Připojit bezdrátově</string>
     <string name="wireless_which_car">Které auto?</string>
@@ -409,9 +409,9 @@
     <string name="audio_mic_title">Zvuk v autě potřebuje oprávnění k mikrofonu</string>
     <string name="audio_open_settings">Otevřít nastavení aplikace</string>
 
-    <string name="audio_bt_body">Android bere hudbu, kterou Gearslip posílá do auta, jako sdílení obrazovky, takže se ptá při každé jízdě, kabelem i bezdrátově. Přes Bluetooth se nikdy neptá. Později to můžete změnit v Nastavení.</string>
-    <string name="audio_keep_usb">Nebo nechte zvuk jít přes Gearslip a zbavte se dotazu natrvalo: připojte telefon k počítači se zapnutým laděním USB a jednou spusťte tohle.</string>
-    <string name="audio_mic_body">Android nechá aplikaci posílat zvuk jiných aplikací do auta, jen když má oprávnění k mikrofonu. Pro Gearslip je vypnuté, takže hudba hraje v telefonu. Zapněte ho v Oprávněních, pak Mikrofon.</string>
+    <string name="audio_bt_body">Android bere hudbu, kterou Graphene Auto posílá do auta, jako sdílení obrazovky, takže se ptá při každé jízdě, kabelem i bezdrátově. Přes Bluetooth se nikdy neptá. Později to můžete změnit v Nastavení.</string>
+    <string name="audio_keep_usb">Nebo nechte zvuk jít přes Graphene Auto a zbavte se dotazu natrvalo: připojte telefon k počítači se zapnutým laděním USB a jednou spusťte tohle.</string>
+    <string name="audio_mic_body">Android nechá aplikaci posílat zvuk jiných aplikací do auta, jen když má oprávnění k mikrofonu. Pro Graphene Auto je vypnuté, takže hudba hraje v telefonu. Zapněte ho v Oprávněních, pak Mikrofon.</string>
 
     <!-- Phone keyboard -->
     <string name="typing_close">Zavřít klávesnici auta</string>
@@ -450,9 +450,9 @@
     <string name="carset_save_vehicle">Uložit pro toto vozidlo</string>
     <string name="carset_no_profile">Žádný odpovídající profil vozidla</string>
 
-    <string name="carset_audio_note">Přes Gearslip posílá zvuk telefonu připojením k autu, kabelem nebo bezdrátově. Android při každé jízdě žádá o sdílení obrazovky a pár aplikací to blokuje. Bluetooth hraje tak, jak by telefon hrál normálně, a Android se nikdy neptá.</string>
-    <string name="carset_directions_note">Gearslip čte každé odbočení nahlas z reproduktorů auta a hudba se při tom ztiší. Vypněte to, pokud hlas vaší mapové aplikace už v autě hraje.</string>
-    <string name="carset_phone_speech_note">Poslouchá přes službu řeči v telefonu místo Gearslipu. Na většině telefonů je to služba Google, která může posílat váš hlas Googlu. GrapheneOS žádnou nemá, takže Gearslip dál používá svou.</string>
+    <string name="carset_audio_note">Přes Graphene Auto posílá zvuk telefonu připojením k autu, kabelem nebo bezdrátově. Android při každé jízdě žádá o sdílení obrazovky a pár aplikací to blokuje. Bluetooth hraje tak, jak by telefon hrál normálně, a Android se nikdy neptá.</string>
+    <string name="carset_directions_note">Graphene Auto čte každé odbočení nahlas z reproduktorů auta a hudba se při tom ztiší. Vypněte to, pokud hlas vaší mapové aplikace už v autě hraje.</string>
+    <string name="carset_phone_speech_note">Poslouchá přes službu řeči v telefonu místo Graphene Auto. Na většině telefonů je to služba Google, která může posílat váš hlas Googlu. GrapheneOS žádnou nemá, takže Graphene Auto dál používá svou.</string>
     <string name="carset_vehicle_data_note">Přidá dlaždici Data vozidla: surový živý výpis kanálu senzorů autorádia. Popisky polí (rychlost, otáčky, palivo...) pocházejí z jiných projektů reverzního inženýrství a na tomto autě nejsou ověřené. Berte je jako odhad, ne fakt, dokud sami neuvidíte, jak se některé mění.</string>
     <string name="carset_adaptive_note">Sníží kvalitu obrazu, když auto, nebo jeho Wi-Fi, nestíhá, a zase ji zvýší, jakmile to jde. Platí od příštího připojení.</string>
     <string name="carset_usable_height">Využitelná výška %1$dpx z 480</string>
@@ -471,11 +471,11 @@
     <string name="media_press_play">Stiskněte přehrát a pokračujte, kde jste skončili, nebo něco najděte v Procházet.</string>
 
     <string name="media_keeps_library">%1$s si svou knihovnu nechává pro sebe.</string>
-    <string name="media_needs_access">Gearslip ji přesto může ovládat, jakmile bude mít v telefonu přístup k oznámením. Povolte ho v Nastavení &gt; Oznámení &gt; Přístup k oznámením.</string>
+    <string name="media_needs_access">Graphene Auto ji přesto může ovládat, jakmile bude mít v telefonu přístup k oznámením. Povolte ho v Nastavení &gt; Oznámení &gt; Přístup k oznámením.</string>
     <string name="media_not_running">%1$s neběží.</string>
-    <string name="media_not_running_body">%1$s hraje přes přehrávač Gearslipu, ale jen když je otevřená v telefonu. Jednou ji otevřete a bude hrát dál tady v autě.</string>
+    <string name="media_not_running_body">%1$s hraje přes přehrávač Graphene Auto, ale jen když je otevřená v telefonu. Jednou ji otevřete a bude hrát dál tady v autě.</string>
     <string name="media_open_app">Otevřít %1$s</string>
-    <string name="media_refused">%1$s nedovolila Gearslipu ji procházet.</string>
+    <string name="media_refused">%1$s nedovolila Graphene Auto ji procházet.</string>
     <string name="media_refused_body">Některé mediální aplikace přijímají jen hostitele od Googlu.</string>
     <string name="media_connecting">Připojování k %1$s…</string>
     <string name="media_search">Hledat v %1$s</string>
@@ -497,8 +497,8 @@
     <string name="media_nothing_queued">Fronta je prázdná.</string>
     <string name="media_play">Přehrát</string>
 
-    <string name="media_queue_empty_idle">Nic nehraje - ne každá aplikace Gearslipu řekne, co bude dál.</string>
-    <string name="media_queue_empty_playing">Jen to, co už hraje - ne každá aplikace Gearslipu řekne, co bude dál.</string>
+    <string name="media_queue_empty_idle">Nic nehraje - ne každá aplikace Graphene Auto řekne, co bude dál.</string>
+    <string name="media_queue_empty_playing">Jen to, co už hraje - ne každá aplikace Graphene Auto řekne, co bude dál.</string>
 
     <!-- Player controls -->
     <string name="player_previous">Předchozí</string>
@@ -588,7 +588,7 @@
 
     <!-- Weather -->
     <string name="weather_waiting_fix">Čekání na určení polohy.</string>
-    <string name="weather_allow_location">Povolte Gearslipu v telefonu polohu a uvidíte počasí.</string>
+    <string name="weather_allow_location">Povolte Graphene Auto v telefonu polohu a uvidíte počasí.</string>
     <string name="weather_unreachable">Nepodařilo se spojit s meteoslužbou.</string>
     <string name="weather_clear">Jasno</string>
     <string name="weather_mostly_clear">Převážně jasno</string>
@@ -630,7 +630,7 @@
     <string name="dialer_no_contacts">Nenašly se žádné kontakty s telefonním číslem.</string>
     <string name="dialer_search">Hledat kontakty</string>
 
-    <string name="dialer_needs_permission">Gearslip potřebuje oprávnění Telefon a Kontakty, aby mohl volat odsud. Povolte je v telefonu, až zaparkujete.</string>
+    <string name="dialer_needs_permission">Graphene Auto potřebuje oprávnění Telefon a Kontakty, aby mohl volat odsud. Povolte je v telefonu, až zaparkujete.</string>
     <string name="dialer_no_match">Žádný kontakt neodpovídá „%1$s“.</string>
     <string name="dialer_call_who">Volat: %1$s?</string>
 
@@ -639,10 +639,10 @@
     <string name="carui_drive_safely">Jezděte bezpečně</string>
     <string name="carui_understand">Rozumím</string>
 
-    <string name="carui_unofficial">Gearslip je neoficiální software: nevytvořila ho ani neprověřila žádná automobilka a může bez varování selhat.</string>
+    <string name="carui_unofficial">Graphene Auto je neoficiální software: nevytvořila ho ani neprověřila žádná automobilka a může bez varování selhat.</string>
     <string name="carui_never_interact">Za jízdy tuto obrazovku nikdy neovládejte. Nastavte trasu nebo skladbu před jízdou a pak se soustřeďte na silnici.</string>
     <string name="carui_this_app">Tato aplikace</string>
-    <string name="carui_app_unsupported">%1$s zatím s Gearslipem nefunguje.</string>
+    <string name="carui_app_unsupported">%1$s zatím s Graphene Auto nefunguje.</string>
     <string name="carui_app_unsupported_body">Nespustila se. Některé aplikace běží jen v Android Auto od Googlu.</string>
 
     <!-- Nav bar -->
@@ -664,7 +664,7 @@
     <string name="notif_title">Oznámení</string>
     <string name="notif_clear_all">Vymazat vše</string>
     <string name="notif_empty">Zatím nic. Nová oznámení z telefonu se objeví tady.</string>
-    <string name="notif_off">Oznámení jsou vypnutá. Povolte Gearslip v telefonu v Nastavení &gt; Oznámení &gt; Přístup k oznámením.</string>
+    <string name="notif_off">Oznámení jsou vypnutá. Povolte Graphene Auto v telefonu v Nastavení &gt; Oznámení &gt; Přístup k oznámením.</string>
     <string name="notif_replied">Odpovězeno</string>
 
     <!-- Messages -->
@@ -703,7 +703,7 @@
     <string name="call_ringing">Už nahlas zvoní - přijměte tady, nebo nechte zvonit.</string>
 
     <!-- Screen sharing -->
-    <string name="phoneapps_touch_off">Dotyk je vypnutý. Zapněte Gearslip v telefonu v Nastavení &gt; Přístupnost.</string>
+    <string name="phoneapps_touch_off">Dotyk je vypnutý. Zapněte Graphene Auto v telefonu v Nastavení &gt; Přístupnost.</string>
 
     <!-- What's new in the car -->
     <string name="whatsnew_show_after">Zobrazit po aktualizacích</string>
@@ -716,7 +716,7 @@
     <string name="keyboard_submit">Potvrdit</string>
 
     <!-- Launcher -->
-    <string name="launcher_broken">Nefunguje s Gearslipem</string>
+    <string name="launcher_broken">Nefunguje s Graphene Auto</string>
 
     <!-- Car app stage -->
     <string name="stage_car_app">Aplikace do auta</string>
@@ -825,11 +825,11 @@
 
     <!-- Cluster screen -->
     <string name="car_cluster_video">Karta odbočení na přístrojovém štítu</string>
-    <string name="car_cluster_video_note">Pro auto s druhou obrazovkou v přístrojovém štítu: Gearslip na ní ukáže příští odbočení. Platí od příštího připojení.</string>
+    <string name="car_cluster_video_note">Pro auto s druhou obrazovkou v přístrojovém štítu: Graphene Auto na ní ukáže příští odbočení. Platí od příštího připojení.</string>
 
     <!-- Connection status on Home -->
     <string name="status_idle">Nepřipojeno</string>
-    <string name="status_idle_detail">Připojte telefon do USB portu auta nebo se připojte bezdrátově. Gearslip se otevře sám, když auto odpoví.</string>
+    <string name="status_idle_detail">Připojte telefon do USB portu auta nebo se připojte bezdrátově. Graphene Auto se otevře sám, když auto odpoví.</string>
     <string name="status_connecting">Připojování</string>
     <string name="status_projecting">Promítání</string>
     <string name="status_projecting_detail">Streamování do autorádia.</string>
@@ -837,7 +837,7 @@
     <string name="status_disconnected_detail">Autorádio už není připojené.</string>
     <string name="places_title">Uložená místa</string>
     <string name="places_sub">Řekněte „navigate home“ v jakékoli mapové aplikaci</string>
-    <string name="places_intro">Řekněte „navigate home“, „take me to work“ nebo „navigate to“ s vlastním názvem a Gearslip pošle adresu do mapové aplikace. Hlasové příkazy zatím fungují jen anglicky.</string>
+    <string name="places_intro">Řekněte „navigate home“, „take me to work“ nebo „navigate to“ s vlastním názvem a Graphene Auto pošle adresu do mapové aplikace. Hlasové příkazy zatím fungují jen anglicky.</string>
     <string name="places_home">Domov</string>
     <string name="places_work">Práce</string>
     <string name="places_other">Místo %1$d</string>
@@ -845,7 +845,7 @@
     <string name="places_address">Adresa</string>
     <string name="places_here">Použít mou polohu</string>
     <string name="places_finding">Hledám…</string>
-    <string name="places_not_found">Gearslip nenašel vaši polohu. Zkontrolujte, že je poloha zapnutá.</string>
+    <string name="places_not_found">Graphene Auto nenašel vaši polohu. Zkontrolujte, že je poloha zapnutá.</string>
     <string name="places_clear">Vymazat</string>
     <string name="settings_language">Jazyk</string>
     <string name="settings_language_phone">Stejný jako v telefonu</string>
