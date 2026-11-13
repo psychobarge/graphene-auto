@@ -68,13 +68,19 @@ object CarKeys {
             return true
         }
         if (!down) return keyCode in WANTED
-        val media = CarServices.media
+        // Null until the car screen is up. Some head units (Renault R-Link 2) press Play right after
+        // connecting, seconds before they grant the screen: such a key is dropped, not fatal.
+        val media = CarServices.mediaOrNull()
+        if (media == null && keyCode in MEDIA_KEYS) {
+            GearslipLog.i("keys: media key $keyCode before the car screen is up - ignored")
+            return true
+        }
         when (keyCode) {
-            KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> media.togglePlay()
-            KeyEvent.KEYCODE_MEDIA_PLAY -> if (!media.now.value.playing) media.togglePlay()
-            KeyEvent.KEYCODE_MEDIA_PAUSE, KeyEvent.KEYCODE_MEDIA_STOP -> if (media.now.value.playing) media.togglePlay()
-            KeyEvent.KEYCODE_MEDIA_NEXT -> media.next()
-            KeyEvent.KEYCODE_MEDIA_PREVIOUS -> media.previous()
+            KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> media!!.togglePlay()
+            KeyEvent.KEYCODE_MEDIA_PLAY -> if (!media!!.now.value.playing) media.togglePlay()
+            KeyEvent.KEYCODE_MEDIA_PAUSE, KeyEvent.KEYCODE_MEDIA_STOP -> if (media!!.now.value.playing) media.togglePlay()
+            KeyEvent.KEYCODE_MEDIA_NEXT -> media!!.next()
+            KeyEvent.KEYCODE_MEDIA_PREVIOUS -> media!!.previous()
             KeyEvent.KEYCODE_SEARCH, KeyEvent.KEYCODE_VOICE_ASSIST -> voice()
             KeyEvent.KEYCODE_CALL -> call()
             KeyEvent.KEYCODE_ENDCALL -> endCall()
@@ -131,6 +137,11 @@ object CarKeys {
     const val KEYCODE_SHIFT_TAB = -KeyEvent.KEYCODE_TAB
 
     private const val MAX_ROTARY_STEPS = 5
+
+    private val MEDIA_KEYS = setOf(
+        KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, KeyEvent.KEYCODE_MEDIA_PLAY, KeyEvent.KEYCODE_MEDIA_PAUSE,
+        KeyEvent.KEYCODE_MEDIA_STOP, KeyEvent.KEYCODE_MEDIA_NEXT, KeyEvent.KEYCODE_MEDIA_PREVIOUS,
+    )
 
     private val FOCUS_KEYS = setOf(
         KeyEvent.KEYCODE_DPAD_UP, KeyEvent.KEYCODE_DPAD_DOWN, KeyEvent.KEYCODE_DPAD_LEFT,

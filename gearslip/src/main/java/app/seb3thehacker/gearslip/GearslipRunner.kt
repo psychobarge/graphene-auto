@@ -1002,7 +1002,11 @@ class GearslipRunner(
             val down = Wire.varint(fields, 2) == 1L
             val longPress = Wire.varint(fields, 4) == 1L
             log.i("<- key event: keycode=$keycode ${if (down) "down" else "up"}${if (longPress) " long" else ""}")
-            if (!CarKeys.onKey(keycode, down, longPress) && down) log.i("unhandled keycode=$keycode")
+            // A button press must never end the session: a key handler's bug costs that key only.
+            val handled = runCatching { CarKeys.onKey(keycode, down, longPress) }
+                .onFailure { log.e("key $keycode failed - ignored, session kept", it) }
+                .getOrDefault(true)
+            if (!handled && down) log.i("unhandled keycode=$keycode")
         }
     }
 
