@@ -86,6 +86,7 @@ class GearslipActivity : ComponentActivity(), Projection {
             GearslipLog.w("audio: record permission declined")
             CarAudio.denied()
         }
+        if (!granted && stepAsideOnVideo && surface != null) stepAside()
     }
 
     private val audioConsent = registerForActivityResult(StartActivityForResult()) { result ->
@@ -97,6 +98,7 @@ class GearslipActivity : ComponentActivity(), Projection {
             CarAudio.denied()
             if (!CarSettings.audioChoiceAsked) offerBluetooth.value = true
         }
+        if (stepAsideOnVideo && surface != null) stepAside()
     }
 
     /** Raised when the microphone permission is blocked; see [MicBlockedDialog]. */
@@ -508,7 +510,10 @@ class GearslipActivity : ComponentActivity(), Projection {
             CarEnvironment.setDisplay(width, height, densityDpi)
             CarEnvironment.start(this)
             showCarUi()
-            if (stepAsideOnVideo) stepAside()
+            // Asked while Graphene Auto is still in front: launched from the background, the
+            // capture dialog never showed and the drive stayed silent. Step aside once it's answered.
+            if (CarSettings.pipeAudio.value) CarAudio.request()
+            if (stepAsideOnVideo && CarAudio.capture.value != CarAudio.Capture.ASKING) stepAside()
             app.seb3thehacker.gearslip.car.CarKeys.focusSink = { code, down ->
                 runOnUiThread { screenProjector?.dispatchKey(code, down) }
             }
