@@ -346,7 +346,7 @@ object AssistantCommands {
         val match = bestMatch(allEntries(context), wanted) { it.label }
             ?: return "I couldn't find an app called $name."
 
-        launchEntry(match, navigator, frame)
+        launchEntry(context, match, navigator, frame)
         return "Opening ${match.label}."
     }
 

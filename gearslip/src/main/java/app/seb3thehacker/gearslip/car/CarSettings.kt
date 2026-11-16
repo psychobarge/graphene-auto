@@ -74,6 +74,7 @@ private const val KEY_LOCATION_WARNING = "car_location_warning"
     private const val KEY_PINNED = "car_pinned_apps"
     private const val KEY_APP_ORDER = "car_app_order"
     private const val KEY_HIDDEN_APPS = "car_hidden_apps"
+    private const val KEY_CONTACT_TILES = "car_contact_tiles"
     private const val KEY_EXPERIMENTAL_FEATURES = "car_experimental_features"
     private const val KEY_SYSTEM_SPEECH = "car_system_speech"
     private const val KEY_CAR_SENSORS = "car_sensors_enabled"
@@ -93,6 +94,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     /** How many shortcuts the nav bar makes room for; a driver reaching for one needs it to
      * still be on the bar, not off the edge of a long list. */
     const val MAX_PINNED = 3
+    const val MAX_CONTACT_TILES = 8
 
     /** Id of the app to open on connect; [HOME] opens the launcher. */
     const val HOME = "home"
@@ -381,6 +383,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
             .split(",").filter { it.isNotEmpty() }.toSet()
         // Pins saved before hiding also unpinned (see [setAppHidden]).
         pinnedFlow.value -= hiddenAppsFlow.value
+        contactTilesFlow.value = ContactTile.decode(AppSettings.getString(app, KEY_CONTACT_TILES, ""))
         experimentalFeaturesFlow.value = AppSettings.getString(app, KEY_EXPERIMENTAL_FEATURES, "false") == "true"
         systemSpeechFlow.value = AppSettings.getString(app, KEY_SYSTEM_SPEECH, "false") == "true"
         carSensorsFlow.value = AppSettings.getString(app, KEY_CAR_SENSORS, "false") == "true"
@@ -554,5 +557,23 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     fun setAppOrder(ids: List<String>) {
         appOrderFlow.value = ids
         AppSettings.putString(app, KEY_APP_ORDER, ids.joinToString(","))
+    }
+
+    private val contactTilesFlow = MutableStateFlow<List<ContactTile>>(emptyList())
+
+    /** The contacts with a call tile in the Phone group, in the order chosen on the phone. */
+    internal val contactTiles: StateFlow<List<ContactTile>> = contactTilesFlow
+
+    /**
+     * Adds, removes and reorders by replacing the whole list, keeping the first [MAX_CONTACT_TILES].
+     * A tile that leaves takes its nav-bar pin and its moved place with it, as hiding an app does.
+     */
+    internal fun setContactTiles(tiles: List<ContactTile>) {
+        val next = tiles.distinctBy { it.id }.take(MAX_CONTACT_TILES)
+        val gone = (contactTilesFlow.value.map { it.id } - next.map { it.id }.toSet()).toSet()
+        contactTilesFlow.value = next
+        AppSettings.putString(app, KEY_CONTACT_TILES, ContactTile.encode(next))
+        gone.filter { it in pinnedFlow.value }.forEach(::togglePin)
+        if (appOrderFlow.value.any { it in gone }) setAppOrder(appOrderFlow.value - gone)
     }
 }

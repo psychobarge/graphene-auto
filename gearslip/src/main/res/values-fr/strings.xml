@@ -842,4 +842,17 @@
     <string name="settings_language">Langue</string>
     <string name="settings_language_phone">Comme le téléphone</string>
     <string name="player_next_chapter">Chapitre suivant</string>
+    <string name="contacts_title">Appeler depuis la voiture</string>
+    <string name="contacts_sub">Jusqu’à %1$d contacts, chacun avec sa tuile dans le groupe Téléphone de la voiture. Un appui appelle.</string>
+    <string name="contacts_no_calls">Cet appareil ne peut pas passer d’appels.</string>
+    <string name="contacts_add">Ajouter un contact</string>
+    <string name="contacts_full">%1$d contacts au maximum</string>
+    <string name="contacts_unseen">Graphene Auto ne voit pas ce contact. Ajoutez-le à ses Contact Scopes, sinon la tuile sera retirée au prochain démarrage.</string>
+    <string name="contacts_move_up">Monter</string>
+    <string name="contacts_move_down">Descendre</string>
+    <string name="contacts_remove">Retirer</string>
+    <string name="contact_call_busy">Un appel est déjà en cours</string>
+    <string name="contact_call_permission">Autorisez les appels sur le téléphone, puis appuyez à nouveau</string>
+    <string name="help_contacts">Appelez un proche en un appui depuis la voiture.</string>
+    <string name="help_contacts_detail">Ajoutez-le dans Voiture › Applis › Appeler depuis la voiture. Sa tuile apparaît dans le groupe Téléphone du menu de la voiture.</string>
 </resources>

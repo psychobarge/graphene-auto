@@ -77,6 +77,7 @@ private fun inTheCar(grapheneOs: Boolean, onRequestCallScreening: () -> Unit) = 
         buttonLabel = R.string.guide_set_up,
         onClick = onRequestCallScreening,
     ),
+    Step(R.string.help_contacts, R.string.help_contacts_detail),
 )
 
 private val USB_AUDIO = listOf(

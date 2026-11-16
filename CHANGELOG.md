@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Added
+- Call someone in one tap from the car: add up to 8 contacts under Car › Apps on the phone, and
+  each gets a tile in the Phone group of the car's app menu, which can be pinned to the nav bar.
+
 ## Fork from Gearslip
 
 Graphene Auto starts from [Gearslip](https://github.com/twinksoftware/Gearslip) 0.3.40-alpha.

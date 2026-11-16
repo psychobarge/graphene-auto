@@ -175,13 +175,13 @@ internal fun RunningSlot.isShowing(current: CarScreen): Boolean = when (this) {
  * Brings an app up: back to its screen if it's already open - never a reconnect, which would
  * throw away the route or restart the session - otherwise a fresh launch.
  */
-internal fun openApp(entry: Entry, slot: RunningSlot?, navigator: CarNavigator, frame: CarEnvironment.Frame) {
+internal fun openApp(context: android.content.Context, entry: Entry, slot: RunningSlot?, navigator: CarNavigator, frame: CarEnvironment.Frame) {
     when (slot) {
         RunningSlot.NAV -> navigator.home()
         RunningSlot.BROWSE -> navigator.browse(entry.label)
         RunningSlot.MEDIA -> navigator.media()
         RunningSlot.SCREEN -> Unit
-        null -> launchEntry(entry, navigator, frame)
+        null -> launchEntry(context, entry, navigator, frame)
     }
 }
 
@@ -239,14 +239,27 @@ internal fun AppMenu(navigator: CarNavigator, running: Map<String, RunningSlot>)
         ) {
             Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    entry.icon?.let { Image(it, null, Modifier.size(44.dp).clip(RoundedCornerShape(10.dp))) }
+                    val contact = entry.contact
+                    when {
+                        contact != null -> ContactAvatar(contact.name, entry.icon, 44.dp)
+                        else -> entry.icon?.let { Image(it, null, Modifier.size(44.dp).clip(RoundedCornerShape(10.dp))) }
+                    }
                     entry.builtIn?.let { Icon(it.glyph, null, Modifier.size(36.dp)) }
-                    Text(
-                        entry.shownLabel(),
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(start = 14.dp),
-                    )
+                    Column(Modifier.padding(start = 14.dp)) {
+                        Text(
+                            entry.shownLabel(),
+                            style = MaterialTheme.typography.titleLarge,
+                            fontWeight = FontWeight.SemiBold,
+                        )
+                        // So the driver can check what the tile calls.
+                        contact?.let {
+                            Text(
+                                "${it.type} · ${it.number}",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
                 }
                 GsButton(
                     onClick = {

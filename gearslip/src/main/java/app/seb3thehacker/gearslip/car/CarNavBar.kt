@@ -319,13 +319,14 @@ private fun NavEntryIcon(
 ) {
     val id = entry.componentId ?: return
     val slot = running[id]
+    val context = LocalContext.current
     Box(Modifier.padding(horizontal = 3.dp)) {
         NavAppIcon(
             entry,
             open = slot != null,
             showing = slot != null && slot.isShowing(navigator.current),
             onLongClick = { navigator.showAppMenu(id) },
-        ) { openApp(entry, slot, navigator, frame) }
+        ) { openApp(context, entry, slot, navigator, frame) }
     }
 }
 
@@ -347,7 +348,11 @@ private fun NavAppIcon(
         latched = showing,
         onLongClick = onLongClick,
     ) {
-        entry.icon?.let { Image(it, entry.label, Modifier.size(30.dp).clip(RoundedCornerShape(8.dp))) }
+        val contact = entry.contact
+        when {
+            contact != null -> ContactAvatar(contact.name, entry.icon, 30.dp)
+            else -> entry.icon?.let { Image(it, entry.label, Modifier.size(30.dp).clip(RoundedCornerShape(8.dp))) }
+        }
         entry.builtIn?.let { Icon(it.glyph, entry.shownLabel(), Modifier.size(26.dp)) }
         // Only running apps get the line along the bottom edge, the usual taskbar mark for it.
         if (open) {

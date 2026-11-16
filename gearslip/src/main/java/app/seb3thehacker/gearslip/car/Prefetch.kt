@@ -32,6 +32,7 @@ object Prefetch {
             val start = System.currentTimeMillis()
             step("certificate") { CertProvider.warm(app) }
             step("launcher apps") { warmLauncherApps(app) }
+            step("contact tiles") { ContactTiles.refresh(app) }
             step("phone apps") { PhoneApps.warm(app) }
             step("weather and calendar") { warmDashboard(app) }
             GearslipLog.i("prefetch done in ${System.currentTimeMillis() - start}ms")

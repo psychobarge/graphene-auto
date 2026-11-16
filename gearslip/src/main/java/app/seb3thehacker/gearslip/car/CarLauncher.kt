@@ -54,6 +54,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.border
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Warning
@@ -75,6 +76,8 @@ private class Tile(
     /** Known not to work; drawn with a red X instead of being left off the launcher. */
     val broken: Boolean = false,
     val onLongClick: (() -> Unit)? = null,
+    /** Drawn as the contact's photo or initial, with a handset badge: tapping calls rather than opens. */
+    val contact: ContactTile? = null,
     val onClick: () -> Unit,
 )
 
@@ -86,10 +89,13 @@ internal class Entry(
     val media: MediaApp? = null,
     val builtIn: BuiltInApp? = null,
     val messaging: MessagingApp? = null,
+    /** A tile that calls this number; [icon] is the contact's photo. */
+    val contact: ContactTile? = null,
 ) {
     /** What a pin or a nav-bar shortcut remembers this entry as; null for nothing pinnable. */
     val componentId: String?
-        get() = builtIn?.let { BUILT_IN_PREFIX + it.id }
+        get() = contact?.id
+            ?: builtIn?.let { BUILT_IN_PREFIX + it.id }
             ?: messaging?.let { MESSAGING_PREFIX + it.packageName }
             ?: (template?.component ?: media?.component)?.flattenToString()
 
@@ -186,11 +192,12 @@ internal fun rememberAllEntries(): List<Entry> {
     val context = LocalContext.current
     val installed by LauncherCache.state.collectAsState()
     val launcher by LauncherMode.active.collectAsState()
+    val contacts by ContactTiles.state.collectAsState()
     LaunchedEffect(context) {
         if (LauncherCache.entries == null) withContext(Dispatchers.IO) { LauncherCache.load(context) }
     }
-    return remember(installed, launcher) {
-        BuiltInApps.entries(launcher, LauncherMode.canCall(context)) + installed.orEmpty()
+    return remember(installed, launcher, contacts) {
+        BuiltInApps.entries(launcher, LauncherMode.canCall(context)) + installed.orEmpty() + contacts
     }
 }
 
@@ -198,6 +205,7 @@ internal fun rememberAllEntries(): List<Entry> {
 private enum class AppGroup { PHONE, MAPS, MUSIC, MESSAGING, WEB, SCREEN_SHARING, OTHER, SETTINGS, EXIT }
 
 private fun groupOf(entry: Entry, mediaPackages: Set<String>): AppGroup {
+    if (entry.contact != null) return AppGroup.PHONE
     entry.builtIn?.let {
         return when (it) {
             BuiltInApps.Phone -> AppGroup.PHONE
@@ -228,12 +236,19 @@ private fun groupOf(entry: Entry, mediaPackages: Set<String>): AppGroup {
  * group with Settings last of all, then with the driver's own moves from [custom] laid over it.
  * Moved apps only trade places among themselves, so an app installed later still lands in its group.
  * [hidden] leaves tiles out of the drawer; hiding one also unpins it from the nav bar.
+ * Contact tiles close the Phone group in the order they were given in, not alphabetically.
  */
 internal fun launcherOrder(all: List<Entry>, showVehicleData: Boolean, custom: List<String>, hidden: Set<String>): List<Entry> {
     val shown = all.filter { (it.builtIn !== BuiltInApps.VehicleData || showVehicleData) && it.componentId !in hidden }
     val mediaPackages = shown.mapNotNull { it.media?.component?.packageName }.toSet()
+    // A stable sort: contacts all compare equal on the label key, so they keep their order.
     val grouped = shown.sortedWith(
-        compareBy<Entry>({ groupOf(it, mediaPackages) }, { it.builtIn === BuiltInApps.Settings }, { it.label.lowercase() }),
+        compareBy<Entry>(
+            { groupOf(it, mediaPackages) },
+            { it.builtIn === BuiltInApps.Settings },
+            { it.contact != null },
+            { if (it.contact != null) "" else it.label.lowercase() },
+        ),
     )
     if (custom.isEmpty()) return grouped
     val rank = custom.withIndex().associate { (i, id) -> id to i }
@@ -245,6 +260,7 @@ internal fun launcherOrder(all: List<Entry>, showVehicleData: Boolean, custom: L
 /** An app by the id a pin or the running list knows it by, built-in or installed. */
 internal fun findEntry(id: String): Entry? =
     BuiltInApps.everyEntry.find { it.componentId == id } ?: LauncherCache.entries?.find { it.componentId == id }
+        ?: ContactTiles.state.value.find { it.componentId == id }
 
 /** Rescans the car and media apps now, replacing the cached list; the launcher keeps showing the old one meanwhile. */
 fun warmLauncherApps(context: Context) { LauncherCache.load(context, force = true) }
@@ -254,7 +270,8 @@ fun warmLauncherApps(context: Context) { LauncherCache.load(context, force = tru
  * shortcuts and its open-app icon so there is exactly one place that knows how to launch either
  * kind of app.
  */
-internal fun launchEntry(entry: Entry, navigator: CarNavigator, frame: CarEnvironment.Frame) {
+internal fun launchEntry(context: Context, entry: Entry, navigator: CarNavigator, frame: CarEnvironment.Frame) {
+    entry.contact?.let { callContact(context, it); return }
     entry.builtIn?.let { it.open(navigator); return }
     entry.template?.let {
         if (it.isNavigation) {
@@ -290,7 +307,8 @@ fun CarLauncher() {
             entry.builtIn?.let { context.getString(it.labelRes) } ?: entry.label, entry.icon, entry.builtIn?.glyph,
             broken = pkg != null && (KnownApps.isBroken(context, pkg) || (entry.template != null && KnownApps.screenBroken(pkg))),
             onLongClick = id?.let { { navigator.showAppMenu(it) } },
-        ) { openApp(entry, id?.let { running[it] }, navigator, frame) }
+            contact = entry.contact,
+        ) { openApp(context, entry, id?.let { running[it] }, navigator, frame) }
     }
 
     val appOrder by CarSettings.appOrder.collectAsState()
@@ -319,6 +337,17 @@ private fun BrokenBadge(size: androidx.compose.ui.unit.Dp, modifier: Modifier = 
     }
 }
 
+/** A handset on the primary colour: marks a contact tile, in the broken badge's place. */
+@Composable
+private fun CallBadge(size: androidx.compose.ui.unit.Dp, modifier: Modifier = Modifier) {
+    Box(
+        modifier.size(size).background(MaterialTheme.colorScheme.primary, CircleShape),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(Icons.Filled.Call, contentDescription = stringResource(R.string.dialer_call), tint = MaterialTheme.colorScheme.onPrimary, modifier = Modifier.size(size * 0.6f))
+    }
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun AppTile(tile: Tile) {
@@ -340,6 +369,13 @@ private fun AppTile(tile: Tile) {
             ) {
                 Box {
                     TileIcon(tile)
+                    if (tile.contact != null) {
+                        CallBadge(
+                            22.dp,
+                            Modifier.align(Alignment.BottomEnd).offset(x = 6.dp, y = 4.dp)
+                                .border(2.dp, MaterialTheme.colorScheme.surfaceVariant, CircleShape),
+                        )
+                    }
                     if (tile.broken) {
                         // Pinned to the icon's lower corner, ringed in the tile's colour so it
                         // reads as sitting on top of the icon.
@@ -360,6 +396,7 @@ private fun AppTile(tile: Tile) {
 @Composable
 private fun TileIcon(tile: Tile) {
     when {
+        tile.contact != null -> ContactAvatar(tile.contact.name, tile.icon, 52.dp)
         tile.icon != null -> Image(tile.icon, contentDescription = null, modifier = Modifier.size(52.dp))
         tile.glyph != null -> Icon(tile.glyph, contentDescription = null, modifier = Modifier.size(52.dp))
     }

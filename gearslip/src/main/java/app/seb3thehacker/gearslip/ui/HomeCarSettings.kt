@@ -49,7 +49,21 @@ import app.seb3thehacker.gearslip.car.NavBarMode
 import app.seb3thehacker.gearslip.car.NightMode
 import app.seb3thehacker.gearslip.car.Units
 import app.seb3thehacker.gearslip.car.theme.GsThemes
+import app.seb3thehacker.gearslip.car.ContactAvatar
+import app.seb3thehacker.gearslip.car.ContactTile
+import app.seb3thehacker.gearslip.car.ContactTiles
+import android.content.Intent
+import android.provider.ContactsContract
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material3.IconButton
+import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 /** The car's setting groups, each opening its own screen from the phone's home screen. */
@@ -189,6 +203,7 @@ internal fun CarGroupScreen(group: CarGroup, onBack: () -> Unit) {
                 .verticalScroll(androidx.compose.foundation.rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
+            if (group == CarGroup.APPS) SettingsCard { ContactRows() }
             SettingsCard { GroupRows(group) }
             // The bigger pieces each keep their own card: the car screen's size and the preview's,
             // and the two voice models with their downloads.
@@ -359,7 +374,76 @@ private fun AppRows() {
     }
 }
 
-private fun <T> List<Pair<T, String>>.label(value: T): String = firstOrNull { it.first == value }?.second.orEmpty()
+/**
+ * The contacts with a call tile in the car's Phone group. Added through Android's number picker,
+ * which hands over the one number chosen without READ_CONTACTS; removed and reordered only here.
+ */
+@Composable
+private fun ContactRows() {
+    val context = LocalContext.current
+    if (!LauncherMode.canCall(context)) {
+        SettingsRow(stringResource(R.string.contacts_title), subtitle = stringResource(R.string.contacts_no_calls))
+        return
+    }
+    val tiles by CarSettings.contactTiles.collectAsState()
+    val entries by ContactTiles.state.collectAsState()
+    // Picked on this visit but out of Graphene Auto's sight (Contact Scopes): gone at the next scan.
+    var unseen by remember { mutableStateOf(emptySet<String>()) }
+    val scope = rememberCoroutineScope()
+    // Drops a contact deleted since the last drive, and reads the photos for the rows.
+    LaunchedEffect(Unit) { withContext(Dispatchers.IO) { ContactTiles.refresh(context) } }
+
+    fun save(next: List<ContactTile>) {
+        CarSettings.setContactTiles(next)
+        scope.launch(Dispatchers.IO) { ContactTiles.refresh(context, prune = false) }
+    }
+    val picker = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        val uri = result.data?.data ?: return@rememberLauncherForActivityResult
+        scope.launch {
+            val picked = withContext(Dispatchers.IO) { ContactTiles.readPicked(context, uri) } ?: return@launch
+            if (!withContext(Dispatchers.IO) { ContactTiles.isVisible(context, picked) }) unseen = unseen + picked.id
+            save(CarSettings.contactTiles.value + picked)
+        }
+    }
+
+    SettingsRow(stringResource(R.string.contacts_title), subtitle = stringResource(R.string.contacts_sub, CarSettings.MAX_CONTACT_TILES))
+    tiles.forEachIndexed { i, tile ->
+        SettingsDivider()
+        val details = "${tile.type} · ${tile.number}"
+        SettingsRow(
+            tile.name,
+            subtitle = if (tile.id in unseen) details + "\n" + stringResource(R.string.contacts_unseen) else details,
+            leading = { ContactAvatar(tile.name, entries.find { it.contact?.id == tile.id }?.icon, 40.dp) },
+            trailing = {
+                Row {
+                    IconButton(onClick = { save(tiles.toMutableList().apply { add(i - 1, removeAt(i)) }) }, enabled = i > 0) {
+                        Icon(Icons.Filled.KeyboardArrowUp, stringResource(R.string.contacts_move_up))
+                    }
+                    IconButton(onClick = { save(tiles.toMutableList().apply { add(i + 1, removeAt(i)) }) }, enabled = i < tiles.lastIndex) {
+                        Icon(Icons.Filled.KeyboardArrowDown, stringResource(R.string.contacts_move_down))
+                    }
+                    IconButton(onClick = { save(tiles - tile) }) {
+                        Icon(Icons.Filled.Delete, stringResource(R.string.contacts_remove))
+                    }
+                }
+            },
+        )
+    }
+    SettingsDivider()
+    val full = tiles.size >= CarSettings.MAX_CONTACT_TILES
+    SettingsRow(
+        stringResource(R.string.contacts_add),
+        Modifier.clickable(enabled = !full) {
+            runCatching { picker.launch(Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI)) }
+                .onFailure { app.seb3thehacker.gearslip.GearslipLog.w("contact tiles: no number picker: ${it.message}") }
+        },
+        subtitle = if (full) stringResource(R.string.contacts_full, CarSettings.MAX_CONTACT_TILES) else null,
+        icon = Icons.Filled.Add,
+        titleColor = if (full) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
+    )
+}
+
+private fun <T> List<Pair<T, String>>.label(value: T): String =firstOrNull { it.first == value }?.second.orEmpty()
 
 /** A setting with a few named choices: its current one shown, the rest a tap away. */
 @Composable

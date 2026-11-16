@@ -904,4 +904,17 @@
     <string name="settings_language">Language</string>
     <string name="settings_language_phone">Same as the phone</string>
     <string name="player_next_chapter">Next chapter</string>
+    <string name="contacts_title">Call from the car</string>
+    <string name="contacts_sub">Up to %1$d contacts, each with a tile in the car\'s Phone group. One tap calls.</string>
+    <string name="contacts_no_calls">This device can\'t make calls.</string>
+    <string name="contacts_add">Add a contact</string>
+    <string name="contacts_full">%1$d contacts at most</string>
+    <string name="contacts_unseen">Graphene Auto can\'t see this contact. Add it to Graphene Auto\'s Contact Scopes, or its tile goes at the next start.</string>
+    <string name="contacts_move_up">Move up</string>
+    <string name="contacts_move_down">Move down</string>
+    <string name="contacts_remove">Remove</string>
+    <string name="contact_call_busy">A call is already under way</string>
+    <string name="contact_call_permission">Allow calls on the phone, then tap again</string>
+    <string name="help_contacts">Call someone in one tap from the car.</string>
+    <string name="help_contacts_detail">Add them under Car › Apps › Call from the car. Their tile shows in the Phone group of the car\'s app menu.</string>
 </resources>
