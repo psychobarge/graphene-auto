@@ -227,7 +227,7 @@ private fun groupOf(entry: Entry, mediaPackages: Set<String>): AppGroup {
  * The launcher's tiles in the order they're drawn: grouped by [AppGroup], alphabetical inside a
  * group with Settings last of all, then with the driver's own moves from [custom] laid over it.
  * Moved apps only trade places among themselves, so an app installed later still lands in its group.
- * [hidden] leaves tiles out of the drawer only: a pinned app stays on the nav bar.
+ * [hidden] leaves tiles out of the drawer; hiding one also unpins it from the nav bar.
  */
 internal fun launcherOrder(all: List<Entry>, showVehicleData: Boolean, custom: List<String>, hidden: Set<String>): List<Entry> {
     val shown = all.filter { (it.builtIn !== BuiltInApps.VehicleData || showVehicleData) && it.componentId !in hidden }

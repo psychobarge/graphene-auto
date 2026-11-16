@@ -64,6 +64,22 @@ class HiddenAppsTest {
     }
 
     @Test
+    fun hidingAnAppUnpinsItFromTheNavBar() {
+        CarSettings.togglePin(id("signal"))
+        CarSettings.setAppHidden(id("signal"), true)
+        assertEquals(emptySet<String>(), CarSettings.pinnedApps.value)
+    }
+
+    @Test
+    fun aPinSavedBeforeHidingIsDroppedOnRestart() {
+        CarSettings.togglePin(id("signal"))
+        // Saved the way older builds left it: hidden and still pinned.
+        app.seb3thehacker.gearslip.AppSettings.putString(context, "car_hidden_apps", id("signal"))
+        CarSettings.init(context)
+        assertEquals(emptySet<String>(), CarSettings.pinnedApps.value)
+    }
+
+    @Test
     fun appsIsTheFirstCardOnThePhone() {
         assertEquals(CarGroup.APPS, CarGroup.entries.first())
         assertFalse(CarGroup.entries.drop(1).contains(CarGroup.APPS))

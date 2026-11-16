@@ -379,6 +379,8 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
             .split(",").filter { it.isNotEmpty() }
         hiddenAppsFlow.value = AppSettings.getString(app, KEY_HIDDEN_APPS, "")
             .split(",").filter { it.isNotEmpty() }.toSet()
+        // Pins saved before hiding also unpinned (see [setAppHidden]).
+        pinnedFlow.value -= hiddenAppsFlow.value
         experimentalFeaturesFlow.value = AppSettings.getString(app, KEY_EXPERIMENTAL_FEATURES, "false") == "true"
         systemSpeechFlow.value = AppSettings.getString(app, KEY_SYSTEM_SPEECH, "false") == "true"
         carSensorsFlow.value = AppSettings.getString(app, KEY_CAR_SENSORS, "false") == "true"
@@ -541,10 +543,12 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
         AppSettings.putString(app, KEY_PINNED, next.joinToString(","))
     }
 
+    /** Hiding an app takes it off the whole car, nav-bar pin included. */
     fun setAppHidden(id: String, hide: Boolean) {
         val next = if (hide) hiddenAppsFlow.value + id else hiddenAppsFlow.value - id
         hiddenAppsFlow.value = next
         AppSettings.putString(app, KEY_HIDDEN_APPS, next.joinToString(","))
+        if (hide && id in pinnedFlow.value) togglePin(id)
     }
 
     fun setAppOrder(ids: List<String>) {
