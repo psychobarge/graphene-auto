@@ -39,6 +39,8 @@ class AudioLink(
     /** The car wants the speakers for a moment (a call, its own voice), and then [onGivenBack]. */
     private val onPausedForNow: () -> Unit = {},
     private val onGivenBack: () -> Unit = {},
+    /** Longer than the capture's 3s level window plus the 2s re-pause after a loss. */
+    private val resumeAfterLossMs: Long = 6_000L,
 ) : CarAudio.Link {
 
     private var configIndex = 0
@@ -247,6 +249,7 @@ class AudioLink(
             state == FOCUS_STATE_GAIN_MEDIA_ONLY
         when {
             focusGranted -> {
+                lostAt = 0L
                 startStream()
                 if (pausedForNow) {
                     pausedForNow = false
@@ -264,6 +267,7 @@ class AudioLink(
             }
             else -> {
                 stop()
+                if (state == FOCUS_STATE_LOSS) lostAt = System.currentTimeMillis()
                 // A ducking request leaves the music playing; a loss means another source has the speakers.
                 if (state == FOCUS_STATE_LOSS && (had || pausedForNow)) {
                     pausedForNow = false
@@ -292,6 +296,22 @@ class AudioLink(
 
     /** Silence for [ms], whole frames of this sink's format. */
     private fun silence(ms: Int): ByteArray = ByteArray(sampleRate * ms / 1000 * channels * 2)
+
+    /** When the car last took the speakers for good (LOSS), or 0. */
+    @Volatile private var lostAt = 0L
+
+    /**
+     * The phone is playing again after the car took the speakers (the driver went to the radio,
+     * then pressed play): ask for them back, as Android Auto does. Before this the music stayed
+     * silent until the next connection. Waits out the sound still captured from before the loss.
+     */
+    override fun heard() {
+        val at = lostAt
+        if (at == 0L || started || pausedForNow || System.currentTimeMillis() - at < resumeAfterLossMs) return
+        lostAt = 0L
+        GearslipLog.i("$tag: the phone is playing again - asking the car for the speakers")
+        start()
+    }
 
     override fun start() {
         if (!ready || started) return

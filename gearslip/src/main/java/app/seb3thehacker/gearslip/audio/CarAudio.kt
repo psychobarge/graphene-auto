@@ -24,6 +24,8 @@ object CarAudio {
         val channels: Int
         fun start()
         fun stop()
+        /** The capture hears sound; see AudioLink.heard. */
+        fun heard() {}
         fun write(pcm: ByteArray, size: Int)
     }
 
@@ -137,6 +139,7 @@ object CarAudio {
 
     internal fun deliver(pcm: ByteArray, size: Int, peak: Float) {
         _level.value = peak
+        if (peak > 0f) link?.heard()
         val voice = synchronized(voiceLock) { spoken }
         if (voice == null) link?.write(pcm, size) else link?.write(mixVoice(pcm, size), size)
     }
