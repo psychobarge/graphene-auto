@@ -78,10 +78,11 @@ object CarAppCatalog {
         CarAppService.CATEGORY_CHARGING_APP,
         CarAppService.CATEGORY_MESSAGING_APP,
         CarAppService.CATEGORY_CALLING_APP,
+        // Newer apps declare MEDIA, but our AndroidX 1.7 dependency has no constant for it.
+        // Before SETTINGS: [TemplateApp.kind] takes the first match, and YouTube Music declares both.
+        "androidx.car.app.category.MEDIA",
         CarAppService.CATEGORY_SETTINGS_APP,
         CarAppService.CATEGORY_IOT_APP,
         CarAppService.CATEGORY_WEATHER_APP,
-        // Newer apps declare MEDIA, but our AndroidX 1.7 dependency has no constant for it.
-        "androidx.car.app.category.MEDIA",
     )
 }
