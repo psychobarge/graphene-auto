@@ -40,13 +40,13 @@ object KnownApps {
     fun playerWorks(packageName: String): Boolean = packageName in workingPlayer
 
     /**
-     * Apps whose car screen refuses Graphene Auto but whose player works. When the player covers the
-     * app (see [playerWorks]) the launcher drops the dead "· Browse" tile entirely rather than
-     * show it; otherwise that tile gets a red X. Car library 1.9 and later accepts only Google's
-     * host on a phone.
+     * Apps whose car screen refuses Graphene Auto. When the app also has a player tile the launcher
+     * drops the dead "· Browse" tile entirely rather than show it; otherwise that tile gets a red X.
+     * Car library 1.9 and later accepts only Google's host on a phone.
      */
     private val brokenScreen = setOf(
         "com.spotify.music", // Spotify 9.1.86 and later: car library 1.9 rejects Graphene Auto
+        "com.maxrave.simpmusic", // SimpMusic: ships car library 1.9.0-alpha03, rejects Graphene Auto
     )
 
     fun screenBroken(packageName: String): Boolean = packageName in brokenScreen

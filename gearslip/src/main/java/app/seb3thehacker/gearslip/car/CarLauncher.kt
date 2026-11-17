@@ -162,7 +162,7 @@ private sealed interface AppTile {
  *   one tile under its own name.
  * - A media app with both a car screen and a player (Spotify) gets both, the screen labelled
  *   "· Browse", since they really are different screens - unless the screen is known to refuse
- *   Graphene Auto while the player works, when the Browse tile would only report that.
+ *   Graphene Auto, when the Browse tile would only report that and the player already covers it.
  * - A messenger's own car screen (Google Messages) won't start under Graphene Auto, and Graphene Auto's
  *   Messages screen does the job, so it gets only that - and a messenger that is also a media
  *   app keeps only its player.
@@ -176,9 +176,8 @@ private fun tilesFor(
     if (car != null && !car.isMediaScreen && car.kind != "messaging") return listOf(AppTile.Screen(car, car.label))
     val pkg = car?.component?.packageName ?: media?.component?.packageName ?: messaging?.packageName ?: return emptyList()
     return buildList {
-        val screenRefused = KnownApps.screenBroken(pkg) && KnownApps.playerWorks(pkg)
         val messengerScreen = messaging != null && (car?.kind == "messaging" || car?.kind == "app")
-        if (car != null && !messengerScreen && !(media != null && screenRefused)) {
+        if (car != null && !messengerScreen && !(media != null && KnownApps.screenBroken(pkg))) {
             add(AppTile.Screen(car, if (media != null) "${car.label} · $browse" else car.label))
         }
         if (media != null) add(AppTile.Player(media))
