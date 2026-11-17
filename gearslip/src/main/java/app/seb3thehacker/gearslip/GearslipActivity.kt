@@ -520,13 +520,20 @@ class GearslipActivity : ComponentActivity(), Projection {
         }
     }
 
+    /** Touches from the car not yet dispatched, oldest first. */
+    private val pendingTouches = java.util.concurrent.ConcurrentLinkedQueue<() -> Unit>()
+
     override fun onTouch(action: Int, actionIndex: Int, points: List<TouchPoint>) {
-        // To the front of the main thread's queue: a touch waiting behind other work is lag the
-        // driver feels, while the work it jumps ahead of can wait a frame.
-        mainHandler.postAtFrontOfQueue {
+        pendingTouches.add {
             // Mirroring drives one phone touch at a time, so it follows the first finger only.
             if (PhoneMirror.active.value) points.firstOrNull()?.let { relayTouch(action, it.x, it.y) }
             else screenProjector?.dispatchTouch(action, actionIndex, points)
+        }
+        // To the front of the main thread's queue: a touch waiting behind other work is lag the
+        // driver feels, while the work it jumps ahead of can wait a frame. Each post drains the
+        // queue in arrival order, since front-of-queue posts themselves run newest first.
+        mainHandler.postAtFrontOfQueue {
+            while (true) (pendingTouches.poll() ?: break)()
         }
     }
 
