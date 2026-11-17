@@ -173,11 +173,17 @@ class GearslipRunner(
             writer.shutdown()
             if (drainWriterOnExit) writer.awaitTermination(2, TimeUnit.SECONDS)
             writer.shutdownNow()
+            // The car can end the session with the link still up (Wi-Fi, ByeBye, EOF): nothing
+            // else would stop the capture, encoder and car UI until the next connection.
+            if (!stopped) stop()
             log.flush()
         }
     }
 
+    /** Ends the session. Called by the activity and by [run] once the link is gone; runs once. */
+    @Synchronized
     fun stop() {
+        if (stopped) return
         stopped = true
         running = false
         writer.shutdownNow()
