@@ -108,7 +108,8 @@ class AudioCaptureService : Service() {
         token.registerCallback(object : MediaProjection.Callback() {
             override fun onStop() {
                 GearslipLog.w("audio: projection stopped")
-                stopSelf()
+                // An older grant being replaced says nothing about the current one.
+                if (token === projection) stopSelf()
             }
         }, null)
         beginCapture(token)
@@ -198,6 +199,10 @@ class AudioCaptureService : Service() {
                 runCatching { record.stop() }
                 record.release()
                 unmutePhone()
+                // The loop died on its own: end the service too, before anyone asks again. A
+                // fresh grant landing on this instance would stop this projection, and its
+                // callback would take the new capture down with it.
+                if (reading) stopSelf()
                 CarAudio.captureStopped()
             }
         }, "gearslip-audio").apply { isDaemon = true; start() }
