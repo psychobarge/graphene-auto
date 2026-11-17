@@ -22,6 +22,9 @@ class ServiceDiscoveryChannelTest {
             assertNull(ServiceDiscovery.findMicService(service(id, 5, microphone)))
             assertNull(ServiceDiscovery.findSensorService(service(id, 2, sensor)))
             assertTrue(ServiceDiscovery.findAudioServices(service(id, 3, audio)).isEmpty())
+            assertTrue(ServiceDiscovery.findVendorServices(service(id, 12, Protobuf.bytesField(1, "com.gm.vip".toByteArray()))).isEmpty())
+            assertNull(ServiceDiscovery.findWifiProjectionService(service(id, 14)))
+            assertNull(ServiceDiscovery.findBluetoothService(service(id, 6, Protobuf.bytesField(1, "00:11:22:33:44:55".toByteArray()))))
         }
         assertEquals(255, ServiceDiscovery.findMediaStatusChannel(service(255, 9)))
     }

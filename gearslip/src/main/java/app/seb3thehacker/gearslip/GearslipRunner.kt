@@ -1488,7 +1488,9 @@ class GearslipRunner(
                     val frameCount = Frames.writeMessage(output, channel, encrypted, messageType, payload) { tls.encrypt(it) }
                     if (frameCount > 1) splitMessages++
                     output.flush()
-                } catch (e: IOException) {
+                } catch (e: Exception) {
+                    // Not only IOException: anything thrown here is uncaught on this thread and
+                    // takes the whole app down.
                     if (running) log.w("send failed, stopping: ${e.message}")
                     running = false
                     videoSource?.stop()

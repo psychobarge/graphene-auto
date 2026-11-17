@@ -194,7 +194,7 @@ object ServiceDiscovery {
     fun findVendorServices(response: ByteArray): List<VendorService> =
         Wire.allBytes(Wire.fields(response), 1).mapNotNull { channel ->
             val service = Wire.fields(channel)
-            val id = Wire.varint(service, 1)?.toInt() ?: return@mapNotNull null
+            val id = serviceId(service) ?: return@mapNotNull null
             val fields = Wire.fields(Wire.bytes(service, 12) ?: return@mapNotNull null)
             val name = Wire.bytes(fields, 1)?.let { String(it, Charsets.UTF_8) } ?: return@mapNotNull null
             VendorService(id, name)
@@ -204,13 +204,13 @@ object ServiceDiscovery {
     fun findWifiProjectionService(response: ByteArray): Int? =
         Wire.allBytes(Wire.fields(response), 1).firstNotNullOfOrNull { channel ->
             val service = Wire.fields(channel)
-            if (Wire.bytes(service, 14) == null) null else Wire.varint(service, 1)?.toInt()
+            if (Wire.bytes(service, 14) == null) null else serviceId(service)
         }
 
     fun findBluetoothService(response: ByteArray): BluetoothService? {
         for (channel in Wire.allBytes(Wire.fields(response), 1)) {
             val service = Wire.fields(channel)
-            val id = Wire.varint(service, 1)?.toInt() ?: continue
+            val id = serviceId(service) ?: continue
             val fields = Wire.fields(Wire.bytes(service, 6) ?: continue)
             val address = Wire.bytes(fields, 1)?.let { String(it, Charsets.UTF_8) } ?: continue
             // Packed as declared, though a car may send each method as its own varint.
