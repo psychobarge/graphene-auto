@@ -561,6 +561,12 @@ object WirelessLink {
                 }
                 socket.tcpNoDelay = true
                 socket.connect(InetSocketAddress(ip, port), 5_000)
+                // Stopped or started over during the connect: this socket belongs to no one.
+                if (run != tcpRun) {
+                    log.i("TCP: connected after the link was stopped or restarted - dropping it")
+                    socket.close()
+                    return
+                }
                 tcp = socket
                 handedOver = true
                 log.i("TCP: connected to $ip:$port (try ${attempt + 1})")
