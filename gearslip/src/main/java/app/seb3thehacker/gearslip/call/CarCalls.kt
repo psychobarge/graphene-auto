@@ -1,7 +1,10 @@
 package app.seb3thehacker.gearslip.call
 
 import android.Manifest
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Handler
@@ -50,6 +53,20 @@ object CarCalls {
     private val _muted = MutableStateFlow(false)
     val muted: StateFlow<Boolean> = _muted.asStateFlow()
     private var audio: android.media.AudioManager? = null
+    private var appContext: Context? = null
+
+    // shortcut: EXTRA_INCOMING_NUMBER is deprecated (needs READ_CALL_LOG); if a later Android drops it the car shows "Unknown number".
+    private val numberReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            if (intent.getStringExtra(TelephonyManager.EXTRA_STATE) != TelephonyManager.EXTRA_STATE_RINGING) return
+            @Suppress("DEPRECATION")
+            val number = intent.getStringExtra(TelephonyManager.EXTRA_INCOMING_NUMBER)?.takeIf { it.isNotBlank() } ?: return
+            if (!ringingCaller?.number.isNullOrBlank()) return
+            val caller = Caller(number, lookUpName(context, number))
+            ringingCaller = caller
+            (_state.value as? CallUiState.Ringing)?.let { _state.value = it.copy(caller = caller) }
+        }
+    }
 
     fun start(context: Context) {
         if (watcher != null) return
@@ -62,6 +79,12 @@ object CarCalls {
         runCatching { manager.registerTelephonyCallback(context.mainExecutor, callback) }
             .onSuccess { telephony = manager; watcher = callback }
             .onFailure { GearslipLog.w("calls: could not watch call state: ${it.message}") }
+        if (watcher == null) return
+        // The number of a call that the screening service never saw (another app holds that role).
+        appContext = context.applicationContext.also {
+            runCatching { it.registerReceiver(numberReceiver, IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED)) }
+                .onFailure { e -> GearslipLog.w("calls: could not watch incoming numbers: ${e.message}") }
+        }
     }
 
     fun stop() {
@@ -69,6 +92,8 @@ object CarCalls {
         runCatching { telephony?.unregisterTelephonyCallback(callback) }
         telephony = null
         watcher = null
+        runCatching { appContext?.unregisterReceiver(numberReceiver) }
+        appContext = null
         pendingRespond = null
         ringingCaller = null
         unmute()
@@ -91,9 +116,10 @@ object CarCalls {
                 }
             }
             TelephonyManager.CALL_STATE_RINGING -> {
-                // The number itself only ever arrives through the screening service; if this
-                // fires first, the ringing card appears once incomingCall() catches up.
-                ringingCaller?.let { _state.value = CallUiState.Ringing(it, pendingRespond != null) }
+                // Ring even with no number yet: the screening service or the phone-state broadcast
+                // fills it in, and without either (no role, no READ_CALL_LOG) the car can still answer.
+                val caller = ringingCaller ?: Caller("", null).also { ringingCaller = it }
+                _state.value = CallUiState.Ringing(caller, pendingRespond != null)
             }
         }
     }
@@ -144,6 +170,11 @@ object CarCalls {
         // Read back rather than trusted: some phones let the call app overrule it.
         _muted.value = manager.isMicrophoneMute
         if (_muted.value != want) GearslipLog.w("calls: the phone didn't take the mute change")
+    }
+
+    /** A mute set on the phone's own call screen goes through the same microphone switch; pick it up. */
+    fun refreshMute() {
+        audio?.let { _muted.value = it.isMicrophoneMute }
     }
 
     private fun unmute() {

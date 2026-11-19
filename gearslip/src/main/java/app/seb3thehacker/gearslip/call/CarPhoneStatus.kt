@@ -19,7 +19,8 @@ import app.seb3thehacker.gearslip.car.CarKeys
  *
  * Read once a second from [CarCalls]. An update goes when the call changes, and every second
  * while one is going, so the car's timer counts along; no calls goes once, as an empty list.
- * The car's own call button answers through [CarKeys], like the steering wheel's.
+ * The car's own call button answers through [CarKeys], like the steering wheel's. A mute made on
+ * the phone's call screen is read back each tick, so the car shows it too.
  */
 class CarPhoneStatus(
     val channelId: Int,
@@ -56,6 +57,7 @@ class CarPhoneStatus(
     }
 
     private fun tick() {
+        if (CarCalls.state.value is CallUiState.Active) CarCalls.refreshMute()
         val call = when (val state = CarCalls.state.value) {
             CallUiState.None -> null
             is CallUiState.Ringing -> Call(STATE_INCOMING, 0, state.caller)
