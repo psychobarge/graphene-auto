@@ -691,7 +691,6 @@
     <string name="call_incoming">수신 전화</string>
     <string name="call_decline">거절</string>
     <string name="call_answer">받기</string>
-    <string name="call_ringing">이미 벨이 울리고 있습니다 - 여기서 받거나 그냥 울리게 두세요.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">터치가 꺼져 있습니다. 휴대전화의 설정 &gt; 접근성에서 Graphene Auto을 사용하도록 설정하세요.</string>

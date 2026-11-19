@@ -225,7 +225,6 @@
     <string name="call_incoming">Eingehender Anruf</string>
     <string name="call_decline">Ablehnen</string>
     <string name="call_answer">Annehmen</string>
-    <string name="call_ringing">Es klingelt schon laut – nimm hier ab oder lass es klingeln.</string>
     <string name="phoneapps_touch_off">Touch ist aus. Aktiviere Graphene Auto auf dem Handy unter Einstellungen &gt; Bedienungshilfen.</string>
     <string name="whatsnew_show_after">Nach den Updates anzeigen</string>
     <string name="whatsnew_got_it">Verstanden</string>

@@ -700,7 +700,6 @@
     <string name="call_incoming">Вхідний дзвінок</string>
     <string name="call_decline">Відхилити</string>
     <string name="call_answer">Відповісти</string>
-    <string name="call_ringing">Уже дзвонить уголос - відповідайте тут або дайте подзвонити.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Дотики вимкнено. Увімкніть Graphene Auto у Налаштування &gt; Спеціальні можливості на телефоні.</string>

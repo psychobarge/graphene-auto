@@ -700,7 +700,6 @@
     <string name="call_incoming">Příchozí hovor</string>
     <string name="call_decline">Odmítnout</string>
     <string name="call_answer">Přijmout</string>
-    <string name="call_ringing">Už nahlas zvoní - přijměte tady, nebo nechte zvonit.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Dotyk je vypnutý. Zapněte Graphene Auto v telefonu v Nastavení &gt; Přístupnost.</string>

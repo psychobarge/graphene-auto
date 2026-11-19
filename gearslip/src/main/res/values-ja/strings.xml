@@ -691,7 +691,6 @@
     <string name="call_incoming">着信</string>
     <string name="call_decline">拒否</string>
     <string name="call_answer">応答</string>
-    <string name="call_ringing">すでに着信音が鳴っています - ここで応答するか、そのまま鳴らしておいてください。</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">タッチ操作がオフです。スマートフォンの［設定］&gt;［ユーザー補助］で Graphene Auto を有効にしてください。</string>

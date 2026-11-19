@@ -694,7 +694,6 @@
     <string name="call_incoming">Gelen arama</string>
     <string name="call_decline">Reddet</string>
     <string name="call_answer">Yanıtla</string>
-    <string name="call_ringing">Zaten yüksek sesle çalıyor - buradan yanıtlayın veya çalmaya bırakın.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Dokunma kapalı. Telefonda Ayarlar &gt; Erişilebilirlik altında Graphene Auto’i etkinleştirin.</string>

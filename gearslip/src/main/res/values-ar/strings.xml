@@ -706,7 +706,6 @@
     <string name="call_incoming">مكالمة واردة</string>
     <string name="call_decline">رفض</string>
     <string name="call_answer">رد</string>
-    <string name="call_ringing">يرن بصوت عالٍ بالفعل - ردّ هنا أو دعه يرن.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">اللمس متوقف. فعّل Graphene Auto من الإعدادات &gt; تسهيل الاستخدام على الهاتف.</string>

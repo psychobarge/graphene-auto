@@ -700,7 +700,6 @@
     <string name="call_incoming">Połączenie przychodzące</string>
     <string name="call_decline">Odrzuć</string>
     <string name="call_answer">Odbierz</string>
-    <string name="call_ringing">Już dzwoni na głos - odbierz tutaj albo pozwól dzwonić.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Dotyk jest wyłączony. Włącz Graphene Auto w Ustawienia &gt; Ułatwienia dostępu w telefonie.</string>

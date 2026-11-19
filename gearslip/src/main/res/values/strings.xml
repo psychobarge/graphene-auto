@@ -744,7 +744,6 @@
     <string name="call_incoming">Incoming call</string>
     <string name="call_decline">Decline</string>
     <string name="call_answer">Answer</string>
-    <string name="call_ringing">Already ringing out loud - answer here, or let it ring.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Touch is off. Enable Graphene Auto under Settings &gt; Accessibility on the phone.</string>

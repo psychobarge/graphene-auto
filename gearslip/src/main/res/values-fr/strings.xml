@@ -697,7 +697,6 @@
     <string name="call_incoming">Appel entrant</string>
     <string name="call_decline">Refuser</string>
     <string name="call_answer">Répondre</string>
-    <string name="call_ringing">Ça sonne déjà à voix haute - répondez ici, ou laissez sonner.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Le toucher est désactivé. Activez Graphene Auto sous Paramètres &gt; Accessibilité sur le téléphone.</string>

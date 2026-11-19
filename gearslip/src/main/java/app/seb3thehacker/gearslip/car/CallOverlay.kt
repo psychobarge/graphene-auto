@@ -44,7 +44,7 @@ fun CallOverlay() {
     val context = LocalContext.current.applicationContext
 
     when (val s = state) {
-        is CallUiState.Ringing -> IncomingCall(s, onAnswer = { CarCalls.answer(context) }, onDecline = CarCalls::decline)
+        is CallUiState.Ringing -> IncomingCall(s, onAnswer = { CarCalls.answer(context) }, onDecline = { CarCalls.decline(context) })
         else -> {}
     }
 }
@@ -78,16 +78,8 @@ private fun IncomingCall(s: CallUiState.Ringing, onAnswer: () -> Unit, onDecline
             )
             Spacer(Modifier.height(56.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(48.dp)) {
-                CallButton(Icons.Filled.Close, stringResource(R.string.call_decline), MaterialTheme.colorScheme.error, enabled = s.canDecline, onClick = onDecline)
+                CallButton(Icons.Filled.Close, stringResource(R.string.call_decline), MaterialTheme.colorScheme.error, enabled = true, onClick = onDecline)
                 CallButton(Icons.Filled.Call, stringResource(R.string.call_answer), MaterialTheme.colorScheme.primary, enabled = true, onClick = onAnswer)
-            }
-            if (!s.canDecline) {
-                Spacer(Modifier.height(20.dp))
-                Text(
-                    stringResource(R.string.call_ringing),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
             }
         }
     }

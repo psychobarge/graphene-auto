@@ -694,7 +694,6 @@
     <string name="call_incoming">Inkomend gesprek</string>
     <string name="call_decline">Weigeren</string>
     <string name="call_answer">Opnemen</string>
-    <string name="call_ringing">Gaat al hardop over - neem hier op of laat hem overgaan.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Aanraken staat uit. Zet Graphene Auto aan onder Instellingen &gt; Toegankelijkheid op de telefoon.</string>

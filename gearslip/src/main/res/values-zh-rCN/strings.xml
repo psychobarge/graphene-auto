@@ -691,7 +691,6 @@
     <string name="call_incoming">来电</string>
     <string name="call_decline">拒接</string>
     <string name="call_answer">接听</string>
-    <string name="call_ringing">铃声已经在响 - 在这里接听，或让它继续响。</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">触控已关闭。请在手机的“设置”&gt;“无障碍”中启用 Graphene Auto。</string>

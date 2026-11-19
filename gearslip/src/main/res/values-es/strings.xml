@@ -494,7 +494,6 @@
     <string name="call_incoming">Llamada entrante</string>
     <string name="call_decline">Declin</string>
     <string name="call_answer">Respuesta</string>
-    <string name="call_ringing">Ya sonando en voz alta - responder aquí, o dejar que suene.</string>
     <string name="phoneapps_touch_off">El toque está apagado. Activar Graphene Auto bajo Ajustes &gt; Accesibilidad por teléfono.</string>
     <string name="whatsnew_show_after">Mostrar después de actualizaciones</string>
     <string name="whatsnew_got_it">Lo tengo</string>

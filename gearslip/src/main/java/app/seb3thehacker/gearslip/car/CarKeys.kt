@@ -121,7 +121,8 @@ object CarKeys {
     }
 
     private fun endCall() = main.post {
-        if (CarCalls.state.value is CallUiState.Ringing) CarCalls.decline()
+        val context = appContext ?: return@post
+        if (CarCalls.state.value is CallUiState.Ringing) CarCalls.decline(context)
         else GearslipLog.i("keys: end call pressed with no ringing call; hanging up needs the dialer")
     }
 

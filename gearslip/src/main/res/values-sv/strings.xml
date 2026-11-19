@@ -694,7 +694,6 @@
     <string name="call_incoming">Inkommande samtal</string>
     <string name="call_decline">Avvisa</string>
     <string name="call_answer">Svara</string>
-    <string name="call_ringing">Ringer redan högt - svara här, eller låt det ringa.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Tryck är av. Aktivera Graphene Auto under Inställningar &gt; Tillgänglighet på telefonen.</string>

@@ -697,7 +697,6 @@
     <string name="call_incoming">Chiamata in arrivo</string>
     <string name="call_decline">Rifiuta</string>
     <string name="call_answer">Rispondi</string>
-    <string name="call_ringing">Sta già squillando ad alta voce - rispondi qui, o lascia squillare.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">Il tocco è disattivato. Attiva Graphene Auto in Impostazioni &gt; Accessibilità sul telefono.</string>

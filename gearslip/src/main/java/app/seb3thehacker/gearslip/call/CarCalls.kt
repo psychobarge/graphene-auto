@@ -25,7 +25,7 @@ data class Caller(val number: String, val name: String?) {
 
 sealed interface CallUiState {
     data object None : CallUiState
-    data class Ringing(val caller: Caller, val canDecline: Boolean) : CallUiState
+    data class Ringing(val caller: Caller) : CallUiState
     /** [since] is the uptime the call went off-hook, for the timer. */
     data class Active(val caller: Caller?, val since: Long) : CallUiState
 }
@@ -34,8 +34,8 @@ sealed interface CallUiState {
  * Tracks the phone's call state for the car screen, and answers or declines through the
  * doors a sideloaded app can use: [android.telecom.TelecomManager.acceptRingingCall] to answer,
  * [GearslipCallScreening]'s response to decline one that is still ringing, and
- * [android.telecom.TelecomManager.endCall] to hang up, which needs only ANSWER_PHONE_CALLS for an
- * ordinary carrier call. Mute is the phone's microphone mute, put back when the call ends.
+ * [android.telecom.TelecomManager.endCall] to hang up or to reject a ringing call screening didn't
+ * catch, which needs only ANSWER_PHONE_CALLS for an ordinary carrier call. Mute is the phone's microphone mute, put back when the call ends.
  *
  * Call audio stays on the phone's normal voice path; nothing here sends it over the USB link,
  * which only ever carries media playback.
@@ -119,7 +119,7 @@ object CarCalls {
                 // Ring even with no number yet: the screening service or the phone-state broadcast
                 // fills it in, and without either (no role, no READ_CALL_LOG) the car can still answer.
                 val caller = ringingCaller ?: Caller("", null).also { ringingCaller = it }
-                _state.value = CallUiState.Ringing(caller, pendingRespond != null)
+                _state.value = CallUiState.Ringing(caller)
             }
         }
     }
@@ -129,18 +129,17 @@ object CarCalls {
         val caller = Caller(number.orEmpty(), number?.let { lookUpName(context, it) })
         ringingCaller = caller
         pendingRespond = respond
-        _state.value = CallUiState.Ringing(caller, canDecline = true)
+        _state.value = CallUiState.Ringing(caller)
     }
 
-    /** The screening window closed by itself - the call rings normally now, and can't be declined from here. */
+    /** The screening window closed by itself - the call rings normally now; [decline] rejects it instead. */
     fun screeningExpired() {
         pendingRespond = null
-        val caller = ringingCaller ?: return
-        if (_state.value is CallUiState.Ringing) _state.value = CallUiState.Ringing(caller, canDecline = false)
     }
 
-    fun decline() {
-        val respond = pendingRespond ?: return
+    /** Through screening while its window is open, otherwise by ending the call, which rejects one that's ringing. */
+    fun decline(context: Context) {
+        val respond = pendingRespond ?: return end(context)
         pendingRespond = null
         runCatching { respond(false) }.onFailure { GearslipLog.w("calls: decline failed: ${it.message}") }
     }

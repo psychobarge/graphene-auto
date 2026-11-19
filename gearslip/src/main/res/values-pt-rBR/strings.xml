@@ -697,7 +697,6 @@
     <string name="call_incoming">Chamada recebida</string>
     <string name="call_decline">Recusar</string>
     <string name="call_answer">Atender</string>
-    <string name="call_ringing">Já está tocando alto - atenda aqui ou deixe tocar.</string>
 
     <!-- Screen sharing -->
     <string name="phoneapps_touch_off">O toque está desativado. Ative o Graphene Auto em Configurações &gt; Acessibilidade no celular.</string>
