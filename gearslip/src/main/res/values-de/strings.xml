@@ -222,7 +222,6 @@
     <string name="call_incoming">Eingehender Anruf</string>
     <string name="call_decline">Ablehnen</string>
     <string name="call_answer">Annehmen</string>
-    <string name="call_ringing">Das Telefon klingelt bereits laut. Hier annehmen oder weiter klingeln lassen.</string>
     <string name="phoneapps_touch_off">Touch-Funktion ist deaktiviert. Aktiviere Graphene Auto auf dem Smartphone unter Einstellungen &gt; Bedienungshilfen.</string>
     <string name="whatsnew_show_after">Nach Updates anzeigen</string>
     <string name="whatsnew_got_it">Alles klar</string>

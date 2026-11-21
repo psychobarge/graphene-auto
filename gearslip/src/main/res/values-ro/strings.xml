@@ -666,7 +666,6 @@
     <string name="call_incoming">Apel primit</string>
     <string name="call_decline">Respinge</string>
     <string name="call_answer">Răspunde</string>
-    <string name="call_ringing">Deja sună tare – răspunde aici sau lasă-l să sune.</string>
     <string name="phoneapps_touch_off">Funcția tactilă este dezactivată. Activează Graphene Auto din meniul Setări &gt; Accesibilitate de pe telefon.</string>
     <string name="whatsnew_show_after">Afișează după actualizări</string>
     <string name="whatsnew_got_it">Am înțeles</string>
