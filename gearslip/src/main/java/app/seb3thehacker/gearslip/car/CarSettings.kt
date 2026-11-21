@@ -57,6 +57,7 @@ object CarSettings {
     private const val KEY_OPEN = "car_open_on_connect"
     private const val KEY_NIGHT = "car_night_mode"
     private const val KEY_PIPE_AUDIO = "car_pipe_audio"
+    private const val KEY_AUDIO_CARS = "car_audio_through_gearslip_cars"
 private const val KEY_SPEAK_DIRECTIONS = "car_speak_directions"
 private const val KEY_DIRECTIONS_OVER_MUSIC = "car_directions_over_music"
 private const val KEY_BLUETOOTH_WARNING = "car_bluetooth_warning"
@@ -67,7 +68,8 @@ private const val KEY_LOCATION_WARNING = "car_location_warning"
     private const val KEY_AUTOPLAY = "car_autoplay"
     private const val KEY_PLAYER_TITLE = "car_player_title"
     private const val KEY_PLAYER_LEFT = "car_player_left"
-    private const val KEY_MORE_LYRICS = "car_more_lyrics"
+    private const val KEY_NAV_MIC = "car_nav_mic"
+    private const val KEY_DEFAULT_HIDDEN = "car_default_hidden"
     private const val KEY_THEME = "car_app_theme"
     private const val KEY_UI_THEME = "car_ui_theme"
     private const val KEY_DARK_STYLE = "car_dark_style"
@@ -115,7 +117,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     private val autoplayFlow = MutableStateFlow(false)
     private val playerTitleFlow = MutableStateFlow(false)
     private val playerLeftFlow = MutableStateFlow(false)
-    private val moreLyricsFlow = MutableStateFlow(true)
+    private val navMicFlow = MutableStateFlow(true)
     private val themeFlow = MutableStateFlow(AppTheme.PHONE)
     val appTheme: StateFlow<AppTheme> = themeFlow
     private val darkStyleFlow = MutableStateFlow(DarkStyle.BLACK)
@@ -245,14 +247,18 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     /** The home screen's player sits left of the map instead of right of it. */
     val playerLeft: StateFlow<Boolean> = playerLeftFlow
 
+    /** The assistant's mic button in the nav bar. Off hides only the button: the car's voice key still works. */
+    val navMic: StateFlow<Boolean> = navMicFlow
+
     /** Lyrics from BetterLyrics and KuGou as well as LRCLIB; off sends song details to LRCLIB only. */
-    val moreLyrics: StateFlow<Boolean> = moreLyricsFlow
 
     val scale: StateFlow<Float> = scaleFlow
 
     /** [carDensity] when it leaves the choice to the car. */
     const val DENSITY_FROM_CAR = 0
     val DENSITIES = listOf(160, 180, 200, 220, 240)
+    /** The range a typed-in density may take (issue #82): small enough for more on screen, big enough to read. */
+    val CUSTOM_DENSITIES = 60..480
 
     /** An absolute DPI for the car UI and its apps; the video's resolution doesn't change with it. */
     val carDensity: StateFlow<Int> = carDensityFlow
@@ -270,6 +276,41 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
      * phone's normal output instead, and Android never asks.
      */
     val pipeAudio: StateFlow<Boolean> = pipeAudioFlow
+
+    private val thisCarPipesFlow = MutableStateFlow(false)
+
+    /**
+     * The car connected now switches Bluetooth music off while Android Auto runs, so its music
+     * goes through Graphene Auto whatever [pipeAudio] says. Learned by [BluetoothAudioCheck] and
+     * remembered per car: a Skoda, a VW, an Audi and a Bolt all did this.
+     */
+    val thisCarPipes: StateFlow<Boolean> = thisCarPipesFlow
+
+    /** Whether music goes through Graphene Auto in this car: the driver's choice, or what the car needs. */
+    val pipesNow: Boolean get() = pipeAudioFlow.value || thisCarPipesFlow.value
+
+    /** A car connected: whether it's one that needs music through Graphene Auto. Null for none known. */
+    fun carConnected(carAddress: String?) {
+        thisCarPipesFlow.value = carAddress != null && carKey(carAddress) in audioCars()
+    }
+
+    fun carDisconnected() {
+        thisCarPipesFlow.value = false
+    }
+
+    /** This car turned Bluetooth music off: from now on its music goes through Graphene Auto. */
+    fun rememberAudioCar(carAddress: String) {
+        AppSettings.putString(app, KEY_AUDIO_CARS, (audioCars() + carKey(carAddress)).distinct().joinToString(","))
+        thisCarPipesFlow.value = true
+    }
+
+    private fun audioCars(): List<String> =
+        AppSettings.getString(app, KEY_AUDIO_CARS, "").split(",").filter { it.isNotEmpty() }
+
+    /** Settings keep a short hash, not the car's address. */
+    private fun carKey(address: String): String =
+        java.security.MessageDigest.getInstance("SHA-256").digest(address.uppercase().toByteArray())
+            .take(8).joinToString("") { "%02x".format(it) }
 
     /** Graphene Auto reads the map app's turns aloud on the car's directions channel; see DirectionsVoice. */
     val speakDirections: StateFlow<Boolean> = speakDirectionsFlow
@@ -350,7 +391,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     fun init(context: Context) {
         app = context.applicationContext
         scaleFlow.value = AppSettings.getString(app, KEY_SCALE, "1.0").toFloatOrNull() ?: 1f
-        carDensityFlow.value = AppSettings.getString(app, KEY_DENSITY, "").toIntOrNull()?.takeIf { it in DENSITIES } ?: DENSITY_FROM_CAR
+        carDensityFlow.value = AppSettings.getString(app, KEY_DENSITY, "").toIntOrNull()?.takeIf { it in DENSITIES || it in CUSTOM_DENSITIES } ?: DENSITY_FROM_CAR
         openFlow.value = AppSettings.getString(app, KEY_OPEN, HOME)
         lastNavFlow.value = AppSettings.getString(app, KEY_LAST_NAV, "").ifEmpty { null }
         lastMediaFlow.value = AppSettings.getString(app, KEY_LAST_MEDIA, "").ifEmpty { null }
@@ -364,7 +405,7 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
         autoplayFlow.value = AppSettings.getString(app, KEY_AUTOPLAY, "false") == "true"
         playerTitleFlow.value = AppSettings.getString(app, KEY_PLAYER_TITLE, "false") == "true"
         playerLeftFlow.value = AppSettings.getString(app, KEY_PLAYER_LEFT, "false") == "true"
-        moreLyricsFlow.value = AppSettings.getString(app, KEY_MORE_LYRICS, "true") == "true"
+        navMicFlow.value = AppSettings.getString(app, KEY_NAV_MIC, "true") == "true"
         pipeAudioFlow.value = AppSettings.getString(app, KEY_PIPE_AUDIO, "true") == "true"
         // Until the driver sets it, on for USB audio and off for Bluetooth, where the map app's
         // own voice already reaches the car.
@@ -454,14 +495,14 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
         AppSettings.putString(app, KEY_PLAYER_TITLE, on.toString())
     }
 
+    fun setNavMic(on: Boolean) {
+        navMicFlow.value = on
+        AppSettings.putString(app, KEY_NAV_MIC, on.toString())
+    }
+
     fun setPlayerLeft(on: Boolean) {
         playerLeftFlow.value = on
         AppSettings.putString(app, KEY_PLAYER_LEFT, on.toString())
-    }
-
-    fun setMoreLyrics(on: Boolean) {
-        moreLyricsFlow.value = on
-        AppSettings.putString(app, KEY_MORE_LYRICS, on.toString())
     }
 
     fun setAutoplay(on: Boolean) {
@@ -476,6 +517,11 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     fun setPipeAudio(on: Boolean) {
         // Saved even when unchanged, so picking the default still counts as a choice.
         AppSettings.putString(app, KEY_PIPE_AUDIO, on.toString())
+        // Choosing Bluetooth by hand overrules what Graphene Auto learned about each car.
+        if (!on) {
+            AppSettings.putString(app, KEY_AUDIO_CARS, "")
+            thisCarPipesFlow.value = false
+        }
         if (pipeAudioFlow.value == on) return
         pipeAudioFlow.value = on
         if (AppSettings.getString(app, KEY_SPEAK_DIRECTIONS, "") == "") speakDirectionsFlow.value = on
@@ -544,6 +590,21 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
         }
         pinnedFlow.value = next
         AppSettings.putString(app, KEY_PINNED, next.joinToString(","))
+    }
+
+    /**
+     * Unticks each of [ids] the first time it's seen, and never again: a known-broken app starts
+     * off the drawer, but once the driver ticks it back on it stays on.
+     */
+    fun hideOnFirstSight(ids: List<String>) {
+        if (!::app.isInitialized) return
+        val seen = AppSettings.getString(app, KEY_DEFAULT_HIDDEN, "").split(",").filter { it.isNotEmpty() }.toSet()
+        val fresh = ids.filter { it !in seen }
+        if (fresh.isEmpty()) return
+        AppSettings.putString(app, KEY_DEFAULT_HIDDEN, (seen + fresh).joinToString(","))
+        val next = hiddenAppsFlow.value + fresh
+        hiddenAppsFlow.value = next
+        AppSettings.putString(app, KEY_HIDDEN_APPS, next.joinToString(","))
     }
 
     /** Hiding an app takes it off the whole car, nav-bar pin included. */

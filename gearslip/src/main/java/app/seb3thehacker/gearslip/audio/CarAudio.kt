@@ -49,11 +49,28 @@ object CarAudio {
     /** Opens the car's media channel, left closed while music went over Bluetooth; null once open. */
     @Volatile var openSink: (() -> Unit)? = null
 
+    /** The car offers a music channel, open or waiting to be. */
+    val sinkOffered: Boolean get() = link != null || openSink != null
+
     /** Rate and channel count the capture should use: the car's, or a sensible default. */
     val sampleRate get() = link?.sampleRate ?: 48_000
     val channels get() = link?.channels ?: 2
 
+    private val main by lazy { android.os.Handler(android.os.Looper.getMainLooper()) }
+
+    /**
+     * The car left and none came back: stop capturing, which ends the screen sharing Android
+     * shows for it and gives the phone its speaker back. Nothing else stopped it once the drive
+     * was over; with a wireless dongle Graphene Auto's screen stays open, so it ran on (issue #43).
+     */
+    private val releaseWhenGone = Runnable {
+        if (link != null || _capture.value == Capture.OFF) return@Runnable
+        GearslipLog.i("audio: no car for ${CAR_GONE_MS / 1000}s - stopping the capture and screen sharing")
+        release()
+    }
+
     fun attach(link: Link) {
+        main.removeCallbacks(releaseWhenGone)
         this.link = link
         GearslipLog.i("audio: the car offered a sink at ${link.sampleRate}Hz x${link.channels}")
         when {
@@ -62,9 +79,23 @@ object CarAudio {
         }
     }
 
+    /**
+     * The car's music channel closed. A car that comes straight back (a cable that slips) keeps
+     * the capture it had, so the driver isn't asked again mid-drive.
+     */
     fun detach(link: Link) {
-        if (this.link === link) this.link = null
+        if (this.link !== link) return
+        this.link = null
+        main.removeCallbacks(releaseWhenGone)
+        main.postDelayed(releaseWhenGone, CAR_GONE_MS)
     }
+
+    /**
+     * How long after the car leaves the capture waits for it to come back: a cable that slips, or a
+     * wireless link that drops and reconnects, which can take well over 3 seconds. Stopping sooner
+     * would have Android ask the driver to share the screen again in the middle of a drive.
+     */
+    private const val CAR_GONE_MS = 30_000L
 
     /**
      * The car wants sound. Safe to call as often as the session likes: the consent dialog appears
@@ -95,9 +126,30 @@ object CarAudio {
         }
     }
 
+    /**
+     * Capture has heard nothing for a while. If a media app that blocks capture is the one
+     * playing, the car screen says why the music is silent, once a drive: Spotify does this.
+     */
+    internal fun silent(context: android.content.Context) = android.os.Handler(android.os.Looper.getMainLooper()).post {
+        if (toldBlocked) return@post
+        val media = app.seb3thehacker.gearslip.car.CarServices.mediaOrNull() ?: return@post
+        if (!media.now.value.playing) return@post
+        val name = BLOCKS_CAPTURE[media.packageName] ?: return@post
+        toldBlocked = true
+        GearslipLog.i("audio: $name is playing and capture hears nothing: it blocks other apps from playing its sound")
+        app.seb3thehacker.gearslip.car.CarToasts.show(this, context.getString(app.seb3thehacker.gearslip.R.string.car_audio_blocked, name), androidx.car.app.CarToast.LENGTH_LONG)
+    }
+
+    @Volatile private var toldBlocked = false
+
+    /** Media apps known to keep other apps from capturing their sound, by package. */
+    private val BLOCKS_CAPTURE = mapOf("com.spotify.music" to "Spotify")
+
     /** The car went away. Everything is torn down; the next connection asks again. */
     fun release() {
+        main.removeCallbacks(releaseWhenGone)
         wanted = false
+        toldBlocked = false
         AudioCaptureService.stop()
         _capture.value = Capture.OFF
     }

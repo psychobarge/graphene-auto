@@ -57,11 +57,12 @@ object CarBluetooth {
     private val main = Handler(Looper.getMainLooper())
     private var appContext: Context? = null
 
-    /** This session's car: its channel, and how to open and write to it. */
+    /** This session's car: its channel, how to open and write to it, and who hears its answers. */
     private class Car(
         val service: ServiceDiscovery.BluetoothService,
         val open: () -> Unit,
         val send: (messageId: Int, body: ByteArray) -> Unit,
+        val answered: () -> Unit,
     )
 
     @Volatile private var car: Car? = null
@@ -80,15 +81,59 @@ object CarBluetooth {
 
     fun init(context: Context) {
         appContext = context.applicationContext
+        _addressWanted.value = AppSettings.getString(context, KEY_ADDRESS_ASK, "").ifEmpty { null }
     }
 
-    /** Called once the car lists its services. Asks on the car screen only if there's pairing to do. */
+    private val _addressWanted = MutableStateFlow<String?>(null)
+
+    /**
+     * A car paired over Bluetooth connected while Graphene Auto didn't know the phone's address: the
+     * car's name, for the phone's home screen to ask for it. Null when there's nothing to ask.
+     * Issue #18: a 2021 Bolt hung up 25 seconds in until it was told which phone this is.
+     */
+    val addressWanted: StateFlow<String?> = _addressWanted
+
+    /** Debug builds: shows the phone's card as if a car had just asked. */
+    fun askForAddressNow(context: Context) {
+        AppSettings.putString(context, KEY_ADDRESS_ASK, "Test car")
+        _addressWanted.value = "Test car"
+    }
+
+    /** The phone's card was answered or turned away: it doesn't come back for this car. */
+    fun addressAsked(context: Context) {
+        AppSettings.putString(context, KEY_ADDRESS_ASK, "")
+        _addressWanted.value = null
+    }
+
+    /**
+     * Once per car: it waits on the phone, and the car screen says so once. A car that keeps its
+     * screen isn't asked again on every drive: plenty of cars just wait for a tap on their icon.
+     */
+    @SuppressLint("MissingPermission")
+    private fun askForAddress(device: BluetoothDevice, carAddress: String) {
+        val context = appContext ?: return
+        val asked = AppSettings.getString(context, KEY_ADDRESS_ASKED, "").split(",").filter { it.isNotEmpty() }
+        if (hash(carAddress) in asked) return
+        AppSettings.putString(context, KEY_ADDRESS_ASKED, (asked + hash(carAddress)).distinct().joinToString(","))
+        val name = runCatching { device.alias ?: device.name }.getOrNull()?.takeIf { it.isNotBlank() }
+            ?: context.getString(R.string.bt_address_your_car)
+        AppSettings.putString(context, KEY_ADDRESS_ASK, name)
+        _addressWanted.value = name
+        log.i("paired, but the phone's address isn't known: asking on the phone")
+        main.post { CarToasts.show(this, context.getString(R.string.bt_address_car_note), CarToast.LENGTH_LONG) }
+    }
+
+    /**
+     * Called once the car lists its services. Asks on the car screen only if there's pairing to do.
+     * [answered] runs when the car answers a pairing request or the pairing finishes.
+     */
     fun onCarConnected(
         service: ServiceDiscovery.BluetoothService,
         open: () -> Unit,
         send: (messageId: Int, body: ByteArray) -> Unit,
+        answered: () -> Unit = {},
     ) {
-        car = Car(service, open, send)
+        car = Car(service, open, send, answered)
         bondStarted = false
         announcing = false
         log.i("the car offers Bluetooth pairing, methods=${service.pairingMethods}")
@@ -99,7 +144,10 @@ object CarBluetooth {
                 announcing = true
                 open()
             }
-            device.bondState == BluetoothDevice.BOND_BONDED -> log.i("already paired with this car")
+            device.bondState == BluetoothDevice.BOND_BONDED -> {
+                log.i("already paired with this car")
+                askForAddress(device, service.carAddress)
+            }
             declined(service.carAddress) -> log.i("not paired, and the driver said not now for this car")
             else -> _prompt.value = Prompt.ASK
         }
@@ -117,6 +165,40 @@ object CarBluetooth {
         announcing = true
         log.i("-> ChannelOpenRequest on channel ${c.service.serviceId} ($why)")
         c.open()
+    }
+
+    /**
+     * The car is keeping its own screen: do what Android Auto does on every connection, and tell
+     * it over Bluetooth which phone this is. Every Honda on file keeps its screen (a 2017 Pilot, a
+     * 2017 and a 2020 Civic; issues #43 and #57), and in each log the car's Bluetooth channel was
+     * never opened. Honda starts Android Auto with what its manuals call auto pairing, which runs
+     * on that channel, and a 2021 Bolt kept hanging up until it heard the phone's address (#18).
+     *
+     * - Paired, with the address typed in: the car already heard it at connect.
+     * - Paired, no address: open the channel, and ask for the address on the phone again.
+     * - Not paired: the Pair card waits on the car's screen, which this car won't give up, so
+     *   pair as if the driver had tapped it. Android's pairing dialog still asks on the phone.
+     *
+     * True when the car was sent something it may answer.
+     */
+    fun onScreenWithheld(): Boolean {
+        val c = car ?: return false
+        if (pairing || announcing) return false
+        val device = device() ?: return false
+        return when {
+            device.bondState == BluetoothDevice.BOND_BONDED -> {
+                askForAddress(device, c.service.carAddress)
+                announce("the car is keeping its screen")
+                true
+            }
+            device.bondState != BluetoothDevice.BOND_NONE -> false
+            declined(c.service.carAddress) -> false
+            else -> {
+                log.i("the car is keeping its screen and isn't paired with this phone - pairing, as Android Auto does")
+                main.post { pair() }
+                true
+            }
+        }
     }
 
     fun onCarDisconnected() {
@@ -186,6 +268,7 @@ object CarBluetooth {
             MSG_PAIRING_RESPONSE -> {
                 val fields = Wire.fields(body)
                 log.i("<- PairingResponse status=${Wire.varint(fields, 1)} already_paired=${Wire.varint(fields, 2) == 1L}")
+                c.answered()
                 if (!pairing) return
                 // Some cars start pairing themselves once they answer; give them a moment first.
                 main.postDelayed({ startBond("the car answered") }, CAR_BOND_WAIT_MS)
@@ -220,7 +303,10 @@ object CarBluetooth {
                 log.i("bond state $previous -> $state")
                 when {
                     state == BluetoothDevice.BOND_BONDING -> bondStarted = true
-                    state == BluetoothDevice.BOND_BONDED -> finish(R.string.bt_paired)
+                    state == BluetoothDevice.BOND_BONDED -> {
+                        finish(R.string.bt_paired)
+                        car?.answered?.invoke()
+                    }
                     previous == BluetoothDevice.BOND_BONDING -> finish(R.string.bt_pair_unfinished)
                 }
             }
@@ -245,7 +331,10 @@ object CarBluetooth {
 
     /** The car as a Bluetooth device, or null (and logged) when Graphene Auto can't reach Bluetooth. */
     private fun device(): BluetoothDevice? {
-        val context = appContext ?: return null
+        val context = appContext ?: run {
+            log.w("can't check pairing: Bluetooth isn't set up yet")
+            return null
+        }
         val address = car?.service?.carAddress ?: return null
         if (context.checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
             log.i("can't check pairing: the Bluetooth permission isn't granted")
@@ -284,6 +373,7 @@ object CarBluetooth {
         val tidy = address.trim().uppercase().replace('-', ':')
         if (tidy.isNotEmpty() && !BluetoothAdapter.checkBluetoothAddress(tidy)) return false
         AppSettings.putString(context, KEY_PHONE_ADDRESS, tidy)
+        if (tidy.isNotEmpty()) addressAsked(context)
         return true
     }
 
@@ -298,6 +388,10 @@ object CarBluetooth {
             .take(8).joinToString("") { "%02x".format(it) }
 
     private const val KEY_DECLINED = "bluetooth_pair_declined"
+    /** The car's name while the phone's card asks for the address; empty when it doesn't. */
+    private const val KEY_ADDRESS_ASK = "bluetooth_address_ask"
+    /** Hashes of the cars already asked about, so each asks once. */
+    private const val KEY_ADDRESS_ASKED = "bluetooth_address_asked"
     private const val KEY_PHONE_ADDRESS = "phone_bluetooth_address"
     private const val CAR_REPLY_WAIT_MS = 5_000L
     private const val CAR_BOND_WAIT_MS = 3_000L

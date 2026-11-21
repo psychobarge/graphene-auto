@@ -69,11 +69,16 @@ class GearslipRunner(
 
     /** Waits for the certificate only when TLS is first needed; see [run]. */
     private val tls: PhoneTls by lazy { identityTask.get() }
+    /** This session sent the short service discovery request. */
+    @Volatile private var plainDiscovery = false
     private var authenticationFailed = false
     private var drainWriterOnExit = false
     @Volatile private var stopped = false
 
     @Volatile private var state = State.WAIT_VERSION
+
+    /** Connected, but the car hasn't sent its first message yet. */
+    val waitingForVersion: Boolean get() = running && state == State.WAIT_VERSION
     @Volatile private var lastProgress = System.currentTimeMillis()
     @Volatile private var running = true
 
@@ -82,6 +87,8 @@ class GearslipRunner(
     private var selectedConfigIndex: Int? = null
     private var vehicleProfile: VehicleProfile? = null
     @Volatile private var videoStarted = false
+    /** The car's screen has been asked for once, so asking again is in order. */
+    @Volatile private var focusAsked = false
     private var videoSource: VideoSource? = null
 
     /** Between the car UI and the encoder when the car squashes the frame (see [screenShape]). */
@@ -169,7 +176,14 @@ class GearslipRunner(
             SessionReport.fail(link, "transport failed", t, state.name)
             reportDisconnect()
         } finally {
+            // The car hung up between our service discovery request and its answer: try the
+            // other kind of request with this car next time (see [ServiceDiscoveryQuirks]).
+            if (!stopped && state == State.WAIT_SDR) ServiceDiscoveryQuirks.droppedAfter(tls.headUnitKey, plainDiscovery)
             running = false
+            // The car is gone, but nothing calls stop() when a wireless session drops: it waits
+            // for the next one. Close the music channel now, so the audio capture behind it,
+            // and the screen sharing Android shows for it, stop too (issue #43).
+            if (!stopped) audioLink?.close()
             writer.shutdown()
             if (drainWriterOnExit) writer.awaitTermination(2, TimeUnit.SECONDS)
             writer.shutdownNow()
@@ -203,6 +217,7 @@ class GearslipRunner(
         app.seb3thehacker.gearslip.car.CarData.clear()
         CarMic.current = null
         CarBluetooth.onCarDisconnected()
+        CarSettings.carDisconnected()
         BluetoothAudioCheck.onCarDisconnected()
         LocationCheck.onCarDisconnected()
         mediaStatus?.stop()
@@ -492,14 +507,17 @@ class GearslipRunner(
      * never answered the request when it had only the label and model (issue #47).
      */
     private fun sendServiceDiscoveryRequest() {
-        val icons = runCatching(phoneIcons).getOrDefault(emptyList())
+        // A 2019 Fiat 500's Uconnect hangs up on the full request (issue #91), so a car that has
+        // done that before gets the short one Graphene Auto sent until 0.3.39: label and model only.
+        plainDiscovery = ServiceDiscoveryQuirks.wantsPlain(tls.headUnitKey)
+        val icons = if (plainDiscovery) emptyList() else runCatching(phoneIcons).getOrDefault(emptyList())
         var body = ByteArray(0)
         icons.take(3).forEachIndexed { i, png -> body += Protobuf.bytesField(i + 1, png) } // small, medium, large icon
         body += Protobuf.stringField(4, "Graphene Auto") + // label_text
-            Protobuf.stringField(5, Build.MODEL) + // device_name
-            Protobuf.bytesField(6, Protobuf.stringField(1, java.util.UUID.randomUUID().toString())) // session ID
+            Protobuf.stringField(5, Build.MODEL) // device_name
+        if (!plainDiscovery) body += Protobuf.bytesField(6, Protobuf.stringField(1, java.util.UUID.randomUUID().toString())) // session ID
         send(MSG_SERVICE_DISCOVERY_REQUEST, body, encrypted = true)
-        log.i("-> ServiceDiscoveryRequest (encrypted, ${icons.size} icons, ${body.size} bytes)")
+        log.i("-> ServiceDiscoveryRequest (encrypted, ${if (plainDiscovery) "short, as this car asked" else "${icons.size} icons"}, ${body.size} bytes)")
     }
 
     private fun onServiceDiscoveryResponse(body: ByteArray) {
@@ -630,7 +648,10 @@ class GearslipRunner(
             onPausedForNow = { CarServices.pausePhoneMediaForNow() },
             onGivenBack = { CarServices.resumePhoneMedia() },
         )
-        if (CarSettings.pipeAudio.value) {
+        // A car known to switch Bluetooth music off gets it through Graphene Auto, whatever the setting.
+        CarSettings.carConnected(ServiceDiscovery.findBluetoothService(serviceDiscoveryResponse)?.carAddress)
+        if (CarSettings.pipesNow) {
+            if (!CarSettings.pipeAudio.value) log.i("this car turns Bluetooth music off, so music goes through Graphene Auto")
             openChannel(media.serviceId)
         } else {
             // Many cars switch their source to Android Auto the moment this channel opens, which
@@ -772,6 +793,13 @@ class GearslipRunner(
             bluetooth,
             open = { openChannel(bluetooth.serviceId) },
             send = { id, body -> send(id, body, encrypted = true, channel = bluetooth.serviceId) },
+            // A car keeping its screen until it knows the phone may give it up now; ask again.
+            answered = {
+                if (running && focusAsked && !videoStarted) {
+                    log.i("the car answered on Bluetooth while keeping its screen - asking for it again")
+                    requestProjectedFocus(withDisplay = true)
+                }
+            },
         )
     }
 
@@ -1071,7 +1099,7 @@ class GearslipRunner(
                         "(head unit offered ${offered.size}), max_unacked=$maxUnacked",
                 )
                 requestProjectedFocus()
-                if (CarAudio.openSink != null) watchForWithheldScreen()
+                watchForWithheldScreen()
             }
 
             MSG_VIDEO_FOCUS_NOTIFICATION -> {
@@ -1100,6 +1128,16 @@ class GearslipRunner(
                 if (framesSent <= 3 || framesSent % 60 == 0) {
                     log.i("<- MediaAck(ack=$acked) inFlight=$inFlight after $framesSent frames")
                 }
+            }
+
+            // UpdateUiConfigRequest { AdditionalVideoConfig }: new margins or day/night. A LuChi
+            // box sent it as video began, showed our first frame, then black (issue #58), as if
+            // it rebuilt its decoder. A rebuilt decoder needs SPS/PPS and a keyframe again.
+            MSG_VIDEO_UI_CONFIG -> {
+                log.i("<- UpdateUiConfigRequest (${body.size} bytes) - sending the stream's start again")
+                log.hex("   ui config", body, limit = 64)
+                lastCodecConfig?.let { send(MSG_MEDIA_CODEC_CONFIG, it, encrypted = true, channel = videoChannelId) }
+                videoSource?.requestSyncFrame()
             }
 
             else -> log.i("<- unhandled video message id=$messageId (${body.size} bytes)")
@@ -1354,6 +1392,7 @@ class GearslipRunner(
      * the field is deprecated, but a car older than that may ignore a request without it.
      */
     private fun requestProjectedFocus(withDisplay: Boolean = false) {
+        focusAsked = true
         // VideoFocusRequestNotification { disp_channel_id = 1; mode = 2; reason = 3 }. Reason 1
         // means "the phone's screen is off", which a 2020 Civic may have taken as a reason to
         // keep its own screen (issue #43); 0 is UNKNOWN.
@@ -1373,6 +1412,10 @@ class GearslipRunner(
      * straight over keep their own source as before.
      * The 2017 Pilot (protocol 1.0) still kept its screen with the channel open, so the second
      * request also names the display's channel, as cars of the Pilot's age may need.
+     * This runs whether or not the media channel was open: a 2020 Civic with music through
+     * Graphene Auto opened it at connect, so on 0.3.40 it never heard the second request (issue #43).
+     * The car also hears which phone this is over Bluetooth (see [CarBluetooth.onScreenWithheld]),
+     * which Hondas may wait for; its answer asks for the screen once more.
      */
     private fun watchForWithheldScreen() {
         Thread({
@@ -1382,11 +1425,12 @@ class GearslipRunner(
             if (open != null) {
                 log.w("no screen from the car after ${WITHHELD_SCREEN_MS / 1000}s - opening the media channel and asking again")
                 open()
-                // Give the car the channel's open response before it hears the request again.
-                Thread.sleep(1_000)
             } else {
                 log.w("no screen from the car after ${WITHHELD_SCREEN_MS / 1000}s - asking again")
             }
+            val toldBluetooth = CarBluetooth.onScreenWithheld()
+            // Give the car the channels' open responses before it hears the request again.
+            if (open != null || toldBluetooth) Thread.sleep(1_000)
             if (running && !videoStarted) requestProjectedFocus(withDisplay = true)
         }, "gearslip-focus-fallback").apply { isDaemon = true }.start()
     }
@@ -1693,6 +1737,7 @@ class GearslipRunner(
         const val MSG_MEDIA_ACK = 32772
         const val MSG_VIDEO_FOCUS_REQUEST = 32775
         const val MSG_VIDEO_FOCUS_NOTIFICATION = 32776
+        const val MSG_VIDEO_UI_CONFIG = 32777
 
         // aap_protobuf/service/sensor/... - same "first specific message on this channel type
         // starts at 0x8000" numbering as media/input above.

@@ -471,6 +471,25 @@ home-screen pane comes later. Anything that needs its own rendering belongs in a
 
 ---
 
+## Works with Graphene Auto
+
+Graphene Auto reads the same manifest flag as Gearslip. Add these lines to `<application>`:
+
+```xml
+<meta-data
+    android:name="app.seb3thehacker.gearslip.works_with"
+    android:value="true" />
+<meta-data
+    android:name="app.seb3thehacker.gearslip.about"
+    android:resource="@string/gearslip_about" />
+```
+
+Graphene Auto then marks your app "Works with Graphene Auto" in its Recommended apps list and on
+your app's page. The second entry is optional: one sentence on what your app does in the car. The
+flag is a label; your app runs the same way with or without it.
+
+---
+
 ## Further reading
 
 - [README.md](../README.md) - what Graphene Auto is.

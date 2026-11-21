@@ -35,10 +35,34 @@ object CarKeys {
     /** Delivers an Android key event to the car display; set while the car UI is showing. */
     @Volatile var focusSink: ((keyCode: Int, down: Boolean) -> Unit)? = null
 
+    /** What a [KnobTaker] is offered: a turn of the knob, a focus key edge, or Back. */
+    sealed interface KnobEvent {
+        data class Turn(val steps: Int) : KnobEvent
+        data class Key(val keyCode: Int, val down: Boolean) : KnobEvent
+        data object Back : KnobEvent
+    }
+
+    /**
+     * Something on screen that wants the knob before focus moves: the full-screen map, which
+     * zooms and pans with it ([MapKnob]), and the app grid, which starts on the app opened last.
+     * Returns true for an event it kept. Called on the thread the keys arrive on, not the main one.
+     */
+    fun interface KnobTaker {
+        fun take(event: KnobEvent): Boolean
+    }
+
+    @Volatile var knobTaker: KnobTaker? = null
+
     private var appContext: Context? = null
     private val main = Handler(Looper.getMainLooper())
 
     fun init(context: Context) { appContext = context.applicationContext }
+
+    /** The keys that act on the media app. */
+    private val MEDIA_KEYS = setOf(
+        KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, KeyEvent.KEYCODE_MEDIA_PLAY, KeyEvent.KEYCODE_MEDIA_PAUSE,
+        KeyEvent.KEYCODE_MEDIA_STOP, KeyEvent.KEYCODE_MEDIA_NEXT, KeyEvent.KEYCODE_MEDIA_PREVIOUS,
+    )
 
     /**
      * Every key worth asking the head unit for. The binding request lists what the head unit
@@ -63,28 +87,30 @@ object CarKeys {
      */
     fun onKey(keyCode: Int, down: Boolean, longPress: Boolean): Boolean {
         if (keyCode in FOCUS_KEYS) {
+            if (knobTaker?.take(KnobEvent.Key(keyCode, down)) == true) return true
             _focusMoves.tryEmit(Unit)
             focusSink?.invoke(keyCode, down)
             return true
         }
         if (!down) return keyCode in WANTED
-        // Null until the car screen is up. Some head units (Renault R-Link 2) press Play right after
-        // connecting, seconds before they grant the screen: such a key is dropped, not fatal.
+        // Null until the car shows Graphene Auto's screen. Some head units (Renault R-Link 2, a 2020
+        // Civic) press Play right after connecting, while still on their own screen, and reaching
+        // for media then ended the session.
         val media = CarServices.mediaOrNull()
         if (media == null && keyCode in MEDIA_KEYS) {
             GearslipLog.i("keys: media key $keyCode before the car screen is up - ignored")
             return true
         }
         when (keyCode) {
-            KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> media!!.togglePlay()
-            KeyEvent.KEYCODE_MEDIA_PLAY -> if (!media!!.now.value.playing) media.togglePlay()
-            KeyEvent.KEYCODE_MEDIA_PAUSE, KeyEvent.KEYCODE_MEDIA_STOP -> if (media!!.now.value.playing) media.togglePlay()
-            KeyEvent.KEYCODE_MEDIA_NEXT -> media!!.next()
-            KeyEvent.KEYCODE_MEDIA_PREVIOUS -> media!!.previous()
+            KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> media?.togglePlay()
+            KeyEvent.KEYCODE_MEDIA_PLAY -> if (media != null && !media.now.value.playing) media.togglePlay()
+            KeyEvent.KEYCODE_MEDIA_PAUSE, KeyEvent.KEYCODE_MEDIA_STOP -> if (media != null && media.now.value.playing) media.togglePlay()
+            KeyEvent.KEYCODE_MEDIA_NEXT -> media?.next()
+            KeyEvent.KEYCODE_MEDIA_PREVIOUS -> media?.previous()
             KeyEvent.KEYCODE_SEARCH, KeyEvent.KEYCODE_VOICE_ASSIST -> voice()
             KeyEvent.KEYCODE_CALL -> call()
             KeyEvent.KEYCODE_ENDCALL -> endCall()
-            KeyEvent.KEYCODE_BACK -> screen(ScreenKey.BACK)
+            KeyEvent.KEYCODE_BACK -> if (knobTaker?.take(KnobEvent.Back) != true) screen(ScreenKey.BACK)
             KeyEvent.KEYCODE_HOME -> screen(ScreenKey.HOME)
             KEYCODE_NAVIGATION -> screen(ScreenKey.MAP)
             KEYCODE_MEDIA -> screen(ScreenKey.MEDIA)
@@ -98,6 +124,7 @@ object CarKeys {
     /** A turn of the rotary knob: each click moves focus one step, like Tab or Shift+Tab. */
     fun onRotate(delta: Int) {
         val sink = focusSink ?: return
+        if (knobTaker?.take(KnobEvent.Turn(delta)) == true) return
         _focusMoves.tryEmit(Unit)
         val code = if (delta > 0) KeyEvent.KEYCODE_TAB else KEYCODE_SHIFT_TAB
         repeat(kotlin.math.abs(delta).coerceAtMost(MAX_ROTARY_STEPS)) {

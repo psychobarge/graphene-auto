@@ -59,9 +59,18 @@ import kotlinx.coroutines.withContext
  * the map - so a button looks and behaves the same wherever it turns up.
  */
 
-/** The seek bar, with elapsed and total time under it when [showTimes]. */
+/**
+ * The seek bar, with elapsed and total time under it when [showTimes]. The times default to a
+ * size readable at a glance from the driver's seat; the narrow side column passes a smaller one.
+ */
 @Composable
-internal fun PlayerProgress(now: NowPlaying, media: CarMedia, modifier: Modifier = Modifier, showTimes: Boolean = true) {
+internal fun PlayerProgress(
+    now: NowPlaying,
+    media: CarMedia,
+    modifier: Modifier = Modifier,
+    showTimes: Boolean = true,
+    timeStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.titleMedium,
+) {
     if (now.durationMs <= 0) return
     var position by remember { mutableLongStateOf(now.currentPosition()) }
     LaunchedEffect(now) {
@@ -80,8 +89,10 @@ internal fun PlayerProgress(now: NowPlaying, media: CarMedia, modifier: Modifier
         )
         if (showTimes) {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Text(formatDuration(position), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(formatDuration(now.durationMs), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                // Tabular figures, so the elapsed time doesn't jitter sideways as it counts.
+                val style = timeStyle.copy(fontFeatureSettings = "tnum")
+                Text(formatDuration(position), style = style, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(formatDuration(now.durationMs), style = style, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
     }
@@ -130,6 +141,7 @@ internal fun PlayModeRow(
     size: Dp,
     modifier: Modifier = Modifier,
     maxOther: Int = 0,
+    arrangement: Arrangement.Horizontal = Arrangement.SpaceEvenly,
     trailing: @Composable RowScope.() -> Unit = {},
 ) {
     val modes by media.modes.collectAsState()
@@ -139,7 +151,7 @@ internal fun PlayModeRow(
     val shuffleOn = shuffleKnown && modes.shuffle != PlaybackStateCompat.SHUFFLE_MODE_NONE
     val repeatOn = repeatKnown && modes.repeat != PlaybackStateCompat.REPEAT_MODE_NONE
     val icon = size * 0.52f
-    Row(modifier, horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
+    Row(modifier, horizontalArrangement = arrangement, verticalAlignment = Alignment.CenterVertically) {
         // An app's own like, shuffle or repeat button shows whether it's on only through its icon,
         // so that icon is drawn, as Android Auto does, and lit when its name says it's on.
         // Graphene Auto's own stand in for apps that report a heart rating or shuffle and repeat modes.

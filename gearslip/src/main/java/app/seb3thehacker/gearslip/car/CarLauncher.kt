@@ -16,6 +16,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.withFrameNanos
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import app.seb3thehacker.gearslip.AppSettings
+import kotlinx.coroutines.launch
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -78,6 +88,8 @@ private class Tile(
     val onLongClick: (() -> Unit)? = null,
     /** Drawn as the contact's photo or initial, with a handset badge: tapping calls rather than opens. */
     val contact: ContactTile? = null,
+    /** The entry's [Entry.componentId], for finding the app opened last. */
+    val id: String? = null,
     val onClick: () -> Unit,
 )
 
@@ -143,6 +155,10 @@ internal object LauncherCache {
                 }
             }
         }
+        CarSettings.hideOnFirstSight(tiles.mapNotNull { entry ->
+            val pkg = (entry.template?.component ?: entry.media?.component)?.packageName ?: entry.messaging?.packageName
+            entry.componentId?.takeIf { pkg != null && KnownApps.startsHidden(context, pkg, entry.messaging != null) }
+        })
         return tiles.sortedBy { it.label.lowercase() }.also { flow.value = it }
     }
 }
@@ -298,36 +314,78 @@ fun CarLauncher() {
     val showVehicleData = rememberVehicleDataShown()
 
     fun tileOf(entry: Entry): Tile {
-        // Only apps that don't work get a mark. The X rates an app's own car screens; a messenger
-        // shown on Graphene Auto's own Messages screen has none, so it never gets one.
-        val pkg = entry.packageName?.takeIf { entry.messaging == null }
         val id = entry.componentId
         return Tile(
             entry.builtIn?.let { context.getString(it.labelRes) } ?: entry.label, entry.icon, entry.builtIn?.glyph,
-            broken = pkg != null && (KnownApps.isBroken(context, pkg) || (entry.template != null && KnownApps.screenBroken(pkg))),
+            broken = markedBroken(context, entry),
             onLongClick = id?.let { { navigator.showAppMenu(it) } },
             contact = entry.contact,
-        ) { openApp(context, entry, id?.let { running[it] }, navigator, frame) }
+            id = id,
+        ) {
+            id?.let { AppSettings.putString(context, KEY_LAST_APP, it) }
+            openApp(context, entry, id?.let { running[it] }, navigator, frame)
+        }
     }
 
     val appOrder by CarSettings.appOrder.collectAsState()
     val hidden by CarSettings.hiddenApps.collectAsState()
     val tiles = launcherOrder(all, showVehicleData, appOrder, hidden).map(::tileOf)
 
+    // With the knob, the first move on this screen lands on the app opened last rather than on
+    // the first button anywhere on screen (issue #74). After that the knob moves as usual, out to
+    // the nav bar and back; nudging up or down already jumps a row.
+    val gridState = rememberLazyGridState()
+    val scope = rememberCoroutineScope()
+    val lastFocus = remember { FocusRequester() }
+    val lastId = remember { AppSettings.getString(context, KEY_LAST_APP, "") }
+    val lastIndex = tiles.indexOfFirst { it.id == lastId }.coerceAtLeast(0)
+    val focusIndex by rememberUpdatedState(lastIndex)
+    DisposableEffect(Unit) {
+        var used = false
+        val taker = CarKeys.KnobTaker { event ->
+            if (used || event == CarKeys.KnobEvent.Back || (event is CarKeys.KnobEvent.Key && !event.down)) {
+                return@KnobTaker false
+            }
+            used = true
+            scope.launch {
+                gridState.scrollToItem(focusIndex)
+                withFrameNanos { }
+                runCatching { lastFocus.requestFocus() }
+            }
+            true
+        }
+        CarKeys.knobTaker = taker
+        onDispose { if (CarKeys.knobTaker === taker) CarKeys.knobTaker = null }
+    }
+
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 108.dp),
+        state = gridState,
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(20.dp),
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        items(tiles) { AppTile(it) }
+        itemsIndexed(tiles) { i, tile -> AppTile(tile, if (i == lastIndex) Modifier.focusRequester(lastFocus) else Modifier) }
     }
 }
 
 /** A red disc with a white X: marks a tile known not to work with Graphene Auto yet. */
+/**
+ * Whether [entry] gets the red X, in the car and in the phone's app list alike. Only apps that
+ * don't work get one, and a patched copy that does (Waze through Morphe) never does, since
+ * [KnownApps.isBroken] knows it by its signer. The X rates an app's own car screens; a messenger
+ * shown on Graphene Auto's own Messages screen has none, so it gets one only when it's one of
+ * Google's apps, which never work (Google Maps lists itself only as a messenger).
+ */
+internal fun markedBroken(context: android.content.Context, entry: Entry): Boolean {
+    val pkg = entry.packageName ?: return false
+    if (entry.messaging != null) return KnownApps.brokenAsMessenger(context, pkg)
+    return KnownApps.isBroken(context, pkg) || (entry.template != null && KnownApps.screenBroken(pkg))
+}
+
 @Composable
-private fun BrokenBadge(size: androidx.compose.ui.unit.Dp, modifier: Modifier = Modifier) {
+internal fun BrokenBadge(size: androidx.compose.ui.unit.Dp, modifier: Modifier = Modifier) {
     Box(
         modifier.size(size).background(Color(0xFFD32F2F), CircleShape),
         contentAlignment = Alignment.Center,
@@ -349,14 +407,14 @@ private fun CallBadge(size: androidx.compose.ui.unit.Dp, modifier: Modifier = Mo
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun AppTile(tile: Tile) {
+private fun AppTile(tile: Tile, modifier: Modifier = Modifier) {
     val shape = MaterialTheme.shapes.extraLarge
     // A long press opens the app's menu (pin, close) - the same gesture everywhere apps are
     // shown, here and on the nav bar. GsIconBox marks it in the theme's style.
     GsIconBox(
         onClick = tile.onClick,
         onLongClick = tile.onLongClick,
-        modifier = Modifier.height(120.dp),
+        modifier = modifier.height(120.dp),
         colors = GsColors(MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.colorScheme.onSurfaceVariant),
         shape = shape,
     ) {
@@ -413,3 +471,6 @@ private fun TileLabel(tile: Tile, maxLines: Int = 2, modifier: Modifier = Modifi
         overflow = TextOverflow.Ellipsis,
     )
 }
+
+/** The app opened from the launcher last, where the knob starts on the Apps screen. */
+private const val KEY_LAST_APP = "car_last_app"

@@ -91,8 +91,15 @@ android {
     // Lists each language that has a translation in the app's locale config, so Android 13+
     // offers it under the system's per-app languages. English is the unqualified default
     // (res/resources.properties).
+    //
+    // Only languages that are mostly translated ship, so the app never comes up half in English.
+    // Danish and Estonian are still early on Weblate; add them here once they're close to done.
     androidResources {
         generateLocaleConfig = true
+        localeFilters += listOf(
+            "en", "ar", "cs", "de", "es", "fr", "it", "ja", "ko", "nl", "pl", "pt-rBR", "ro", "ru",
+            "sv", "tr", "uk", "zh-rCN",
+        )
     }
 
     lint {
@@ -151,6 +158,10 @@ dependencies {
     implementation(libs.androidx.car.app)
     implementation(libs.androidx.car.app.projected)
     implementation(libs.androidx.media)
+    // Document-start scripts, so the ad blocker hides ad slots before a page first paints.
+    implementation(libs.androidx.webkit)
+    // The map behind a place list (PlaceListMapTemplate), which the host draws, not the app.
+    implementation(libs.maplibre.android)
     testImplementation(libs.junit)
 }
 

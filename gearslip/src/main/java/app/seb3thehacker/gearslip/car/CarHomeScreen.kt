@@ -1,5 +1,6 @@
 package app.seb3thehacker.gearslip.car
 
+import androidx.compose.foundation.layout.offset
 import androidx.compose.ui.res.stringResource
 import app.seb3thehacker.gearslip.car.theme.*
 import androidx.compose.foundation.layout.Arrangement
@@ -267,23 +268,25 @@ private fun DockedPlayer(now: NowPlaying, modifier: Modifier) {
                     maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
                 if (now.durationMs > 0) {
-                    PlayerProgress(now, media, Modifier.fillMaxWidth().padding(vertical = 2.dp), showTimes = false)
+                    PlayerProgress(
+                        now, media, Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                        timeStyle = MaterialTheme.typography.labelLarge,
+                    )
                 } else {
                     Spacer(Modifier.height(10.dp))
                 }
-                TransportRow(now, media, skip = 56.dp, modifier = Modifier.fillMaxWidth())
-                Spacer(Modifier.height(10.dp))
-                PlayModeRow(now, media, size = 50.dp, modifier = Modifier.fillMaxWidth()) {
-                    GsIconButton(
-                        ImageVector.vectorResource(R.drawable.lyrics_24), stringResource(R.string.storage_lyrics), navigator::showSideLyrics,
-                        size = 50.dp, iconSize = 26.dp,
-                    )
+                // Sized from the column's width rather than fixed: fixed sizes filled a narrow
+                // column edge to edge, so the buttons sat squeezed against each other. Each row
+                // keeps a clear gap between buttons, and none grows past a comfortable size.
+                // Like, shuffle, repeat and lyrics are in the nav bar's pill while the player is
+                // here (NavNowPlaying), which leaves the cover more room.
+                BoxWithConstraints(Modifier.fillMaxWidth()) {
+                    // Two skips, play at 1.25 times a skip, and two gaps of at least 20dp.
+                    val skip = ((maxWidth - 40.dp) / 3.25f).coerceIn(36.dp, 48.dp)
+                    TransportRow(now, media, skip = skip, modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp))
                 }
             }
-            GsIconButton(
-                Icons.Filled.Close, stringResource(R.string.home_back_nav), navigator::closeSidePanel,
-                Modifier.align(Alignment.TopEnd), size = 36.dp, iconSize = 20.dp,
-            )
+            // No close button here: the nav bar's dock button closes the player (NavNowPlaying).
         }
     }
 }

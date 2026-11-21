@@ -5,6 +5,8 @@
     <!-- The projected WebView loads real pages; without this every load fails silently. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <!-- Lets an update Graphene Auto installed itself skip Android's prompt. -->
+    <uses-permission android:name="android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION" />
 
     <!--
       Phone mirroring. Android refuses to hand over a MediaProjection unless a foreground
@@ -19,6 +21,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <!--
+        Lets LocationKeepAlive start with the phone locked, when a car connects by itself. Only
+        asked for from Home while a car is connected, and only used while one is (issue #99).
+    -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <!-- Keeps a wireless start going with the phone locked; see WirelessKeepAlive. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
 
@@ -64,7 +71,8 @@
 
     <!--
         Phone calls on the car screen. READ_PHONE_STATE and READ_CALL_LOG together are what a
-        call's own state (ringing, in progress) and the incoming number need; READ_CONTACTS
+        call's own state (ringing, in progress) and the incoming number need, and READ_CALL_LOG
+        also lists recent calls on the car's Phone screen, read on the phone only; READ_CONTACTS
         turns that number into a name; ANSWER_PHONE_CALLS lets the driver pick up from here.
         Declining a call, and the caller ID itself, need Graphene Auto set as the phone's caller ID
         and spam app too - an on-device consent, not a permission declared here.
@@ -184,6 +192,21 @@
           the head unit to Android Auto, without disabling the screen the switch is on.
         -->
         <!-- App info › Storage › Manage space: clears lyrics, voice models and logs one at a time. -->
+        <!-- "Share" a page from any browser to add it to the car browser's start page (issue #85). -->
+        <activity
+            android:name=".browser.ShareToBrowserActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:label="@string/browser_share_label"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".ui.ManageSpaceActivity"
             android:exported="true"
@@ -213,6 +236,14 @@
         <receiver
             android:name=".notify.TestMessageReceiver"
             android:exported="false" />
+
+        <receiver
+            android:name=".update.UpdateReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
 
         <service
             android:name=".mirror.MirrorService"

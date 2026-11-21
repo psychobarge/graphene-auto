@@ -5,6 +5,21 @@
 ### Added
 - Call someone in one tap from the car: add up to 8 contacts under Car › Apps on the phone, and
   each gets a tile in the Phone group of the car's app menu, which can be pinned to the nav bar.
+- Everything from Gearslip 0.4.0-alpha: a car web browser with ad blocking, a map behind place
+  lists, any app as a music app or messenger, one navigation card with lanes, recent calls,
+  hourly weather, and the car audio choice under Settings.
+- Cars that turn Bluetooth music off while Android Auto runs get their music through Graphene
+  Auto, remembered per car.
+
+### Fixed (from Gearslip)
+- The phone's Bluetooth address is asked for on the phone and sent as soon as the car connects.
+- Screen sharing and audio capture stop when the car leaves.
+- Music reaches cars that acknowledge audio slowly; a car that hangs up during setup gets a
+  shorter request next time; video restarts when the car changes its screen layout.
+
+### Not taken from Gearslip
+- The usage notes and their privacy policy, Weblate links, and the version read from git tags.
+- 32-bit ARM and x86_64 builds: Graphene Auto stays arm64 only.
 
 ## Fork from Gearslip
 

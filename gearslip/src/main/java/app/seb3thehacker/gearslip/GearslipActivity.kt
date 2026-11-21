@@ -152,6 +152,7 @@ class GearslipActivity : ComponentActivity(), Projection {
         app.seb3thehacker.gearslip.wireless.WirelessLink.onConnected = { socket ->
             runOnUiThread { startWireless(socket) }
         }
+        app.seb3thehacker.gearslip.wireless.WirelessLink.sessionWaiting = { runner?.waitingForVersion == true }
         app.seb3thehacker.gearslip.wireless.WirelessAuto.showApproval = { chooser, address ->
             runOnUiThread {
                 approvingCar = address
@@ -159,6 +160,10 @@ class GearslipActivity : ComponentActivity(), Projection {
             }
         }
         CarSettings.init(this)
+        // Before any car connects: CarServices only starts once the car shows Graphene Auto's screen,
+        // and a car that waits to know the phone before it shows it would never hear (issue #43).
+        app.seb3thehacker.gearslip.car.CarBluetooth.init(this)
+        app.seb3thehacker.gearslip.browser.BrowserSettings.init(this)
         AppSettings.applyGearslipEnabled(this)
         // A capture that died without tidying up would leave notifications exposed to every
         // later screen share. Nothing is capturing if the service is not running, so undo it.
@@ -245,6 +250,7 @@ class GearslipActivity : ComponentActivity(), Projection {
     override fun onDestroy() {
         super.onDestroy()
         app.seb3thehacker.gearslip.wireless.WirelessLink.onConnected = null
+        app.seb3thehacker.gearslip.wireless.WirelessLink.sessionWaiting = null
         app.seb3thehacker.gearslip.wireless.WirelessAuto.showApproval = null
         runCatching { unregisterReceiver(detachReceiver) }
         PhoneMirror.onStartRequested = null

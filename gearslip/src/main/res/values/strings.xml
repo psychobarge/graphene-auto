@@ -48,7 +48,8 @@
     <string name="guide_recommended">Recommended</string>
     <string name="guide_audio_bluetooth_body">No prompt each drive, and your map app\'s voice reaches the car.</string>
     <string name="guide_audio_usb">Through Graphene Auto</string>
-    <string name="guide_audio_usb_body">Clearer sound with no delay. Each drive, Android asks you to share your screen, which lets Graphene Auto send the sound.</string>
+    <string name="guide_audio_usb_body">Clearer sound with no delay, but your map app\'s spoken directions play on the phone, not in the car. Each drive, Android asks you to share your screen, which lets Graphene Auto send the sound.</string>
+    <string name="home_audio_usb_warning">Spoken directions from map apps play on the phone, not in the car. Choose Bluetooth to hear them in the car.</string>
     <string name="guide_optional">OPTIONAL</string>
     <string name="guide_already_allowed">Already allowed.</string>
     <string name="guide_scroll_more">Scroll for more  ↓</string>
@@ -96,6 +97,14 @@
     <string name="recommended_about_ytm">A YouTube Music player.</string>
     <string name="recommended_about_antennapod">Podcasts, chapters and all.</string>
     <string name="recommended_about_rfsentinel">Spots trackers and cameras nearby.</string>
+    <!-- The mark on apps that declare they work with Graphene Auto, and the list's heading for them. -->
+    <string name="works_with_gearslip">Works with Graphene Auto</string>
+    <!-- One app's page, opened from Recommended apps. %1$s is the app's name. -->
+    <string name="app_page_on_car">Graphene Auto shows it on the car screen.</string>
+    <string name="app_page_get_hint">Install it, and Graphene Auto shows it on the car screen.</string>
+    <string name="app_page_open">Open %1$s</string>
+    <string name="app_page_get">Get %1$s</string>
+    <string name="app_page_github">View on GitHub</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
@@ -196,6 +205,7 @@
     <string name="car_density_note">Larger text and controls, including in apps. Try 200 DPI with Size on Normal. Reconnect the car or reopen the preview to apply it. If controls clip, choose a lower DPI or From car.</string>
     <string name="choice_density_car">From car</string>
     <string name="choice_density_dpi">%1$d DPI</string>
+    <string name="choice_density_custom">Custom…</string>
     <string name="car_app_theme">App theme</string>
     <string name="car_dark_mode">Dark mode</string>
     <string name="car_buttons">Buttons</string>
@@ -206,11 +216,11 @@
     <string name="car_skip_buttons">Skip buttons</string>
     <string name="car_song_title">Song title</string>
     <string name="car_player_beside_map">Player beside the map</string>
+    <string name="car_player_beside_map_note">The side of the map the player docks to when you tap its dock button.</string>
     <string name="car_right">Right</string>
     <string name="car_left">Left</string>
     <string name="car_autoplay">Autoplay on connect</string>
-    <string name="car_more_lyrics">More lyrics sources</string>
-    <string name="car_more_lyrics_note">Also asks BetterLyrics and KuGou, which then get the song\'s name and artist. Off asks LRCLIB only.</string>
+    <string name="car_autoplay_note">Picks the music up where it stopped once the car connects.</string>
     <string name="car_spoken_directions">Spoken directions</string>
     <string name="car_spoken_directions_note">Turn it off if your map app\'s own voice already plays in the car.</string>
     <string name="car_phone_speech">Use the phone\'s speech recognition</string>
@@ -218,15 +228,19 @@
     <string name="car_warn_bluetooth">Warn when Bluetooth isn\'t connected</string>
     <string name="car_warn_location">Warn when location is off</string>
     <string name="car_experimental">Experimental features</string>
+    <string name="car_experimental_note">Features still in testing. They may not work in every car.</string>
+    <string name="carset_experimental_heading">Experimental</string>
+    <string name="carset_advanced">Advanced</string>
+    <string name="carset_fit_needs_car">Connect to a car to save this fit for it.</string>
     <string name="car_vehicle_data">Vehicle data</string>
     <string name="car_vehicle_data_note">Adds a Vehicle data tile: a live dump of the car\'s sensors. The field names are guesses until you\'ve watched one change.</string>
     <string name="car_adaptive_video">Adaptive video quality</string>
     <string name="car_adaptive_video_note">Lowers the picture\'s quality when the car or its Wi-Fi can\'t keep up, and raises it again once it can. Applies on the next connection.</string>
-    <string name="web_page_note">Shown by the Browser app in the car. Empty opens DuckDuckGo. Applies on the next connection.</string>
+    <string name="web_page_note">Shown by the Browser app in the car. Empty opens the start page with your bookmarks. Applies on the next connection.</string>
     <string name="car_audio">Car audio</string>
     <string name="car_audio_bt">Bluetooth (Recommended)</string>
     <string name="car_audio_bt_sub">No prompt each drive, and your map app\'s voice reaches the car</string>
-    <string name="car_audio_usb_sub">Clearer sound with no delay. Each drive, Android asks you to share your screen, which lets Graphene Auto send the sound</string>
+    <string name="car_audio_usb_sub">Clearer sound with no delay, but map apps\' spoken directions play on the phone, not in the car. Each drive, Android asks you to share your screen, which lets Graphene Auto send the sound</string>
     <string name="car_audio_usb_footer">Run the command in Help once, and Android stops asking.</string>
     <string name="car_audio_bt_footer">Calls go over Bluetooth either way.</string>
 
@@ -280,6 +294,8 @@
     <string name="help_usb_data_detail">GrapheneOS can block data on the USB port. If USB-C port control is set to Charging-only, the car never sees the phone, even with a data cable. Set it to allow data.</string>
     <string name="help_pair">Pair over Bluetooth for calls.</string>
     <string name="help_pair_detail">Calls play through the car once your phone and the car are paired. Graphene Auto offers to pair the first time you plug in.</string>
+    <string name="help_bluetooth_first">Connect Bluetooth before the cable.</string>
+    <string name="help_bluetooth_first_detail">If music over Bluetooth won\'t connect, let the car find the phone over Bluetooth first, then plug in. Some cars get confused when the cable comes first.</string>
     <string name="help_answer">Answer calls from the car screen.</string>
     <string name="help_answer_detail">Set Graphene Auto as your caller ID and spam app. Without it, calls still ring, but only the phone can answer them.</string>
     <string name="help_prompt">Stop the audio prompt each drive.</string>
@@ -300,6 +316,10 @@
     <string name="update_check_now">Check now</string>
     <string name="update_check_auto">Check automatically</string>
     <string name="update_once_a_day">Once a day</string>
+    <string name="update_silent">Install updates by itself</string>
+    <string name="update_silent_sub">Finished releases only, on Wi-Fi, when no car is connected</string>
+    <string name="update_installed_title">Graphene Auto updated to %1$s</string>
+    <string name="update_installed_text">Installed on Wi-Fi while no car was connected.</string>
 
     <!--  -->
     <string name="update_unplug_first">Unplug from the car to install. Installing closes Graphene Auto.</string>
@@ -393,6 +413,9 @@
     <string name="wireless_auto_off">Doesn\'t connect on its own</string>
     <string name="wireless_auto_turn_on">Let it connect on its own</string>
     <string name="bluetooth_settings">Bluetooth settings</string>
+    <string name="wireless_wifi_off_title">Wi-Fi is off</string>
+    <string name="wireless_wifi_off_body">The car connects over its own Wi-Fi, so turn on Wi-Fi to connect wirelessly.</string>
+    <string name="wireless_wifi_turn_on">Turn on Wi-Fi</string>
 
     <!-- Voice models -->
     <string name="voice_live_title">Voice: live words</string>
@@ -417,6 +440,10 @@
     <!--  -->
     <string name="home_debug_build">%1$s · debug build</string>
     <string name="home_bt_body">Music plays over Bluetooth, but your phone isn\'t connected to the car. Connect it here or from the car\'s Bluetooth menu.</string>
+    <string name="home_location_title">Keep the car\'s map on GPS</string>
+    <string name="home_location_body">With the phone locked, Android stops passing your location to the car\'s map. Choose Allow all the time, and Graphene Auto keeps it going. It reads your location in the background only while a car is connected.</string>
+    <string name="home_location_allow">Allow location</string>
+    <string name="home_location_not_now">Not now</string>
     <string name="home_voice_downloading">Downloading voice, %1$d%%</string>
 
     <!-- Car audio dialogs -->
@@ -454,8 +481,6 @@
     <string name="carset_fit">Fit to the screen</string>
     <string name="off">Off</string>
     <string name="on">On</string>
-    <string name="carset_lyrics_from">Lyrics from</string>
-    <string name="carset_more_sources">More sources</string>
     <string name="carset_hide">Hide</string>
     <string name="carset_show">Show</string>
     <string name="carset_phone">Phone</string>
@@ -465,7 +490,7 @@
     <string name="carset_build">Build</string>
     <string name="carset_whats_new_after">What\'s new after updates</string>
     <string name="carset_whats_new_after_sub">Show the list of changes once, the first time the car connects after an update.</string>
-    <string name="carset_web_default">DuckDuckGo (default) - tap to set a different page</string>
+    <string name="carset_web_default">Start page (default) - tap to set a page</string>
     <string name="carset_web_note">Shown by the Browser app on the launcher. Applies on the next connection.</string>
     <string name="carset_screen_fit">Screen fit</string>
     <string name="carset_top">Top</string>
@@ -487,7 +512,7 @@
     <string name="carset_px">%1$dpx</string>
 
     <!-- Car media app -->
-    <string name="media_open_on_phone">Open on phone</string>
+    <string name="allow_on_phone">Allow on phone</string>
     <string name="media_now_playing">Now playing</string>
     <string name="media_up_next">Up next</string>
     <string name="media_browse">Browse</string>
@@ -498,7 +523,7 @@
 
     <!--  -->
     <string name="media_keeps_library">%1$s keeps its library to itself.</string>
-    <string name="media_needs_access">Graphene Auto can still control it once it has Notification access on the phone. Allow it under Settings &gt; Notifications &gt; Notification access.</string>
+    <string name="media_needs_access">Graphene Auto can still play it once it has Notification access. Allow it on the phone when you\'re parked.</string>
     <string name="media_not_running">%1$s isn\'t running.</string>
     <string name="media_not_running_body">%1$s plays through Graphene Auto\'s own player, but only while it\'s open on the phone. Open it once and it keeps playing here in the car.</string>
     <string name="media_open_app">Open %1$s</string>
@@ -593,6 +618,12 @@
     </plurals>
     <string name="msg_reply_to">Reply to %1$s</string>
     <string name="msg_listening">Listening</string>
+    <!-- The voice assistant, over the bottom of the car screen -->
+    <string name="assist_listening">Listening…</string>
+    <string name="assist_one_moment">One moment…</string>
+    <!-- The quoted phrases are commands the assistant understands only in English: keep them in English. -->
+    <string name="assist_examples">Try “navigate home” or “play” and an artist. Say “help” for more.</string>
+    <string name="assist_grant">Grant</string>
     <string name="msg_sending_to">Sending to %1$s</string>
     <string name="msg_sent_to">Sent to %1$s</string>
     <string name="msg_reply_failed">Couldn\'t reply</string>
@@ -656,11 +687,16 @@
     <string name="dash_all_day">All day</string>
 
     <!-- Phone dialer -->
+    <string name="dialer_recents">Recents</string>
     <string name="dialer_contacts">Contacts</string>
     <string name="dialer_keypad">Keypad</string>
     <string name="dialer_ask">Ask on the phone</string>
     <string name="dialer_enter_number">Enter a number</string>
     <string name="dialer_call">Call</string>
+    <string name="dialer_no_recents">No recent calls.</string>
+    <string name="dialer_recents_needs_permission">Graphene Auto needs the Call logs permission to list recent calls.</string>
+    <!-- %1$s is how long ago, such as "5 min. ago" -->
+    <string name="dialer_missed">Missed · %1$s</string>
     <string name="dialer_no_contacts">No contacts with a phone number found.</string>
     <string name="dialer_search">Search contacts</string>
 
@@ -702,7 +738,7 @@
     <string name="notif_title">Notifications</string>
     <string name="notif_clear_all">Clear all</string>
     <string name="notif_empty">Nothing yet. New notifications from the phone will show up here.</string>
-    <string name="notif_off">Notifications are off. Allow Graphene Auto under Settings &gt; Notifications &gt; Notification access on the phone.</string>
+    <string name="notif_off">Graphene Auto needs Notification access to show them here. Allow it on the phone when you\'re parked.</string>
     <string name="notif_replied">Replied</string>
 
     <!-- Messages -->
@@ -729,7 +765,24 @@
     <!--  -->
     <string name="nav_lane_recommended">Recommended lane</string>
     <string name="nav_lane">Lane</string>
+    <plurals name="nav_lane_left">
+        <item quantity="one">Use the left lane</item>
+        <item quantity="other">Use the left %d lanes</item>
+    </plurals>
+    <plurals name="nav_lane_right">
+        <item quantity="one">Use the right lane</item>
+        <item quantity="other">Use the right %d lanes</item>
+    </plurals>
+    <string name="nav_lane_middle">Use the middle lane</string>
+    <string name="nav_lane_middle_lanes">Use the middle lanes</string>
+    <string name="nav_lane_from_left">Use lane %1$d from the left</string>
+    <string name="nav_lane_from_right">Use lane %1$d from the right</string>
+    <string name="nav_lane_any">Any lane</string>
     <string name="nav_arrive">Arrive %1$s</string>
+    <!-- Under the arrival time on the trip line: "4:30 p.m. / arrival" -->
+    <string name="nav_arrival">arrival</string>
+    <!-- Under the distance left on the trip line: "2.7 km / to go" -->
+    <string name="nav_to_go">to go</string>
 
     <!-- Car app screens -->
     <string name="template_nothing_playing">Nothing playing yet.</string>
@@ -872,6 +925,17 @@
     <string name="status_no_car_graphene">The phone is charging, but no car has answered. Check that USB-C port control, under Security &amp; privacy, allows data and isn\'t set to Charging-only.</string>
     <string name="status_stuck_cable">The car hasn\'t shown Graphene Auto yet. Unplug the cable, wait a few seconds, and plug it back in. If it keeps happening, try another cable or USB port, and share the log in an issue.</string>
     <string name="status_stuck_wireless">The car hasn\'t shown Graphene Auto yet. Turn the car off and on again, or connect with a cable. If it keeps happening, share the log in an issue.</string>
+    <string name="car_audio_switched">This car turns Bluetooth music off while Graphene Auto runs, so its music now goes through Graphene Auto. Allow the prompt on your phone.</string>
+    <string name="car_audio_blocked">%1$s doesn\'t let other apps play its sound, so it can\'t reach the car through Graphene Auto. Try another music app.</string>
+    <string name="bt_address_card_title">Help %1$s know this phone</string>
+    <string name="bt_address_card_body">Some cars stay connected only once they know the phone\'s Bluetooth address. Android keeps it from apps, so copy it from About phone. Press and hold the Bluetooth address there, tap Copy, and come back.</string>
+    <string name="bt_address_open">Open About phone</string>
+    <string name="bt_address_not_now">Not now</string>
+    <string name="bt_address_use_title">Use this Bluetooth address?</string>
+    <string name="bt_address_use_body">Graphene Auto passes it to your car, so the car knows this is the phone it\'s paired with.</string>
+    <string name="bt_address_type">Type it instead</string>
+    <string name="bt_address_your_car">your car</string>
+    <string name="bt_address_car_note">Finish one setup step on your phone when you\'re parked.</string>
     <string name="settings_bt_address">Phone\'s Bluetooth address</string>
     <string name="settings_bt_address_off">Not set. Only for a car that drops Bluetooth when Graphene Auto connects.</string>
     <string name="settings_bt_address_hint">Copy it from Android\'s Settings, under About phone. Graphene Auto passes it to the car, so the car knows the phone on the cable is the one it\'s paired with.</string>
@@ -903,6 +967,66 @@
     <string name="settings_language">Language</string>
     <string name="settings_language_phone">Same as the phone</string>
     <string name="player_next_chapter">Next chapter</string>
+    <string name="density_custom_title">Custom density</string>
+    <string name="density_custom_label">DPI</string>
+    <string name="density_custom_note">Any value from %1$d to %2$d. Lower fits more on the screen; higher makes everything bigger.</string>
+    <string name="web_add_bookmark">Add</string>
+    <string name="web_done">Done</string>
+    <string name="web_remove_bookmark">Remove %1$s</string>
+    <string name="web_bookmark_added">Added to the start page</string>
+    <string name="web_bookmark_removed">Removed from the start page</string>
+    <string name="web_bookmark_this">Add to the start page</string>
+    <string name="web_remove_this_bookmark">Remove from the start page</string>
+    <string name="browser_search_engine">Search engine</string>
+    <string name="browser_bookmarks">Bookmarks</string>
+    <string name="browser_bookmarks_note">Shown as tiles on the browser\'s start page. You can also share a page to Graphene Auto from any browser.</string>
+    <string name="browser_add_bookmark">Add bookmark</string>
+    <string name="browser_bookmark_name">Name</string>
+    <string name="browser_bookmark_address">Web address</string>
+    <string name="browser_remove">Remove</string>
+    <string name="browser_adblock">Block ads and trackers</string>
+    <string name="browser_adblock_note">Uses filter lists, refreshed weekly over Wi-Fi from the sites that publish them.</string>
+    <string name="browser_youtube">Block YouTube video ads</string>
+    <string name="browser_youtube_note">Skips the ads inside videos. YouTube changes often, so turn this off if videos stop playing.</string>
+    <string name="browser_filter_lists">Filter lists</string>
+    <string name="browser_add_list">Add filter list</string>
+    <string name="browser_list_address">List address</string>
+    <string name="browser_list_note">Any list in Adblock Plus format, such as one for your language or region.</string>
+    <string name="browser_update_lists">Update lists now</string>
+    <string name="browser_lists_status">%1$d rules, updated %2$s</string>
+    <string name="browser_lists_never">%1$d rules, from the copy built into Graphene Auto</string>
+    <string name="browser_updating">Updating…</string>
+    <string name="browser_update_failed">Couldn\'t update. %1$s</string>
+    <string name="browser_shared_added">Added to Graphene Auto\'s start page</string>
+    <string name="browser_shared_not_url">That isn\'t a web address</string>
+    <string name="browser_share_label">Graphene Auto start page</string>
+    <string name="summary_adblock_on">Ads blocked</string>
+    <string name="summary_adblock_off">Ads not blocked</string>
+    <string name="car_nav_mic">Mic button</string>
+    <string name="car_nav_mic_note">The assistant\'s button in the nav bar. The car\'s own voice button works either way.</string>
+    <string name="car_apps_add">Add an app</string>
+    <string name="car_apps_add_note">For an app the car doesn\'t list: its music plays through Graphene Auto\'s player, or its messages show on the Messages screen.</string>
+    <string name="car_apps_add_pick">Choose an app</string>
+    <string name="car_apps_add_as">Show %1$s as</string>
+    <string name="car_apps_as_media">Music and audio</string>
+    <string name="car_apps_as_media_note">Now playing, with play, pause and skip. There\'s no library to browse.</string>
+    <string name="car_apps_as_messaging">Messages</string>
+    <string name="car_apps_as_messaging_note">Its notifications, read aloud, with replies.</string>
+    <string name="car_apps_added_by_you">Added by you</string>
+    <string name="car_apps_remove">Remove %1$s</string>
+    <string name="cert_link">Download from a link</string>
+    <string name="cert_link_sub">A certificate file you trust, at an address you paste</string>
+    <string name="cert_link_title">Certificate from a link</string>
+    <string name="cert_link_note">Paste the address of a .p12 file, or of a certificate and key in PEM or DER. Graphene Auto converts it to the form the car needs.</string>
+    <string name="cert_link_label">Certificate or .p12 link</string>
+    <string name="cert_link_key">Link to the private key</string>
+    <string name="cert_link_key_note">That\'s a certificate without its key. Paste the key\'s link too.</string>
+    <string name="cert_link_password">Password</string>
+    <string name="cert_link_password_note">This file has a password.</string>
+    <string name="cert_link_download">Download</string>
+    <string name="cert_link_again">Download again</string>
+    <string name="cert_link_done">Downloaded and converted. It\'s used from the next connection.</string>
+    <string name="cert_link_failed">Couldn\'t use it. %1$s</string>
     <string name="contacts_title">Call from the car</string>
     <string name="contacts_sub">Up to %1$d contacts, each with a tile in the car\'s Phone group. One tap calls.</string>
     <string name="contacts_no_calls">This device can\'t make calls.</string>

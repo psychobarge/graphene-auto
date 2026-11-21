@@ -117,7 +117,7 @@ fun MediaScreen(app: MediaApp, onExit: () -> Unit) {
                         CarMedia.Rejection.NEEDS_NOTIFICATION_ACCESS -> Notice(
                             stringResource(R.string.media_keeps_library, app.label),
                             stringResource(R.string.media_needs_access),
-                            action = stringResource(R.string.media_open_on_phone) to {
+                            action = stringResource(R.string.allow_on_phone) to {
                                 val app = context.applicationContext
                                 runCatching {
                                     app.startActivity(
@@ -259,15 +259,21 @@ fun MediaScreen(app: MediaApp, onExit: () -> Unit) {
 @Composable
 private fun AppIdentity(app: MediaApp, onExit: () -> Unit, modifier: Modifier = Modifier) {
     val icon = remember(app) { findEntry(app.component.flattenToString())?.icon }
+    val navigator = LocalCarNavigator.current
     Row(modifier, verticalAlignment = Alignment.CenterVertically) {
-        GsIconButton(Icons.Filled.ArrowBack, stringResource(R.string.back), onExit, size = 44.dp)
-        Spacer(Modifier.width(14.dp))
+        // Shown on the same terms as every other screen's header: only when it leads somewhere
+        // the nav bar doesn't.
+        if (navigator.backLeadsSomewhere) {
+            GsIconButton(Icons.Filled.ArrowBack, stringResource(R.string.back), onExit)
+            Spacer(Modifier.width(12.dp))
+        }
         icon?.let {
             Image(it, null, Modifier.size(26.dp).clip(RoundedCornerShape(7.dp)))
             Spacer(Modifier.width(10.dp))
         }
         Text(
-            app.label.lowercase().replaceFirstChar { it.titlecase() },
+            // As the app writes it: recasing turned NewPipe into "Newpipe" and TIDAL into "Tidal".
+            app.label,
             style = MaterialTheme.typography.titleMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             maxLines = 1,
@@ -715,7 +721,7 @@ private fun StageControls(now: NowPlaying, media: CarMedia, modifier: Modifier) 
                     )
                 }
             }
-            PlayerProgress(now, media, Modifier.fillMaxWidth().padding(top = if (compact) 4.dp else 12.dp), showTimes = showTimes)
+            PlayerProgress(now, media, Modifier.fillMaxWidth().padding(top = if (compact) 4.dp else 12.dp), showTimes = showTimes, timeStyle = MaterialTheme.typography.titleLarge)
             // What's left goes to the buttons: play takes about half of it, the row below a third,
             // and neither grows past what a row of them fits across.
             BoxWithConstraints(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
@@ -764,7 +770,7 @@ private fun NowPlayingControls(now: NowPlaying, media: CarMedia, modifier: Modif
                     )
                 }
             }
-            PlayerProgress(now, media, Modifier.fillMaxWidth(), showTimes = showTimes)
+            PlayerProgress(now, media, Modifier.fillMaxWidth(), showTimes = showTimes, timeStyle = MaterialTheme.typography.titleLarge)
             TransportRow(now, media, skip = if (compact) 48.dp else 60.dp, modifier = Modifier.fillMaxWidth())
             PlayModeRow(now, media, size = if (compact) 46.dp else 56.dp, modifier = Modifier.fillMaxWidth(), maxOther = 2)
         }
@@ -804,7 +810,7 @@ private fun CompactPlayer(now: NowPlaying, media: CarMedia, art: android.graphic
             }
         }
         Spacer(Modifier.height(10.dp))
-        PlayerProgress(now, media, Modifier.fillMaxWidth())
+        PlayerProgress(now, media, Modifier.fillMaxWidth(), timeStyle = MaterialTheme.typography.titleLarge)
         Spacer(Modifier.height(6.dp))
         TransportRow(now, media, skip = 54.dp, modifier = Modifier.fillMaxWidth())
         Spacer(Modifier.height(10.dp))

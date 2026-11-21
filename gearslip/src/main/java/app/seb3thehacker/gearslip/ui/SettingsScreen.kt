@@ -1,5 +1,10 @@
 package app.seb3thehacker.gearslip.ui
 
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.selected
+import androidx.compose.material.icons.filled.Create
+
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import app.seb3thehacker.gearslip.R
@@ -225,6 +230,7 @@ private fun ConnectionSection() {
             icon = Icons.Filled.Home,
             trailing = { Switch(checked = launcher, onCheckedChange = null) },
         )
+        CarAudioSetting()
         var address by remember { mutableStateOf(CarBluetooth.typedAddress(context)) }
         var editing by remember { mutableStateOf(false) }
         SettingsRow(
@@ -250,9 +256,45 @@ private fun ConnectionSection() {
     }
 }
 
+/**
+ * Where the car's sound comes from: Bluetooth, or through Graphene Auto over the car link. Takes
+ * effect at once when a car is connected. The chosen pill is filled in the main colour, the
+ * other tonal, like the buttons on Home.
+ */
+@Composable
+private fun CarAudioSetting() {
+    val pipe by app.seb3thehacker.gearslip.car.CarSettings.pipeAudio.collectAsState()
+    val thisCar by app.seb3thehacker.gearslip.car.CarSettings.thisCarPipes.collectAsState()
+    val through = pipe || thisCar
+    val scheme = MaterialTheme.colorScheme
+    // Android won't let Graphene Auto capture navigation voices, only media, so they stay on the phone.
+    SettingsRow(
+        stringResource(R.string.car_audio),
+        subtitle = if (through) stringResource(R.string.home_audio_usb_warning) else null,
+        icon = app.seb3thehacker.gearslip.car.MediaIcons.MusicNote,
+    )
+    androidx.compose.foundation.layout.Row(
+        Modifier.fillMaxWidth().padding(start = 56.dp, end = 16.dp, bottom = 12.dp),
+        horizontalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(8.dp),
+    ) {
+        listOf(false to R.string.guide_audio_bluetooth, true to R.string.guide_audio_usb).forEach { (value, label) ->
+            val chosen = through == value
+            androidx.compose.material3.Button(
+                onClick = { app.seb3thehacker.gearslip.car.CarSettings.setPipeAudio(value) },
+                colors = androidx.compose.material3.ButtonDefaults.buttonColors(
+                    containerColor = if (chosen) scheme.primary else scheme.secondaryContainer,
+                    contentColor = if (chosen) scheme.onPrimary else scheme.onSecondaryContainer,
+                ),
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 12.dp),
+                modifier = Modifier.weight(1f).height(48.dp).semantics { selected = chosen },
+            ) { Text(stringResource(label), maxLines = 1) }
+        }
+    }
+}
+
 /** The phone's Bluetooth address, typed in by hand: Android doesn't let apps read it. */
 @Composable
-private fun AddressDialog(initial: String, onDismiss: () -> Unit, onSave: (String) -> Boolean) {
+internal fun AddressDialog(initial: String, onDismiss: () -> Unit, onSave: (String) -> Boolean) {
     var text by remember { mutableStateOf(initial) }
     var invalid by remember { mutableStateOf(false) }
     AlertDialog(
@@ -281,9 +323,22 @@ private fun DebugSection() {
     SettingsSection("Debug build") {
         SettingsRow(
             "Send a test message",
-            Modifier.clickable { TestMessage.post(context) },
-            subtitle = "Posts a message notification to read on the car",
+            // After a few seconds, so there's time to open the car preview and watch it arrive.
+            Modifier.clickable {
+                android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({ TestMessage.post(context.applicationContext) }, 5_000)
+            },
+            subtitle = "Posts a message notification in 5 seconds, time to open the car preview",
             icon = Icons.AutoMirrored.Filled.Send,
+        )
+        SettingsDivider()
+        SettingsRow(
+            "Ask for the Bluetooth address",
+            Modifier.clickable {
+                CarBluetooth.setTypedAddress(context, "")
+                CarBluetooth.askForAddressNow(context)
+            },
+            subtitle = "Clears the saved address and shows Home's card",
+            icon = Icons.Filled.Info,
         )
         SettingsDivider()
         val badge by CarSettings.debugBadge.collectAsState()
@@ -323,6 +378,8 @@ private fun CertificateSection() {
     var notice by remember { mutableStateOf<String?>(null) }
     var downloading by remember { mutableStateOf(false) }
     var detailsOpen by remember { mutableStateOf(false) }
+    var linkDialog by remember { mutableStateOf<LinkRequest?>(null) }
+    val savedLink = remember(refresh) { app.seb3thehacker.gearslip.CertFromLink.savedLink(context) }
     val picker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) pendingUri = uri
     }
@@ -381,6 +438,22 @@ private fun CertificateSection() {
         )
         SettingsDivider()
         SettingsRow(
+            stringResource(R.string.cert_link),
+            Modifier.clickable { linkDialog = LinkRequest() },
+            subtitle = stringResource(R.string.cert_link_sub),
+            icon = Icons.Filled.Create,
+        )
+        savedLink?.let { (cert, key) ->
+            SettingsDivider()
+            SettingsRow(
+                stringResource(R.string.cert_link_again),
+                Modifier.clickable { linkDialog = LinkRequest(cert, key, start = true) },
+                subtitle = cert.substringAfter("://").substringBefore('/'),
+                icon = Icons.Filled.Refresh,
+            )
+        }
+        SettingsDivider()
+        SettingsRow(
             stringResource(R.string.cert_import),
             Modifier.clickable { picker.launch(arrayOf("*/*")) },
             subtitle = stringResource(R.string.cert_import_sub),
@@ -407,6 +480,14 @@ private fun CertificateSection() {
         }
     }
 
+    linkDialog?.let { request ->
+        LinkDialog(request, onDismiss = { linkDialog = null }) {
+            linkDialog = null
+            notice = context.getString(R.string.cert_link_done)
+            refresh++
+        }
+    }
+
     pendingUri?.let { uri ->
         PasswordDialog(
             onDismiss = { pendingUri = null },
@@ -426,6 +507,75 @@ private fun CertificateSection() {
             },
         )
     }
+}
+
+/** What the link dialog opens with: blank, or the saved link to fetch again straight away. */
+private class LinkRequest(val cert: String = "https://", val key: String? = null, val start: Boolean = false)
+
+/**
+ * Fetches a certificate from a link (issue #15). It asks for more only when the file needs it:
+ * the password of a .p12, or the link to a key that came separately.
+ */
+@Composable
+private fun LinkDialog(request: LinkRequest, onDismiss: () -> Unit, onDone: () -> Unit) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var cert by remember { mutableStateOf(request.cert) }
+    var key by remember { mutableStateOf(request.key) }
+    var password by remember { mutableStateOf<String?>(null) }
+    var error by remember { mutableStateOf<String?>(null) }
+    var busy by remember { mutableStateOf(false) }
+    fun go() {
+        busy = true
+        error = null
+        scope.launch {
+            val result = withContext(Dispatchers.IO) {
+                runCatching { app.seb3thehacker.gearslip.CertFromLink.import(context, cert, key?.takeIf { it.isNotBlank() }, password) }
+            }
+            busy = false
+            result.onSuccess { outcome ->
+                when (outcome) {
+                    app.seb3thehacker.gearslip.CertFromLink.Outcome.Done -> onDone()
+                    app.seb3thehacker.gearslip.CertFromLink.Outcome.NeedsKey -> if (key == null) key = "https://" else error = context.getString(R.string.cert_link_key_note)
+                    app.seb3thehacker.gearslip.CertFromLink.Outcome.NeedsPassword -> if (password == null) password = "" else error = context.getString(R.string.cert_import_failed)
+                }
+            }.onFailure { error = context.getString(R.string.cert_link_failed, it.message.orEmpty()) }
+        }
+    }
+    LaunchedEffect(request) { if (request.start) go() }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.cert_link_title)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text(stringResource(R.string.cert_link_note))
+                OutlinedTextField(
+                    cert, { cert = it }, label = { Text(stringResource(R.string.cert_link_label)) }, singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
+                )
+                key?.let { k ->
+                    Text(stringResource(R.string.cert_link_key_note), style = MaterialTheme.typography.bodySmall)
+                    OutlinedTextField(
+                        k, { key = it }, label = { Text(stringResource(R.string.cert_link_key)) }, singleLine = true,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Uri),
+                    )
+                }
+                password?.let { p ->
+                    Text(stringResource(R.string.cert_link_password_note), style = MaterialTheme.typography.bodySmall)
+                    OutlinedTextField(
+                        p, { password = it }, label = { Text(stringResource(R.string.cert_link_password)) }, singleLine = true,
+                        visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation(),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    )
+                }
+                error?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall) }
+            }
+        },
+        confirmButton = {
+            TextButton(::go, enabled = !busy) { Text(stringResource(if (busy) R.string.cert_downloading else R.string.cert_link_download)) }
+        },
+        dismissButton = { TextButton(onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
 }
 
 @Composable
