@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0
 
 ### Added
 - Call someone in one tap from the car: add up to 8 contacts under Car › Apps on the phone, and
@@ -10,6 +10,16 @@
   hourly weather, and the car audio choice under Settings.
 - Cars that turn Bluetooth music off while Android Auto runs get their music through Graphene
   Auto, remembered per car.
+- A call rings on the car, with its answer button, even when another app holds the
+  call-screening role; a mute set on the phone's call screen shows on the car.
+
+### Fixed
+- A car that presses Play right after connecting (Renault R-Link 2) no longer ends the session.
+- The audio capture consent is asked while Graphene Auto is in front, so the drive isn't silent.
+- Music comes back on the car speakers when it resumes after the car took them (radio).
+- A ringing call can be declined from the car even after call screening.
+- The session stops when the car ends it, and the car's touches are handled in order.
+- Hiding an app also unpins it from the nav bar; SimpMusic's dead Browse tile is gone.
 
 ### Fixed (from Gearslip)
 - The phone's Bluetooth address is asked for on the phone and sent as soon as the car connects.
