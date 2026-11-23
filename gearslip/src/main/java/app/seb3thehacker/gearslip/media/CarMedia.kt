@@ -415,6 +415,12 @@ class CarMedia(private val context: Context) {
             return if (same) shown else fresh
         }
         fun uri(vararg keys: String) = keys.firstNotNullOfOrNull { metadata?.getString(it)?.takeIf(String::isNotEmpty) }?.let(Uri::parse)
+        // The player's own reason for stopping, otherwise lost: the car log only shows "stopped".
+        val error = state?.errorMessage?.toString()
+        if ((error != null || state?.state == PlaybackState.STATE_ERROR) &&
+            (error != _now.value.error || state?.state != _now.value.state)) {
+            GearslipLog.w("media: ${controller?.packageName} reports an error (state=${state?.state}): $error")
+        }
         _now.value = NowPlaying(
             title = text(MediaMetadata.METADATA_KEY_DISPLAY_TITLE, MediaMetadata.METADATA_KEY_TITLE),
             artist = text(MediaMetadata.METADATA_KEY_DISPLAY_SUBTITLE, MediaMetadata.METADATA_KEY_ARTIST),
@@ -431,7 +437,7 @@ class CarMedia(private val context: Context) {
                 val iconName = iconName(it.icon)
                 CustomAction(it.action, it.name.toString(), it.extras, it.icon, iconName, hasOutline(it.icon, iconName))
             }),
-            error = state?.errorMessage?.toString(),
+            error = error,
             activeQueueItemId = state?.activeQueueItemId ?: MediaSession.QueueItem.UNKNOWN_ID.toLong(),
             heart = if (controller?.ratingType == Rating.RATING_HEART) {
                 metadata?.getRating(MediaMetadata.METADATA_KEY_USER_RATING)?.takeIf { it.isRated }?.hasHeart() ?: false
