@@ -185,6 +185,7 @@ class CarMedia(private val context: Context) {
 
     private val main = Handler(Looper.getMainLooper())
     private var connecting: MediaApp? = null
+    private var openedAfterError = false
 
     /** The music app Graphene Auto is attached to, for the assistant to name; null when there's none. */
     val appLabel: String? get() = connecting?.label?.takeIf { controller != null }
@@ -420,6 +421,13 @@ class CarMedia(private val context: Context) {
         if ((error != null || state?.state == PlaybackState.STATE_ERROR) &&
             (error != _now.value.error || state?.state != _now.value.state)) {
             GearslipLog.w("media: ${controller?.packageName} reports an error (state=${state?.state}): $error")
+            // Metrolist, cold-started by the library connection alone, fails every track until its
+            // screen has been opened once. Open it, once per connection, and ask for Play again.
+            val app = connecting
+            if (state?.state == PlaybackState.STATE_ERROR && app != null && !openedAfterError) {
+                openedAfterError = true
+                if (openApp(app)) main.postDelayed({ controller?.transportControls?.play() }, LAUNCH_WAIT_MS)
+            }
         }
         _now.value = NowPlaying(
             title = text(MediaMetadata.METADATA_KEY_DISPLAY_TITLE, MediaMetadata.METADATA_KEY_TITLE),
@@ -825,6 +833,7 @@ class CarMedia(private val context: Context) {
 
     fun disconnect() {
         connecting = null
+        openedAfterError = false
         runCatching { searchBrowser?.disconnect() }
         searchBrowser = null
         searchComponent = null
