@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">Zoals de telefoon</string>
     <string name="choice_theme_light">Licht</string>
     <string name="choice_theme_dark">Donker</string>
+    <string name="choice_colours_wallpaper">Achtergrond</string>
     <string name="choice_dark_black">Zwart</string>
     <string name="choice_dark_black_colour">Zwart en kleur</string>
     <string name="choice_dark_deep_colour">Diepe kleur</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">Openen bij verbinden</string>
     <string name="car_size">Grootte</string>
     <string name="car_app_theme">App-thema</string>
+    <string name="car_app_colours">Kleuren</string>
     <string name="car_dark_mode">Donkere modus</string>
     <string name="car_buttons">Knoppen</string>
     <string name="car_map_day_night">Kaart dag/nacht</string>

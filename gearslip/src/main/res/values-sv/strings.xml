@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">Som telefonen</string>
     <string name="choice_theme_light">Ljust</string>
     <string name="choice_theme_dark">Mörkt</string>
+    <string name="choice_colours_wallpaper">Bakgrund</string>
     <string name="choice_dark_black">Svart</string>
     <string name="choice_dark_black_colour">Svart och färg</string>
     <string name="choice_dark_deep_colour">Djup färg</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">Öppna vid anslutning</string>
     <string name="car_size">Storlek</string>
     <string name="car_app_theme">Apptema</string>
+    <string name="car_app_colours">Färger</string>
     <string name="car_dark_mode">Mörkt läge</string>
     <string name="car_buttons">Knappar</string>
     <string name="car_map_day_night">Karta dag/natt</string>

@@ -66,6 +66,7 @@
     <string name="choice_theme_phone">Siga el teléfono</string>
     <string name="choice_theme_light">Luz</string>
     <string name="choice_theme_dark">Oscuro</string>
+    <string name="choice_colours_wallpaper">Fondo de pantalla</string>
     <string name="choice_dark_black">Negro</string>
     <string name="choice_dark_black_colour">Negro y color</string>
     <string name="choice_dark_deep_colour">Color profundo</string>
@@ -97,6 +98,7 @@
     <string name="car_open_on_connect">Abrir al conectar</string>
     <string name="car_size">Tamaño</string>
     <string name="car_app_theme">Tema de aplicación</string>
+    <string name="car_app_colours">Colores</string>
     <string name="car_dark_mode">Modo oscuro</string>
     <string name="car_buttons">Botones</string>
     <string name="car_map_day_night">Mapa día/noche</string>

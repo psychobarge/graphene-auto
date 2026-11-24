@@ -463,6 +463,7 @@
     <string name="choice_theme_phone">Wie auf dem Smartphone</string>
     <string name="choice_theme_light">Hell</string>
     <string name="choice_theme_dark">Dunkel</string>
+    <string name="choice_colours_wallpaper">Hintergrundbild</string>
     <string name="choice_dark_black">Schwarz</string>
     <string name="choice_dark_black_colour">Schwarz und Farbe</string>
     <string name="choice_dark_deep_colour">Dunkle Farben</string>
@@ -494,6 +495,7 @@
     <string name="car_open_on_connect">Beim Verbinden öffnen</string>
     <string name="car_size">Größe</string>
     <string name="car_app_theme">App-Design</string>
+    <string name="car_app_colours">Farben</string>
     <string name="car_dark_mode">Dunkelmodus</string>
     <string name="car_buttons">Tasten</string>
     <string name="car_map_day_night">Karte: Tag/Nacht</string>

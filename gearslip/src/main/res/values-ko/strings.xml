@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">휴대전화 설정 따르기</string>
     <string name="choice_theme_light">밝게</string>
     <string name="choice_theme_dark">어둡게</string>
+    <string name="choice_colours_wallpaper">배경화면</string>
     <string name="choice_dark_black">검정</string>
     <string name="choice_dark_black_colour">검정과 색상</string>
     <string name="choice_dark_deep_colour">진한 색상</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">연결 시 열기</string>
     <string name="car_size">크기</string>
     <string name="car_app_theme">앱 테마</string>
+    <string name="car_app_colours">색상</string>
     <string name="car_dark_mode">다크 모드</string>
     <string name="car_buttons">버튼</string>
     <string name="car_map_day_night">지도 주간/야간</string>

@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">Как на телефоне</string>
     <string name="choice_theme_light">Светлая</string>
     <string name="choice_theme_dark">Тёмная</string>
+    <string name="choice_colours_wallpaper">Обои</string>
     <string name="choice_dark_black">Чёрный</string>
     <string name="choice_dark_black_colour">Чёрный с цветом</string>
     <string name="choice_dark_deep_colour">Глубокий цвет</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">Открывать при подключении</string>
     <string name="car_size">Размер</string>
     <string name="car_app_theme">Тема приложения</string>
+    <string name="car_app_colours">Цвета</string>
     <string name="car_dark_mode">Тёмный режим</string>
     <string name="car_buttons">Кнопки</string>
     <string name="car_map_day_night">Карта день/ночь</string>

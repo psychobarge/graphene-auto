@@ -145,6 +145,7 @@
     <string name="choice_theme_phone">Urmărește telefonul</string>
     <string name="choice_theme_light">Luminoasă</string>
     <string name="choice_theme_dark">Întunecată</string>
+    <string name="choice_colours_wallpaper">Imagine de fundal</string>
     <string name="choice_dark_black">Neagră</string>
     <string name="choice_dark_black_colour">Negru cu o nuanță de culoare</string>
     <string name="choice_dark_deep_colour">Culoare intensă</string>
@@ -176,6 +177,7 @@
     <string name="car_open_on_connect">Deschide la conectare</string>
     <string name="car_size">Dimensiune</string>
     <string name="car_app_theme">Tema aplicației</string>
+    <string name="car_app_colours">Culori</string>
     <string name="car_dark_mode">Mod întunecat</string>
     <string name="car_buttons">Butoane</string>
     <string name="car_map_day_night">Harta zi/noapte</string>

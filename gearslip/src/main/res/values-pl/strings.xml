@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">Jak w telefonie</string>
     <string name="choice_theme_light">Jasny</string>
     <string name="choice_theme_dark">Ciemny</string>
+    <string name="choice_colours_wallpaper">Tapeta</string>
     <string name="choice_dark_black">Czarny</string>
     <string name="choice_dark_black_colour">Czarny z kolorem</string>
     <string name="choice_dark_deep_colour">Głęboki kolor</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">Otwieraj po połączeniu</string>
     <string name="car_size">Rozmiar</string>
     <string name="car_app_theme">Motyw aplikacji</string>
+    <string name="car_app_colours">Kolory</string>
     <string name="car_dark_mode">Tryb ciemny</string>
     <string name="car_buttons">Przyciski</string>
     <string name="car_map_day_night">Mapa dzień/noc</string>

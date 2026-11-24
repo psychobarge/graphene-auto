@@ -71,6 +71,7 @@ fun CarSettingsScreen() {
     val playerLeft by CarSettings.playerLeft.collectAsState()
     val navMic by CarSettings.navMic.collectAsState()
     val theme by CarSettings.appTheme.collectAsState()
+    val colours by CarSettings.appColours.collectAsState()
     val uiTheme by CarSettings.uiTheme.collectAsState()
     val darkStyle by CarSettings.darkStyle.collectAsState()
     val experimentalFeatures by CarSettings.experimentalFeaturesEnabled.collectAsState()
@@ -120,6 +121,13 @@ fun CarSettingsScreen() {
                             listOf(AppTheme.PHONE to stringResource(R.string.choice_theme_phone), AppTheme.LIGHT to stringResource(R.string.choice_theme_light), AppTheme.DARK to stringResource(R.string.choice_theme_dark)),
                             theme,
                         ) { CarSettings.setAppTheme(it) }
+                    }
+                    item {
+                        ChoiceRow(
+                            stringResource(R.string.car_app_colours),
+                            listOf(AppColours.PHONE to stringResource(R.string.choice_colours_wallpaper), AppColours.GRAPHENE to stringResource(R.string.choice_colours_graphene)),
+                            colours,
+                        ) { CarSettings.setAppColours(it) }
                     }
                     if (theme != AppTheme.LIGHT) item {
                         ChoiceRow(

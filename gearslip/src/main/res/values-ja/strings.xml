@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">スマートフォンに合わせる</string>
     <string name="choice_theme_light">ライト</string>
     <string name="choice_theme_dark">ダーク</string>
+    <string name="choice_colours_wallpaper">壁紙</string>
     <string name="choice_dark_black">ブラック</string>
     <string name="choice_dark_black_colour">ブラックとカラー</string>
     <string name="choice_dark_deep_colour">ディープカラー</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">接続時に開く</string>
     <string name="car_size">サイズ</string>
     <string name="car_app_theme">アプリのテーマ</string>
+    <string name="car_app_colours">色</string>
     <string name="car_dark_mode">ダークモード</string>
     <string name="car_buttons">ボタン</string>
     <string name="car_map_day_night">地図の昼/夜</string>

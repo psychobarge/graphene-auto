@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">Telefona uy</string>
     <string name="choice_theme_light">Açık</string>
     <string name="choice_theme_dark">Koyu</string>
+    <string name="choice_colours_wallpaper">Duvar kağıdı</string>
     <string name="choice_dark_black">Siyah</string>
     <string name="choice_dark_black_colour">Siyah ve renk</string>
     <string name="choice_dark_deep_colour">Koyu renk</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">Bağlanınca aç</string>
     <string name="car_size">Boyut</string>
     <string name="car_app_theme">Uygulama teması</string>
+    <string name="car_app_colours">Renkler</string>
     <string name="car_dark_mode">Koyu mod</string>
     <string name="car_buttons">Düğmeler</string>
     <string name="car_map_day_night">Harita gündüz/gece</string>

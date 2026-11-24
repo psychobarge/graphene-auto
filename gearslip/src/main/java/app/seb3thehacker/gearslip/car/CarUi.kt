@@ -44,8 +44,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
+import app.seb3thehacker.gearslip.car.theme.baseColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.hapticfeedback.HapticFeedback
@@ -112,6 +111,7 @@ fun CarUi() {
     val scale by CarSettings.scale.collectAsState()
     val phoneDark by CarEnvironment.phoneDark.collectAsState()
     val appTheme by CarSettings.appTheme.collectAsState()
+    val appColours by CarSettings.appColours.collectAsState()
     val uiThemeId by CarSettings.uiTheme.collectAsState()
     val darkStyle by CarSettings.darkStyle.collectAsState()
     val mediaApp by CarServices.mediaApp.collectAsState()
@@ -122,7 +122,7 @@ fun CarUi() {
         AppTheme.LIGHT -> false
         AppTheme.DARK -> true
     }
-    val colors = (if (dark) dynamicDarkColorScheme(appContext) else dynamicLightColorScheme(appContext)).withTintedSurfaces(dark, darkStyle)
+    val colors = baseColorScheme(appContext, appColours, dark).withTintedSurfaces(dark, darkStyle)
     val base = LocalDensity.current
     val insets by CarEnvironment.insets.collectAsState()
     val navigator = remember {

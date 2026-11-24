@@ -19,6 +19,9 @@ enum class Units { AUTO, IMPERIAL, METRIC }
 /** The car UI's own colours. Separate from [NightMode], which is about the light outside (the map). */
 enum class AppTheme { PHONE, LIGHT, DARK }
 
+/** Where the app's colours come from: the phone's wallpaper (Material You), or the app's own palette. */
+enum class AppColours { PHONE, GRAPHENE }
+
 /** A screen's width and height in pixels, as someone typed it: "1280x480". */
 data class ScreenSize(val width: Int, val height: Int) {
     override fun toString() = "${width}x$height"
@@ -71,6 +74,7 @@ private const val KEY_LOCATION_WARNING = "car_location_warning"
     private const val KEY_NAV_MIC = "car_nav_mic"
     private const val KEY_DEFAULT_HIDDEN = "car_default_hidden"
     private const val KEY_THEME = "car_app_theme"
+    private const val KEY_COLOURS = "car_app_colours"
     private const val KEY_UI_THEME = "car_ui_theme"
     private const val KEY_DARK_STYLE = "car_dark_style"
     private const val KEY_PINNED = "car_pinned_apps"
@@ -120,6 +124,8 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     private val navMicFlow = MutableStateFlow(true)
     private val themeFlow = MutableStateFlow(AppTheme.PHONE)
     val appTheme: StateFlow<AppTheme> = themeFlow
+    private val coloursFlow = MutableStateFlow(AppColours.PHONE)
+    val appColours: StateFlow<AppColours> = coloursFlow
     private val darkStyleFlow = MutableStateFlow(DarkStyle.BLACK)
 
     /** How dark the car's dark mode goes; black until the driver picks another. */
@@ -398,6 +404,9 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
         themeFlow.value = runCatching {
             AppTheme.valueOf(AppSettings.getString(app, KEY_THEME, AppTheme.PHONE.name))
         }.getOrDefault(AppTheme.PHONE)
+        coloursFlow.value = runCatching {
+            AppColours.valueOf(AppSettings.getString(app, KEY_COLOURS, AppColours.PHONE.name))
+        }.getOrDefault(AppColours.PHONE)
         darkStyleFlow.value = runCatching {
             DarkStyle.valueOf(AppSettings.getString(app, KEY_DARK_STYLE, DarkStyle.BLACK.name))
         }.getOrDefault(DarkStyle.BLACK)
@@ -478,6 +487,11 @@ private const val KEY_CLUSTER_VIDEO = "cluster_video_enabled"
     fun setAppTheme(theme: AppTheme) {
         themeFlow.value = theme
         AppSettings.putString(app, KEY_THEME, theme.name)
+    }
+
+    fun setAppColours(colours: AppColours) {
+        coloursFlow.value = colours
+        AppSettings.putString(app, KEY_COLOURS, colours.name)
     }
 
     fun setDarkStyle(style: DarkStyle) {

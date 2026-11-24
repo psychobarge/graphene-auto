@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">Podle telefonu</string>
     <string name="choice_theme_light">Světlý</string>
     <string name="choice_theme_dark">Tmavý</string>
+    <string name="choice_colours_wallpaper">Tapeta</string>
     <string name="choice_dark_black">Černá</string>
     <string name="choice_dark_black_colour">Černá a barva</string>
     <string name="choice_dark_deep_colour">Sytá barva</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">Otevřít po připojení</string>
     <string name="car_size">Velikost</string>
     <string name="car_app_theme">Motiv aplikace</string>
+    <string name="car_app_colours">Barvy</string>
     <string name="car_dark_mode">Tmavý režim</string>
     <string name="car_buttons">Tlačítka</string>
     <string name="car_map_day_night">Mapa den/noc</string>

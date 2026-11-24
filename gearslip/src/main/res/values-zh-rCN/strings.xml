@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">跟随手机</string>
     <string name="choice_theme_light">浅色</string>
     <string name="choice_theme_dark">深色</string>
+    <string name="choice_colours_wallpaper">壁纸</string>
     <string name="choice_dark_black">纯黑</string>
     <string name="choice_dark_black_colour">黑色加彩色</string>
     <string name="choice_dark_deep_colour">深彩色</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">连接时打开</string>
     <string name="car_size">大小</string>
     <string name="car_app_theme">应用主题</string>
+    <string name="car_app_colours">颜色</string>
     <string name="car_dark_mode">深色模式</string>
     <string name="car_buttons">按钮</string>
     <string name="car_map_day_night">地图日间/夜间</string>

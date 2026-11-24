@@ -144,6 +144,7 @@
     <string name="choice_theme_phone">Følg telefonen</string>
     <string name="choice_theme_light">Lys</string>
     <string name="choice_theme_dark">Mørk</string>
+    <string name="choice_colours_wallpaper">Baggrund</string>
     <string name="choice_dark_black">Sort</string>
     <string name="choice_dark_black_colour">Sort og farve</string>
     <string name="choice_dark_deep_colour">Dyb farve</string>
@@ -175,6 +176,7 @@
     <string name="car_open_on_connect">Åben forbindelse ved tilslutning</string>
     <string name="car_size">Størrelse</string>
     <string name="car_app_theme">App tema</string>
+    <string name="car_app_colours">Farver</string>
     <string name="car_dark_mode">Mørk tilstand</string>
     <string name="car_buttons">Knapper</string>
     <string name="car_map_day_night">Kort dag/nat</string>

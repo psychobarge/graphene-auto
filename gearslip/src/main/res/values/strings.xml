@@ -171,6 +171,9 @@
     <string name="choice_theme_phone">Follow phone</string>
     <string name="choice_theme_light">Light</string>
     <string name="choice_theme_dark">Dark</string>
+    <!-- The app's own name for its palette, so not translated. -->
+    <string name="choice_colours_graphene" translatable="false">Graphene Auto</string>
+    <string name="choice_colours_wallpaper">Wallpaper</string>
     <string name="choice_dark_black">Black</string>
     <string name="choice_dark_black_colour">Black and colour</string>
     <string name="choice_dark_deep_colour">Deep colour</string>
@@ -207,6 +210,7 @@
     <string name="choice_density_dpi">%1$d DPI</string>
     <string name="choice_density_custom">Custom…</string>
     <string name="car_app_theme">App theme</string>
+    <string name="car_app_colours">Colours</string>
     <string name="car_dark_mode">Dark mode</string>
     <string name="car_buttons">Buttons</string>
     <string name="car_map_day_night">Map day/night</string>

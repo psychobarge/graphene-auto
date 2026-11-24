@@ -157,6 +157,7 @@
     <string name="choice_theme_phone">مثل الهاتف</string>
     <string name="choice_theme_light">فاتح</string>
     <string name="choice_theme_dark">داكن</string>
+    <string name="choice_colours_wallpaper">خلفية الشاشة</string>
     <string name="choice_dark_black">أسود</string>
     <string name="choice_dark_black_colour">أسود وملوّن</string>
     <string name="choice_dark_deep_colour">لون عميق</string>
@@ -188,6 +189,7 @@
     <string name="car_open_on_connect">الفتح عند الاتصال</string>
     <string name="car_size">الحجم</string>
     <string name="car_app_theme">مظهر التطبيق</string>
+    <string name="car_app_colours">الألوان</string>
     <string name="car_dark_mode">الوضع الداكن</string>
     <string name="car_buttons">الأزرار</string>
     <string name="car_map_day_night">الخريطة نهار/ليل</string>

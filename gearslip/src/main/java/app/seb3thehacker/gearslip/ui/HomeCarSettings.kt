@@ -53,6 +53,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import app.seb3thehacker.gearslip.car.AppColours
 import app.seb3thehacker.gearslip.car.AppTheme
 import app.seb3thehacker.gearslip.car.CarApps
 import app.seb3thehacker.gearslip.car.LauncherMode
@@ -300,6 +301,7 @@ private fun GroupRows(group: CarGroup) {
     val playerLeft by CarSettings.playerLeft.collectAsState()
     val navMic by CarSettings.navMic.collectAsState()
     val theme by CarSettings.appTheme.collectAsState()
+    val colours by CarSettings.appColours.collectAsState()
     val uiTheme by CarSettings.uiTheme.collectAsState()
     val darkStyle by CarSettings.darkStyle.collectAsState()
     val experimental by CarSettings.experimentalFeaturesEnabled.collectAsState()
@@ -328,6 +330,8 @@ private fun GroupRows(group: CarGroup) {
             }
             SettingsDivider()
             Choice(stringResource(R.string.car_app_theme), themeChoices(), theme, CarSettings::setAppTheme)
+            SettingsDivider()
+            Choice(stringResource(R.string.car_app_colours), listOf(AppColours.PHONE to stringResource(R.string.choice_colours_wallpaper), AppColours.GRAPHENE to stringResource(R.string.choice_colours_graphene)), colours, CarSettings::setAppColours)
             SettingsDivider()
             if (theme != AppTheme.LIGHT) {
                 Choice(stringResource(R.string.car_dark_mode), darkChoices(), darkStyle, CarSettings::setDarkStyle)
