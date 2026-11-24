@@ -17,7 +17,6 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -90,14 +89,9 @@ internal fun BluetoothAddressCard(modifier: Modifier = Modifier) {
 
     val name = car ?: return
     if (CarBluetooth.typedAddress(context) != null) return
-    val scheme = MaterialTheme.colorScheme
     Column(modifier) {
         Spacer(Modifier.height(16.dp))
-        Surface(
-            color = scheme.secondaryContainer,
-            contentColor = scheme.onSecondaryContainer,
-            shape = MaterialTheme.shapes.extraLarge,
-        ) {
+        HomeCard {
             Column(Modifier.fillMaxWidth().padding(20.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(Icons.Filled.Info, contentDescription = null)

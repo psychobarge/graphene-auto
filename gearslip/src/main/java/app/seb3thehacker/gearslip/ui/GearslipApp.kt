@@ -5,7 +5,6 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.runtime.SideEffect
 import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.background
 import android.Manifest
 import android.app.Activity
 import android.content.pm.ActivityInfo
@@ -34,12 +33,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import app.seb3thehacker.gearslip.AppSettings
-import app.seb3thehacker.gearslip.BuildConfig
 import app.seb3thehacker.gearslip.CertProvider
 
 private enum class Screen { HOME, LOGS, SETTINGS, CAR_PREVIEW, CERT_SETUP, SETUP_GUIDE, HELP, WHATS_NEW, RECOMMENDED_APPS, CAR_GROUP, SAVED_PLACES }
@@ -97,21 +94,18 @@ fun GearslipApp(onDisconnect: () -> Unit, onRequestCallScreening: () -> Unit) {
         }
     }
 
-    // On a debug build, Home's yellow header runs up behind the status bar, whose icons then go dark.
-    val debugHeader = BuildConfig.DEBUG && screen == Screen.HOME
     val view = LocalView.current
     val darkTheme = gearslipDark()
     SideEffect {
         val window = (view.context as? Activity)?.window ?: return@SideEffect
-        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = debugHeader || !darkTheme
+        WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
     }
 
     Column(Modifier.fillMaxSize()) {
         Spacer(
             Modifier
                 .fillMaxWidth()
-                .windowInsetsTopHeight(WindowInsets.statusBars)
-                .background(if (debugHeader) DebugYellow else Color.Transparent),
+                .windowInsetsTopHeight(WindowInsets.statusBars),
         )
 
         Column(Modifier.weight(1f).consumeWindowInsets(WindowInsets.statusBars)) {

@@ -62,6 +62,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -136,35 +142,52 @@ fun HomeScreen(
     }
 }
 
-/** Debug builds wear a yellow header, behind the status bar too, so they're never mistaken for a release install. */
-internal val DebugYellow = Color(0xFFF5C518)
+/** Debug builds tag their version in yellow, so they're never mistaken for a release install. */
+private val DebugYellow = Color(0xFFF5C518)
 private val OnDebugYellow = Color(0xFF2A2200)
 
-/** The app's name, version and Settings, fixed above Home's scrolling cards. */
+/** The app's mark, name, version and Settings, fixed above Home's scrolling cards. */
 @Composable
 private fun HomeHeader(onOpenSettings: () -> Unit) {
-    val debug = BuildConfig.DEBUG
-    val content = if (debug) OnDebugYellow else MaterialTheme.colorScheme.onBackground
-    Surface(color = if (debug) DebugYellow else Color.Transparent, contentColor = content) {
-        Column(Modifier.fillMaxWidth().padding(start = 24.dp, end = 12.dp, top = 16.dp, bottom = 12.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    "Graphene Auto",
-                    style = MaterialTheme.typography.displaySmall,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.weight(1f),
-                )
-                IconButton(onClick = onOpenSettings, modifier = Modifier.size(56.dp)) {
-                    Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings_title), modifier = Modifier.size(32.dp))
-                }
-            }
-            val version = "v${LocalContext.current.appVersionName()}"
+    Column(Modifier.fillMaxWidth().padding(start = 24.dp, end = 12.dp, top = 16.dp, bottom = 12.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            AppMark(Modifier.padding(end = 12.dp))
             Text(
-                if (debug) stringResource(R.string.home_debug_build, version) else version,
-                style = MaterialTheme.typography.labelLarge,
-                color = if (debug) content else MaterialTheme.colorScheme.onSurfaceVariant,
+                "Graphene Auto",
+                style = MaterialTheme.typography.displaySmall,
+                fontWeight = FontWeight.Bold,
+                maxLines = 1,
+                modifier = Modifier.weight(1f),
             )
+            IconButton(onClick = onOpenSettings, modifier = Modifier.size(56.dp)) {
+                Icon(Icons.Filled.Settings, contentDescription = stringResource(R.string.settings_title), modifier = Modifier.size(32.dp))
+            }
         }
+        val version = "v${LocalContext.current.appVersionName()}"
+        if (BuildConfig.DEBUG) {
+            Surface(color = DebugYellow, contentColor = OnDebugYellow, shape = MaterialTheme.shapes.small, modifier = Modifier.padding(top = 4.dp)) {
+                Text(
+                    stringResource(R.string.home_debug_build, version),
+                    style = MaterialTheme.typography.labelLarge,
+                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
+                )
+            }
+        } else {
+            Text(version, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    }
+}
+
+/**
+ * The launcher icon, drawn from its two layers: the one place the brand's own colours show, since
+ * the rest of the app follows the phone's. A launcher shows the middle 72 of an icon's 108 dp, so
+ * each layer is drawn at 1.5 times the mark's size and cropped.
+ */
+@Composable
+private fun AppMark(modifier: Modifier = Modifier) {
+    Box(modifier.size(40.dp).clip(RoundedCornerShape(30)), contentAlignment = Alignment.Center) {
+        Image(painterResource(R.drawable.ic_launcher_background), contentDescription = null, modifier = Modifier.requiredSize(60.dp))
+        Image(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null, modifier = Modifier.requiredSize(60.dp))
     }
 }
 
@@ -197,21 +220,15 @@ private fun BluetoothMissingCard() {
     val warn by CarSettings.bluetoothWarning.collectAsStateWithLifecycle()
     if (!missing || usb || !warn) return
     val context = LocalContext.current
-    // Yellow, not the theme's error red: music is missing, but nothing is broken. Material has no
-    // warning colour, so these are fixed amber tones for light and dark.
-    val dark = gearslipDark()
-    val container = if (dark) Color(0xFF4A3B00) else Color(0xFFFFE08A)
-    val content = if (dark) Color(0xFFFFE08A) else Color(0xFF3A2E00)
     Spacer(Modifier.height(16.dp))
-    Surface(color = container, contentColor = content, shape = MaterialTheme.shapes.extraLarge) {
+    HomeCard {
         Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(stringResource(R.string.home_bt_title), style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
+            WarningTitle(stringResource(R.string.home_bt_title))
             Text(
                 stringResource(R.string.home_bt_body),
                 style = MaterialTheme.typography.bodyMedium,
             )
             Button(
-                colors = ButtonDefaults.buttonColors(containerColor = content, contentColor = container),
                 onClick = {
                     runCatching {
                         context.startActivity(Intent(Settings.ACTION_BLUETOOTH_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
@@ -250,17 +267,13 @@ private fun BackgroundLocationCard() {
             askBackground.launch(android.Manifest.permission.ACCESS_BACKGROUND_LOCATION)
         }
     }
-    val dark = gearslipDark()
-    val container = if (dark) Color(0xFF4A3B00) else Color(0xFFFFE08A)
-    val content = if (dark) Color(0xFFFFE08A) else Color(0xFF3A2E00)
     Spacer(Modifier.height(16.dp))
-    Surface(color = container, contentColor = content, shape = MaterialTheme.shapes.extraLarge) {
+    HomeCard {
         Column(Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(stringResource(R.string.home_location_title), style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
+            WarningTitle(stringResource(R.string.home_location_title))
             Text(stringResource(R.string.home_location_body), style = MaterialTheme.typography.bodyMedium)
             Row(Modifier.padding(top = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Button(
-                    colors = ButtonDefaults.buttonColors(containerColor = content, contentColor = container),
                     onClick = {
                         val fine = context.checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) ==
                             android.content.pm.PackageManager.PERMISSION_GRANTED
@@ -269,12 +282,30 @@ private fun BackgroundLocationCard() {
                     },
                 ) { Text(stringResource(R.string.home_location_allow)) }
                 androidx.compose.material3.TextButton(
-                    colors = ButtonDefaults.textButtonColors(contentColor = content),
                     onClick = { dismissed = true },
                 ) { Text(stringResource(R.string.home_location_not_now)) }
             }
         }
     }
+}
+
+/** Home's cards all share one quiet background; a warning or failure shows only in its mark. */
+@Composable
+internal fun HomeCard(content: @Composable () -> Unit) = Surface(
+    color = MaterialTheme.colorScheme.surfaceContainerHigh,
+    contentColor = MaterialTheme.colorScheme.onSurface,
+    shape = MaterialTheme.shapes.extraLarge,
+    content = content,
+)
+
+/**
+ * A card title with an amber warning sign: something is missing, but nothing is broken, so not the
+ * theme's error red. Material has no warning colour, so these are fixed tones for light and dark.
+ */
+@Composable
+private fun WarningTitle(text: String) = Row(verticalAlignment = Alignment.CenterVertically) {
+    Icon(Icons.Filled.Warning, contentDescription = null, tint = if (gearslipDark()) Color(0xFFFFC94A) else Color(0xFF8A6500))
+    Text(text, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(start = 12.dp))
 }
 
 /** While the voice models download, how far along they are; nothing otherwise. */
@@ -304,8 +335,8 @@ private fun StatusCard(status: SessionStatus.Snapshot) {
     val (container, content) = when (status.phase) {
         SessionStatus.Phase.PROJECTING -> scheme.primaryContainer to scheme.onPrimaryContainer
         SessionStatus.Phase.CONNECTING -> scheme.secondaryContainer to scheme.onSecondaryContainer
-        SessionStatus.Phase.FAILED -> scheme.errorContainer to scheme.onErrorContainer
-        SessionStatus.Phase.IDLE, SessionStatus.Phase.DISCONNECTED ->
+        // A failure keeps the quiet card; its dot turns the error colour below.
+        SessionStatus.Phase.FAILED, SessionStatus.Phase.IDLE, SessionStatus.Phase.DISCONNECTED ->
             scheme.surfaceContainerHigh to scheme.onSurface
     }
 
@@ -326,9 +357,11 @@ private fun StatusCard(status: SessionStatus.Snapshot) {
                 Surface(
                     modifier = Modifier.size(14.dp),
                     shape = MaterialTheme.shapes.extraLarge,
-                    color = if (status.phase == SessionStatus.Phase.IDLE ||
-                        status.phase == SessionStatus.Phase.DISCONNECTED
-                    ) content.copy(alpha = 0.4f) else content,
+                    color = when (status.phase) {
+                        SessionStatus.Phase.FAILED -> scheme.error
+                        SessionStatus.Phase.IDLE, SessionStatus.Phase.DISCONNECTED -> content.copy(alpha = 0.4f)
+                        else -> content
+                    },
                 ) {}
             }
             Column {
