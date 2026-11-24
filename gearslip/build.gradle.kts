@@ -38,9 +38,9 @@ android {
         applicationId = "io.github.psychobarge.grapheneauto"
         minSdk = 31
         targetSdk = 37
-        versionCode = 2
+        versionCode = 3
         // -PgearslipVersionName=0.1.99-test makes a build that thinks it's older, to try the updater.
-        versionName = project.findProperty("gearslipVersionName")?.toString() ?: "0.2.0"
+        versionName = project.findProperty("gearslipVersionName")?.toString() ?: "0.3.0-alpha"
         manifestPlaceholders["appLabel"] = "Graphene Auto"
     }
 

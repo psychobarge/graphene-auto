@@ -1,9 +1,9 @@
 # Changelog
 
-Graphene Auto's own versions, newest first. Its version numbers are its own, not Gearslip's;
-each release says which Gearslip release it brings in.
+Graphene Auto's own versions, newest first. Like Gearslip, it is alpha software. Its version
+numbers are its own, not Gearslip's; each release says which Gearslip release it brings in.
 
-## Unreleased
+## 0.3.0-alpha (2026-11-24)
 
 ### Added
 - A Colours setting next to App theme: Material You colours from the wallpaper (the default),
