@@ -1,11 +1,13 @@
-# graphene-auto
+<img src="docs/icon/icon.png" alt="" width="96" align="right">
+
+# Graphene Auto
 
 An Android Auto alternative for GrapheneOS, forked from
 [Gearslip](https://github.com/twinksoftware/Gearslip).
 
 ![Vela Maps navigating on the car screen, with the music player beside the map](docs/screenshots/navigation.png)
 
-graphene-auto speaks the Android Auto protocol straight to your car, over USB or wireless,
+Graphene Auto speaks the Android Auto protocol straight to your car, over USB or wireless,
 with no Google software in the path. Map, music, and messaging apps draw their car screens
 through it, and it adds a player, calls, voice, and a web browser of its own.
 
@@ -22,6 +24,9 @@ through it, and it adds a player, calls, voice, and a web browser of its own.
 - **No app recommendations.** It hosts whatever car-ready apps you install, and suggests none.
 - **Updates come from this repository, and are off by default.** Turn on automatic checks in
   Settings if you want them.
+- **Its own additions**, such as one-tap calls to favourite contacts, music through the app
+  for cars that cut Bluetooth audio, fixes for the Renault R-Link 2, and a colour palette of
+  its own. [CHANGELOG.md](CHANGELOG.md) lists them all, release by release.
 
 ## What works
 
@@ -140,7 +145,7 @@ keystore.
 
 ## Credits
 
-graphene-auto is a modified version of [Gearslip](https://github.com/twinksoftware/Gearslip)
+Graphene Auto is a modified version of [Gearslip](https://github.com/twinksoftware/Gearslip)
 by Twink Software LLC and contributors. Nearly all of the code is theirs. Please report
 issues with this fork [here](https://github.com/psychobarge/graphene-auto/issues), not
 upstream.
