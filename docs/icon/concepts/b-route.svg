@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- Concept B, the road: a bending road under an amber sky, like a road sign. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFC24A"/>
+      <stop offset="1" stop-color="#F08C1A"/>
+    </linearGradient>
+  </defs>
+  <rect width="108" height="108" fill="url(#sky)"/>
+  <path d="M22,108 C34,74 66,62 51,30 L57,30 C76,62 54,76 88,108Z" fill="#1C1C1E"/>
+  <path d="M55,108 C50,76 72,60 54,30" fill="none" stroke="#FFF4DC" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round"/>
+  <circle cx="54" cy="25" r="5" fill="#FFF4DC"/>
+</svg>

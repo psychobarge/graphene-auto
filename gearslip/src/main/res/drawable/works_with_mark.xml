@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The launcher icon's hexagon, cropped to its edges, for the "Works with Graphene Auto" mark. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="69"
+    android:viewportHeight="69">
+    <group android:translateX="-19.5" android:translateY="-19.5">
+        <path
+            android:pathData="M54,24 L80,39 L80,69 L54,84 L28,69 L28,39Z M41,76 L51.5,40 M67,76 L56.5,40"
+            android:strokeColor="#FF000000"
+            android:strokeWidth="5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"/>
+        <path
+            android:pathData="M54,18.5 A5.5,5.5 0 1,1 54,29.5 A5.5,5.5 0 1,1 54,18.5Z M80,33.5 A5.5,5.5 0 1,1 80,44.5 A5.5,5.5 0 1,1 80,33.5Z M80,63.5 A5.5,5.5 0 1,1 80,74.5 A5.5,5.5 0 1,1 80,63.5Z M54,78.5 A5.5,5.5 0 1,1 54,89.5 A5.5,5.5 0 1,1 54,78.5Z M28,63.5 A5.5,5.5 0 1,1 28,74.5 A5.5,5.5 0 1,1 28,63.5Z M28,33.5 A5.5,5.5 0 1,1 28,44.5 A5.5,5.5 0 1,1 28,33.5Z"
+            android:fillColor="#FF000000"/>
+    </group>
+</vector>

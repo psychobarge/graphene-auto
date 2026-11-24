@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pistes d'icône</title>
+<style>
+  :root { --bg: #f4f4f5; --fg: #18181b; --muted: #71717a; --card: #fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #111113; --fg: #f4f4f5; --muted: #a1a1aa; --card: #1c1c1f; } }
+  body { margin: 0; padding: 20px 16px; background: var(--bg); color: var(--fg); font: 14px/1.45 system-ui, sans-serif; }
+  h1 { font-size: 19px; margin: 0 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .col { background: var(--card); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  h2 { font-size: 15px; margin: 0; }
+  p { margin: 0; color: var(--muted); font-size: 13px; }
+  .sw { display: flex; gap: 6px; justify-content: center; }
+  .sw span { width: 22px; height: 22px; border-radius: 5px; border: 1px solid #8884; }
+  .masks { display: flex; gap: 10px; justify-content: center; }
+  /* The launcher shows the middle 72 of the 108 viewport. */
+  .mask { overflow: hidden; position: relative; flex: none; }
+  .mask img { position: absolute; width: 150%; height: 150%; left: -25%; top: -25%; }
+  .circle { border-radius: 50%; } .squircle { border-radius: 30%; }
+  .home { display: flex; gap: 14px; align-items: center; justify-content: center; padding: 12px; border-radius: 10px; width: 100%; box-sizing: border-box; }
+  .home.dark { background: linear-gradient(135deg, #2b2d42, #0b0c10); }
+  .home.light { background: linear-gradient(135deg, #e9e4d8, #c9d6df); }
+  .label { font-size: 11px; color: var(--muted); }
+  img.full { width: 100%; max-width: 150px; border-radius: 8px; }
+</style>
+</head>
+<body>
+<h1>graphene-auto : trois pistes d'icône</h1>
+<div class="grid" id="grid"></div>
+<script>
+const concepts = [
+  ["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDggMTA4Ij4KICA8IS0tIENvbmNlcHQgQSwgZ3JhcGhlbmUgbGF0dGljZTogYSBjYXJib24gaGV4YWdvbiAoYXRvbXMgYXQgdGhlIHZlcnRpY2VzKSB3aXRoIGEgcm9hZCBydW5uaW5nIGludG8gaXQuIC0tPgogIDxyZWN0IHdpZHRoPSIxMDgiIGhlaWdodD0iMTA4IiBmaWxsPSIjMTUxOTFFIi8+CiAgPGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjJEM0VFIiBzdHJva2Utb3BhY2l0eT0iMC4wNyIgc3Ryb2tlLXdpZHRoPSIxLjUiPgogICAgPHBhdGggZD0iTTU0LDYgODAsMjEgODAsNTEgNTQsNjYgMjgsNTEgMjgsMjFaIE0yLDM2IDI4LDUxIDI4LDgxIDIsOTYgTTEwNiwzNiA4MCw1MSA4MCw4MSAxMDYsOTYgTTI4LDgxIDU0LDk2IDgwLDgxIE01NCw5NiA1NCwxMDgiLz4KICA8L2c+CiAgPCEtLSBTY2FsZWQgaW50byB0aGUgNjYgZHAgc2FmZSB6b25lLiAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NCA1NCkgc2NhbGUoMC44NCkgdHJhbnNsYXRlKC01NCAtNTQpIiBmaWxsPSIjMjJEM0VFIj4KICAgIDxwYXRoIGQ9Ik01NCwyNCA4MCwzOSA4MCw2OSA1NCw4NCAyOCw2OSAyOCwzOVoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzIyRDNFRSIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNNDEsNzYgTDUxLjUsNDAgTTY3LDc2IEw1Ni41LDQwIiBzdHJva2U9IiMyMkQzRUUiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNNTIuNiw2NCA1NS40LDY0IDU1LjgsNzEgNTIuMiw3MVogTTUzLDUyIDU1LDUyIDU1LjMsNTggNTIuNyw1OFogTTUzLjQsNDMgNTQuNiw0MyA1NC44LDQ3LjUgNTMuMiw0Ny41WiIvPgogICAgPGNpcmNsZSBjeD0iNTQiIGN5PSIyNCIgcj0iNC41Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSIzOSIgcj0iNC41Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSI2OSIgcj0iNC41Ii8+CiAgICA8Y2lyY2xlIGN4PSI1NCIgY3k9Ijg0IiByPSI0LjUiLz48Y2lyY2xlIGN4PSIyOCIgY3k9IjY5IiByPSI0LjUiLz48Y2lyY2xlIGN4PSIyOCIgY3k9IjM5IiByPSI0LjUiLz4KICA8L2c+Cjwvc3ZnPgo=", "A · Treillis graphène", "Un hexagone de carbone, un atome à chaque sommet, et une route qui s'y enfonce.", ["#15191E", "#22D3EE"]],
+  ["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDggMTA4Ij4KICA8IS0tIENvbmNlcHQgQiwgdGhlIHJvYWQ6IGEgYmVuZGluZyByb2FkIHVuZGVyIGFuIGFtYmVyIHNreSwgbGlrZSBhIHJvYWQgc2lnbi4gLS0+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNreSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNGRkMyNEEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjA4QzFBIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTA4IiBoZWlnaHQ9IjEwOCIgZmlsbD0idXJsKCNza3kpIi8+CiAgPHBhdGggZD0iTTIyLDEwOCBDMzQsNzQgNjYsNjIgNTEsMzAgTDU3LDMwIEM3Niw2MiA1NCw3NiA4OCwxMDhaIiBmaWxsPSIjMUMxQzFFIi8+CiAgPHBhdGggZD0iTTU1LDEwOCBDNTAsNzYgNzIsNjAgNTQsMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRjREQyIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtZGFzaGFycmF5PSI3IDYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjU0IiBjeT0iMjUiIHI9IjUiIGZpbGw9IiNGRkY0REMiLz4KPC9zdmc+Cg==", "B · La route", "Une route qui tourne sous un ciel ambre, comme un panneau.", ["#F6A623", "#1C1C1E", "#FFF4DC"]],
+  ["data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDggMTA4Ij4KICA8IS0tIENvbmNlcHQgQywgdGhlIGZyZWVkIGNhYmxlOiBhIFVTQi1DIHBsdWcgd2hvc2Ugc2lnbmFsIGdvZXMgb3V0IGFzIHJhZGlvIHdhdmVzLCB3aXRoIG5vdGhpbmcgaW4gYmV0d2Vlbi4gLS0+CiAgPHJlY3Qgd2lkdGg9IjEwOCIgaGVpZ2h0PSIxMDgiIGZpbGw9IiMxRTFCNEIiLz4KICA8ZyBmaWxsPSJub25lIiBzdHJva2U9IiMzNEQzOTkiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KICAgIDxwYXRoIGQ9Ik00Ny42LDQxLjYgQTksOSAwIDAgMSA2MC40LDQxLjYiLz4KICAgIDxwYXRoIGQ9Ik00MiwzNiBBMTcsMTcgMCAwIDEgNjYsMzYiLz4KICAgIDxwYXRoIGQ9Ik0zNi4zLDMwLjMgQTI1LDI1IDAgMCAxIDcxLjcsMzAuMyIvPgogIDwvZz4KICA8cmVjdCB4PSI1MCIgeT0iNzgiIHdpZHRoPSI4IiBoZWlnaHQ9IjMyIiBmaWxsPSIjRTBFN0ZGIi8+CiAgPHJlY3QgeD0iNDYiIHk9IjQ3IiB3aWR0aD0iMTYiIGhlaWdodD0iMTEiIHJ4PSI1IiBmaWxsPSIjQTVCNEZDIi8+CiAgPHJlY3QgeD0iNDMiIHk9IjU1IiB3aWR0aD0iMjIiIGhlaWdodD0iMjYiIHJ4PSI1IiBmaWxsPSIjRTBFN0ZGIi8+CiAgPHJlY3QgeD0iNDgiIHk9IjYyIiB3aWR0aD0iMTIiIGhlaWdodD0iMi41IiByeD0iMS4yNSIgZmlsbD0iIzFFMUI0QiIgb3BhY2l0eT0iMC4yNSIvPgo8L3N2Zz4K", "C · Câble libéré", "Une prise USB-C qui émet directement, sans rien entre téléphone et voiture.", ["#1E1B4B", "#34D399", "#E0E7FF"]],
+];
+const m = (src, cls, px) => `<div class="mask ${cls}" style="width:${px}px;height:${px}px"><img src="${src}" alt=""></div>`;
+document.getElementById("grid").innerHTML = concepts.map(([src, name, desc, colors]) => `
+  <div class="col">
+    <h2>${name}</h2>
+    <p>${desc}</p>
+    <div class="sw">${colors.map(c => `<span title="${c}" style="background:${c}"></span>`).join("")}</div>
+    <img class="full" src="${src}" alt="${name}"><span class="label">108 dp, avant masque</span>
+    <div class="masks">${m(src, "circle", 72)}${m(src, "squircle", 72)}</div>
+    <div class="home dark">${m(src, "circle", 48)}${m(src, "circle", 32)}${m(src, "circle", 20)}</div>
+    <div class="home light">${m(src, "squircle", 48)}${m(src, "squircle", 32)}${m(src, "squircle", 20)}</div>
+    <span class="label">48, 32 et 20 px sur fond sombre et clair</span>
+  </div>`).join("");
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- Concept A, graphene lattice: a carbon hexagon (atoms at the vertices) with a road running into it. -->
+  <rect width="108" height="108" fill="#15191E"/>
+  <g fill="none" stroke="#22D3EE" stroke-opacity="0.07" stroke-width="1.5">
+    <path d="M54,6 80,21 80,51 54,66 28,51 28,21Z M2,36 28,51 28,81 2,96 M106,36 80,51 80,81 106,96 M28,81 54,96 80,81 M54,96 54,108"/>
+  </g>
+  <!-- Scaled into the 66 dp safe zone. -->
+  <g transform="translate(54 54) scale(0.84) translate(-54 -54)" fill="#22D3EE">
+    <path d="M54,24 80,39 80,69 54,84 28,69 28,39Z" fill="none" stroke="#22D3EE" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M41,76 L51.5,40 M67,76 L56.5,40" stroke="#22D3EE" stroke-width="4" stroke-linecap="round"/>
+    <path d="M52.6,64 55.4,64 55.8,71 52.2,71Z M53,52 55,52 55.3,58 52.7,58Z M53.4,43 54.6,43 54.8,47.5 53.2,47.5Z"/>
+    <circle cx="54" cy="24" r="4.5"/><circle cx="80" cy="39" r="4.5"/><circle cx="80" cy="69" r="4.5"/>
+    <circle cx="54" cy="84" r="4.5"/><circle cx="28" cy="69" r="4.5"/><circle cx="28" cy="39" r="4.5"/>
+  </g>
+</svg>
